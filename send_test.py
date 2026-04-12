@@ -1,4 +1,4 @@
-"""Quick test: send today's briefing email."""
+"""Quick test: send today's briefing to ALL configured recipients."""
 import os
 import sys
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
@@ -13,40 +13,35 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import json
+from email_service import send_email
+from jinja2 import Template
+from email_service import EMAIL_TEMPLATE
+from datetime import datetime
 
 print("Loading latest data...")
 with open("latest_data.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
-from email_service import send_email
-from email_service import render_email
-from datetime import datetime
-
 mood = data.get("mood", {
-    "mood": "calm", "emoji": "😌☕",
+    "mood": "calm", "emoji": "☕",
     "vibe": "Peaceful mind, clear analysis",
 })
 
-template_data = {
-    "date": datetime.now().strftime("%A, %B %d, %Y"),
-    "stocks": data.get("stocks", {}),
-    "indices": data.get("indices", {}),
-    "news": data.get("news", {}),
-    "sentiment": data.get("sentiment", {}),
-    "briefing": data.get("briefing", ""),
-    "keywords": data.get("keywords", {}),
-    "mood": mood,
-}
-
-from jinja2 import Template
-from email_service import EMAIL_TEMPLATE
-html = Template(EMAIL_TEMPLATE).render(**template_data)
+html = Template(EMAIL_TEMPLATE).render(
+    date=datetime.now().strftime("%A, %B %d, %Y"),
+    stocks=data.get("stocks", {}),
+    indices=data.get("indices", {}),
+    news=data.get("news", {}),
+    sentiment=data.get("sentiment", {}),
+    briefing=data.get("briefing", ""),
+    keywords=data.get("keywords", {}),
+    mood=mood,
+)
 
 mood_name = mood.get("mood", "calm")
 subject = f"Alpha Signal | {mood_name.title()} Day | {datetime.now().strftime('%Y-%m-%d')}"
 
-# Send to Resend owner (Gmail)
-gmail = os.getenv("RESEND_OWNER_EMAIL", "a2735559771@gmail.com")
-print(f"\nSending to {gmail}...")
-result = send_email(subject, html, receiver=gmail)
+receivers = os.getenv("EMAIL_RECEIVER", "")
+print(f"\nSending to: {receivers}")
+result = send_email(subject, html)
 print(f"Result: {'SUCCESS' if result else 'FAILED'}")

@@ -406,17 +406,16 @@ def send_email_resend(subject: str, html_content: str, receiver: str = None) -> 
 
 
 def send_email_smtp(subject: str, html_content: str, receiver: str = None) -> bool:
-    """Send email via SMTP (needs sender email config)."""
-    to_addr = receiver or EMAIL_RECEIVER
-
-    if not all([EMAIL_SENDER, EMAIL_PASSWORD, to_addr]):
+    """Send email via Gmail SMTP to all recipients."""
+    recipients = _get_all_receivers(receiver)
+    if not recipients or not all([EMAIL_SENDER, EMAIL_PASSWORD]):
         print("[Email] SMTP config incomplete!")
         return False
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"Alpha Signal <{EMAIL_SENDER}>"
-    msg["To"] = to_addr
+    msg["To"] = ", ".join(recipients)
 
     plain_text = "Please view this email in an HTML-compatible email client."
     msg.attach(MIMEText(plain_text, "plain", "utf-8"))
@@ -430,9 +429,9 @@ def send_email_smtp(subject: str, html_content: str, receiver: str = None) -> bo
             server.starttls()
 
         server.login(EMAIL_SENDER, EMAIL_PASSWORD)
-        server.sendmail(EMAIL_SENDER, [to_addr], msg.as_string())
+        server.sendmail(EMAIL_SENDER, recipients, msg.as_string())
         server.quit()
-        print(f"[Email] SMTP: sent to {to_addr}")
+        print(f"[Email] SMTP: sent to {', '.join(recipients)}")
         return True
     except Exception as e:
         print(f"[Email] SMTP failed: {e}")
@@ -440,15 +439,13 @@ def send_email_smtp(subject: str, html_content: str, receiver: str = None) -> bo
 
 
 def send_email(subject: str, html_content: str, receiver: str = None) -> bool:
-    """Send email - tries Resend first, then SMTP."""
-    if RESEND_API_KEY:
-        return send_email_resend(subject, html_content, receiver)
-    elif EMAIL_SENDER and EMAIL_PASSWORD:
+    """Send email - tries SMTP first (supports all recipients), then Resend."""
+    if EMAIL_SENDER and EMAIL_PASSWORD:
         return send_email_smtp(subject, html_content, receiver)
+    elif RESEND_API_KEY:
+        return send_email_resend(subject, html_content, receiver)
     else:
         print("[Email] ERROR: No email method configured!")
-        print("  Option 1: Set RESEND_API_KEY in .env (easiest, sign up at resend.com)")
-        print("  Option 2: Set EMAIL_SENDER + EMAIL_PASSWORD for SMTP")
         return False
 
 
