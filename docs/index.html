@@ -129,7 +129,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 </div>
 
 <script>
-const PROXY='https://api.allorigins.win/raw?url=';
+const PROXIES=[
+  u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+  u=>'https://corsproxy.io/?'+encodeURIComponent(u),
+  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u),
+];
+let proxyIdx=0;
+function proxy(u){return PROXIES[proxyIdx%PROXIES.length](u);}
+
 const STOCKS={
   '小米集团':{t:'1810.HK',m:'HKEX'},
   'QQQ':{t:'QQQ',m:'NASDAQ'},
@@ -137,11 +144,12 @@ const STOCKS={
   'Bitcoin':{t:'BTC-USD',m:'Crypto'},
 };
 const INDICES={'S&P 500':'^GSPC','NASDAQ':'^IXIC','Hang Seng':'^HSI','Dow Jones':'^DJI'};
-const RSS_FEEDS={
-  biz:'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114',
-  tech:'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910',
-  mkt:'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
-};
+const RSS_FEEDS=[
+  {cat:'biz',name:'CNBC',url:'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114'},
+  {cat:'tech',name:'CNBC Tech',url:'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910'},
+  {cat:'mkt',name:'Reuters',url:'https://feeds.reuters.com/reuters/businessNews'},
+  {cat:'mkt',name:'Yahoo',url:'https://finance.yahoo.com/news/rssindex'},
+];
 
 function show(p){
   ['dash','news','briefing'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
@@ -155,28 +163,33 @@ function ntab(btn,id){
 }
 
 async function fetchYahoo(ticker){
-  try{
-    const url=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=5d&interval=1d`;
-    const r=await fetch(PROXY+encodeURIComponent(url));
-    const d=await r.json();
-    const res=d.chart.result[0];
-    const meta=res.meta;
-    const q=res.indicators.quote[0];
-    const closes=q.close.filter(v=>v!=null);
-    const latest=closes[closes.length-1];
-    const prev=closes.length>1?closes[closes.length-2]:latest;
-    const chg=latest-prev;
-    const pct=(chg/prev)*100;
-    return{
-      price:latest.toFixed(2),
-      change:chg.toFixed(2),
-      change_pct:pct.toFixed(2),
-      high:Math.max(...q.high.filter(v=>v!=null)).toFixed(2),
-      low:Math.min(...q.low.filter(v=>v!=null)).toFixed(2),
-      volume:q.volume.filter(v=>v!=null).pop()||0,
-      currency:meta.currency,
-    };
-  }catch(e){return null;}
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const url=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=5d&interval=1d`;
+      const p=PROXIES[(proxyIdx+i)%PROXIES.length](url);
+      const r=await fetch(p,{signal:AbortSignal.timeout(8000)});
+      const d=await r.json();
+      const res=d.chart.result[0];
+      const meta=res.meta;
+      const q=res.indicators.quote[0];
+      const closes=q.close.filter(v=>v!=null);
+      const latest=closes[closes.length-1];
+      const prev=closes.length>1?closes[closes.length-2]:latest;
+      const chg=latest-prev;
+      const pct=(chg/prev)*100;
+      proxyIdx=(proxyIdx+i)%PROXIES.length;
+      return{
+        price:latest.toFixed(2),
+        change:chg.toFixed(2),
+        change_pct:pct.toFixed(2),
+        high:Math.max(...q.high.filter(v=>v!=null)).toFixed(2),
+        low:Math.min(...q.low.filter(v=>v!=null)).toFixed(2),
+        volume:q.volume.filter(v=>v!=null).pop()||0,
+        currency:meta.currency,
+      };
+    }catch(e){continue;}
+  }
+  return null;
 }
 
 async function loadStocks(){
@@ -218,31 +231,57 @@ async function loadIndices(){
   el.innerHTML=html||'<div style="color:var(--muted)">No index data</div>';
 }
 
+function parseRSS(xml,source){
+  const arts=[];
+  try{
+    const doc=new DOMParser().parseFromString(xml,'text/xml');
+    doc.querySelectorAll('item').forEach(item=>{
+      const title=item.querySelector('title')?.textContent||'';
+      const link=item.querySelector('link')?.textContent||'';
+      const pub=item.querySelector('pubDate')?.textContent||'';
+      if(title)arts.push({title,link,source,published:pub?new Date(pub).toLocaleString():''});
+    });
+  }catch(e){}
+  return arts;
+}
+
+async function fetchRSS(feed){
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const p=PROXIES[(proxyIdx+i)%PROXIES.length](feed.url);
+      const r=await fetch(p,{signal:AbortSignal.timeout(8000)});
+      const txt=await r.text();
+      if(txt.includes('<item')||txt.includes('<entry')){
+        proxyIdx=(proxyIdx+i)%PROXIES.length;
+        return parseRSS(txt,feed.name);
+      }
+    }catch(e){continue;}
+  }
+  return [];
+}
+
 async function loadNews(){
   const allNews=[];
   const catMap={biz:[],tech:[],mkt:[]};
-  for(const[cat,url]of Object.entries(RSS_FEEDS)){
-    try{
-      const api=`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=15`;
-      const r=await fetch(api);
-      const d=await r.json();
-      if(d.items){
-        const arts=d.items.map(it=>({
-          title:it.title,
-          link:it.link,
-          source:d.feed?.title||cat,
-          published:it.pubDate?it.pubDate.slice(0,16):'',
-        }));
-        catMap[cat]=arts;
-        allNews.push(...arts);
-      }
-    }catch(e){}
-  }
+  document.getElementById('news-brief').innerHTML='<div style="color:var(--muted)">Fetching live news...</div>';
+
+  const results=await Promise.all(RSS_FEEDS.map(f=>fetchRSS(f)));
+  RSS_FEEDS.forEach((f,i)=>{
+    const arts=results[i]||[];
+    if(!catMap[f.cat])catMap[f.cat]=[];
+    catMap[f.cat].push(...arts);
+    allNews.push(...arts);
+  });
+
   document.getElementById('news-brief').innerHTML=nlist(allNews.slice(0,8));
   document.getElementById('n-all').innerHTML=nlist(allNews.slice(0,30));
-  document.getElementById('n-biz').innerHTML=nlist(catMap.biz);
-  document.getElementById('n-tech').innerHTML=nlist(catMap.tech);
-  document.getElementById('n-mkt').innerHTML=nlist(catMap.mkt);
+  document.getElementById('n-biz').innerHTML=nlist(catMap.biz||[]);
+  document.getElementById('n-tech').innerHTML=nlist(catMap.tech||[]);
+  document.getElementById('n-mkt').innerHTML=nlist(catMap.mkt||[]);
+
+  if(allNews.length===0){
+    document.getElementById('news-brief').innerHTML='<div style="color:var(--muted)">News feeds temporarily unavailable. AI briefing updated at 8am & 9pm.</div>';
+  }
 }
 
 async function loadAI(){

@@ -99,7 +99,7 @@ Return a JSON object with:
 Articles:
 {articles_text}"""
 
-    result = _call_deepseek(system_prompt, user_prompt, temperature=0.1)
+    result = _call_deepseek(system_prompt, user_prompt, temperature=0.1, strip_md=False)
     try:
         if "```json" in result:
             result = result.split("```json")[1].split("```")[0]
@@ -136,7 +136,7 @@ Return as JSON:
 Articles:
 {articles_text}"""
 
-    result = _call_deepseek(system_prompt, user_prompt, temperature=0.1)
+    result = _call_deepseek(system_prompt, user_prompt, temperature=0.1, strip_md=False)
     try:
         if "```json" in result:
             result = result.split("```json")[1].split("```")[0]

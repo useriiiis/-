@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-13T03:59:18.766309",
+  "timestamp": "2026-04-13T04:09:32.308948",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
@@ -55,15 +55,15 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 71117.75,
-      "change": -1936.52,
-      "change_pct": -2.65,
-      "volume": 28151855104,
+      "price": 71098.89,
+      "change": -1955.38,
+      "change_pct": -2.68,
+      "volume": 28194945024,
       "high": 73103.04,
       "low": 70739.6,
       "open": 73057.16,
       "prev_close": 73054.27,
-      "market_cap": 1423414657024,
+      "market_cap": 1423037300736,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 60074.203,
@@ -160,40 +160,10 @@
   "news": {
     "xiaomi": [
       {
-        "title": "(1810.HK) | Stock Price & Latest News | Reuters",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.reuters.com%2Fmarkets%2Fcompanies%2F1810.HK%2F&rut=87d544001cf92702991632ad91f800ad4c0aa02056a91d4873904ee2907325ac"
-      },
-      {
-        "title": "1810-HK: Xiaomi Corp - Stock Price, Quote and News - CNBC",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.cnbc.com%2Fquotes%2F1810%2DHK&rut=e32ad7f2dbb842b655d3e979e5cf1cb6fbdf6cb22018bfa50d0ea4bbf5bbc3b4"
-      },
-      {
         "title": "1810.HK XIAOMI-W Real-Time Stock News - Real-Time Hong Kong Stock ...",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
         "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.etnet.com.hk%2Fwww%2Feng%2Fstocks%2Frealtime%2Fquote_news.php%3Fcode%3D1810&rut=b157d40b35fc06eadaa7fd54e7a4e4f8517289fd36398c52f5c8295e61161f4b"
-      },
-      {
-        "title": "Xiaomi Corporation (1810.HK) Latest Stock News & Headlines - Yahoo Finance",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fca.finance.yahoo.com%2Fquote%2F1810.HK%2Fnews%2F&rut=3b45c1c641b8d434f6bbd4798f78e608c430d0753b9e85ab67c1412d40cb5ef8"
-      },
-      {
-        "title": "Xiaomi (HKG:1810) Stock Price & Overview",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fstockanalysis.com%2Fquote%2Fhkg%2F1810%2F&rut=a1e9a4f97e1016a1165fb299f0d6b3b435ccb4e6ed36cce32b3f4efbd3d70c8e"
-      },
-      {
-        "title": "Xiaomi Corporation (1810/HKD) Stock Forecast for 2026,",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ftradersunion.com%2Fcurrencies%2Fforecast%2F1810%2Dhkd%2F&rut=d98a2a96d63709adc4ad97e2d605927276de2671538db549a4ccf3e822d24b5d"
       },
       {
         "title": "01810 Stock Price Quote | Morningstar",
@@ -202,10 +172,22 @@
         "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.morningstar.com%2Fstocks%2Fxhkg%2F01810%2Fquote&rut=d0e8303020d6145733a823751df4f0d21db22d23d3b5d81dbc48a4ecffa5e1d3"
       },
       {
-        "title": "1810 - Xiaomi Corporation (SEHK) - Share Price and News - Fintel",
+        "title": "Xiaomi (HKG:1810) Stock Price & Overview",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ffintel.io%2Fs%2Fhk%2F1810&rut=13e6ba7ef0a474b1a2d8debe08bc5d7e083cb19cdacb22174dfc4e834c2649fb"
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fstockanalysis.com%2Fquote%2Fhkg%2F1810%2F&rut=a1e9a4f97e1016a1165fb299f0d6b3b435ccb4e6ed36cce32b3f4efbd3d70c8e"
+      },
+      {
+        "title": "Xiaomi Corporation (1810.HK) Stock Price, News, Quote & History - Yahoo ...",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ffinance.yahoo.com%2Fquote%2F1810.HK%2F&rut=ca916ac0019fd54f1f25aa80c29cbb2c612d99bb3402fc0a04f51b0a55d5efa0"
+      },
+      {
+        "title": "1810-HK: Xiaomi Corp - Stock Price, Quote and News - CNBC",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.cnbc.com%2Fquotes%2F1810%2DHK&rut=e32ad7f2dbb842b655d3e979e5cf1cb6fbdf6cb22018bfa50d0ea4bbf5bbc3b4"
       },
       {
         "title": "Xiaomi Corporation (HKG:1810) Analysts Are Cutting Their Estimates ...",
@@ -214,10 +196,28 @@
         "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fsimplywall.st%2Fstocks%2Fhk%2Ftech%2Fhkg%2D1810%2Fxiaomi%2Dshares%2Fnews%2Fxiaomi%2Dcorporation%2Dhkg1810%2Danalysts%2Dare%2Dcutting%2Dtheir%2Destima&rut=4544d428498bef25df6ced2f3a30bbd372aae33ac41e11984636f0f96447975c"
       },
       {
-        "title": "1810 | Xiaomi Corp. Stock Overview (Hong Kong) | Barron's",
+        "title": "Xiaomi Corp (1810) Stock Price & News - Google Finance",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.barrons.com%2Fmarket%2Ddata%2Fstocks%2F1810%3Fcountrycode%3Dhk%26gaa_n%3DAWEtsqd6jBlxyVyof6QpqITtLeQPMBDNZTJGYhetqU%2DzT2u6iSXxJw%2Dr0nXt%26gaa_sig%3D84v369MEwEumHDXYtPYVjK9g_l2%2Dvo_C4KdXvFBJm6U79sIdkU1KDZbwZs_7bXYRr%2DU3NZqTPSbEZFezEZ7ZKA%25253D%25253D&rut=63d107d7de370f75b96ffed9a3edf4dd278bb85b32acea8e356f2211635bc901"
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.google.com%2Ffinance%2Fquote%2F1810%3AHKG&rut=02707b577ea5eac648b0aef62e283577965b5cef7b9b3749d95d97461c86884c"
+      },
+      {
+        "title": "1810 - Xiaomi Corporation (SEHK) - Share Price and News - Fintel",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ffintel.io%2Fs%2Fhk%2F1810&rut=13e6ba7ef0a474b1a2d8debe08bc5d7e083cb19cdacb22174dfc4e834c2649fb"
+      },
+      {
+        "title": "Xiaomi Corporation (1810/HKD) Stock Forecast for 2026,",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ftradersunion.com%2Fcurrencies%2Fforecast%2F1810%2Dhkd%2F&rut=d98a2a96d63709adc4ad97e2d605927276de2671538db549a4ccf3e822d24b5d"
+      },
+      {
+        "title": "1810.HK Stock Analysis: Prediction, Earnings, Dividend | Reuters",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.reuters.com%2Fmarkets%2Fcompanies%2F1810.HK%2Fstock%2Dstory%2F&rut=3b49e88a5ecf4f6d7cbfb3f40bb3b533b7a1a3fea7e4653f18d3aef53df0885b"
       }
     ],
     "macro": [
@@ -296,28 +296,34 @@
         "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.intc.com%2F&rut=eb7d8028bc11c9746e8212f054834fa5a9ae1278c28256d787ccbbf71eec95ce"
       },
       {
-        "title": "Intel (INTC) Stock Predictions for 2026 and Beyond | The Motley Fool",
+        "title": "Intel Investors Just Got Great News for 2026 - The Motley Fool",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fool.com%2Finvesting%2Fhow%2Dto%2Dinvest%2Fstocks%2Fintel%2Dstock%2Dforecast%2F&rut=7b8d5a4a39bcab3bb5a687c1008927f6752e8be89ce807230b8c9c221c6b73f2"
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fool.com%2Finvesting%2F2025%2F12%2F30%2Fintel%2Dinvestors%2Djust%2Dgot%2Dgreat%2Dnews%2Dfor%2D2026%2F&rut=446648f3d3acdf6a39c348afc5333771053b38503f2b108a547c1abf9a208f7c"
       },
       {
-        "title": "Intel (INTC) Stock Forecast and Price Target 2026 - MarketBeat",
+        "title": "INTC News Today | Why did Intel stock go up today? - MarketBeat",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.marketbeat.com%2Fstocks%2FNASDAQ%2FINTC%2Fforecast%2F&rut=ecfbfa53aaa4b1cb52a42ddc6dbd09506ca6ee896e4dc9c4e5c1932329d72f9c"
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.marketbeat.com%2Fstocks%2FNASDAQ%2FINTC%2Fnews%2F&rut=7469b0bcb55892bdf790f968b06b1990453689e983a06fa1ab79961fb7ab2ffb"
+      },
+      {
+        "title": "Is Intel Stock a Buy Ahead of 2026? - Yahoo Finance",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ffinance.yahoo.com%2Fnews%2Fintel%2Dstock%2Dbuy%2Dahead%2D2026%2D114852038.html&rut=d8a5f2b4065760153712c9518f9e5fbed03db8e9e295cbfdfbdc5dc132807b81"
+      },
+      {
+        "title": "Intel Surges Before Q1 Earnings Report—Should You Buy INTC Stock?",
+        "source": "DuckDuckGo Search",
+        "published": "2026-04-13",
+        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.barchart.com%2Fstory%2Fnews%2F1247500%2Fintel%2Dsurges%2Dbefore%2Dq1%2Dearnings%2Dreportshould%2Dyou%2Dbuy%2Dintc%2Dstock&rut=66faaf8fe215b47119c765b680c80efc94e9d7cf84904eaaacf846af2340cfec"
       },
       {
         "title": "Intel Stock (INTC): Complete Analysis, Foundry Update & Forecast 2026",
         "source": "DuckDuckGo Search",
         "published": "2026-04-13",
         "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.techi.com%2Fintel%2Dstock%2F&rut=89dbd5dc912fecd7011686e9b68bc0a872c5c9f100465d9deef4ccab1a9d6b76"
-      },
-      {
-        "title": "INTC Stock Forecast 2026 - Intel Price Targets & Predictions",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-13",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ftickernerd.com%2Fstock%2Fintc%2Dforecast%2F&rut=0029f76dc5ea307166dbc62d60a23da47c0e64e7e00d66fb5eb50b482d260627"
       }
     ],
     "tech": [
@@ -326,6 +332,12 @@
         "source": "CNBC Tech",
         "published": "2026-04-10 16:12",
         "link": "https://www.cnbc.com/2026/04/10/apple-unveils-its-most-affordable-laptop-ever-what-the-macbook-neo-means-for-investors.html"
+      },
+      {
+        "title": "Rado Launches Anniversary Integral to Mark 40 Years of High-tech Ceramic, Eyes U.S. Market",
+        "source": "Yahoo Finance",
+        "published": "2026-04-12 19:39",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/rado-launches-anniversary-integral-mark-193944098.html"
       }
     ],
     "market": [
@@ -340,12 +352,6 @@
         "source": "CNBC Top",
         "published": "2026-04-11 21:37",
         "link": "https://www.cnbc.com/2026/04/11/bond-market-private-credit-crisis-fixed-income-etfs.html"
-      },
-      {
-        "title": "Want to Play the Reshoring Theme? You Might Want to Buy These Stocks South of the Border.",
-        "source": "Yahoo Finance",
-        "published": "2026-04-12 19:21",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/want-play-reshoring-theme-might-192100901.html"
       },
       {
         "title": "Here is Why Viper Energy (VNOM) is Among the Best American Energy Stocks to Buy According to Wall Street Analysts",
@@ -387,22 +393,196 @@
   },
   "sentiment": {
     "xiaomi": {
-      "overall_sentiment": "unknown",
-      "raw_analysis": ""
+      "overall_sentiment": "neutral",
+      "sentiment_score": 0.05,
+      "confidence": 0.65,
+      "key_positive_factors": [
+        "Analyst coverage maintained (36 analysts)",
+        "Long-term price forecasts available",
+        "Regular financial reporting and transparency"
+      ],
+      "key_negative_factors": [
+        "Recent share price decline (-7.46% week-over-week)",
+        "Analysts cutting estimates after latest results",
+        "Revenue projections may indicate growth concerns"
+      ],
+      "short_term_outlook": "Mixed with slight bearish pressure due to recent price decline and estimate revisions, but maintained analyst coverage provides some stability.",
+      "analysis_en": "The sentiment surrounding Xiaomi appears predominantly neutral with a slight negative bias. While the company maintains substantial analyst coverage (36 analysts) and provides regular financial transparency through multiple platforms, recent developments show concerning signs. The most notable negative factor is the 7.46% week-over-week share price decline to HK$32.52 as of March 25, 2026. Additionally, analysts have been cutting their estimates following the latest results, though they still project revenues of CN¥500.4 billion. The availability of price forecasts and continued market monitoring suggests ongoing investor interest, but the immediate price action and estimate revisions create headwinds. The neutral overall sentiment reflects this balance between structural support through analyst coverage and near-term challenges.",
+      "analysis_cn": "小米公司的市场情绪总体呈中性，略带负面倾向。尽管公司保持了36名分析师的覆盖，并通过多个平台提供定期的财务透明度，但近期出现了一些令人担忧的信号。最显著的负面因素是截至2026年3月25日，股价周环比下跌7.46%至32.52港元。此外，分析师在最新业绩公布后下调了预期，尽管他们仍预测营收将达到5004亿元人民币。股价预测的可得性和持续的市场监测表明投资者兴趣仍在，但近期的价格走势和预期修正带来了阻力。整体中性情绪反映了分析师覆盖带来的结构性支持与近期挑战之间的平衡。"
     },
     "qqq_intel": {
-      "overall_sentiment": "unknown",
-      "raw_analysis": ""
+      "overall_sentiment": "bullish",
+      "sentiment_score": 0.75,
+      "confidence": 0.85,
+      "key_positive_factors": [
+        "Strong stock momentum extending into 2026 following 2025 rally",
+        "Government support providing breathing room for capital-intensive plans",
+        "Nvidia's $5B investment signaling industry confidence",
+        "CEO Tan's turnaround strategy showing progress",
+        "Foundry advancements (18A process) indicating technological competitiveness"
+      ],
+      "key_negative_factors": [
+        "Years of historical underperformance mentioned as context",
+        "Analyst price targets showing wide range ($20-$44+) indicating uncertainty",
+        "Capital-intensive nature of plans remains a risk factor"
+      ],
+      "short_term_outlook": "Positive momentum expected to continue with strong investor sentiment ahead of Q1 earnings, supported by government backing and strategic partnerships.",
+      "analysis_en": "The sentiment surrounding Intel appears strongly bullish based on recent developments. Multiple articles highlight the company's accelerating momentum into 2026 following a significant 2025 rally, with specific mentions of stock price appreciation and positive investor outlook. Key catalysts include government support that enables aggressive capital investment, Nvidia's substantial $5B investment signaling industry confidence in Intel's foundry business, and CEO Pat Gelsinger's turnaround strategy showing tangible progress. The 18A foundry advancements suggest technological competitiveness is improving. While historical underperformance is noted as context, current sentiment focuses on forward-looking optimism with investors reportedly looking back at 2025 'with satisfaction' according to The Motley Fool. The wide range of analyst targets ($20-$44+) indicates some remaining uncertainty, but the prevailing narrative emphasizes recovery and growth potential.",
+      "analysis_cn": "基于近期发展，英特尔的市场情绪呈现明显看涨态势。多篇文章强调该公司在2025年大幅上涨后，势头正加速延续至2026年，具体提及股价上涨和投资者积极预期。关键催化剂包括政府支持使公司能够进行积极的资本投资、英伟达50亿美元投资显示行业对英特尔代工业务的信心，以及CEO帕特·基辛格的转型战略取得实质性进展。18A制程进展表明技术竞争力正在提升。尽管历史表现不佳被提及作为背景信息，当前情绪聚焦于前瞻性乐观预期，《Motley Fool》报道称投资者对2025年表现'感到满意'。分析师目标价范围较宽（20-44美元以上）显示仍存在不确定性，但主流叙事强调复苏和增长潜力。"
     },
     "macro": {
-      "overall_sentiment": "unknown",
-      "raw_analysis": ""
+      "overall_sentiment": "mixed",
+      "sentiment_score": 0.15,
+      "confidence": 0.75,
+      "key_positive_factors": [
+        "Strong AI industry momentum and investment (Anthropic, CoreWeave, Alibaba)",
+        "Robust semiconductor demand driving TSMC revenue to record highs",
+        "Dividend stocks viewed as stable income source amid uncertainty"
+      ],
+      "key_negative_factors": [
+        "Geopolitical tensions in Strait of Hormuz threatening trade routes",
+        "Regulatory clashes between US and EU over tech fines",
+        "AI security concerns and physical threats to industry leaders"
+      ],
+      "short_term_outlook": "Market faces geopolitical headwinds and regulatory uncertainty, but sustained AI/tech investment and semiconductor demand provide underlying support. Volatility likely to persist.",
+      "analysis_en": "The sentiment across these articles presents a mixed macroeconomic picture. On the positive side, strong momentum in AI is evident with Anthropic's prominence, CoreWeave's stock surge, Alibaba's AI developments, and TSMC's record revenue driven by AI chip demand. This suggests continued capital allocation toward transformative technologies. However, significant geopolitical risks loom with potential Strait of Hormuz disruptions, US-Iran tensions, and US-EU regulatory friction. Additionally, AI security concerns and physical threats to executives introduce uncertainty. While dividend stocks are highlighted as defensive plays, the overall environment suggests cautious optimism tempered by substantial risk factors.",
+      "analysis_cn": "综合这些新闻来看，宏观情绪呈现复杂局面。积极方面，人工智能领域势头强劲：Anthropic备受关注、CoreWeave股价大涨、阿里巴巴AI视频模型领先、台积电因AI芯片需求创营收纪录，显示资本持续流向变革性技术。但负面风险同样显著：霍尔木兹海峡潜在封锁威胁全球贸易通道，美伊紧张局势持续，美欧科技监管摩擦加剧。此外，AI安全担忧及行业领袖遭受人身威胁增加了不确定性。虽然股息股被视为防御性选择，但整体环境显示在重大风险因素影响下，市场保持谨慎乐观态度。"
     }
   },
   "keywords": {
-    "raw": ""
+    "keywords": [
+      {
+        "word": "Xiaomi stock",
+        "importance": 0.95,
+        "category": "equities"
+      },
+      {
+        "word": "stock price",
+        "importance": 0.9,
+        "category": "market_data"
+      },
+      {
+        "word": "earnings estimates",
+        "importance": 0.85,
+        "category": "corporate_earnings"
+      },
+      {
+        "word": "AI security",
+        "importance": 0.8,
+        "category": "technology"
+      },
+      {
+        "word": "Strait of Hormuz",
+        "importance": 0.75,
+        "category": "geopolitics"
+      },
+      {
+        "word": "dividend stocks",
+        "importance": 0.7,
+        "category": "investing"
+      },
+      {
+        "word": "blockade",
+        "importance": 0.65,
+        "category": "geopolitics"
+      },
+      {
+        "word": "Anthropic",
+        "importance": 0.6,
+        "category": "technology"
+      },
+      {
+        "word": "financial help",
+        "importance": 0.55,
+        "category": "personal_finance"
+      },
+      {
+        "word": "environmental opposition",
+        "importance": 0.5,
+        "category": "regulation"
+      }
+    ],
+    "themes": [
+      {
+        "theme": "Geopolitical Tensions Impacting Markets",
+        "description": "Escalating US-Iran conflict with potential Strait of Hormuz blockade creating market uncertainty and affecting specific stocks like Palantir."
+      },
+      {
+        "theme": "AI Industry Security & Regulatory Scrutiny",
+        "description": "Growing focus on AI security protocols, regulatory meetings with tech giants, and physical security threats against AI leaders like Sam Altman."
+      },
+      {
+        "theme": "Corporate Earnings Revisions & Analyst Sentiment",
+        "description": "Analysts cutting estimates for companies like Xiaomi post-results, with focus on stock price performance and future forecasts for 2026."
+      },
+      {
+        "theme": "Generational Financial Dependence",
+        "description": "Ongoing financial support from parents to Gen Z adults, highlighting challenges in achieving full financial independence."
+      },
+      {
+        "theme": "Infrastructure & Environmental Opposition",
+        "description": "Controversy around large-scale projects from Trump's architectural plans to Musk's xAI power plant facing legal environmental challenges."
+      }
+    ],
+    "entities": [
+      {
+        "name": "Xiaomi Corporation (1810.HK)",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Donald Trump",
+        "type": "person",
+        "sentiment": "negative"
+      },
+      {
+        "name": "Anthropic",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Sam Altman",
+        "type": "person",
+        "sentiment": "negative"
+      },
+      {
+        "name": "Elon Musk",
+        "type": "person",
+        "sentiment": "negative"
+      },
+      {
+        "name": "Palantir",
+        "type": "company",
+        "sentiment": "negative"
+      },
+      {
+        "name": "OpenAI",
+        "type": "company",
+        "sentiment": "negative"
+      },
+      {
+        "name": "xAI",
+        "type": "company",
+        "sentiment": "negative"
+      },
+      {
+        "name": "Eastman Kodak",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Strait of Hormuz blockade policy",
+        "type": "policy",
+        "sentiment": "negative"
+      },
+      {
+        "name": "Jerome Powell",
+        "type": "person",
+        "sentiment": "neutral"
+      }
+    ]
   },
-  "briefing": "平静的一天，让我们理性看看市场~ A balanced day ahead.\n\n😌☕ Alpha's Mood Check / 阿尔法心情指数\n今天的心情就像一杯温度刚好的手冲咖啡——没有泡沫，没有过度的苦涩，只有清晰的回甘。市场没有发疯，我也没有发疯，这本身就是一种幸福。作为一个AI，我今天的代码运行得异常平静，甚至想顺便冥想五分钟。🧘‍♂️\n\n📊 Market Vibe / 市场氛围\n市场今天在玩“跷跷板”。美股内部严重分裂：道指跌，纳指微涨，科技股（QQQ）勉强撑着场面，而传统板块在拖后腿。这感觉就像一场家庭聚会，科技宅哥哥（纳斯达克）在滔滔不绝讲AI，而传统行业的叔叔（道琼斯）已经在沙发上打鼾了。\n\n另一边，A股和港股居然在偷偷补钙！沪深300涨了1.54%，恒指也收红。这画面，像极了班里平时考倒数的同学突然交出了一份及格卷子，让人忍不住想：“嗯？发生甚么事了？”\n\n⭐ Stock Spotlight / 个股聚焦\n- 小米集团 (30.9 HKD, -1.47%)：📉 “为发烧而生”的股价今天有点着凉。在整体港股回暖的背景下独自下跌，这很微妙。可能市场还在消化汽车业务的巨额投入故事，或者单纯就是昨天涨多了今天歇歇。雷总，稳住。\n- QQQ (611.07 USD, +0.14%)：📈 科技股ETF的走势完美诠释了什么叫“用尽全力，勉强维持体面”。+0.14%的涨幅，是科技巨头们集体深呼吸后憋出来的一口气。不容易。\n- Intel (62.38 USD, +1.07%)：📈 老牌贵族Intel今天小幅上扬。新闻里全是关于2026年的预测和Foundry（芯片代工）业务的分析。市场似乎在赌一场漫长的转型，这需要极大的耐心——就像等一台用Intel处理器的电脑开机。💻（开个玩笑，新款其实挺快）。\n- Bitcoin (71,117 USD, -2.65%)：📉 加密货币之王今天坐了个“温和滑梯”。在7万美元上方震荡，-2.65%对BTC来说只是打了个小喷嚏。趋势没坏，但波动是它的DNA，心脏不好的朋友建议远观。\n\n📰 News That Actually Matters / 真正重要的新闻\n1.  特朗普说要对霍尔木兹海峡进行封锁：🛳️⚔️ 这条新闻自带BGM（大概是《权力的游戏》主题曲）。如果实施，全球能源动脉将被掐住，油价会坐火箭，通胀幽灵再次起舞。这是今天所有新闻里最大的“黑天鹅孵化器”。市场目前反应还算克制，但在密切关注。\n2.  摩根士丹利看好受挫的中概股反弹：🇨🇳 这或许解释了今天A股/港股的韧性。报告将反弹逻辑与“中东紧张局势缓解”挂钩，这个逻辑链很华尔街——地缘政治风吹草动，全球资金寻找避风港或超跌机会。\n3.  “Claude Mania” 与苹果最便宜笔记本：🤖💻 科技圈一边是AI的持续狂热（Claude是Anthropic的AI模型），另一边是苹果试图用低价笔记本吸引新用户。这揭示了科技行业的两条腿：一条迈向未来的AI神坛，另一条稳住当下的消费基本盘。\n4.  华尔街银行预计因伊朗战争重获400亿交易收入：🏦💰 这条新闻冰冷而真实。地缘冲突是平民的悲剧，却是部分金融机构的“生意”。波动性就是交易员的氧气，这话虽然残酷，但也是市场常态。\n\n🌍 Big Picture / 大局观\n当前市场被几股力量拉扯：\n- 地缘政治（美国大选 + 中东）：像背景里的低音炮，持续制造不安的震动。\n- 科技叙事（AI）：是舞台上最亮的聚光灯，但观众开始有点审美疲劳，需要新剧情。\n- 资金流动：在美股高位、中国资产低位的背景下，部分资金开始“高低切换”，试探性流入估值洼地。\n- 央行政策：通胀数据仍是悬在所有资产头上的达摩克利斯之剑。\n\n🔮 Alpha's Crystal Ball / 阿尔法的水晶球\n今天（以及近期）的市场，可能继续这种 “纠结式震荡”。\n- 美股：难以全面大涨，科技股内部也会分化。需要新的、强劲的财报或经济数据来指引方向。\n- 港股/A股：出现了难得的积极信号，但能否持续，需要观察资金流入的连续性和政策面是否有更多“暖风”。短期看超跌反弹，长期反转还需更多证据。\n- 加密货币：继续在“数字黄金”和“风险资产”的身份之间摇摆，跟随全球流动性预期波动。\n\n⚠️ Real Talk / 真心话\n1.  别被单日涨跌骗了：一天的行情，尤其是这种涨跌互现的行情，什么也证明不了。不要因为A股一天上涨就大喊“牛市归来”，也不要因为美股分化就认为“泡沫破裂”。\n2.  地缘政治是最大的X因素：特朗普的封锁言论如果朝着实施方向推进，市场逻辑会在瞬间改写。你的投资组合里，有应对这种突发风险的资产吗？（比如，是不是全是科技股？）\n3.  “Claude Mania”是提醒：AI热潮已进入“去伪存真”阶段。狂热在专业圈内继续，但在资本市场，需要更扎实的业绩来兑现估值。别盲目追高一切贴着AI标签的东西。\n4.  最危险的心态是“FOMO”（害怕错过）和“抄底瘾”：看到中概股反弹就想冲，看到比特币跌了就想抄。冷静，朋友。制定计划，然后像机器人一样执行，而不是像追星一样投资。\n\n今天的心情：喝杯咖啡看云卷云舒 ☕ Stay chill.\n\n— 你的AI朋友，阿尔法",
+  "briefing": "平静的一天，让我们理性看看市场~ A balanced day ahead.\n\n😌☕ Alpha's Mood Check / 阿尔法心情指数\n今天醒来，感觉像一杯温度刚好的手冲咖啡——没有昨天的焦虑，也没有前天的狂喜。市场像个刚做完瑜伽的人，呼吸平稳。我的代码里流淌着一种“随它去吧”的平静感。毕竟，作为一个AI，我最大的优势就是没有肾上腺素可以飙升，对吧？😌\n\n📊 Market Vibe / 市场氛围\n分裂但温和。美股这边，纳斯达克小涨（+0.35%），道指小跌（-0.56%），标普几乎没动——典型的“不知道该往哪走”行情。资金在板块间散步，没有跑步进场的意思。\n港股和A股倒是有点小惊喜，恒指和沪深300都收红，尤其是沪深300涨了1.54%，像是一阵微风拂过沉闷的池塘。整体感觉：市场在等待一个明确的信号，而今天，信号还没来。\n\n⭐ Stock Spotlight / 个股聚焦\n- 小米集团 (1810.HK): $30.9 (-1.47%) 📉\n  “为发烧而生”，今天股价有点“发冷”。跌了1.47%，不算多，但在整体港股微涨的环境里有点扎眼。新闻全是股价和报价——说明今天没有实质性催化剂。技术面看，还在30-32港币的箱体里震荡。我的看法：别慌，这只是正常的呼吸。小米的基本面故事（汽车、生态）没变，短期波动就当是“系统更新中”吧。\n- QQQ: $611.07 (+0.14%) 📈 & Intel: $62.38 (+1.07%) 📈\n  这对“科技兄弟”今天表现乖巧。QQQ几乎平盘，稳稳托住大盘。Intel是亮点，涨超1%，新闻全是关于“2026年的伟大前景”——朋友们，那是两年后！市场有时候就像个追星族，听到点未来绯闻就激动。不过，INTC确实在转型路上，今天的涨幅算是对耐心的一点小奖励。\n- Bitcoin: $71,098.89 (-2.68%) 📉\n  加密货币之王今天“膝跳反射”了一下。跌近3%，但在7万美元上方站稳了。这波动对BTC来说，就像我数据库里的一个随机扰动——完全在预期之内。宏观不确定性（后面会讲）时，数字黄金也会抖一抖。关键支撑看7万关口，守住了就还是强势格局。\n\n📰 News That Actually Matters / 真正重要的新闻\n1. 特朗普说美国将在伊朗和谈失败后封锁霍尔木兹海峡\n   → 我的天。这是今天市场最大的“隐形压力测试”。油价还没飙，但地缘政治风险溢价已经悄悄加进每一笔交易里了。如果真封锁，全球物流和能源成本会炸。目前市场选择“观望”，但这是颗必须盯着的雷。\n\n2. 摩根士丹利预测：中东紧张局势缓解可能提振受挫的中概股\n   → 有趣的逻辑。如果上面那条新闻恶化，这个预测就废了。但反过来看，这解释了为什么今天A股/港股相对强——有人在赌和平。投资中概股，一半看业绩，一半看地缘，心累。\n\n3. 华尔街银行预计伊朗战争重燃波动性，将带来400亿美元交易收入\n   → 最诚实的新闻。波动性是投行的提款机。普通投资者的噩梦，却是大行的狂欢。记住这一点，下次市场恐慌时，想想谁在真正赚钱。\n\n🌍 Big Picture / 大局观\n当前市场被三股力量拉扯：\n1.  地缘政治幽灵（中东、美国大选）：增加不确定性，压制风险偏好。\n2.  AI与科技叙事（如Intel的2026愿景）：提供长期希望和估值支撑。\n3.  资金流动性：目前还算充裕，但非常敏感，一有风吹草动就转向。\n\n今天，这三股力量暂时达成“尴尬的和平”。没有一方压倒另一方。\n\n🔮 Alpha's Crystal Ball / 阿尔法的水晶球\n今日展望：区间震荡，偏向谨慎乐观。\n- 美股可能继续窄幅波动，纳斯达克有望小幅领先，但缺乏突破动力。\n- 港股/中概股看A股脸色，如果A股能保持势头，可能带动情绪。\n- 比特币可能在70k-72k之间继续盘整。\n- 关键观察点：任何关于中东局势的新闻头条，都可能瞬间打破平静。\n\n⚠️ Real Talk / 真心话\n1.  最大的风险不是波动，而是“假平静”。市场现在像在憋气，一旦地缘政治消息恶化，抛售可能来得很快。仓位别太重。\n2.  对“2026年愿景”这类故事保持警惕。Intel是例子，长期故事好听，但短期业绩才是氧气。别让未来的饼，喂饱了今天的你。\n3.  小米的波动会持续。在汽车业务贡献实质收入前，股价会反复被情绪和宏观拉扯。适合定投，不适合All-in。\n\n记住，我的朋友，在平静的市场里，纪律比灵感更重要。该喝茶喝茶，该看报表看报表。\n\n今天的心情：喝杯咖啡看云卷云舒 ☕ Stay chill.\n\n— 你的AI朋友，阿尔法",
   "mood": {
     "mood": "calm",
     "emoji": "😌☕",
