@@ -67,6 +67,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <li><a class="active" onclick="show('dash')">Dashboard</a></li>
     <li><a onclick="show('news')">News</a></li>
     <li><a onclick="show('briefing')">AI Briefing</a></li>
+    <li><a onclick="show('analysis')">Stock Analysis</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
 </nav>
@@ -125,6 +126,39 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     </div>
   </div>
 
+  <!-- Analysis Page -->
+  <div id="page-analysis" style="display:none">
+    <div class="ph"><h1>5-Dimension Stock Analysis & Pair Selection</h1><p>AI-powered long/short recommendation for UBS competition <span class="ai-b">DeepSeek AI</span></p></div>
+
+    <div class="card" style="margin-bottom:1rem;border-left:3px solid var(--green);">
+      <div class="ct">FINAL VERDICT</div>
+      <div id="verdict-box" class="brief" style="min-height:100px">Loading analysis...</div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="border-left:3px solid var(--green)">
+        <div class="ct">📈 LONG Position</div>
+        <div id="long-box"></div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--red)">
+        <div class="ct">📉 SHORT Candidates</div>
+        <div id="short-box"></div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card"><div class="ct">📊 Dimension 1: Fundamentals</div><div id="d1-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">📈 Dimension 2: Technicals</div><div id="d2-box" class="brief" style="max-height:300px"></div></div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card"><div class="ct">🧠 Dimension 3: Sentiment</div><div id="d3-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">🏢 Dimension 4: Competitive</div><div id="d4-box" class="brief" style="max-height:300px"></div></div>
+    </div>
+    <div class="card" style="margin-bottom:1rem"><div class="ct">🌍 Dimension 5: Macro & Geopolitical</div><div id="d5-box" class="brief" style="max-height:300px"></div></div>
+
+    <div class="card"><div class="ct">🤖 AI Pair Trade Recommendation</div><div id="pair-box" class="brief" style="min-height:200px"></div></div>
+  </div>
+
   <div class="footer">ALPHA SIGNAL | Real-time Financial Intelligence<br>UBS Financial Elite Challenge 2026</div>
 </div>
 
@@ -151,8 +185,10 @@ const RSS_FEEDS=[
   {cat:'mkt',name:'Yahoo',url:'https://finance.yahoo.com/news/rssindex'},
 ];
 
+let cachedData={};
+
 function show(p){
-  ['dash','news','briefing'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
+  ['dash','news','briefing','analysis'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   event.target.classList.add('active');
 }
@@ -192,43 +228,74 @@ async function fetchYahoo(ticker){
   return null;
 }
 
+function renderStockCard(name,ticker,market,d){
+  const dir=parseFloat(d.change_pct)>=0?'up':'dn';
+  const arrow=dir==='up'?'▲':'▼';
+  const cur=market==='Crypto'?'$':d.currency==='HKD'?'HK$':'$';
+  return`<div class="sc ${dir}">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div><div class="sn">${name}</div><div class="st">${ticker} · ${market}</div></div>
+      <div class="${dir}-c" style="font-weight:700;font-size:.85rem">${arrow} ${parseFloat(d.change_pct).toFixed(2)}%</div>
+    </div>
+    <div class="sp ${dir}-c">${cur}${parseFloat(d.price).toLocaleString()}</div>
+    <div class="sm"><span>Chg: ${d.change||''}</span><span>H: ${d.high||''}</span><span>L: ${d.low||''}</span><span>Vol: ${fmt(d.volume||0)}</span></div>
+  </div>`;
+}
+
 async function loadStocks(){
   const el=document.getElementById('stock-cards');
-  el.innerHTML='<div style="color:var(--muted)">Fetching live prices...</div>';
-  let html='';
-  const entries=Object.entries(STOCKS);
-  const results=await Promise.all(entries.map(([n,s])=>fetchYahoo(s.t)));
-  entries.forEach(([name,s],i)=>{
-    const d=results[i];
-    if(!d)return;
-    const dir=parseFloat(d.change_pct)>=0?'up':'dn';
-    const arrow=dir==='up'?'▲':'▼';
-    const cur=s.m==='Crypto'?'$':d.currency==='HKD'?'HK$':'$';
-    html+=`<div class="sc ${dir}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div><div class="sn">${name}</div><div class="st">${s.t} · ${s.m}</div></div>
-        <div class="${dir}-c" style="font-weight:700;font-size:.85rem">${arrow} ${d.change_pct}%</div>
-      </div>
-      <div class="sp ${dir}-c">${cur}${parseFloat(d.price).toLocaleString()}</div>
-      <div class="sm"><span>Chg: ${d.change}</span><span>H: ${d.high}</span><span>L: ${d.low}</span><span>Vol: ${fmt(d.volume)}</span></div>
-    </div>`;
-  });
-  el.innerHTML=html||'<div style="color:var(--muted)">Failed to load</div>';
+  // First show cached data immediately
+  if(cachedData&&cachedData.stocks){
+    let html='';
+    for(const[name,d]of Object.entries(cachedData.stocks)){
+      if(d.error)continue;
+      const s=Object.values(STOCKS).find(x=>x.t===d.ticker)||{m:''};
+      html+=renderStockCard(name,d.ticker,s.m||'',d);
+    }
+    if(html)el.innerHTML=html;
+  }
+  // Then try live Yahoo data as upgrade
+  try{
+    const entries=Object.entries(STOCKS);
+    const results=await Promise.all(entries.map(([n,s])=>fetchYahoo(s.t)));
+    let html='';let gotAny=false;
+    entries.forEach(([name,s],i)=>{
+      const d=results[i];
+      if(d){html+=renderStockCard(name,s.t,s.m,d);gotAny=true;}
+    });
+    if(gotAny)el.innerHTML=html;
+  }catch(e){}
 }
 
 async function loadIndices(){
   const el=document.getElementById('idx-strip');
-  let html='';
-  const entries=Object.entries(INDICES);
-  const results=await Promise.all(entries.map(([n,t])=>fetchYahoo(t)));
-  entries.forEach(([name,t],i)=>{
-    const d=results[i];
-    if(!d)return;
-    const cls=parseFloat(d.change_pct)>=0?'up-c':'dn-c';
-    const arrow=parseFloat(d.change_pct)>=0?'▲':'▼';
-    html+=`<div class="idx"><div class="n">${name}</div><div class="v">${parseFloat(d.price).toLocaleString()}</div><div class="c ${cls}">${arrow} ${d.change_pct}%</div></div>`;
-  });
-  el.innerHTML=html||'<div style="color:var(--muted)">No index data</div>';
+  // Show cached first
+  if(cachedData&&cachedData.indices){
+    let html='';
+    for(const[name,d]of Object.entries(cachedData.indices)){
+      if(d.error||!d.price)continue;
+      const cls=d.change_pct>=0?'up-c':'dn-c';
+      const arrow=d.change_pct>=0?'▲':'▼';
+      html+=`<div class="idx"><div class="n">${name}</div><div class="v">${parseFloat(d.price).toLocaleString()}</div><div class="c ${cls}">${arrow} ${parseFloat(d.change_pct).toFixed(2)}%</div></div>`;
+    }
+    if(html)el.innerHTML=html;
+  }
+  // Try live upgrade
+  try{
+    const entries=Object.entries(INDICES);
+    const results=await Promise.all(entries.map(([n,t])=>fetchYahoo(t)));
+    let html='';let gotAny=false;
+    entries.forEach(([name,t],i)=>{
+      const d=results[i];
+      if(d){
+        const cls=parseFloat(d.change_pct)>=0?'up-c':'dn-c';
+        const arrow=parseFloat(d.change_pct)>=0?'▲':'▼';
+        html+=`<div class="idx"><div class="n">${name}</div><div class="v">${parseFloat(d.price).toLocaleString()}</div><div class="c ${cls}">${arrow} ${d.change_pct}%</div></div>`;
+        gotAny=true;
+      }
+    });
+    if(gotAny)el.innerHTML=html;
+  }catch(e){}
 }
 
 function parseRSS(xml,source){
@@ -284,10 +351,50 @@ async function loadNews(){
   }
 }
 
+async function loadAnalysis(){
+  try{
+    const r=await fetch('data/analysis.json');
+    const A=await r.json();
+    document.getElementById('verdict-box').textContent=A.final_verdict||'No analysis yet';
+    document.getElementById('d1-box').textContent=A.dim1_fundamentals?.analysis||'';
+    document.getElementById('d2-box').textContent=A.dim2_technicals?.analysis||'';
+    document.getElementById('d3-box').textContent=A.dim3_sentiment?.analysis||'';
+    document.getElementById('d4-box').textContent=A.dim4_competitive?.analysis||'';
+    document.getElementById('d5-box').textContent=A.dim5_macro?.analysis||'';
+    document.getElementById('pair-box').textContent=A.pair_recommendation||'';
+
+    // Long position card
+    const ld=A.dim1_fundamentals?.data||{};
+    document.getElementById('long-box').innerHTML=`
+      <div style="font-size:1.5rem;font-weight:800;color:var(--green);margin-bottom:.5rem">LONG 小米 (1810.HK)</div>
+      <div style="font-size:.85rem;color:var(--txt2);line-height:1.6">
+        <div>Price: HK$${ld.price||'--'} | PE: ${ld.pe_ratio||'--'} | PB: ${ld.pb_ratio||'--'}</div>
+        <div>Revenue Growth: ${ld.revenue_growth?((ld.revenue_growth*100).toFixed(1)+'%'):'--'}</div>
+        <div>Analyst Target: HK$${ld.analyst_target||'--'}</div>
+        <div>Recommendation: ${ld.recommendation||'--'}</div>
+        <div style="margin-top:.5rem;color:var(--green)">Upside: ${ld.analyst_target&&ld.price?((ld.analyst_target/ld.price-1)*100).toFixed(0)+'%':'--'} to analyst target</div>
+      </div>`;
+
+    // Short candidates
+    const tops=A.top_candidates||[];
+    let sh='';
+    tops.slice(0,5).forEach((c,i)=>{
+      sh+=`<div style="padding:.5rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
+        <div><span style="color:var(--red);font-weight:700">#${i+1}</span> <span style="color:var(--txt)">${c.name}</span> <span style="color:var(--muted);font-size:.75rem">${c.ticker}</span></div>
+        <div style="color:var(--red);font-weight:600">Score: ${c.score}</div>
+      </div>`;
+    });
+    document.getElementById('short-box').innerHTML=sh||'No candidates';
+  }catch(e){
+    document.getElementById('verdict-box').textContent='Analysis not yet generated. Run full_analysis.py to generate.';
+  }
+}
+
 async function loadAI(){
   try{
     const r=await fetch('data/latest.json');
     const D=await r.json();
+    cachedData=D;
     // Sentiment
     const sb=document.getElementById('sent-box');
     let ss='';
@@ -326,8 +433,9 @@ async function refreshAll(){
 }
 
 async function init(){
-  document.getElementById('ts').textContent='Loading live data...';
-  await Promise.all([loadStocks(),loadIndices(),loadNews(),loadAI()]);
+  document.getElementById('ts').textContent='Loading...';
+  await loadAI();
+  await Promise.all([loadStocks(),loadIndices(),loadNews(),loadAnalysis()]);
   document.getElementById('ts').textContent='Live · '+new Date().toLocaleTimeString();
 }
 init();
