@@ -8,6 +8,9 @@ on:
     - cron: '0 13 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   send-briefing:
     runs-on: ubuntu-latest
@@ -51,12 +54,15 @@ jobs:
       - name: Run daily pipeline and send email
         run: python run_daily.py
 
-      - name: Upload data artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: daily-data-${{ github.run_number }}
-          path: |
-            latest_data.json
-            email_preview.html
-          retention-days: 7
+      - name: Update GitHub Pages data
+        run: |
+          cp latest_data.json docs/data/latest.json 2>/dev/null || true
+          cp email_preview.html docs/data/email_preview.html 2>/dev/null || true
+
+      - name: Commit and push data to GitHub Pages
+        run: |
+          git config user.name "Alpha Signal Bot"
+          git config user.email "bot@alphasignal.dev"
+          git add docs/data/
+          git diff --staged --quiet || git commit -m "Update dashboard data $(date -u +%Y-%m-%dT%H:%M)"
+          git push || true
