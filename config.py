@@ -17,6 +17,7 @@ WATCHED_STOCKS = {
     "小米集团": {"ticker": "1810.HK", "market": "HKEX", "sector": "科技"},
     "QQQ": {"ticker": "QQQ", "market": "NASDAQ", "sector": "科技ETF"},
     "Intel": {"ticker": "INTC", "market": "NASDAQ", "sector": "半导体"},
+    "Bitcoin": {"ticker": "BTC-USD", "market": "Crypto", "sector": "加密货币"},
 }
 
 MARKET_INDICES = {
