@@ -138,8 +138,8 @@ def dim2_technicals(ticker: str = "1810.HK") -> dict:
         "pct_from_52w_high": round(pct_from_high, 2),
         "pct_from_52w_low": round(pct_from_low, 2),
         "volume_ratio": round(vol_ratio, 2),
-        "above_ma20": latest > ma20,
-        "above_ma60": latest > ma60 if ma60 else None,
+        "above_ma20": bool(latest > ma20),
+        "above_ma60": bool(latest > ma60) if ma60 else None,
         "trend": "UP" if ma5 > ma20 and (ma60 is None or ma20 > ma60) else
                  "DOWN" if ma5 < ma20 and (ma60 is None or ma20 < ma60) else "MIXED",
     }
