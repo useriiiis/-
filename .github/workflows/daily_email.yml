@@ -14,7 +14,7 @@ permissions:
 jobs:
   send-briefing:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     env:
       PYTHONIOENCODING: utf-8
@@ -54,15 +54,19 @@ jobs:
       - name: Run daily pipeline and send email
         run: python run_daily.py
 
+      - name: Run 5-dimension stock analysis
+        run: python full_analysis.py || true
+
       - name: Update GitHub Pages data
         run: |
           cp latest_data.json docs/data/latest.json 2>/dev/null || true
-          cp email_preview.html docs/data/email_preview.html 2>/dev/null || true
+          # Copy the latest analysis file
+          ls -t full_analysis_*.json 2>/dev/null | head -1 | xargs -I{} cp {} docs/data/analysis.json 2>/dev/null || true
 
       - name: Commit and push data to GitHub Pages
         run: |
           git config user.name "Alpha Signal Bot"
           git config user.email "bot@alphasignal.dev"
           git add docs/data/
-          git diff --staged --quiet || git commit -m "Update dashboard data $(date -u +%Y-%m-%dT%H:%M)"
+          git diff --staged --quiet || git commit -m "Update data $(date -u +%Y-%m-%dT%H:%M)"
           git push || true
