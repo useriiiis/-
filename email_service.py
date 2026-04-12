@@ -364,27 +364,28 @@ def render_email(data: dict) -> str:
     return template.render(**data)
 
 
-def send_email_resend(subject: str, html_content: str, receiver: str = None) -> bool:
-    """Send email via Resend API (easiest method, free 100/day).
+def _get_all_receivers(receiver: str = None) -> list:
+    """Parse comma-separated receiver list."""
+    raw = receiver or EMAIL_RECEIVER or ""
+    addrs = [a.strip() for a in raw.split(",") if a.strip()]
+    return addrs if addrs else []
 
-    Note: Free tier only allows sending to the Resend account owner's email.
-    For sending to other recipients, verify a domain at resend.com/domains.
-    """
-    to_addr = receiver or EMAIL_RECEIVER
+
+def send_email_resend(subject: str, html_content: str, receiver: str = None) -> bool:
+    """Send email via Resend API to all configured recipients."""
+    recipients = _get_all_receivers(receiver)
+    if not recipients:
+        print("[Email] No recipients configured")
+        return False
     if not RESEND_API_KEY:
-        print("[Email] Resend API key not set. Set RESEND_API_KEY in .env")
+        print("[Email] Resend API key not set")
         return False
     try:
         import resend
         resend.api_key = RESEND_API_KEY
 
-        all_recipients = [to_addr]
-        resend_owner = os.getenv("RESEND_OWNER_EMAIL", "")
-        if resend_owner and resend_owner != to_addr:
-            all_recipients.append(resend_owner)
-
         sent_any = False
-        for addr in all_recipients:
+        for addr in recipients:
             try:
                 params = {
                     "from": "Alpha Signal <onboarding@resend.dev>",
@@ -397,7 +398,7 @@ def send_email_resend(subject: str, html_content: str, receiver: str = None) -> 
                 print(f"[Email] Resend: sent to {addr} (id: {eid})")
                 sent_any = True
             except Exception as e:
-                print(f"[Email] Resend: failed to send to {addr}: {e}")
+                print(f"[Email] Resend: failed {addr}: {e}")
         return sent_any
     except Exception as e:
         print(f"[Email] Resend failed: {e}")
