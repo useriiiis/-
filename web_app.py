@@ -342,6 +342,12 @@ English with Chinese key points. Be honest.""",
     return jsonify({"advantages": advantages, "limitations": limitations})
 
 
+@app.route("/health")
+def health():
+    """Health check endpoint for keep-alive pings."""
+    return jsonify({"status": "ok", "timestamp": __import__("datetime").datetime.now().isoformat()})
+
+
 if __name__ == "__main__":
     print("\n" + "=" * 60)
     print("  ALPHA SIGNAL - Web Dashboard")

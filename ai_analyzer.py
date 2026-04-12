@@ -9,14 +9,17 @@ client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
 
 
 def _strip_markdown(text: str) -> str:
-    """Remove markdown formatting symbols like ** ## etc."""
+    """Remove ALL markdown formatting: **, *, #, ```, `, ---, etc."""
     import re
-    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
-    text = re.sub(r'\*(.+?)\*', r'\1', text)
-    text = re.sub(r'^#{1,6}\s+', '', text, flags=re.MULTILINE)
+    text = re.sub(r'\*{2,}', '', text)
+    text = re.sub(r'(?<!\w)\*(?!\s)', '', text)
+    text = re.sub(r'(?<!\s)\*(?!\w)', '', text)
+    text = re.sub(r'^#{1,6}\s*', '', text, flags=re.MULTILINE)
     text = re.sub(r'```[\s\S]*?```', '', text)
-    text = re.sub(r'`(.+?)`', r'\1', text)
-    return text
+    text = re.sub(r'`([^`]*)`', r'\1', text)
+    text = re.sub(r'^-{3,}$', '', text, flags=re.MULTILINE)
+    text = re.sub(r'^\s*[-] ', '- ', text, flags=re.MULTILINE)
+    return text.strip()
 
 
 def _call_deepseek(system_prompt: str, user_prompt: str, temperature: float = 0.3, strip_md: bool = True) -> str:

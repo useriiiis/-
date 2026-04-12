@@ -2,14 +2,25 @@ services:
   - type: web
     name: alpha-signal
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt && pip install gunicorn resend
-    startCommand: gunicorn web_app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
     envVars:
+      - key: PYTHONIOENCODING
+        value: utf-8
       - key: DEEPSEEK_API_KEY
         sync: false
+      - key: DEEPSEEK_BASE_URL
+        value: https://api.deepseek.com
       - key: RESEND_API_KEY
         sync: false
       - key: EMAIL_RECEIVER
         sync: false
-      - key: PYTHONIOENCODING
-        value: utf-8
+      - key: EMAIL_SENDER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: SMTP_SERVER
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
