@@ -2,9 +2,9 @@ name: Daily Alpha Signal Email
 
 on:
   schedule:
-    # 8:00 AM Beijing Time (UTC+8) = 00:00 UTC
+    # 8:00 AM Beijing/Macau Time (UTC+8) = 00:00 UTC
     - cron: '0 0 * * *'
-    # 9:00 PM Beijing Time (UTC+8) = 13:00 UTC
+    # 9:00 PM Beijing/Macau Time (UTC+8) = 13:00 UTC
     - cron: '0 13 * * *'
   workflow_dispatch:
 
@@ -12,6 +12,13 @@ jobs:
   send-briefing:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    env:
+      PYTHONIOENCODING: utf-8
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      DEEPSEEK_BASE_URL: https://api.deepseek.com
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
 
     steps:
       - name: Checkout
@@ -24,26 +31,17 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install resend
+        run: pip install -r requirements.txt && pip install resend
 
-      - name: Create .env from secrets
+      - name: Create .env
         run: |
-          cat > .env << 'ENVEOF'
-          DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}
-          DEEPSEEK_BASE_URL=https://api.deepseek.com
-          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
-          EMAIL_RECEIVER=${{ secrets.EMAIL_RECEIVER }}
-          SEND_TIME=08:00
-          ENVEOF
+          echo "DEEPSEEK_API_KEY=$DEEPSEEK_API_KEY" > .env
+          echo "DEEPSEEK_BASE_URL=https://api.deepseek.com" >> .env
+          echo "RESEND_API_KEY=$RESEND_API_KEY" >> .env
+          echo "EMAIL_RECEIVER=$EMAIL_RECEIVER" >> .env
+          echo "SEND_TIME=08:00" >> .env
 
       - name: Run daily pipeline and send email
-        env:
-          PYTHONIOENCODING: utf-8
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
         run: python run_daily.py
 
       - name: Upload data artifact
