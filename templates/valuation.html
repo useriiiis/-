@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Valuation | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation" class="active">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+    </ul>
+    <div class="nav-status"><div class="status-dot"></div><span>Valuation</span></div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>AI Valuation & Comparable Analysis</h1>
+      <p>Automated stock valuation using AI with comparable company screening</p>
+    </div>
+
+    <!-- Sector Selection -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">🏢</span> Select Sector & Stock</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <select id="sector-select" onchange="loadSectorData()"
+          style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+          padding:8px 16px;border-radius:8px;font-size:0.85rem;">
+          <option value="科技">科技 / Technology</option>
+          <option value="消费">消费 / Consumer</option>
+          <option value="工业">工业 / Industrial</option>
+          <option value="医疗健康">医疗健康 / Healthcare</option>
+          <option value="能源">能源 / Energy</option>
+        </select>
+        <select id="stock-select"
+          style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+          padding:8px 16px;border-radius:8px;font-size:0.85rem;">
+        </select>
+        <button class="btn btn-primary" onclick="runValuation()">🤖 Run AI Valuation</button>
+        <button class="btn btn-secondary" onclick="loadComparables()">📊 Load Comparables</button>
+      </div>
+    </div>
+
+    <!-- Comparable Company Table -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">📊</span> Comparable Company Analysis <span class="ai-badge">🤖 Auto-Screened</span></div>
+      <div id="comp-table" style="overflow-x:auto;">
+        <p style="color:var(--text-muted);">Select a sector and click "Load Comparables"</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- AI Valuation -->
+      <div class="card">
+        <div class="card-title"><span class="icon">🤖</span> AI Valuation Report <span class="ai-badge">🤖 DeepSeek</span></div>
+        <div id="valuation-result" class="briefing-content" style="min-height:200px;">
+          Select a stock and click "Run AI Valuation"
+        </div>
+      </div>
+
+      <!-- Fundamentals -->
+      <div class="card">
+        <div class="card-title"><span class="icon">📋</span> Fundamentals</div>
+        <div id="fundamentals-table">
+          <p style="color:var(--text-muted);">Loading after comparables...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Valuation Chart -->
+    <div class="chart-container" style="margin-top:1rem;">
+      <div id="valuation-chart" style="height:400px;">
+        <p style="color:var(--text-muted);text-align:center;padding:3rem;">Charts will load after comparables data</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sectorStocks = {
+      "科技": {"小米": "1810.HK", "中际旭创": "300308.SZ", "豪威": "603501.SS"},
+      "消费": {"石头科技": "688169.SS", "泡泡玛特": "9992.HK", "名创优品": "9896.HK"},
+      "工业": {"宁德时代": "300750.SZ", "比亚迪": "002594.SZ", "三一重工": "600031.SS"},
+      "医疗健康": {"百济神州": "688235.SS", "微创机器人": "2252.HK", "爱尔眼科": "300015.SZ"},
+      "能源": {"思源电气": "002028.SZ", "东方电气": "600875.SS", "杰瑞股份": "002353.SZ"}
+    };
+
+    function loadSectorData() {
+      const sector = document.getElementById('sector-select').value;
+      const stockSelect = document.getElementById('stock-select');
+      stockSelect.innerHTML = '';
+      for (const [name, ticker] of Object.entries(sectorStocks[sector])) {
+        stockSelect.innerHTML += `<option value="${ticker}">${name} (${ticker})</option>`;
+      }
+    }
+
+    async function loadComparables() {
+      const sector = document.getElementById('sector-select').value;
+      const container = document.getElementById('comp-table');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Loading comparable companies...</div>';
+      try {
+        const resp = await fetch(`/api/comparables/${encodeURIComponent(sector)}`);
+        const data = await resp.json();
+        if (data.error) {
+          container.innerHTML = `<div style="color:var(--accent-red);">${data.error}</div>`;
+          return;
+        }
+        let html = `<table class="val-table">
+          <tr><th>Company</th><th>Ticker</th><th>Price</th><th>P/E</th><th>P/B</th><th>Market Cap</th><th>Change %</th></tr>`;
+        for (const [name, d] of Object.entries(data)) {
+          if (d.error) continue;
+          const cls = (d.change_pct || 0) >= 0 ? 'up-color' : 'down-color';
+          html += `<tr>
+            <td style="color:var(--text-primary);font-weight:600;">${name}</td>
+            <td>${d.ticker}</td>
+            <td>${d.price || 'N/A'}</td>
+            <td>${typeof d.pe_ratio === 'number' ? d.pe_ratio.toFixed(1) : 'N/A'}</td>
+            <td>${typeof d['52w_high'] === 'number' ? d['52w_high'].toFixed(1) : 'N/A'}</td>
+            <td>${formatMarketCap(d.market_cap)}</td>
+            <td class="${cls}">${d.change_pct !== undefined ? d.change_pct.toFixed(2) + '%' : 'N/A'}</td>
+          </tr>`;
+        }
+        html += '</table>';
+        container.innerHTML = html;
+        renderValuationChart(data);
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function runValuation() {
+      const ticker = document.getElementById('stock-select').value;
+      if (!ticker) return;
+      const container = document.getElementById('valuation-result');
+      container.textContent = 'Running AI valuation analysis...';
+      try {
+        const resp = await fetch(`/api/ai/valuation/${encodeURIComponent(ticker)}`);
+        const data = await resp.json();
+        container.textContent = data.result || 'No result';
+
+        if (data.fundamentals) {
+          renderFundamentals(data.fundamentals);
+        }
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    function renderFundamentals(f) {
+      const container = document.getElementById('fundamentals-table');
+      const rows = [
+        ['Market Cap', formatMarketCap(f.market_cap)],
+        ['P/E Ratio', f.pe_ratio],
+        ['Forward P/E', f.forward_pe],
+        ['P/B Ratio', f.pb_ratio],
+        ['P/S Ratio', f.ps_ratio],
+        ['EV/EBITDA', f.ev_ebitda],
+        ['Revenue Growth', typeof f.revenue_growth === 'number' ? (f.revenue_growth * 100).toFixed(1) + '%' : 'N/A'],
+        ['Gross Margin', typeof f.gross_margins === 'number' ? (f.gross_margins * 100).toFixed(1) + '%' : 'N/A'],
+        ['Operating Margin', typeof f.operating_margins === 'number' ? (f.operating_margins * 100).toFixed(1) + '%' : 'N/A'],
+        ['ROE', typeof f.roe === 'number' ? (f.roe * 100).toFixed(1) + '%' : 'N/A'],
+        ['D/E Ratio', f.debt_to_equity],
+        ['Beta', f.beta],
+        ['Analyst Target', f.analyst_target],
+        ['Recommendation', f.recommendation],
+      ];
+      let html = '<table class="val-table">';
+      rows.forEach(([label, val]) => {
+        html += `<tr><td style="color:var(--text-muted);">${label}</td><td style="color:var(--text-primary);font-weight:600;">${val || 'N/A'}</td></tr>`;
+      });
+      html += '</table>';
+      container.innerHTML = html;
+    }
+
+    function renderValuationChart(data) {
+      const names = [];
+      const pe_values = [];
+      const prices = [];
+      for (const [name, d] of Object.entries(data)) {
+        if (d.error) continue;
+        names.push(name);
+        pe_values.push(typeof d.pe_ratio === 'number' ? d.pe_ratio : 0);
+        prices.push(d.price || 0);
+      }
+
+      const trace = {
+        x: names,
+        y: pe_values,
+        type: 'bar',
+        marker: {color: pe_values.map(v => v > 30 ? '#e63946' : v > 15 ? '#ffd60a' : '#00d26a')},
+        text: pe_values.map(v => v.toFixed(1)),
+        textposition: 'outside',
+        textfont: {color: '#c0c0d0'},
+      };
+
+      const layout = {
+        title: {text: 'P/E Ratio Comparison', font: {color: '#fff', size: 14}},
+        paper_bgcolor: '#12121a',
+        plot_bgcolor: '#12121a',
+        font: {color: '#707090'},
+        xaxis: {gridcolor: '#1e1e2e'},
+        yaxis: {gridcolor: '#1e1e2e', title: 'P/E Ratio'},
+        margin: {l: 50, r: 20, t: 40, b: 80},
+      };
+
+      Plotly.newPlot('valuation-chart', [trace], layout, {responsive: true, displayModeBar: false});
+    }
+
+    function formatMarketCap(val) {
+      if (!val || val === 'N/A') return 'N/A';
+      if (val >= 1e12) return (val/1e12).toFixed(2) + 'T';
+      if (val >= 1e9) return (val/1e9).toFixed(2) + 'B';
+      if (val >= 1e6) return (val/1e6).toFixed(2) + 'M';
+      return val.toString();
+    }
+
+    loadSectorData();
+  </script>
+</body>
+</html>

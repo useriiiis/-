@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha Signal | AI Financial Intelligence</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      <span>◆</span> ALPHA SIGNAL
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="active">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      <span id="last-update">Loading...</span>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Daily Intelligence Dashboard</h1>
+      <p>AI-powered market analysis for UBS Financial Elite Challenge 2026</p>
+    </div>
+
+    <!-- Market Index Strip -->
+    <div class="index-strip" id="index-strip">
+      <div class="loading"><div class="spinner"></div>Loading indices...</div>
+    </div>
+
+    <!-- Stock Watchlist -->
+    <div class="section-header">
+      <div class="section-title">📊 Stock Watchlist</div>
+      <button class="btn btn-secondary" onclick="refreshData()">↻ Refresh</button>
+    </div>
+    <div class="grid-3" id="stock-cards">
+      <div class="loading"><div class="spinner"></div>Loading stocks...</div>
+    </div>
+
+    <!-- Main 2-column layout -->
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <!-- Left: Sentiment & AI Briefing -->
+      <div>
+        <div class="card" style="margin-bottom:1rem;">
+          <div class="card-title"><span class="icon">🧠</span> AI Sentiment Analysis <span class="ai-badge">🤖 DeepSeek AI</span></div>
+          <div id="sentiment-container">
+            <div class="loading"><div class="spinner"></div>Analyzing...</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">🤖</span> AI Morning Briefing <span class="ai-badge">🤖 DeepSeek AI</span></div>
+          <div class="briefing-content" id="briefing-content">
+            Loading AI briefing...
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: News -->
+      <div>
+        <div class="card">
+          <div class="card-title"><span class="icon">📰</span> News Feed</div>
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(this, 'news-all')">All</button>
+            <button class="tab-btn" onclick="switchTab(this, 'news-xiaomi')">Xiaomi</button>
+            <button class="tab-btn" onclick="switchTab(this, 'news-qqq')">QQQ & Intel</button>
+            <button class="tab-btn" onclick="switchTab(this, 'news-macro')">Macro</button>
+            <button class="tab-btn" onclick="switchTab(this, 'news-tech')">Tech</button>
+          </div>
+          <div id="news-all" class="tab-content active"></div>
+          <div id="news-xiaomi" class="tab-content"></div>
+          <div id="news-qqq" class="tab-content"></div>
+          <div id="news-macro" class="tab-content"></div>
+          <div id="news-tech" class="tab-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="section-header">
+      <div class="section-title">📈 Stock Price Charts</div>
+    </div>
+    <div class="grid-2">
+      <div class="chart-container">
+        <div id="chart-xiaomi" style="height:350px;"></div>
+      </div>
+      <div class="chart-container">
+        <div id="chart-qqq" style="height:350px;"></div>
+      </div>
+    </div>
+
+    <!-- Keywords Section -->
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title"><span class="icon">🔑</span> Key Themes & Keywords <span class="ai-badge">🤖 DeepSeek AI</span></div>
+      <div id="keywords-container">
+        <div class="loading"><div class="spinner"></div>Extracting keywords...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let dashboardData = null;
+
+    async function loadData() {
+      try {
+        const resp = await fetch('/api/dashboard');
+        dashboardData = await resp.json();
+        renderDashboard(dashboardData);
+      } catch (err) {
+        console.error('Failed to load data:', err);
+      }
+    }
+
+    function renderDashboard(data) {
+      document.getElementById('last-update').textContent =
+        `Updated: ${data.timestamp || 'N/A'}`;
+
+      renderIndices(data.indices || {});
+      renderStocks(data.stocks || {});
+      renderSentiment(data.sentiment || {});
+      renderNews(data.news || {});
+      renderBriefing(data.briefing || '');
+      renderKeywords(data.keywords || {});
+      loadCharts();
+    }
+
+    function renderIndices(indices) {
+      const container = document.getElementById('index-strip');
+      let html = '';
+      for (const [name, data] of Object.entries(indices)) {
+        if (data.error) continue;
+        const cls = data.change_pct >= 0 ? 'up-color' : 'down-color';
+        const arrow = data.change_pct >= 0 ? '▲' : '▼';
+        html += `
+          <div class="index-badge">
+            <div class="name">${name}</div>
+            <div class="value">${numberFmt(data.price)}</div>
+            <div class="change ${cls}">${arrow} ${data.change_pct.toFixed(2)}%</div>
+          </div>`;
+      }
+      container.innerHTML = html || '<div style="color:var(--text-muted)">No index data</div>';
+    }
+
+    function renderStocks(stocks) {
+      const container = document.getElementById('stock-cards');
+      let html = '';
+      for (const [name, data] of Object.entries(stocks)) {
+        if (data.error) continue;
+        const direction = data.change_pct >= 0 ? 'up' : 'down';
+        const cls = direction === 'up' ? 'up-color' : 'down-color';
+        const arrow = direction === 'up' ? '▲' : '▼';
+        html += `
+          <div class="stock-card ${direction}">
+            <div class="stock-header">
+              <div>
+                <div class="stock-name">${name}</div>
+                <div class="stock-ticker">${data.ticker}</div>
+              </div>
+              <div class="stock-change ${cls}">
+                ${arrow} ${data.change_pct.toFixed(2)}%
+              </div>
+            </div>
+            <div class="stock-price ${cls}">${data.price}</div>
+            <div class="stock-meta">
+              <span>Open: ${data.open}</span>
+              <span>High: ${data.high}</span>
+              <span>Low: ${data.low}</span>
+              <span>Vol: ${numberFmt(data.volume)}</span>
+            </div>
+          </div>`;
+      }
+      container.innerHTML = html || '<div class="loading">No stock data</div>';
+    }
+
+    function renderSentiment(sentiment) {
+      const container = document.getElementById('sentiment-container');
+      let html = '';
+      for (const [topic, s] of Object.entries(sentiment)) {
+        if (!s || !s.overall_sentiment) continue;
+        const sentClass = s.overall_sentiment === 'bullish' ? 'bullish' :
+                         s.overall_sentiment === 'bearish' ? 'bearish' : 'neutral';
+        const score = s.sentiment_score || 0;
+        const pct = ((score + 1) / 2 * 100).toFixed(0);
+        html += `
+          <div class="sentiment-card">
+            <div class="sentiment-header">
+              <span class="sentiment-label">${topic.toUpperCase()}</span>
+              <span class="sentiment-badge badge-${sentClass}">${s.overall_sentiment}</span>
+            </div>
+            <div class="sentiment-bar">
+              <div class="sentiment-fill fill-${sentClass}" style="width:${pct}%"></div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">
+              ${s.analysis_cn || s.short_term_outlook || ''}
+            </div>
+          </div>`;
+      }
+      container.innerHTML = html || '<div style="color:var(--text-muted)">No sentiment data yet</div>';
+    }
+
+    function renderNews(news) {
+      const allItems = [];
+      const mapping = {
+        'xiaomi': 'news-xiaomi',
+        'qqq_intel': 'news-qqq',
+        'macro': 'news-macro',
+        'tech': 'news-tech',
+      };
+
+      for (const [cat, articles] of Object.entries(news)) {
+        const containerId = mapping[cat];
+        if (containerId) {
+          document.getElementById(containerId).innerHTML = renderNewsList(articles);
+        }
+        allItems.push(...articles);
+      }
+      document.getElementById('news-all').innerHTML = renderNewsList(allItems.slice(0, 20));
+    }
+
+    function renderNewsList(articles) {
+      if (!articles || articles.length === 0) {
+        return '<div style="color:var(--text-muted);padding:1rem;">No news available</div>';
+      }
+      return articles.map(a => `
+        <div class="news-item">
+          <a href="${a.link}" target="_blank" class="news-title">${a.title}</a>
+          <div class="news-meta">
+            <span>${a.source}</span>
+            <span>·</span>
+            <span>${a.published || ''}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderBriefing(briefing) {
+      const el = document.getElementById('briefing-content');
+      el.textContent = briefing || 'No briefing available. Run the daily pipeline first.';
+    }
+
+    function renderKeywords(keywords) {
+      const container = document.getElementById('keywords-container');
+      let html = '';
+
+      if (keywords.keywords) {
+        html += '<div style="margin-bottom:1rem;">';
+        keywords.keywords.forEach(kw => {
+          const size = 0.75 + (kw.importance || 0.5) * 0.5;
+          html += `<span class="keyword-tag" style="font-size:${size}rem;padding:4px 12px;margin:3px;">${kw.word}</span>`;
+        });
+        html += '</div>';
+      }
+
+      if (keywords.themes) {
+        html += '<div>';
+        keywords.themes.forEach(t => {
+          html += `<div style="margin:8px 0;"><strong style="color:var(--text-primary);">${t.theme}</strong>
+            <span style="color:var(--text-muted);font-size:0.85rem;"> — ${t.description}</span></div>`;
+        });
+        html += '</div>';
+      }
+
+      container.innerHTML = html || '<div style="color:var(--text-muted)">No keyword data yet</div>';
+    }
+
+    async function loadCharts() {
+      try {
+        const [xiaomiResp, qqqResp] = await Promise.all([
+          fetch('/api/chart/1810.HK'),
+          fetch('/api/chart/QQQ'),
+        ]);
+        const xiaomiData = await xiaomiResp.json();
+        const qqqData = await qqqResp.json();
+
+        renderChart('chart-xiaomi', xiaomiData, 'Xiaomi (1810.HK)');
+        renderChart('chart-qqq', qqqData, 'QQQ (NASDAQ)');
+      } catch (err) {
+        console.error('Chart error:', err);
+      }
+    }
+
+    function renderChart(containerId, data, title) {
+      if (!data.dates || data.dates.length === 0) {
+        document.getElementById(containerId).innerHTML =
+          '<div style="color:var(--text-muted);text-align:center;padding:3rem;">No chart data</div>';
+        return;
+      }
+
+      const trace = {
+        x: data.dates,
+        open: data.open,
+        high: data.high,
+        low: data.low,
+        close: data.close,
+        type: 'candlestick',
+        increasing: {line: {color: '#00d26a'}, fillcolor: '#0a2e1a'},
+        decreasing: {line: {color: '#e63946'}, fillcolor: '#2e0a0f'},
+      };
+
+      const layout = {
+        title: {text: title, font: {color: '#fff', size: 14}},
+        paper_bgcolor: '#12121a',
+        plot_bgcolor: '#12121a',
+        font: {color: '#707090', size: 11},
+        xaxis: {
+          gridcolor: '#1e1e2e',
+          rangeslider: {visible: false},
+        },
+        yaxis: {gridcolor: '#1e1e2e'},
+        margin: {l: 50, r: 20, t: 40, b: 40},
+      };
+
+      Plotly.newPlot(containerId, [trace], layout, {responsive: true, displayModeBar: false});
+    }
+
+    function switchTab(btn, tabId) {
+      btn.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const parent = btn.closest('.card');
+      parent.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function numberFmt(num) {
+      if (num >= 1e9) return (num/1e9).toFixed(2) + 'B';
+      if (num >= 1e6) return (num/1e6).toFixed(2) + 'M';
+      if (num >= 1e3) return (num/1e3).toFixed(1) + 'K';
+      return typeof num === 'number' ? num.toLocaleString() : num;
+    }
+
+    async function refreshData() {
+      document.getElementById('stock-cards').innerHTML = '<div class="loading"><div class="spinner"></div>Refreshing...</div>';
+      try {
+        await fetch('/api/refresh', {method: 'POST'});
+        await loadData();
+      } catch (err) {
+        console.error('Refresh failed:', err);
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

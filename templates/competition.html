@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competition Hub | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition" class="active">Competition</a></li>
+    </ul>
+    <div class="nav-status"><div class="status-dot"></div><span>Competition</span></div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>UBS Financial Elite Challenge 2026</h1>
+      <p>Long/Short pair analysis, AI module showcase, and competition tools</p>
+    </div>
+
+    <!-- Competition Overview -->
+    <div class="card" style="margin-bottom:1rem;border-left:3px solid var(--accent-red);">
+      <div class="card-title"><span class="icon">🏆</span> Competition Strategy</div>
+      <div style="line-height:1.8;font-size:0.9rem;">
+        <p><strong style="color:var(--text-primary);">Sector:</strong> Technology (科技)</p>
+        <p><strong style="color:var(--text-primary);">LONG:</strong> <span class="up-color">Xiaomi (1810.HK) 小米集团</span></p>
+        <p><strong style="color:var(--text-primary);">SHORT:</strong> <span style="color:var(--text-muted);">[To be selected from same sector]</span></p>
+        <p style="margin-top:0.5rem;color:var(--text-muted);font-size:0.8rem;">
+          One stock must be from the provided pool. The other can be any stock in the same industry group (not from the pool).
+        </p>
+      </div>
+    </div>
+
+    <!-- Long/Short Analysis -->
+    <div class="grid-2" style="margin-bottom:1rem;">
+      <div class="card" style="border-left:3px solid var(--accent-green);">
+        <div class="card-title"><span class="icon">📈</span> LONG Position - Xiaomi</div>
+        <div style="display:flex;gap:10px;margin-bottom:1rem;">
+          <button class="btn btn-primary" onclick="runLongAnalysis()">🤖 Generate Long Case</button>
+        </div>
+        <div id="long-analysis" class="briefing-content" style="min-height:150px;">
+          Click to generate AI-powered bull case for Xiaomi
+        </div>
+      </div>
+
+      <div class="card" style="border-left:3px solid var(--accent-red);">
+        <div class="card-title"><span class="icon">📉</span> SHORT Position</div>
+        <div style="display:flex;gap:10px;margin-bottom:1rem;">
+          <select id="short-stock"
+            style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+            padding:8px 16px;border-radius:8px;font-size:0.85rem;">
+            <option value="300308.SZ">中际旭创 300308.SZ</option>
+            <option value="603501.SS">豪威 603501.SS</option>
+          </select>
+          <button class="btn btn-primary" onclick="runShortAnalysis()">🤖 Generate Short Case</button>
+        </div>
+        <div id="short-analysis" class="briefing-content" style="min-height:150px;">
+          Select a stock and click to generate AI-powered bear case
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair Trade Analysis -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">⚖️</span> Long/Short Pair Trade Analysis <span class="ai-badge">🤖 DeepSeek</span></div>
+      <button class="btn btn-primary" onclick="runPairAnalysis()" style="margin-bottom:1rem;">Generate Full Pair Analysis</button>
+      <div id="pair-analysis" class="briefing-content" style="min-height:200px;">
+        Click to generate comprehensive pair trade analysis
+      </div>
+    </div>
+
+    <!-- AI Module Showcase -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">🤖</span> AI Module Showcase (Competition Requirement)</div>
+      <div class="grid-3">
+        <div style="background:var(--bg-card);border-radius:10px;padding:1rem;">
+          <div style="font-size:0.8rem;color:var(--accent-purple);font-weight:700;margin-bottom:0.5rem;">AI DATA INSIGHTS</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">News clustering, trend detection, and anomaly identification powered by DeepSeek</div>
+          <div style="margin-top:0.5rem;"><span class="keyword-tag">News Clustering</span><span class="keyword-tag">Trend Analysis</span></div>
+        </div>
+        <div style="background:var(--bg-card);border-radius:10px;padding:1rem;">
+          <div style="font-size:0.8rem;color:var(--accent-green);font-weight:700;margin-bottom:0.5rem;">SENTIMENT ANALYSIS</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">Multi-source sentiment scoring with confidence levels and factor decomposition</div>
+          <div style="margin-top:0.5rem;"><span class="keyword-tag">Sentiment Score</span><span class="keyword-tag">Factor Analysis</span></div>
+        </div>
+        <div style="background:var(--bg-card);border-radius:10px;padding:1rem;">
+          <div style="font-size:0.8rem;color:var(--accent-blue);font-weight:700;margin-bottom:0.5rem;">AI VALUATION</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">Automated comparable screening, AI valuation summary, human vs AI comparison</div>
+          <div style="margin-top:0.5rem;"><span class="keyword-tag">Auto Screening</span><span class="keyword-tag">AI vs Human</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Advantages & Limitations -->
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid var(--accent-green);">
+        <div class="card-title"><span class="icon">✅</span> AI Advantages in This Analysis</div>
+        <div id="ai-advantages">
+          <button class="btn btn-secondary" onclick="generateAIReflection()">Generate AI Reflection</button>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent-red);">
+        <div class="card-title"><span class="icon">⚠️</span> AI Limitations & Human Judgment</div>
+        <div id="ai-limitations"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function runLongAnalysis() {
+      const container = document.getElementById('long-analysis');
+      container.textContent = 'Generating AI bull case for Xiaomi...';
+      try {
+        const resp = await fetch('/api/ai/long-case/1810.HK');
+        const data = await resp.json();
+        container.textContent = data.result || 'No result';
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    async function runShortAnalysis() {
+      const ticker = document.getElementById('short-stock').value;
+      const container = document.getElementById('short-analysis');
+      container.textContent = 'Generating AI bear case...';
+      try {
+        const resp = await fetch(`/api/ai/short-case/${encodeURIComponent(ticker)}`);
+        const data = await resp.json();
+        container.textContent = data.result || 'No result';
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    async function runPairAnalysis() {
+      const shortTicker = document.getElementById('short-stock').value;
+      const container = document.getElementById('pair-analysis');
+      container.textContent = 'Generating comprehensive pair trade analysis...';
+      try {
+        const resp = await fetch(`/api/ai/pair-analysis/1810.HK/${encodeURIComponent(shortTicker)}`);
+        const data = await resp.json();
+        container.textContent = data.result || 'No result';
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    async function generateAIReflection() {
+      const adv = document.getElementById('ai-advantages');
+      const lim = document.getElementById('ai-limitations');
+      adv.innerHTML = '<div class="loading"><div class="spinner"></div>Generating...</div>';
+      lim.innerHTML = '<div class="loading"><div class="spinner"></div>Generating...</div>';
+      try {
+        const resp = await fetch('/api/ai/reflection');
+        const data = await resp.json();
+        adv.innerHTML = `<div style="white-space:pre-wrap;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">${data.advantages || ''}</div>`;
+        lim.innerHTML = `<div style="white-space:pre-wrap;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">${data.limitations || ''}</div>`;
+      } catch (err) {
+        adv.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>

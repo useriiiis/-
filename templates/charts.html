@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trend Charts | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts" class="active">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+    </ul>
+    <div class="nav-status"><div class="status-dot"></div><span>Technical Charts</span></div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>Technical Analysis & Trend Visualization</h1>
+      <p>Candlestick charts with MA, Bollinger Bands, RSI, MACD and volume analysis</p>
+    </div>
+
+    <!-- Stock Selector -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">📊</span> Select Stock</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <select id="stock-select" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:8px 16px;border-radius:8px;font-size:0.85rem;">
+          <option value="1810.HK">小米集团 (1810.HK)</option>
+          <option value="QQQ">QQQ (NASDAQ)</option>
+          <option value="INTC">Intel (INTC)</option>
+          <optgroup label="Competition Pool 比赛股票池">
+            <option value="300308.SZ">中际旭创 (300308.SZ)</option>
+            <option value="603501.SS">豪威 (603501.SS)</option>
+          </optgroup>
+          <optgroup label="HK Tech 港股科技">
+            <option value="0700.HK">腾讯 (0700.HK)</option>
+            <option value="9988.HK">阿里巴巴 (9988.HK)</option>
+            <option value="3690.HK">美团 (3690.HK)</option>
+            <option value="9618.HK">京东 (9618.HK)</option>
+            <option value="1024.HK">快手 (1024.HK)</option>
+            <option value="0981.HK">中芯国际 (0981.HK)</option>
+            <option value="2382.HK">舜宇光学 (2382.HK)</option>
+          </optgroup>
+          <optgroup label="A-Share Tech A股科技">
+            <option value="002475.SZ">立讯精密 (002475.SZ)</option>
+            <option value="002415.SZ">海康威视 (002415.SZ)</option>
+            <option value="688256.SS">寒武纪 (688256.SS)</option>
+            <option value="002230.SZ">科大讯飞 (002230.SZ)</option>
+            <option value="688041.SS">海光信息 (688041.SS)</option>
+          </optgroup>
+        </select>
+        <select id="period-select" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:8px 16px;border-radius:8px;font-size:0.85rem;">
+          <option value="1mo">1 Month</option>
+          <option value="3mo">3 Months</option>
+          <option value="6mo" selected>6 Months</option>
+          <option value="1y">1 Year</option>
+          <option value="2y">2 Years</option>
+        </select>
+        <button class="btn btn-primary" onclick="loadChart()">Load Chart</button>
+        <input type="text" id="custom-ticker" placeholder="Custom ticker (e.g. 0700.HK)"
+          style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+          padding:8px 16px;border-radius:8px;font-size:0.85rem;width:220px;">
+        <button class="btn btn-secondary" onclick="loadCustomChart()">Load Custom</button>
+      </div>
+    </div>
+
+    <!-- Main Technical Chart -->
+    <div class="chart-container" style="margin-bottom:1rem;">
+      <div id="main-chart" style="height:900px;">
+        <div class="loading"><div class="spinner"></div>Select a stock and click Load Chart</div>
+      </div>
+    </div>
+
+    <!-- Comparison Section -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">📈</span> Performance Comparison</div>
+      <div style="display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="loadComparison('pool')">vs Competition Pool</button>
+        <button class="btn btn-secondary" onclick="loadComparison('hk_tech')">vs HK Tech Giants</button>
+        <button class="btn btn-secondary" onclick="loadComparison('ev')">vs EV Makers</button>
+        <button class="btn btn-secondary" onclick="loadComparison('indices')">vs Market Indices</button>
+      </div>
+      <div id="comparison-chart" style="height:500px;">
+        <div style="text-align:center;padding:3rem;color:var(--text-muted);">Click a comparison group above</div>
+      </div>
+    </div>
+
+    <!-- AI Technical Analysis -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🤖</span> AI Technical Analysis <span class="ai-badge">🤖 DeepSeek</span></div>
+      <button class="btn btn-primary" onclick="runTechAnalysis()" style="margin-bottom:1rem;">Generate AI Technical Analysis</button>
+      <div id="tech-analysis" class="briefing-content" style="min-height:150px;">
+        Click to generate AI-powered technical analysis for the selected stock
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const compGroups = {
+      pool: {'小米':'1810.HK', '中际旭创':'300308.SZ', '豪威':'603501.SS'},
+      hk_tech: {'小米':'1810.HK', '腾讯':'0700.HK', '阿里':'9988.HK', '美团':'3690.HK', '快手':'1024.HK'},
+      ev: {'小米':'1810.HK', '比亚迪':'002594.SZ', '小鹏':'9868.HK', '理想':'2015.HK', '蔚来':'9866.HK'},
+      indices: {'小米':'1810.HK', 'QQQ':'QQQ', '恒生指数':'^HSI', '纳斯达克':'^IXIC'},
+    };
+
+    async function loadChart() {
+      const ticker = document.getElementById('stock-select').value;
+      const period = document.getElementById('period-select').value;
+      const container = document.getElementById('main-chart');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Loading technical chart...</div>';
+
+      try {
+        const resp = await fetch(`/api/chart/technical/${encodeURIComponent(ticker)}?period=${period}`);
+        const data = await resp.json();
+        if (data.error) {
+          container.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--accent-red);">${data.error}</div>`;
+          return;
+        }
+        container.innerHTML = '';
+        Plotly.newPlot('main-chart', data.data, data.layout, {responsive: true, displayModeBar: true});
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);text-align:center;padding:3rem;">Error: ${err.message}</div>`;
+      }
+    }
+
+    function loadCustomChart() {
+      const ticker = document.getElementById('custom-ticker').value.trim();
+      if (!ticker) return;
+      const select = document.getElementById('stock-select');
+      const opt = document.createElement('option');
+      opt.value = ticker;
+      opt.textContent = ticker;
+      select.appendChild(opt);
+      select.value = ticker;
+      loadChart();
+    }
+
+    async function loadComparison(group) {
+      const container = document.getElementById('comparison-chart');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Loading comparison...</div>';
+      const period = document.getElementById('period-select').value;
+
+      try {
+        const resp = await fetch('/api/chart/comparison', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({tickers: compGroups[group], period}),
+        });
+        const data = await resp.json();
+        container.innerHTML = '';
+        Plotly.newPlot('comparison-chart', data.data, data.layout, {responsive: true, displayModeBar: false});
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function runTechAnalysis() {
+      const ticker = document.getElementById('stock-select').value;
+      const container = document.getElementById('tech-analysis');
+      container.textContent = 'Generating AI technical analysis...';
+
+      try {
+        const resp = await fetch(`/api/ai/technical/${encodeURIComponent(ticker)}`);
+        const data = await resp.json();
+        container.textContent = data.result || 'No result';
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    // Auto-load Xiaomi chart
+    loadChart();
+  </script>
+</body>
+</html>

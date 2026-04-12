@@ -1,0 +1,57 @@
+name: Daily Alpha Signal Email
+
+on:
+  schedule:
+    # 8:00 AM Beijing Time (UTC+8) = 00:00 UTC
+    - cron: '0 0 * * *'
+    # 9:00 PM Beijing Time (UTC+8) = 13:00 UTC
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+jobs:
+  send-briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install resend
+
+      - name: Create .env from secrets
+        run: |
+          cat > .env << 'ENVEOF'
+          DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL=https://api.deepseek.com
+          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          EMAIL_RECEIVER=${{ secrets.EMAIL_RECEIVER }}
+          SEND_TIME=08:00
+          ENVEOF
+
+      - name: Run daily pipeline and send email
+        env:
+          PYTHONIOENCODING: utf-8
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+        run: python run_daily.py
+
+      - name: Upload data artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-data-${{ github.run_number }}
+          path: |
+            latest_data.json
+            email_preview.html
+          retention-days: 7

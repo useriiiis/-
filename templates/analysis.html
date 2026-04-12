@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Analysis | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis" class="active">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      <span>AI Analysis</span>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>AI Analysis Module</h1>
+      <p>DeepSeek-powered sentiment analysis, news clustering, and keyword extraction</p>
+    </div>
+
+    <!-- AI Analysis Controls -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title"><span class="icon">⚙️</span> Analysis Controls</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="runSentimentAnalysis()">🧠 Run Sentiment Analysis</button>
+        <button class="btn btn-secondary" onclick="runKeywordExtraction()">🔑 Extract Keywords</button>
+        <button class="btn btn-secondary" onclick="runNewsClustering()">📰 Cluster News</button>
+        <button class="btn btn-secondary" onclick="runCustomQuery()">💬 Custom AI Query</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Sentiment Analysis Detail -->
+      <div class="card">
+        <div class="card-title"><span class="icon">🧠</span> Detailed Sentiment Analysis <span class="ai-badge">🤖 DeepSeek</span></div>
+        <div id="detailed-sentiment">
+          <p style="color:var(--text-muted);">Click "Run Sentiment Analysis" to start</p>
+        </div>
+      </div>
+
+      <!-- Keyword Extraction -->
+      <div class="card">
+        <div class="card-title"><span class="icon">🔑</span> Keyword & Theme Extraction <span class="ai-badge">🤖 DeepSeek</span></div>
+        <div id="keyword-detail">
+          <p style="color:var(--text-muted);">Click "Extract Keywords" to start</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom AI Query -->
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title"><span class="icon">💬</span> Custom AI Analysis <span class="ai-badge">🤖 DeepSeek</span></div>
+      <div style="display:flex;gap:10px;margin-bottom:1rem;">
+        <input type="text" id="custom-query" placeholder="Ask anything about the market, stocks, or macro trends..."
+          style="flex:1;background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+          padding:10px 16px;border-radius:8px;font-size:0.9rem;outline:none;">
+        <button class="btn btn-primary" onclick="submitCustomQuery()">Analyze</button>
+      </div>
+      <div id="custom-result" class="briefing-content" style="min-height:100px;display:none;"></div>
+    </div>
+
+    <!-- News Clustering -->
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title"><span class="icon">📊</span> AI News Clustering <span class="ai-badge">🤖 DeepSeek</span></div>
+      <div id="clustering-result">
+        <p style="color:var(--text-muted);">Click "Cluster News" to group related news stories using AI</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function runSentimentAnalysis() {
+      const container = document.getElementById('detailed-sentiment');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Running AI sentiment analysis...</div>';
+      try {
+        const resp = await fetch('/api/ai/sentiment');
+        const data = await resp.json();
+        let html = '';
+        for (const [topic, s] of Object.entries(data)) {
+          if (!s) continue;
+          html += `<div class="sentiment-card">
+            <div class="sentiment-header">
+              <span class="sentiment-label">${topic}</span>
+              <span class="sentiment-badge badge-${s.overall_sentiment || 'neutral'}">${(s.overall_sentiment || 'N/A').toUpperCase()}</span>
+            </div>`;
+          if (s.sentiment_score !== undefined) {
+            const pct = ((s.sentiment_score + 1) / 2 * 100).toFixed(0);
+            const cls = s.sentiment_score > 0 ? 'bullish' : s.sentiment_score < 0 ? 'bearish' : 'neutral';
+            html += `<div class="sentiment-bar"><div class="sentiment-fill fill-${cls}" style="width:${pct}%"></div></div>
+              <div style="font-size:0.8rem;color:var(--text-muted);">Score: ${s.sentiment_score} | Confidence: ${s.confidence || 'N/A'}</div>`;
+          }
+          if (s.key_positive_factors) {
+            html += `<div style="margin-top:8px;"><strong style="color:var(--accent-green);font-size:0.8rem;">Positive:</strong>
+              <ul style="font-size:0.8rem;color:var(--text-muted);margin-left:1rem;">
+              ${s.key_positive_factors.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
+          }
+          if (s.key_negative_factors) {
+            html += `<div style="margin-top:4px;"><strong style="color:var(--accent-red);font-size:0.8rem;">Negative:</strong>
+              <ul style="font-size:0.8rem;color:var(--text-muted);margin-left:1rem;">
+              ${s.key_negative_factors.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
+          }
+          if (s.analysis_en) html += `<div style="margin-top:8px;font-size:0.85rem;color:var(--text-secondary);">${s.analysis_en}</div>`;
+          if (s.analysis_cn) html += `<div style="margin-top:4px;font-size:0.85rem;color:var(--text-muted);">${s.analysis_cn}</div>`;
+          html += '</div>';
+        }
+        container.innerHTML = html || '<div style="color:var(--text-muted)">No results</div>';
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function runKeywordExtraction() {
+      const container = document.getElementById('keyword-detail');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Extracting keywords...</div>';
+      try {
+        const resp = await fetch('/api/ai/keywords');
+        const data = await resp.json();
+        let html = '';
+        if (data.keywords) {
+          html += '<div style="margin-bottom:1rem;">';
+          data.keywords.forEach(kw => {
+            const size = 0.8 + (kw.importance || 0.5) * 0.5;
+            html += `<span class="keyword-tag" style="font-size:${size}rem;padding:5px 14px;margin:3px;">${kw.word}</span>`;
+          });
+          html += '</div>';
+        }
+        if (data.themes) {
+          html += '<div style="margin-top:1rem;">';
+          data.themes.forEach(t => {
+            html += `<div style="margin:8px 0;padding:8px;background:var(--bg-card);border-radius:8px;">
+              <strong style="color:var(--text-primary);">${t.theme}</strong>
+              <div style="color:var(--text-muted);font-size:0.8rem;margin-top:2px;">${t.description}</div></div>`;
+          });
+          html += '</div>';
+        }
+        if (data.entities) {
+          html += '<div style="margin-top:1rem;"><strong style="color:var(--text-primary);font-size:0.9rem;">Key Entities</strong>';
+          data.entities.forEach(e => {
+            const badge = e.sentiment === 'positive' ? 'badge-bullish' : e.sentiment === 'negative' ? 'badge-bearish' : 'badge-neutral';
+            html += `<div style="margin:4px 0;font-size:0.85rem;">
+              <span style="color:var(--text-secondary);">${e.name}</span>
+              <span class="keyword-tag">${e.type}</span>
+              <span class="sentiment-badge ${badge}" style="font-size:0.65rem;">${e.sentiment}</span></div>`;
+          });
+          html += '</div>';
+        }
+        container.innerHTML = html || '<div style="color:var(--text-muted)">No keyword data</div>';
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function runNewsClustering() {
+      const container = document.getElementById('clustering-result');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div>Clustering news articles with AI...</div>';
+      try {
+        const resp = await fetch('/api/ai/cluster');
+        const data = await resp.json();
+        let html = '<div style="white-space:pre-wrap;font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">' + data.result + '</div>';
+        container.innerHTML = html;
+      } catch (err) {
+        container.innerHTML = `<div style="color:var(--accent-red);">Error: ${err.message}</div>`;
+      }
+    }
+
+    function runCustomQuery() {
+      const input = document.getElementById('custom-query');
+      input.focus();
+    }
+
+    async function submitCustomQuery() {
+      const input = document.getElementById('custom-query');
+      const query = input.value.trim();
+      if (!query) return;
+      const container = document.getElementById('custom-result');
+      container.style.display = 'block';
+      container.textContent = 'Thinking...';
+      try {
+        const resp = await fetch('/api/ai/query', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({query}),
+        });
+        const data = await resp.json();
+        container.textContent = data.result || 'No response';
+      } catch (err) {
+        container.textContent = `Error: ${err.message}`;
+      }
+    }
+
+    document.getElementById('custom-query').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') submitCustomQuery();
+    });
+  </script>
+</body>
+</html>

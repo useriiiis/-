@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Stock Screener | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener" class="active">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+    </ul>
+    <div class="nav-status"><div class="status-dot"></div><span>Stock Screener</span></div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>AI Long/Short Pair Screener</h1>
+      <p>Scan 50+ tech stocks across HK & A-share markets to find the optimal pair trade with Xiaomi</p>
+    </div>
+
+    <!-- Strategy Selection -->
+    <div class="card" style="margin-bottom:1rem;border-left:3px solid var(--accent-red);">
+      <div class="card-title"><span class="icon">⚡</span> Pair Trade Strategy</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1;min-width:300px;">
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-primary" id="btn-long-xiaomi" onclick="setDirection('short')" style="flex:1;">
+              📈 LONG Xiaomi → Find SHORT
+            </button>
+            <button class="btn btn-secondary" id="btn-short-xiaomi" onclick="setDirection('long')" style="flex:1;">
+              📉 SHORT Xiaomi → Find LONG
+            </button>
+          </div>
+          <div style="margin-top:10px;font-size:0.8rem;color:var(--text-muted);">
+            Selected: <span id="strategy-text" style="color:var(--accent-red);font-weight:600;">LONG Xiaomi + SHORT candidate</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="runScreener()" style="padding:12px 24px;font-size:1rem;">
+          🤖 Run AI Screener
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div id="progress-container" style="display:none;" class="card">
+      <div class="card-title"><span class="icon">⏳</span> Screening Progress</div>
+      <div style="margin-bottom:8px;">
+        <div style="background:var(--border);border-radius:4px;height:8px;overflow:hidden;">
+          <div id="progress-bar" style="height:100%;background:linear-gradient(90deg,var(--accent-red),var(--accent-purple));width:0%;transition:width 0.3s;"></div>
+        </div>
+      </div>
+      <div id="progress-text" style="font-size:0.85rem;color:var(--text-muted);">Starting screening...</div>
+    </div>
+
+    <!-- Results -->
+    <div id="results-container" style="display:none;">
+      <!-- AI Recommendation -->
+      <div class="card" style="margin-bottom:1rem;border-left:3px solid var(--accent-purple);">
+        <div class="card-title"><span class="icon">🤖</span> AI Pair Trade Recommendation <span class="ai-badge">🤖 DeepSeek AI</span></div>
+        <div id="ai-recommendation" class="briefing-content" style="min-height:200px;"></div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:1rem;">
+        <!-- Top Candidates Table -->
+        <div class="card">
+          <div class="card-title"><span class="icon">🏆</span> Top Candidates (Ranked)</div>
+          <div id="candidates-table" style="overflow-x:auto;max-height:500px;overflow-y:auto;"></div>
+        </div>
+
+        <!-- Valuation Comparison Chart -->
+        <div class="card">
+          <div class="card-title"><span class="icon">📊</span> Valuation Comparison</div>
+          <div id="valuation-chart" style="height:450px;"></div>
+        </div>
+      </div>
+
+      <!-- Performance Comparison -->
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="card-title"><span class="icon">📈</span> Relative Performance vs Xiaomi</div>
+        <div id="performance-chart" style="height:400px;"></div>
+      </div>
+
+      <!-- Heatmap -->
+      <div class="card">
+        <div class="card-title"><span class="icon">🔥</span> Metrics Heatmap</div>
+        <div id="heatmap-chart" style="height:500px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentDirection = 'short';
+
+    function setDirection(dir) {
+      currentDirection = dir;
+      const longBtn = document.getElementById('btn-long-xiaomi');
+      const shortBtn = document.getElementById('btn-short-xiaomi');
+      const text = document.getElementById('strategy-text');
+
+      if (dir === 'short') {
+        longBtn.className = 'btn btn-primary';
+        shortBtn.className = 'btn btn-secondary';
+        text.textContent = 'LONG Xiaomi + SHORT candidate';
+      } else {
+        longBtn.className = 'btn btn-secondary';
+        shortBtn.className = 'btn btn-primary';
+        text.textContent = 'SHORT Xiaomi + LONG candidate';
+      }
+    }
+
+    async function runScreener() {
+      const progress = document.getElementById('progress-container');
+      const results = document.getElementById('results-container');
+      progress.style.display = 'block';
+      results.style.display = 'none';
+
+      const progressBar = document.getElementById('progress-bar');
+      const progressText = document.getElementById('progress-text');
+
+      progressBar.style.width = '5%';
+      progressText.textContent = 'Starting AI screening pipeline...';
+
+      try {
+        // Simulate progress while waiting
+        let pct = 5;
+        const interval = setInterval(() => {
+          pct = Math.min(pct + 2, 90);
+          progressBar.style.width = pct + '%';
+          if (pct < 30) progressText.textContent = 'Fetching Xiaomi fundamentals & screening tech stocks...';
+          else if (pct < 60) progressText.textContent = 'Analyzing fundamentals & ranking candidates...';
+          else if (pct < 85) progressText.textContent = 'Running DeepSeek AI pair trade analysis...';
+          else progressText.textContent = 'Generating charts & final report...';
+        }, 2000);
+
+        const resp = await fetch(`/api/screener/${currentDirection}`);
+        const data = await resp.json();
+
+        clearInterval(interval);
+        progressBar.style.width = '100%';
+        progressText.textContent = `Done! Screened ${data.total_screened} stocks.`;
+
+        setTimeout(() => {
+          progress.style.display = 'none';
+          results.style.display = 'block';
+          renderResults(data);
+        }, 500);
+      } catch (err) {
+        progressText.textContent = `Error: ${err.message}`;
+        progressBar.style.background = 'var(--accent-red)';
+      }
+    }
+
+    function renderResults(data) {
+      // AI Recommendation
+      document.getElementById('ai-recommendation').textContent = data.ai_recommendation || 'No recommendation';
+
+      // Candidates Table
+      const candidates = data.top_candidates || [];
+      let html = `<table class="val-table">
+        <tr><th>#</th><th>Stock</th><th>Ticker</th><th>Score</th><th>Price</th><th>PE</th><th>Rev Growth</th><th>3M Mom</th><th>Mkt Cap</th></tr>`;
+      candidates.slice(0, 15).forEach((c, i) => {
+        const cls = c.pair_score >= 30 ? 'up-color' : c.pair_score >= 15 ? '' : 'down-color';
+        html += `<tr>
+          <td style="color:var(--accent-red);font-weight:700;">${i+1}</td>
+          <td style="color:var(--text-primary);font-weight:600;">${c.cn_name || c.name}</td>
+          <td>${c.ticker}</td>
+          <td class="${cls}" style="font-weight:700;">${c.pair_score}</td>
+          <td>${c.price}</td>
+          <td>${c.pe_ratio ? c.pe_ratio.toFixed(1) : 'N/A'}</td>
+          <td>${c.revenue_growth ? (c.revenue_growth*100).toFixed(1)+'%' : 'N/A'}</td>
+          <td class="${(c.momentum_3m||0) >= 0 ? 'up-color' : 'down-color'}">${c.momentum_3m ? c.momentum_3m.toFixed(1)+'%' : 'N/A'}</td>
+          <td>${formatMC(c.market_cap)}</td>
+        </tr>`;
+      });
+      html += '</table>';
+      document.getElementById('candidates-table').innerHTML = html;
+
+      // Load charts
+      loadScreenerCharts(candidates);
+    }
+
+    async function loadScreenerCharts(candidates) {
+      try {
+        // Performance comparison
+        const top5 = candidates.slice(0, 5);
+        const tickers = {'小米': '1810.HK'};
+        top5.forEach(c => { tickers[c.cn_name || c.name] = c.ticker; });
+        const perfResp = await fetch('/api/chart/comparison', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({tickers}),
+        });
+        const perfData = await perfResp.json();
+        if (perfData.data) Plotly.newPlot('performance-chart', perfData.data, perfData.layout, {responsive:true, displayModeBar:false});
+
+        // Valuation comparison
+        const valResp = await fetch('/api/chart/valuation-compare', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({stocks: [candidates[0], candidates[1], candidates[2], candidates[3], candidates[4]].filter(Boolean)}),
+        });
+        const valData = await valResp.json();
+        if (valData.data) Plotly.newPlot('valuation-chart', valData.data, valData.layout, {responsive:true, displayModeBar:false});
+
+        // Heatmap
+        const hmResp = await fetch('/api/chart/heatmap', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({stocks: candidates.slice(0, 10)}),
+        });
+        const hmData = await hmResp.json();
+        if (hmData.data) Plotly.newPlot('heatmap-chart', hmData.data, hmData.layout, {responsive:true, displayModeBar:false});
+      } catch (err) {
+        console.error('Chart error:', err);
+      }
+    }
+
+    function formatMC(val) {
+      if (!val) return 'N/A';
+      if (val >= 1e12) return (val/1e12).toFixed(1) + 'T';
+      if (val >= 1e9) return (val/1e9).toFixed(1) + 'B';
+      if (val >= 1e6) return (val/1e6).toFixed(0) + 'M';
+      return val.toString();
+    }
+  </script>
+</body>
+</html>
