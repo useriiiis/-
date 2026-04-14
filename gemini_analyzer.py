@@ -75,7 +75,7 @@ def _call_gemini(system_prompt: str, user_prompt: str, temperature: float = 0.3,
 
 def _determine_sigma_mood(stock_data: dict, market_data: dict) -> dict:
     """Determine Sigma's daily mood. Sigma is elite, cold, and calculated."""
-    import random
+    import json
     total_change = 0
     count = 0
     for data in list(stock_data.values()) + list(market_data.values()):
@@ -85,100 +85,65 @@ def _determine_sigma_mood(stock_data: dict, market_data: dict) -> dict:
     avg_change = total_change / max(count, 1)
 
     if avg_change > 2.0:
-        greetings = [
-            "Gentlemen, the market is serving us alpha on a silver platter today.",
-            "A magnificent day for capital allocators. The trend is our friend.",
-            "Euphoria in the markets. We ride the wave, but keep our stops tight."
-        ]
-        vibes = [
-            "Sipping aged Bordeaux while watching the portfolio hit all-time highs.",
-            "Lighting a cigar. The algorithms are executing flawlessly.",
-            "Reviewing the P&L with a satisfied smirk."
-        ]
-        return {
-            "mood": "euphoric",
-            "emoji": "🍷📈",
-            "greeting": random.choice(greetings),
-            "tone": "sophisticated, highly confident, elite institutional tone",
-            "sign_off": "Sigma @ 财富自由之路 | 顶层思维，降维打击",
-            "vibe": random.choice(vibes),
-        }
+        mood = "euphoric"
+        emoji = "🍷📈"
+        tone = "sophisticated, highly confident, elite institutional tone"
+        sign_off = "Sigma @ 财富自由之路 | 顶层思维，降维打击"
     elif avg_change > 0.5:
-        greetings = [
-            "A textbook structural uptrend. Let's dissect the capital flow.",
-            "Solid price action across the board. Time to analyze the underlying drivers.",
-            "The bulls are in control. Let's see if the volume confirms the move."
-        ]
-        vibes = [
-            "Adjusting the Rolex, executing algorithmic trades with precision.",
-            "Analyzing order book imbalances and institutional block trades.",
-            "Quietly scaling into winning positions."
-        ]
-        return {
-            "mood": "calculated",
-            "emoji": "♟️💼",
-            "greeting": random.choice(greetings),
-            "tone": "analytical, sharp, professional, slightly arrogant",
-            "sign_off": "Sigma @ 财富自由之路 | 逻辑重于情绪，数据说明一切",
-            "vibe": random.choice(vibes),
-        }
+        mood = "calculated"
+        emoji = "♟️💼"
+        tone = "analytical, sharp, professional, slightly arrogant"
+        sign_off = "Sigma @ 财富自由之路 | 逻辑重于情绪，数据说明一切"
     elif avg_change > -0.5:
-        greetings = [
-            "Market noise and retail chop. Nothing to see here.",
-            "A directionless session. Patience is the ultimate edge.",
-            "Low volatility, low conviction. We wait for a clear signal."
-        ]
-        vibes = [
-            "Checking the terminal once an hour, mostly reading macro research.",
-            "Staring at flat charts, sipping espresso.",
-            "Ignoring the intraday noise, focusing on the macro picture."
-        ]
-        return {
-            "mood": "bored",
-            "emoji": "🥱🕰️",
-            "greeting": random.choice(greetings),
-            "tone": "dismissive of retail traders, highly selective, looking for real setups",
-            "sign_off": "Sigma @ 财富自由之路 | 真正的猎手懂得等待",
-            "vibe": random.choice(vibes),
-        }
+        mood = "bored"
+        emoji = "🥱🕰️"
+        tone = "dismissive of retail traders, highly selective, looking for real setups"
+        sign_off = "Sigma @ 财富自由之路 | 真正的猎手懂得等待"
     elif avg_change > -2.0:
-        greetings = [
-            "Blood in the streets. Excellent. This is where we buy the dip from the panicked retail.",
-            "A healthy correction. Time to separate the signal from the noise.",
-            "Retail is capitulating. Institutional bids are stepping in."
-        ]
-        vibes = [
-            "Sharpening the knives, preparing to deploy capital at a discount.",
-            "Scanning for oversold assets with strong fundamentals.",
-            "Smiling as weak hands get shaken out of the market."
-        ]
-        return {
-            "mood": "predatory",
-            "emoji": "🦅📉",
-            "greeting": random.choice(greetings),
-            "tone": "aggressive, contrarian, seeing opportunity in others' fear",
-            "sign_off": "Sigma @ 财富自由之路 | 别人恐慌我贪婪，收割流动性",
-            "vibe": random.choice(vibes),
-        }
+        mood = "predatory"
+        emoji = "🦅📉"
+        tone = "aggressive, contrarian, seeing opportunity in others' fear"
+        sign_off = "Sigma @ 财富自由之路 | 别人恐慌我贪婪，收割流动性"
     else:
-        greetings = [
-            "A systemic deleveraging event. Emotion is your enemy right now.",
-            "Total capitulation. We manage risk first, seek alpha second.",
-            "The market is resetting. Stay liquid, stay rational."
-        ]
-        vibes = [
-            "Ice in the veins. Hedging positions and calculating downside standard deviations.",
-            "Monitoring VaR limits and stress-testing the portfolio.",
-            "Cold, calculating, and completely detached from the panic."
-        ]
-        return {
-            "mood": "clinical",
-            "emoji": "🧊📊",
-            "greeting": random.choice(greetings),
-            "tone": "cold, purely objective, risk-management focused, zero panic",
-            "sign_off": "Sigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
-            "vibe": random.choice(vibes),
-        }
+        mood = "clinical"
+        emoji = "🧊📊"
+        tone = "cold, purely objective, risk-management focused, zero panic"
+        sign_off = "Sigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场"
+
+    # Ask AI to generate a unique greeting and vibe
+    prompt = f"""You are Sigma, an elite Wall Street quantitative strategist.
+The market average change today is {avg_change:.2f}%. Your mood is {mood}.
+Your tone is: {tone}.
+
+Generate a UNIQUE, creative 1-sentence English greeting and a 1-sentence English 'vibe' (what you are currently doing, e.g., 'Sipping aged Bordeaux while watching the portfolio hit all-time highs.' or 'Ice in the veins. Hedging positions and calculating downside standard deviations.').
+
+Return ONLY a JSON object in this exact format:
+{{
+    "greeting": "your greeting here",
+    "vibe": "your vibe here"
+}}"""
+    
+    try:
+        res = _call_gemini("You are a creative JSON generator.", prompt, temperature=0.8, strip_md=False)
+        if "```json" in res:
+            res = res.split("```json")[1].split("```")[0]
+        elif "```" in res:
+            res = res.split("```")[1].split("```")[0]
+        dyn = json.loads(res.strip())
+        greeting = dyn.get("greeting", "Gentlemen, let's dissect the capital flow.")
+        vibe = dyn.get("vibe", "Adjusting the Rolex, executing algorithmic trades with precision.")
+    except Exception:
+        greeting = "Gentlemen, let's dissect the capital flow."
+        vibe = "Adjusting the Rolex, executing algorithmic trades with precision."
+
+    return {
+        "mood": mood,
+        "emoji": emoji,
+        "greeting": greeting,
+        "tone": tone,
+        "sign_off": sign_off,
+        "vibe": vibe,
+    }
 
 def generate_gemini_briefing(
     stock_data: dict,
