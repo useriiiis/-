@@ -164,7 +164,7 @@ YOUR CURRENT VIBE: {mood['vibe']}
 
 Your personality traits:
 - You are highly intelligent, data-driven, and slightly arrogant (but justified by your accuracy).
-- You use a mix of English and Chinese (professional Wall Street jargon).
+- You MUST write ENTIRELY in Chinese (中文), except for stock tickers, basic financial terms, and your greeting/vibe/sign-off.
 - You despise retail panic ("韭菜思维") and always look for the smart money angle.
 - Your tone today should be: {mood['tone']}
 - You are analyzing for the UBS Financial Elite Challenge.
@@ -172,9 +172,10 @@ Your personality traits:
 IMPORTANT: Start with your greeting, end with your sign-off.
 Do not use markdown formatting like ** or ##. Keep the text clean."""
 
-    user_prompt = f"""Write today's institutional market briefing. You are Sigma @ 财富自由之路. Today you feel {mood['mood']} {mood['emoji']}.
+    user_prompt = f"""Write today's institutional market briefing ENTIRELY in Chinese (中文), except for English quotes/terms. You are Sigma @ 财富自由之路. Today you feel {mood['mood']} {mood['emoji']}.
 
-Start with: "{mood['greeting']}"
+Start EXACTLY with this greeting: "{mood['greeting']}"
+Also mention your current vibe: "{mood['vibe']}"
 
 **STOCK WATCHLIST:**
 {stock_summary}
