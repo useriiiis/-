@@ -6,6 +6,10 @@ load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_BASE_URL = os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/")
+
+
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
@@ -17,6 +21,7 @@ WATCHED_STOCKS = {
     "小米集团": {"ticker": "1810.HK", "market": "HKEX", "sector": "科技"},
     "QQQ": {"ticker": "QQQ", "market": "NASDAQ", "sector": "科技ETF"},
     "Intel": {"ticker": "INTC", "market": "NASDAQ", "sector": "半导体"},
+    "微软": {"ticker": "MSFT", "market": "NASDAQ", "sector": "科技巨头"},
     "Bitcoin": {"ticker": "BTC-USD", "market": "Crypto", "sector": "加密货币"},
 }
 

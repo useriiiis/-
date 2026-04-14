@@ -20,7 +20,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 .main{padding:1.5rem 2rem;max-width:1500px;margin:0 auto}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.g4{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;transition:.2s}
 .card:hover{border-color:var(--border2)}
 .ct{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
@@ -66,7 +66,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
   <ul class="nav-links">
     <li><a class="active" onclick="show('dash')">Dashboard</a></li>
     <li><a onclick="show('news')">News</a></li>
-    <li><a onclick="show('briefing')">AI Briefing</a></li>
+    <li><a onclick="show('briefing')">Alpha (DeepSeek)</a></li>
+    <li><a onclick="show('sigma')">Sigma (Gemini)</a></li>
     <li><a onclick="show('analysis')">Stock Analysis</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
@@ -116,14 +117,25 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 
   <!-- Briefing -->
   <div id="page-briefing" style="display:none">
-    <div class="ph"><h1>AI Morning Briefing</h1><p>Updated twice daily by DeepSeek AI <span class="ai-b">DeepSeek AI</span></p></div>
+    <div class="ph"><h1>Alpha Morning Briefing</h1><p>Alpha's daily market commentary <span class="ai-b">DeepSeek AI</span></p></div>
     <div id="ai-section">
-      <div class="brief" id="brief-text">Loading AI briefing...</div>
+      <div class="brief" id="brief-text">Loading Alpha briefing...</div>
       <div class="card" style="margin-top:1rem">
         <div class="ct">🔑 Key Themes</div>
         <div id="kw-box"></div>
       </div>
     </div>
+  </div>
+
+  <!-- Sigma Page -->
+  <div id="page-sigma" style="display:none">
+    <div class="ph"><h1>Sigma Institutional Briefing</h1><p>Elite quantitative strategy <span class="ai-b" style="border-color:var(--green);color:var(--green)">Gemini AI</span></p></div>
+    <div class="mood-card" id="sigma-mood-box" style="background:linear-gradient(135deg,var(--card),#0a1a10);">
+      <div class="mood-emoji" id="sigma-mood-emoji">...</div>
+      <div class="mood-label" id="sigma-mood-vibe">Loading mood...</div>
+      <div class="mood-badge" id="sigma-mood-badge" style="background:var(--card);color:var(--muted);">LOADING</div>
+    </div>
+    <div class="brief" id="sigma-brief-text">Loading Sigma briefing...</div>
   </div>
 
   <!-- Analysis Page -->
@@ -175,6 +187,7 @@ const STOCKS={
   '小米集团':{t:'1810.HK',m:'HKEX'},
   'QQQ':{t:'QQQ',m:'NASDAQ'},
   'Intel':{t:'INTC',m:'NASDAQ'},
+  '微软':{t:'MSFT',m:'NASDAQ'},
   'Bitcoin':{t:'BTC-USD',m:'Crypto'},
 };
 const INDICES={'S&P 500':'^GSPC','NASDAQ':'^IXIC','Hang Seng':'^HSI','Dow Jones':'^DJI'};
@@ -188,7 +201,7 @@ const RSS_FEEDS=[
 let cachedData={};
 
 function show(p){
-  ['dash','news','briefing','analysis'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
+  ['dash','news','briefing','sigma','analysis'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   event.target.classList.add('active');
 }
@@ -408,7 +421,18 @@ async function loadAI(){
     }
     sb.innerHTML=ss||'<div style="color:var(--muted)">Run daily pipeline to generate AI sentiment</div>';
     // Briefing
-    document.getElementById('brief-text').textContent=D.briefing||'No AI briefing yet. Updated at 8am & 9pm daily.';
+    document.getElementById('brief-text').textContent=D.briefing||'No Alpha briefing yet. Updated at 8am & 9pm daily.';
+    
+    // Sigma
+    const sm=D.mood_sigma||{};
+    document.getElementById('sigma-mood-emoji').textContent=sm.emoji||'♟️';
+    document.getElementById('sigma-mood-vibe').textContent='"'+(sm.vibe||'Analyzing...')+'"';
+    const smb=document.getElementById('sigma-mood-badge');
+    smb.textContent='MOOD: '+(sm.mood||'unknown').toUpperCase();
+    const smc={'euphoric':'#0a3e1a;color:#00ff88','calculated':'#1a2e1a;color:#00d26a','bored':'#1a1a2e;color:#4361ee','predatory':'#2e2a0a;color:#ffd60a','clinical':'#2e0a0f;color:#e63946'};
+    smb.style.cssText='display:inline-block;padding:3px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:1px;margin-top:.5rem;background:'+(smc[sm.mood]||smc.calculated);
+    document.getElementById('sigma-brief-text').textContent=D.briefing_sigma||'No Sigma briefing yet.';
+
     // Keywords
     const kb=document.getElementById('kw-box');let kh='';
     const kw=D.keywords||{};

@@ -23,6 +23,7 @@ from ai_analyzer import (
     _determine_mood,
 )
 from email_service import send_daily_briefing, preview_email
+from gemini_analyzer import _determine_sigma_mood, generate_gemini_briefing
 
 
 def run_daily_pipeline(send_email: bool = True, preview_only: bool = False):
@@ -74,31 +75,41 @@ def run_daily_pipeline(send_email: bool = True, preview_only: bool = False):
     keywords = extract_keywords(all_articles[:30]) if all_articles else {}
 
     # Step 6: Determine AI mood & generate briefing
-    print("\n[6/7] Determining Alpha's mood...")
-    mood = _determine_mood(stocks, indices)
-    print(f"  Today's mood: {mood['mood']} {mood['emoji']}")
-    print(f"  Vibe: {mood['vibe']}")
+    print("\n[6/8] Determining Alpha's mood (DeepSeek)...")
+    mood_alpha = _determine_mood(stocks, indices)
+    print(f"  Alpha's mood: {mood_alpha['mood']} {mood_alpha['emoji']}")
 
-    print("\n[7/7] Generating AI morning briefing with personality...")
-    briefing = generate_daily_briefing(stocks, indices, news_digest)
+    print("\n[7/8] Generating Alpha's morning briefing...")
+    briefing_alpha = generate_daily_briefing(stocks, indices, news_digest)
+
+    print("\n[8/8] Determining Sigma's mood & generating briefing (Gemini)...")
+    mood_sigma = _determine_sigma_mood(stocks, indices)
+    print(f"  Sigma's mood: {mood_sigma['mood']} {mood_sigma['emoji']}")
+    briefing_sigma = generate_gemini_briefing(stocks, indices, news_digest)
 
     # Send or preview
     print("\n" + "=" * 60)
     if preview_only:
-        print("Generating email preview...")
-        preview_email(stocks, indices, categories, sentiment, briefing, keywords, mood)
-        print("✓ Preview saved to email_preview.html")
+        print("Generating email previews...")
+        preview_email(stocks, indices, categories, sentiment, briefing_alpha, keywords, mood_alpha, "Alpha")
+        preview_email(stocks, indices, categories, sentiment, briefing_sigma, keywords, mood_sigma, "Sigma")
+        print("✓ Previews saved to email_preview_alpha.html and email_preview_sigma.html")
     elif send_email:
-        print("Sending daily briefing email...")
-        success = send_daily_briefing(
-            stocks, indices, categories, sentiment, briefing, keywords, mood
+        print("Sending Alpha's daily briefing email...")
+        success_alpha = send_daily_briefing(
+            stocks, indices, categories, sentiment, briefing_alpha, keywords, mood_alpha, "Alpha"
         )
-        if success:
-            print("✓ Email sent successfully!")
+        print("Sending Sigma's daily briefing email...")
+        success_sigma = send_daily_briefing(
+            stocks, indices, categories, sentiment, briefing_sigma, keywords, mood_sigma, "Sigma"
+        )
+        if success_alpha and success_sigma:
+            print("✓ Both emails sent successfully!")
         else:
-            print("✗ Email sending failed. Check configuration in .env")
-            print("  Generating preview as fallback...")
-            preview_email(stocks, indices, categories, sentiment, briefing, keywords, mood)
+            print("✗ Some emails failed to send. Check configuration in .env")
+            print("  Generating previews as fallback...")
+            preview_email(stocks, indices, categories, sentiment, briefing_alpha, keywords, mood_alpha, "Alpha")
+            preview_email(stocks, indices, categories, sentiment, briefing_sigma, keywords, mood_sigma, "Sigma")
     else:
         print("Pipeline complete (no email/preview requested)")
 
@@ -113,8 +124,10 @@ def run_daily_pipeline(send_email: bool = True, preview_only: bool = False):
                  for k, v in categories.items()},
         "sentiment": sentiment,
         "keywords": keywords,
-        "briefing": briefing,
-        "mood": mood,
+        "briefing": briefing_alpha,
+        "mood": mood_alpha,
+        "briefing_sigma": briefing_sigma,
+        "mood_sigma": mood_sigma,
     }
     with open("latest_data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2, default=str)

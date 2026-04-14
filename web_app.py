@@ -63,6 +63,10 @@ def charts():
 def competition():
     return render_template("competition.html")
 
+@app.route("/sigma")
+def sigma():
+    return render_template("sigma.html")
+
 
 # === Dashboard API ===
 
