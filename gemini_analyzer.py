@@ -187,7 +187,8 @@ Start with: "{mood['greeting']}"
 
 Structure your briefing as:
 1. {mood['emoji']} Sigma's Institutional View / 西格玛机构视角 - Your elite take on the market today.
-2. 💼 Capital Flow Analysis / 资金流向剖析 - Deep dive into the stocks (especially Microsoft, Xiaomi, QQQ, Intel, BTC).
+2. 💼 Capital Flow Analysis / 资金流向剖析 - Deep dive into the stocks.
+   For EACH stock (Xiaomi, QQQ, Intel, Microsoft, Bitcoin), you MUST provide a clear "BULLISH" (看多) or "BEARISH" (看空) rating and a 1-sentence thesis.
 3. 📰 Signal vs Noise / 信号与噪音 - Pick 2 news items that actually matter to smart money.
 4. ♟️ Strategic Execution / 交易策略 - What should the elite do today?
 
