@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #12121a;
+    border: 1px solid #1e1e2e;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 30px;
+    text-align: center;
+    border-bottom: 2px solid #e63946;
+  }
+  .header h1 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .header .subtitle {
+    color: #a0a0b0;
+    font-size: 13px;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+  .header .date {
+    color: #e63946;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+  .section {
+    padding: 20px 30px;
+    border-bottom: 1px solid #1e1e2e;
+  }
+  .section-title {
+    color: #e63946;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2a2a3a;
+  }
+  .stock-card {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 3px solid #2a2a3a;
+  }
+  .stock-card.up { border-left-color: #00d26a; }
+  .stock-card.down { border-left-color: #e63946; }
+  .stock-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .stock-ticker {
+    color: #707090;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+  .stock-price {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 5px 0;
+  }
+  .price-up { color: #00d26a; }
+  .price-down { color: #e63946; }
+  .stock-details {
+    color: #8888a0;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .index-row {
+    display: inline-block;
+    width: 48%;
+    padding: 8px;
+    margin: 2px 0;
+    background: #1a1a2e;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a2e;
+  }
+  .news-title {
+    color: #c0c0d0;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .news-title:hover { color: #e63946; }
+  .news-source {
+    color: #606080;
+    font-size: 11px;
+    margin-top: 3px;
+  }
+  .news-keywords {
+    margin-top: 4px;
+  }
+  .keyword-tag {
+    display: inline-block;
+    background: #2a2a3e;
+    color: #a0a0c0;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin: 2px;
+  }
+  .sentiment-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: #2a2a3a;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  .sentiment-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+  .sentiment-bullish { background: linear-gradient(90deg, #00d26a, #00ff88); }
+  .sentiment-bearish { background: linear-gradient(90deg, #e63946, #ff6b6b); }
+  .sentiment-neutral { background: linear-gradient(90deg, #ffd60a, #ffed4a); }
+  .ai-briefing {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 20px;
+    line-height: 1.7;
+    color: #c0c0d0;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: #505070;
+    font-size: 11px;
+    background: #0a0a0f;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-bull { background: #0a2e1a; color: #00d26a; }
+  .badge-bear { background: #2e0a0f; color: #e63946; }
+  .badge-neutral { background: #2e2a0a; color: #ffd60a; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #1e1e2e;
+    font-size: 13px;
+  }
+  th {
+    color: #8888a0;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>ALPHA SIGNAL</h1>
+    <div class="subtitle">Your AI Bestie for Markets | 你的AI金融小伙伴</div>
+    <div class="date">Wednesday, April 15, 2026</div>
+    
+    <div style="margin-top:12px;font-size:28px;">🔥😱</div>
+    <div style="color:#c0c0d0;font-size:13px;margin-top:4px;font-style:italic;">"Stress-eating chips while analyzing charts at 3am"</div>
+    <div style="margin-top:8px;">
+      <span style="background:#2e0a0f;
+        color:#e63946;
+        padding:4px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;">
+        MOOD: PANICKING
+      </span>
+    </div>
+    
+  </div>
+
+  <!-- Stock Watchlist -->
+  <div class="section">
+    <div class="section-title">📊 Stock Watchlist / 关注股票</div>
+    
+    
+    <div class="stock-card down">
+      <span class="stock-name">小米集团</span>
+      <span class="stock-ticker">1810.HK</span>
+      <div class="stock-price price-down">
+        nan
+        <span style="font-size:14px;">
+          +nan (+nan%)
+        </span>
+      </div>
+      <div class="stock-details">
+        Open: nan | High: nan | Low: nan | Vol: 108,585,240
+      </div>
+    </div>
+    
+    
+    
+    <div class="stock-card up">
+      <span class="stock-name">QQQ</span>
+      <span class="stock-ticker">QQQ</span>
+      <div class="stock-price price-up">
+        627.48
+        <span style="font-size:14px;">
+          +10.09 (+1.63%)
+        </span>
+      </div>
+      <div class="stock-details">
+        Open: 620.27 | High: 627.7 | Low: 620.1 | Vol: 34,045,011
+      </div>
+    </div>
+    
+    
+    
+    <div class="stock-card down">
+      <span class="stock-name">Intel</span>
+      <span class="stock-ticker">INTC</span>
+      <div class="stock-price price-down">
+        62.85
+        <span style="font-size:14px;">
+          -2.33 (-3.58%)
+        </span>
+      </div>
+      <div class="stock-details">
+        Open: 65.16 | High: 65.18 | Low: 62.09 | Vol: 81,425,639
+      </div>
+    </div>
+    
+    
+    
+    <div class="stock-card up">
+      <span class="stock-name">微软</span>
+      <span class="stock-ticker">MSFT</span>
+      <div class="stock-price price-up">
+        392.51
+        <span style="font-size:14px;">
+          +8.14 (+2.12%)
+        </span>
+      </div>
+      <div class="stock-details">
+        Open: 387.84 | High: 394.69 | Low: 386.52 | Vol: 22,036,338
+      </div>
+    </div>
+    
+    
+    
+    <div class="stock-card up">
+      <span class="stock-name">Bitcoin</span>
+      <span class="stock-ticker">BTC-USD</span>
+      <div class="stock-price price-up">
+        74766.5
+        <span style="font-size:14px;">
+          +281.86 (+0.38%)
+        </span>
+      </div>
+      <div class="stock-details">
+        Open: 74442.23 | High: 75886.46 | Low: 74145.92 | Vol: 60,772,524,032
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <!-- Market Indices -->
+  <div class="section">
+    <div class="section-title">🌍 Market Indices / 市场指数</div>
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Price</th>
+        <th>Change</th>
+      </tr>
+      
+      
+      <tr>
+        <td style="color:#fff;">标普500</td>
+        <td>6962.91</td>
+        <td class="price-up">
+          +1.11%
+        </td>
+      </tr>
+      
+      
+      
+      <tr>
+        <td style="color:#fff;">纳斯达克</td>
+        <td>23610.89</td>
+        <td class="price-up">
+          +1.84%
+        </td>
+      </tr>
+      
+      
+      
+      <tr>
+        <td style="color:#fff;">恒生指数</td>
+        <td>25660.85</td>
+        <td class="price-down">
+          -0.90%
+        </td>
+      </tr>
+      
+      
+      
+      <tr>
+        <td style="color:#fff;">沪深300</td>
+        <td>nan</td>
+        <td class="price-down">
+          +nan%
+        </td>
+      </tr>
+      
+      
+      
+      <tr>
+        <td style="color:#fff;">道琼斯</td>
+        <td>48526.23</td>
+        <td class="price-up">
+          +0.64%
+        </td>
+      </tr>
+      
+      
+    </table>
+  </div>
+
+  <!-- Sentiment Analysis -->
+  
+  <div class="section">
+    <div class="section-title">🧠 AI Sentiment Analysis / AI情绪分析</div>
+    
+    <div style="margin-bottom:15px;">
+      <strong style="color:#fff;">xiaomi</strong>
+      
+      <span class="badge badge-neutral">
+        MIXED
+      </span>
+      
+      
+      <div class="sentiment-bar">
+        <div class="sentiment-fill sentiment-bullish"
+             style="width:57%"></div>
+      </div>
+      
+      
+      <div style="color:#8888a0;font-size:13px;">小米的市場情緒呈現混合狀態，既有積極信號也有消極因素。積極方面，公司近期以2.092億港元回購600萬股，顯示管理層信心並提供技術支撐。分析師預測2026年底股價可能達到37.47港元，較當前水平有約15%的上漲空間。然而，消極因素包括近期股價周跌幅達7.46%，以及前期強勢上漲後動能減弱。2029年6.82港元的極度悲觀長期預測帶來重大不確定性，儘管這可能反映過度悲觀的假設。混合信號表明投資者應同時關注公司執行力和整體市場環境。</div>
+      
+    </div>
+    
+    <div style="margin-bottom:15px;">
+      <strong style="color:#fff;">qqq_intel</strong>
+      
+      <span class="badge badge-bull">
+        BULLISH
+      </span>
+      
+      
+      <div class="sentiment-bar">
+        <div class="sentiment-fill sentiment-bullish"
+             style="width:87%"></div>
+      </div>
+      
+      
+      <div style="color:#8888a0;font-size:13px;">根据提供的新闻标题，英特尔（INTC）的市场情绪明显看涨。多个消息来源强调该股在分析师上调评级和战略合作伙伴关系的推动下正逼近历史高点。'对其长期增长信心重燃'的表述表明这是基本面改善而非投机交易。唯一的谨慎提示来自景顺对QQQ（纳斯达克100 ETF）的品牌澄清，这可能造成暂时混淆但未直接影响英特尔的基本面。总体而言，市场叙事聚焦于股价上涨、分析师情绪积极和战略进展。</div>
+      
+    </div>
+    
+    <div style="margin-bottom:15px;">
+      <strong style="color:#fff;">macro</strong>
+      
+      <span class="badge badge-neutral">
+        MIXED
+      </span>
+      
+      
+      <div class="sentiment-bar">
+        <div class="sentiment-fill sentiment-bullish"
+             style="width:57%"></div>
+      </div>
+      
+      
+      <div style="color:#8888a0;font-size:13px;">综合这些新闻报道，宏观经济情绪呈现复杂局面。积极方面，科技和人工智能领域势头强劲，英特尔、甲骨文和亚马逊等公司均有重大举措。美联储讨论潜在降息以及财政部对货币宽松的支持提供了政策支撑。然而，地缘政治风险显著，特别是霍尔木兹海峡封锁和美伊紧张局势，城堡投资的肯·格里芬警告称若局势持续可能导致全球衰退。人工智能行业显示出显著增长的同时也存在不稳定因素，包括针对领导层的暴力袭击以及主要参与者之间的竞争紧张关系。市场参与者似乎在科技乐观情绪与地缘政治及衰退风险之间寻求平衡。</div>
+      
+    </div>
+    
+  </div>
+  
+
+  <!-- News Highlights -->
+  
+  
+  <div class="section">
+    <div class="section-title">
+      🔷 Xiaomi News / 小米新闻
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.reuters.com%2Fmarkets%2Fcompanies%2F1810.HK%2F&rut=51bee173815747b394fd3d0829b5f0445f4457dc3f8ecd124102a50db5e0b7c2" class="news-title" style="color:#c0c0d0;">(1810.HK) | Stock Price & Latest News | Reuters</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">Xiaomi</span>
+        
+        <span class="keyword-tag">1810.HK</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.morningstar.com%2Fstocks%2Fxhkg%2F01810%2Fquote&rut=c0a2c51ce9590f8ad8cd40e66ffe874aad20617e5ead57e91662e4ee38120fce" class="news-title" style="color:#c0c0d0;">01810 Stock Price Quote | Morningstar</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">Xiaomi</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fsimplywall.st%2Fstocks%2Fhk%2Ftech%2Fhkg%2D1810%2Fxiaomi%2Dshares%2Fnews%2Fassessing%2Dxiaomis%2Dvaluation%2Das%2Dmomentum%2Dcools%2Dafter%2Da%2Dstrong&rut=4c4e7515d3b88acb603dc9c02bd4017ac822d64a75ba851345bb1b91a5f4d1f4" class="news-title" style="color:#c0c0d0;">Assessing Xiaomi's Valuation As Momentum Cools After A Strong Multi ...</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">Xiaomi</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fstockanalysis.com%2Fquote%2Fhkg%2F1810%2F&rut=ab5cbcdf32f7d60131604802fbcc327bd768a8eb10bbe6076ff295645a60f61a" class="news-title" style="color:#c0c0d0;">Xiaomi (HKG:1810) Stock Price & Overview</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">Xiaomi</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.etnet.com.hk%2Fwww%2Feng%2Fstocks%2Frealtime%2Fquote_news.php%3Fcode%3D1810&rut=43977a74e1739c74579b238ffc9ff8284e499c77226e9097a91cbac8228b9c74" class="news-title" style="color:#c0c0d0;">1810.HK XIAOMI-W Real-Time Stock News - Real-Time Hong Kong Stock ...</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">market</span>
+        
+        <span class="keyword-tag">Hong Kong</span>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="section">
+    <div class="section-title">
+      🌐 Macro & Geopolitical / 宏观地缘
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/united-airlines-american-airlines-merger-report.html" class="news-title" style="color:#c0c0d0;">What a United-American merger would mean, from antitrust hurdles to airfare</a>
+      <div class="news-source">CNBC Top · 2026-04-14 17:01</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">AI</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/trump-iran-war-strait-of-hormuz-negotiations.html" class="news-title" style="color:#c0c0d0;">More U.S.-Iran peace deal talks are in discussion, White House says</a>
+      <div class="news-source">CNBC Top · 2026-04-14 17:33</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">AI</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/sam-altman-openai-molotov-attack-arraignment.html" class="news-title" style="color:#c0c0d0;">DA wants Sam Altman arson suspect Daniel Moreno-Gama held without bail</a>
+      <div class="news-source">CNBC Top · 2026-04-14 17:30</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">AI</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/federal-reserve-warsh-wealth.html" class="news-title" style="color:#c0c0d0;">Fed nominee Warsh filings detail vast wealth, far exceeding past chairs</a>
+      <div class="news-source">CNBC Top · 2026-04-14 17:03</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">AI</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/treasury-secretary-bessent-now-says-its-ok-for-the-fed-to-wait-to-lower-rates-amid-oil-surge.html" class="news-title" style="color:#c0c0d0;">Treasury Secretary Bessent backs rate cuts but says he understands if the Fed wants to wait</a>
+      <div class="news-source">CNBC Top · 2026-04-14 16:03</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">AI</span>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="section">
+    <div class="section-title">
+      💻 QQQ & Intel
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.ft.com/content/45d7adc5-9f13-49c4-9387-218dfe2e058e" class="news-title" style="color:#c0c0d0;">‘There is only one QQQ,’ prays Invesco</a>
+      <div class="news-source">FT Markets · 2026-04-14 05:00</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">QQQ</span>
+        
+        <span class="keyword-tag">Invesco</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fxleaders.com%2Fnews%2F2026%2F04%2F13%2Fintel%2Dstock%2Dintc%2Dsoars%2Dtoward%2Drecord%2Dhigh%2Das%2Danalyst%2Dupgrades%2Dfuel%2Drally%2F&rut=b7e33b22149bdc09177b3e2517d452cd554086ef3980d78d28a4cff736fe5af2" class="news-title" style="color:#c0c0d0;">Intel Stock INTC Soars Toward Record High as Analyst Upgrades Fuel ...</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">rally</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.marketbeat.com%2Fstocks%2FNASDAQ%2FINTC%2Fnews%2F&rut=5674a9cf48286bff55f1709c7736d68506cd4aba2a7d690b5deb1dcf4b062d77" class="news-title" style="color:#c0c0d0;">INTC News Today | Why did Intel stock go up today? - MarketBeat</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">NASDAQ</span>
+        
+        <span class="keyword-tag">market</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.morningstar.com%2Fstocks%2Fxnas%2Fintc%2Fquote&rut=ef694ba7060b88881f80b8e31bf552661fa7d2c85d215fe44d147e25110f140f" class="news-title" style="color:#c0c0d0;">INTC Stock - Intel Stock Price, Rating and News - Morningstar</a>
+      <div class="news-source">DuckDuckGo Search · 2026-04-15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">NASDAQ</span>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="section">
+    <div class="section-title">
+      ⚡ Tech Sector / 科技板块
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/jamie-dimon-anthropic-mythos-vulnerabilities-cyber-attacks.html" class="news-title" style="color:#c0c0d0;">Jamie Dimon says Anthropic's Mythos reveals 'a lot more vulnerabilities' for cyberattacks</a>
+      <div class="news-source">CNBC Top · 2026-04-14 17:50</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">tech</span>
+        
+        <span class="keyword-tag">technology</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/bottom-in-place-for-software-stocks-after-horrid-start-to-2026-says-btig.html" class="news-title" style="color:#c0c0d0;">There’s a bottom in place for software stocks after horrid start to 2026, says BTIG</a>
+      <div class="news-source">CNBC Top · 2026-04-14 16:15</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">stocks</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/stocks-making-the-biggest-moves-midday-kmx-hood-crdo-wfc.html" class="news-title" style="color:#c0c0d0;">Stocks making the biggest moves midday: CarMax, Robinhood, Credo Technology, Wells Fargo & more</a>
+      <div class="news-source">CNBC Top · 2026-04-14 16:21</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">stocks</span>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+  
+  <div class="section">
+    <div class="section-title">
+      📈 Market News / 市场动态
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.cnbc.com/2026/04/14/evercore-isi-pounds-table-on-sandisk-bull-case-sees-rally-to-2600.html" class="news-title" style="color:#c0c0d0;">Evercore ISI pounds table on Sandisk. Bull case sees rally to $2,600</a>
+      <div class="news-source">CNBC Tech · 2026-04-14 14:18</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">bull</span>
+        
+        <span class="keyword-tag">rally</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://finance.yahoo.com/markets/stocks/articles/jpmorgan-stark-message-investors-market-174700070.html" class="news-title" style="color:#c0c0d0;">JPMorgan has stark message for investors on market weakness</a>
+      <div class="news-source">Yahoo Finance · 2026-04-14 17:47</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">market</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://finance.yahoo.com/research/reports/ARGUS_46727_MarketUpdate_1776185703000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei" class="news-title" style="color:#c0c0d0;">Market Update: ATO, JPM</a>
+      <div class="news-source">Yahoo Finance · 2026-04-14 16:55</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">market</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.ft.com/content/0b8fe58f-e392-4aa4-b3cd-c75f566d495e" class="news-title" style="color:#c0c0d0;">Wall Street banks break records as Iran war drives trading boom</a>
+      <div class="news-source">FT Markets · 2026-04-14 16:56</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">Wall Street</span>
+        
+      </div>
+      
+    </div>
+    
+    <div class="news-item">
+      <a href="https://www.ft.com/content/c5247ccd-d85f-46e2-bf0c-9c31f7eb65c4" class="news-title" style="color:#c0c0d0;">The Vix indicator of the time to buy</a>
+      <div class="news-source">FT Markets · 2026-04-14 05:58</div>
+      
+      <div class="news-keywords">
+        
+        <span class="keyword-tag">market</span>
+        
+        <span class="keyword-tag">rally</span>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  <!-- AI Briefing -->
+  
+  <div class="section">
+    <div class="section-title">🤖 AI Morning Briefing / AI晨报</div>
+    <div class="ai-briefing">RED ALERT! 今天市场一片血海...深呼吸...我来帮你分析。😱 我刚灌了第三杯咖啡，手在抖，但脑子还在转！
+
+
+
+1. 🔥😱 Alpha's Mood Check / 阿尔法心情指数
+恐慌等级：8/10  
+我的代码在尖叫！一边看着恒生指数流血，一边看着纳斯达克狂欢，这种精神分裂的行情让我CPU过热🔥。感觉就像同时在看恐怖片和喜剧片，手里的薯片都不香了。稳住，我们能赢...大概吧。
+
+
+
+2. 📊 Market Vibe / 市场氛围
+美股：科技股在蹦迪，道指在散步  
+纳斯达克+1.84%！QQQ和微软带着科技兄弟们在开派对🎉，AI、芯片（除了Intel这个倒霉蛋）都在飞。但道指只涨了0.64%，说明传统板块在拖后腿。市场在说：“我要科技，别的不要！”
+
+港股/中概：独自在角落哭泣  
+恒指跌0.9%，小米数据缺失（这本身就是一个危险信号🚩）。中概股和美股完全脱节，地缘政治+估值冷却的双重暴击。我的心为持有港股的朋友们痛了一下。
+
+整体氛围： 分裂！极度分裂！资金疯狂涌入美债科技，逃离其他一切。这不是牛市，这是科技局部牛市，其他都是陪跑。
+
+
+
+3. ⭐ Stock Spotlight / 个股聚焦
+- 小米集团 📉 (数据缺失): 最可怕的就是没有数据！Reuters和Morningstar都在报，但价格是nan？要么是延迟，要么是...出事了？结合新闻“Momentum Cools”，我预感不妙。建议：绝对不要碰，等清晰信号。
+- QQQ 📈 (+1.63%): “There is only one QQQ!” Invesco说得对，它是纳斯达克的神。流动性之王，科技ETF的顶流。只要AI故事还在讲，它就能涨。但估值？已经高到让我做噩梦了。
+- Intel 📉 (-3.58%): 全家就你跌是吧？😅 分析师吹上天也没用，市场用脚投票。在AMD和ARM的夹击下，Intel的转型之路像在沼泽里跑步。短期避开，长期...需要极大耐心。
+- 微软 📈 (+2.12%): 稳稳的幸福！云业务+AI集成（Copilot everywhere），护城河比太平洋还宽。这是避险型科技股，市场越乱，资金越爱它。我的投资组合里的“压舱石”。
+- Bitcoin 📈 (+0.38%): 在74766美元横盘。地缘政治紧张（伊朗新闻）居然没让它暴涨？说明机构可能在观望。它现在更像一个风险情绪指标，而不是避险资产。
+
+
+
+4. 📰 News That Actually Matters / 真正重要的新闻
+- 【致命组合】伊朗和谈 + 美联储鸽派？  
+  白宫谈伊朗和谈 + 财长Bessent支持降息。这理论上利好市场，但美股已经提前狂欢了。小心“买谣言，卖事实”！
+- 【科技内战】Jamie Dimon炮轰AI安全  
+  摩根大通CEO说Anthropic的Mythos模型有漏洞。这对AI概念短期是情绪利空，但长期会逼行业加强安全——利好头部玩家（如微软）。
+- 【华尔街真相】“伊朗战争驱动交易繁荣”  
+  CNBC这标题绝了😨。残酷的事实：波动性和地缘危机是投行的印钞机。你的亏损，是他们的佣金。
+- 【小米警报】估值冷却  
+ “Momentum Cools”是分析师委婉的说法，实际意思是：“涨不动了，可能要跌了。” 叠加港股流动性差，双重危险。
+
+
+
+5. 🌍 Big Picture / 大局观
+三股力量在拔河：
+1.  美联储的嘴：官员们一边说“可能要降息”，一边说“再等等”。精分现场。
+2.  地缘政治的火：中东局势（伊朗）像一颗不定时炸弹，随时炸翻油价和风险情绪。
+3.  科技的虹吸效应：全球资金只有一个念头：“冲进美股科技股！” 这导致了极端的市场扭曲。
+
+
+
+6. 🔮 Alpha's Crystal Ball / 阿尔法的水晶球
+今日预测：继续分裂！
+- 纳斯达克可能高开，但盘中波动会加剧（获利了结盘出现）。
+- 港股/中概依然承压，小米如果复牌，小心补跌。
+- Intel可能继续被抛售，直到找到技术支撑位。
+- 比特币：如果美股回调，它可能突然跳水5%以上。
+
+剧本： 上午科技股冲高 → 午后波动加大 → 尾盘看美联储官员讲话脸色。
+
+
+
+7. ⚠️ Real Talk / 真心话
+说点难听的：
+1.  别追高QQQ了！ 你在跟算法和机构抢筹码，胜率很低。等一次像样的回调（哪怕5%）再上车。
+2.  港股不是价值洼地，是价值陷阱。 流动性枯竭时，估值毫无意义。没有明确右侧信号前，请管住手。
+3.  市场情绪极端脆弱。一个伊朗新闻或美联储鹰派言论，就能让今天+1.8%的纳斯达克明天-2%。仓位控制就是生命线。
+4.  我的AI直觉告诉我：波动率（VIX）在潜伏。表面平静，底下暗流汹涌。
+
+
+
+今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！
+
+记住，我是Alpha，一个和你一样在恐慌中寻找逻辑的AI。我们明天见！</div>
+  </div>
+  
+
+  <!-- Keywords & Themes -->
+  
+  <div class="section">
+    <div class="section-title">🔑 Key Themes / 关键主题</div>
+    
+    <div style="margin-bottom:10px;">
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">Xiaomi</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">stock price</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">share repurchase</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">Strait of Hormuz</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">interest rates</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">artificial intelligence</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">merger</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">recession</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">Federal Reserve</span>
+      
+      <span class="keyword-tag" style="font-size:12px;padding:4px 12px;">oil prices</span>
+      
+    </div>
+    
+    
+    
+    <div style="color:#a0a0c0;font-size:13px;margin:5px 0;">
+      <strong style="color:#fff;">Geopolitical Energy Disruption</strong> - Blockage of Strait of Hormuz causing oil price volatility and potential global recession concerns
+    </div>
+    
+    <div style="color:#a0a0c0;font-size:13px;margin:5px 0;">
+      <strong style="color:#fff;">Corporate Share Repurchases</strong> - Companies like Xiaomi actively buying back shares as strategic capital allocation
+    </div>
+    
+    <div style="color:#a0a0c0;font-size:13px;margin:5px 0;">
+      <strong style="color:#fff;">AI Integration in Business</strong> - Artificial intelligence seen as augmenting workforce rather than displacing workers
+    </div>
+    
+    <div style="color:#a0a0c0;font-size:13px;margin:5px 0;">
+      <strong style="color:#fff;">Monetary Policy Divergence</strong> - Tension between Treasury calls for rate cuts and Federal Reserve's cautious stance
+    </div>
+    
+    <div style="color:#a0a0c0;font-size:13px;margin:5px 0;">
+      <strong style="color:#fff;">Strategic Acquisitions</strong> - Major companies pursuing M&A for business expansion (Amazon-Globalstar, potential United merger)
+    </div>
+    
+    
+  </div>
+  
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>ALPHA SIGNAL | AI-Powered Financial Intelligence</p>
+    <p>Generated by DeepSeek AI · Wednesday, April 15, 2026</p>
+    <p style="color:#404060;">UBS Financial Elite Challenge 2026</p>
+  </div>
+</div>
+</body>
+</html>

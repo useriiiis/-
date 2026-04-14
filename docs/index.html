@@ -8,16 +8,20 @@
 <style>
 :root{--bg:#0a0a0f;--bg2:#12121a;--card:#1a1a2e;--border:#1e1e2e;--border2:#2a2a3a;--txt:#fff;--txt2:#c0c0d0;--muted:#707090;--red:#e63946;--green:#00d26a;--blue:#4361ee;--yellow:#ffd60a;--purple:#7209b7}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-height:100vh}
-.nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
-.logo{font-size:1.2rem;font-weight:800;color:var(--txt);letter-spacing:2px}.logo span{color:var(--red)}
-.nav-links{display:flex;gap:4px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.8rem;font-weight:500;transition:.2s;cursor:pointer}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-height:100vh;display:flex}
+.sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);padding:1.5rem 1rem;z-index:1000;transition:transform .3s ease;display:flex;flex-direction:column}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding:0 .5rem}
+.logo{font-size:1.1rem;font-weight:800;color:var(--txt);letter-spacing:1px}.logo span{color:var(--red)}
+.nav-links{display:flex;flex-direction:column;gap:8px;list-style:none;flex:1}
+.nav-links a{color:var(--muted);text-decoration:none;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:500;transition:.2s;cursor:pointer;display:flex;align-items:center;gap:10px}
 .nav-links a:hover,.nav-links a.active{color:var(--txt);background:var(--card)}
-.status{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted)}
+.status{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted);padding:1rem .5rem}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:p 2s infinite}
 @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
-.main{padding:1.5rem 2rem;max-width:1500px;margin:0 auto}
+.main{padding:2rem;margin-left:240px;flex:1;max-width:1200px;width:calc(100% - 240px)}
+.mobile-header{display:none}
+.overlay{display:none}
+.close-btn{display:none;background:none;border:none;color:var(--txt);font-size:1.5rem;cursor:pointer}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 .g4{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem}
@@ -57,21 +61,45 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 .refresh-btn{background:var(--card);border:1px solid var(--border);color:var(--txt2);padding:6px 14px;border-radius:8px;font-size:.8rem;cursor:pointer;transition:.2s}
 .refresh-btn:hover{background:var(--border2);color:var(--txt)}
 @media(max-width:1100px){.g4{grid-template-columns:1fr 1fr}}
-@media(max-width:800px){.g2,.g3,.g4{grid-template-columns:1fr}.nav{padding:0 1rem}.main{padding:1rem}.nav-links{display:none}}
+@media(max-width:900px){
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:1rem;margin-top:60px;width:100%}
+  .mobile-header{display:flex;position:fixed;top:0;left:0;width:100%;height:60px;background:var(--bg2);border-bottom:1px solid var(--border);align-items:center;justify-content:space-between;padding:0 1rem;z-index:999}
+  .menu-btn{background:none;border:none;color:var(--txt);font-size:1.5rem;cursor:pointer}
+  .close-btn{display:block}
+  .overlay.open{display:block;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.5);z-index:998}
+}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="logo"><span>◆</span> ALPHA</div>
+  <div class="status"><div class="dot"></div><span id="ts-mobile">Live</span></div>
+</div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+  </div>
   <ul class="nav-links">
-    <li><a class="active" onclick="show('dash')">Dashboard</a></li>
-    <li><a onclick="show('news')">News</a></li>
-    <li><a onclick="show('briefing')">Alpha (DeepSeek)</a></li>
-    <li><a onclick="show('sigma')">Sigma (Gemini)</a></li>
-    <li><a onclick="show('analysis')">Stock Analysis</a></li>
+    <li><a class="active" onclick="show('dash'); toggleSidebar()">📊 Dashboard</a></li>
+    <li><a onclick="show('news'); toggleSidebar()">📰 News</a></li>
+    <li><a onclick="show('briefing'); toggleSidebar()">🤖 Alpha (DeepSeek)</a></li>
+    <li><a onclick="show('sigma'); toggleSidebar()">♟️ Sigma (Gemini)</a></li>
+    <li><a onclick="show('analysis'); toggleSidebar()">📈 Stock Analysis</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
-</nav>
+</aside>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <div class="main">
   <!-- Dashboard -->
@@ -199,6 +227,13 @@ const RSS_FEEDS=[
 ];
 
 let cachedData={};
+
+function toggleSidebar(){
+  if(window.innerWidth<=900){
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+}
 
 function show(p){
   ['dash','news','briefing','sigma','analysis'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
@@ -452,15 +487,21 @@ function fmt(n){if(!n)return'0';if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6
 
 async function refreshAll(){
   document.getElementById('ts').textContent='Refreshing...';
+  document.getElementById('ts-mobile').textContent='Refreshing...';
   await Promise.all([loadStocks(),loadIndices(),loadNews()]);
-  document.getElementById('ts').textContent='Live · '+new Date().toLocaleTimeString();
+  const t = 'Live · '+new Date().toLocaleTimeString();
+  document.getElementById('ts').textContent=t;
+  document.getElementById('ts-mobile').textContent=t;
 }
 
 async function init(){
   document.getElementById('ts').textContent='Loading...';
+  document.getElementById('ts-mobile').textContent='Loading...';
   await loadAI();
   await Promise.all([loadStocks(),loadIndices(),loadNews(),loadAnalysis()]);
-  document.getElementById('ts').textContent='Live · '+new Date().toLocaleTimeString();
+  const t = 'Live · '+new Date().toLocaleTimeString();
+  document.getElementById('ts').textContent=t;
+  document.getElementById('ts-mobile').textContent=t;
 }
 init();
 </script>

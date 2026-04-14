@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sigma (Gemini) | Alpha Signal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
+    <ul class="nav-links">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/analysis">AI Analysis</a></li>
+      <li><a href="/valuation">Valuation</a></li>
+      <li><a href="/screener">Screener</a></li>
+      <li><a href="/charts">Charts</a></li>
+      <li><a href="/competition">Competition</a></li>
+      <li><a href="/sigma" class="active">Sigma (Gemini)</a></li>
+    </ul>
+    <div class="nav-status"><div class="status-dot"></div><span>Sigma AI</span></div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1>Sigma Institutional Briefing</h1>
+      <p>Elite quantitative strategy & market analysis <span class="ai-badge" style="border-color:var(--accent-green);color:var(--accent-green);">🤖 Gemini AI</span></p>
+    </div>
+
+    <!-- Mood -->
+    <div class="card" style="margin-bottom:1rem;background:linear-gradient(135deg,var(--bg-card),#0a1a10);text-align:center;padding:2rem;">
+      <div id="sigma-mood-emoji" style="font-size:3rem;margin-bottom:0.5rem;">...</div>
+      <div id="sigma-mood-vibe" style="color:var(--text-muted);font-style:italic;margin-bottom:1rem;">Loading mood...</div>
+      <div id="sigma-mood-badge" style="display:inline-block;padding:4px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;letter-spacing:1px;background:var(--bg-secondary);color:var(--text-muted);">LOADING</div>
+    </div>
+
+    <!-- Briefing -->
+    <div class="card">
+      <div class="card-title"><span class="icon">♟️</span> Sigma's Market View</div>
+      <div class="briefing-content" id="sigma-brief-text" style="min-height:300px;">
+        Loading Sigma briefing...
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadSigma() {
+      try {
+        const resp = await fetch('/api/dashboard');
+        const D = await resp.json();
+        
+        const sm = D.mood_sigma || {};
+        document.getElementById('sigma-mood-emoji').textContent = sm.emoji || '♟️';
+        document.getElementById('sigma-mood-vibe').textContent = '"' + (sm.vibe || 'Analyzing...') + '"';
+        
+        const smb = document.getElementById('sigma-mood-badge');
+        smb.textContent = 'MOOD: ' + (sm.mood || 'unknown').toUpperCase();
+        
+        const smc = {
+          'euphoric': '#0a3e1a;color:#00ff88',
+          'calculated': '#1a2e1a;color:#00d26a',
+          'bored': '#1a1a2e;color:#4361ee',
+          'predatory': '#2e2a0a;color:#ffd60a',
+          'clinical': '#2e0a0f;color:#e63946'
+        };
+        smb.style.cssText = 'display:inline-block;padding:4px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;letter-spacing:1px;background:' + (smc[sm.mood] || smc.calculated);
+        
+        document.getElementById('sigma-brief-text').textContent = D.briefing_sigma || 'No Sigma briefing available. Run the daily pipeline first.';
+      } catch (err) {
+        document.getElementById('sigma-brief-text').textContent = 'Error loading Sigma data: ' + err.message;
+      }
+    }
+    
+    loadSigma();
+  </script>
+</body>
+</html>
