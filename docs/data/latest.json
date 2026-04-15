@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-15T02:22:41.002967",
+  "timestamp": "2026-04-15T17:35:45.028872",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
@@ -7,137 +7,137 @@
       "price": NaN,
       "change": NaN,
       "change_pct": NaN,
-      "volume": 108585240,
+      "volume": 105370643,
       "high": NaN,
       "low": NaN,
       "open": NaN,
-      "prev_close": 30.66,
-      "market_cap": 798198661120,
-      "pe_ratio": 17.251396,
+      "prev_close": 30.88,
+      "market_cap": 798632509440,
+      "pe_ratio": 17.26257,
       "52w_high": 61.45,
       "52w_low": 30.26,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "QQQ": {
       "ticker": "QQQ",
       "name": "Invesco QQQ Trust, Series 1",
-      "price": 626.41,
-      "change": 9.02,
-      "change_pct": 1.46,
-      "volume": 35549894,
-      "high": 627.7,
-      "low": 620.1,
-      "open": 620.27,
-      "prev_close": 617.39,
-      "market_cap": 246241755136,
-      "pe_ratio": 33.093513,
+      "price": 633.41,
+      "change": 4.81,
+      "change_pct": 0.76,
+      "volume": 28821856,
+      "high": 634.57,
+      "low": 628.2,
+      "open": 629.12,
+      "prev_close": 628.6,
+      "market_cap": 248991514624,
+      "pe_ratio": 33.463066,
       "52w_high": 637.01,
       "52w_low": 427.93,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "Intel": {
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "price": 62.8,
-      "change": -2.38,
-      "change_pct": -3.65,
-      "volume": 84074239,
-      "high": 65.18,
-      "low": 62.09,
-      "open": 65.16,
-      "prev_close": 65.18,
-      "market_cap": 315319451648,
+      "price": 64.28,
+      "change": 0.47,
+      "change_pct": 0.73,
+      "volume": 65577568,
+      "high": 65.84,
+      "low": 62.88,
+      "open": 63.8,
+      "prev_close": 63.81,
+      "market_cap": 322745532416,
       "pe_ratio": "N/A",
-      "52w_high": 65.65,
+      "52w_high": 65.84,
       "52w_low": 18.25,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "微软": {
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
-      "price": 390.55,
-      "change": 6.18,
-      "change_pct": 1.61,
-      "volume": 23370402,
-      "high": 394.69,
-      "low": 386.52,
-      "open": 387.84,
-      "prev_close": 384.37,
-      "market_cap": 2902715006976,
-      "pe_ratio": 24.42464,
+      "price": 409.82,
+      "change": 16.71,
+      "change_pct": 4.25,
+      "volume": 24030294,
+      "high": 409.94,
+      "low": 396.73,
+      "open": 397.85,
+      "prev_close": 393.11,
+      "market_cap": 3045953372160,
+      "pe_ratio": 25.613888,
       "52w_high": 555.45,
       "52w_low": 355.67,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 74681.53,
-      "change": 196.89,
-      "change_pct": 0.26,
-      "volume": 60326948864,
-      "high": 75886.46,
-      "low": 74145.92,
-      "open": 74442.23,
-      "prev_close": 74484.64,
-      "market_cap": 1494811803648,
+      "price": 74120.87,
+      "change": -60.74,
+      "change_pct": -0.08,
+      "volume": 39901147136,
+      "high": 74765.88,
+      "low": 73625.29,
+      "open": 74175.23,
+      "prev_close": 74181.61,
+      "market_cap": 1484787941376,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 60074.203,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     }
   },
   "indices": {
     "标普500": {
       "ticker": "^GSPC",
       "name": "S&P 500",
-      "price": 6954.14,
-      "change": 67.9,
-      "change_pct": 0.99,
-      "volume": 1699284000,
-      "high": 6965.23,
-      "low": 6905.17,
-      "open": 6910.2,
-      "prev_close": 6886.24,
+      "price": 7000.55,
+      "change": 33.17,
+      "change_pct": 0.48,
+      "volume": 1536632000,
+      "high": 7001.92,
+      "low": 6967.13,
+      "open": 6978.17,
+      "prev_close": 6967.38,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 7002.28,
       "52w_low": 5101.63,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "纳斯达克": {
       "ticker": "^IXIC",
       "name": "NASDAQ Composite",
-      "price": 23563.41,
-      "change": 379.67,
-      "change_pct": 1.64,
-      "volume": 5633437000,
-      "high": 23623.88,
-      "low": 23331.5,
-      "open": 23331.5,
-      "prev_close": 23183.74,
+      "price": 23881.7,
+      "change": 242.62,
+      "change_pct": 1.03,
+      "volume": 5907363000,
+      "high": 23936.24,
+      "low": 23672.26,
+      "open": 23688.12,
+      "prev_close": 23639.08,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 24019.99,
       "52w_low": 15685.33,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 25660.85,
-      "change": -232.69,
-      "change_pct": -0.9,
-      "volume": 2288800000,
-      "high": 25717.38,
-      "low": 25508.53,
-      "open": 25708.64,
-      "prev_close": 25893.54,
+      "price": 25872.32,
+      "change": 211.47,
+      "change_pct": 0.82,
+      "volume": 2707100000,
+      "high": 25995.09,
+      "low": 25668.53,
+      "open": 25929.4,
+      "prev_close": 25660.85,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 28056.1,
       "52w_low": 20868.36,
-      "date": "2026-04-13"
+      "date": "2026-04-14"
     },
     "沪深300": {
       "ticker": "000300.SS",
@@ -145,447 +145,376 @@
       "price": NaN,
       "change": NaN,
       "change_pct": NaN,
-      "volume": 3290164016,
+      "volume": 2988980816,
       "high": NaN,
       "low": NaN,
       "open": NaN,
-      "prev_close": 4646.16,
+      "prev_close": 4701.28,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 4701.2837,
+      "52w_high": 4731.273,
       "52w_low": 3458.44,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     },
     "道琼斯": {
       "ticker": "^DJI",
       "name": "Dow Jones Industrial Average",
-      "price": 48496.55,
-      "change": 278.3,
-      "change_pct": 0.58,
-      "volume": 308145133,
-      "high": 48553.7,
-      "low": 48192.3,
-      "open": 48272.03,
-      "prev_close": 48218.25,
+      "price": 48385.0,
+      "change": -150.99,
+      "change_pct": -0.31,
+      "volume": 290819692,
+      "high": 48709.01,
+      "low": 48281.62,
+      "open": 48549.14,
+      "prev_close": 48535.99,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 50512.79,
       "52w_low": 37830.66,
-      "date": "2026-04-14"
+      "date": "2026-04-15"
     }
   },
   "news": {
-    "xiaomi": [
-      {
-        "title": "(1810.HK) | Stock Price & Latest News | Reuters",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.reuters.com%2Fmarkets%2Fcompanies%2F1810.HK%2F&rut=51bee173815747b394fd3d0829b5f0445f4457dc3f8ecd124102a50db5e0b7c2"
-      },
-      {
-        "title": "01810 Stock Price Quote | Morningstar",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.morningstar.com%2Fstocks%2Fxhkg%2F01810%2Fquote&rut=c0a2c51ce9590f8ad8cd40e66ffe874aad20617e5ead57e91662e4ee38120fce"
-      },
-      {
-        "title": "Assessing Xiaomi's Valuation As Momentum Cools After A Strong Multi ...",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fsimplywall.st%2Fstocks%2Fhk%2Ftech%2Fhkg%2D1810%2Fxiaomi%2Dshares%2Fnews%2Fassessing%2Dxiaomis%2Dvaluation%2Das%2Dmomentum%2Dcools%2Dafter%2Da%2Dstrong&rut=4c4e7515d3b88acb603dc9c02bd4017ac822d64a75ba851345bb1b91a5f4d1f4"
-      },
-      {
-        "title": "Xiaomi (HKG:1810) Stock Price & Overview",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fstockanalysis.com%2Fquote%2Fhkg%2F1810%2F&rut=ab5cbcdf32f7d60131604802fbcc327bd768a8eb10bbe6076ff295645a60f61a"
-      },
-      {
-        "title": "1810.HK XIAOMI-W Real-Time Stock News - Real-Time Hong Kong Stock ...",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.etnet.com.hk%2Fwww%2Feng%2Fstocks%2Frealtime%2Fquote_news.php%3Fcode%3D1810&rut=43977a74e1739c74579b238ffc9ff8284e499c77226e9097a91cbac8228b9c74"
-      },
-      {
-        "title": "1810-HK: Xiaomi Corp - Stock Price, Quote and News - CNBC",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.cnbc.com%2Fquotes%2F1810%2DHK&rut=cb3812e14d682590bfe52e09738e5de0e32d3281b800065287ced0fdbe5db753"
-      },
-      {
-        "title": "1810 - Xiaomi Corporation (SEHK) - Share Price and News - Fintel",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ffintel.io%2Fs%2Fhk%2F1810&rut=67bd815dc0449e380b91f4eb3a2caaa158befec90ce8a2340835275f2cad2933"
-      },
-      {
-        "title": "Xiaomi Corporation (1810.HK) stock price, news, quote and history ...",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fsg.finance.yahoo.com%2Fquote%2F1810.HK%2Flatest%2Dnews%2F&rut=5119019e7f6974b0fac7d5bd03b446dbad4e499e1d7aa6643aa149375c7a93d6"
-      },
-      {
-        "title": "Xiaomi Corporation (1810/HKD) Stock Forecast for 2026,",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ftradersunion.com%2Fcurrencies%2Fforecast%2F1810%2Dhkd%2F&rut=d4696df3bbc281337de577d2d3d8bdef035122bb35eb180d34dee0545a5043f2"
-      },
-      {
-        "title": "Key facts: Xiaomi repurchases 6M shares for HK$209.2M ... - TradingView",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.tradingview.com%2Fnews%2Ftradingview%3A4afad4fca94f3%3A0%2Dkey%2Dfacts%2Dxiaomi%2Drepurchases%2D6m%2Dshares%2Dfor%2Dhk%2D209%2D2m%2Dchina%2Dmandates%2Dmanual%2Ddoor%2Dhandles%2F&rut=2e3c4eeb0f14c93f33c466d3391dc779b1cd100a88c86cf57d9d7518bd8dc8c8"
-      }
-    ],
+    "xiaomi": [],
     "macro": [
       {
-        "title": "What a United-American merger would mean, from antitrust hurdles to airfare",
+        "title": "Trump threatens to fire Powell if the Fed chair doesn't leave office on his own",
         "source": "CNBC Top",
-        "published": "2026-04-14 17:01",
-        "link": "https://www.cnbc.com/2026/04/14/united-airlines-american-airlines-merger-report.html"
+        "published": "2026-04-15 14:43",
+        "link": "https://www.cnbc.com/2026/04/15/trump-threatens-to-fire-powell-if-the-fed-chair-doesnt-leave-office-on-his-own.html"
       },
       {
-        "title": "More U.S.-Iran peace deal talks are in discussion, White House says",
+        "title": "Airline stocks rebounded as oil pulled back. Why the rally may not last",
         "source": "CNBC Top",
-        "published": "2026-04-14 17:33",
-        "link": "https://www.cnbc.com/2026/04/14/trump-iran-war-strait-of-hormuz-negotiations.html"
+        "published": "2026-04-15 17:10",
+        "link": "https://www.cnbc.com/2026/04/15/airlines-rebounded-as-crude-oil-pulled-back-the-rally-may-not-last.html"
       },
       {
-        "title": "DA wants Sam Altman arson suspect Daniel Moreno-Gama held without bail",
+        "title": "FIFA President Infantino: Iran team is 'coming for sure' to 2026 World Cup in U.S.",
         "source": "CNBC Top",
-        "published": "2026-04-14 17:30",
-        "link": "https://www.cnbc.com/2026/04/14/sam-altman-openai-molotov-attack-arraignment.html"
+        "published": "2026-04-15 17:27",
+        "link": "https://www.cnbc.com/2026/04/15/fifa-president-iran-team-coming-for-sure-to-2026-world-cup-in-us.html"
       },
       {
-        "title": "Prediction markets will grow to $1 trillion by 2030, Bernstein estimates",
+        "title": "Jeanine Pirro pursues Fed pressure while clock ticks on her appeal in Powell probe",
         "source": "CNBC Top",
-        "published": "2026-04-14 18:12",
-        "link": "https://www.cnbc.com/2026/04/14/prediction-markets-will-grow-to-1-trillion-by-2030-bernstein-says.html"
+        "published": "2026-04-15 16:27",
+        "link": "https://www.cnbc.com/2026/04/15/fed-justice-jeanine-pirro-jerome-powell-investigation.html"
       },
       {
-        "title": "Fed nominee Warsh filings detail vast wealth, far exceeding past chairs",
+        "title": "Anthropic's Mythos isn't threatening bitcoin. The real AI risk is at crypto exchanges",
         "source": "CNBC Top",
-        "published": "2026-04-14 18:02",
-        "link": "https://www.cnbc.com/2026/04/14/federal-reserve-warsh-wealth.html"
+        "published": "2026-04-15 16:26",
+        "link": "https://www.cnbc.com/2026/04/15/anthropics-mythos-isnt-threatening-bitcoin-the-real-ai-risk-is-at-crypto-exchanges-.html"
       },
       {
-        "title": "Treasury Secretary Bessent backs rate cuts but says he understands if the Fed wants to wait",
+        "title": "Struggling shoe retailer Allbirds makes bizarre pivot from shoes to AI, stock explodes more than 700%",
         "source": "CNBC Top",
-        "published": "2026-04-14 16:03",
-        "link": "https://www.cnbc.com/2026/04/14/treasury-secretary-bessent-now-says-its-ok-for-the-fed-to-wait-to-lower-rates-amid-oil-surge.html"
+        "published": "2026-04-15 17:14",
+        "link": "https://www.cnbc.com/2026/04/15/allbirds-bird-stock-shoes-ai.html"
       },
       {
-        "title": "David Einhorn signals caution as his hedge fund Greenlight prioritizes capital protection",
+        "title": "SantaCon promoter arrested for charity fraud, New York federal prosecutors say",
         "source": "CNBC Top",
-        "published": "2026-04-14 16:35",
-        "link": "https://www.cnbc.com/2026/04/14/david-einhorn-signals-caution-as-his-hedge-fund-greenlight-prioritizes-capital-protection.html"
+        "published": "2026-04-15 17:19",
+        "link": "https://www.cnbc.com/2026/04/15/santacon-charity-fraud-new-york-doj.html"
       },
       {
-        "title": "Trump says gas prices 'could be the same' or 'a little bit higher' by the midterms",
-        "source": "CNBC Top",
-        "published": "2026-04-14 14:01",
-        "link": "https://www.cnbc.com/2026/04/14/trump-gas-prices-midterms-iran-war.html"
+        "title": "Chip giants AMD, Qualcomm and Arm back driverless car startup Wayve with fresh funds",
+        "source": "CNBC Tech",
+        "published": "2026-04-15 13:00",
+        "link": "https://www.cnbc.com/2026/04/15/wayve-fund-raise-amd-qualcomm-arm.html"
       },
       {
-        "title": "Global recession is inevitable if Strait of Hormuz stays shut, says Citadel's Ken Griffin",
-        "source": "CNBC Top",
-        "published": "2026-04-14 16:04",
-        "link": "https://www.cnbc.com/2026/04/14/citadels-ken-griffin-global-recession-inevitable-if-strait-of-hormuz-stays-shut.html"
+        "title": "OpenAI pulls back from Stargate Norway data center deal as Microsoft takes over",
+        "source": "CNBC Tech",
+        "published": "2026-04-15 12:29",
+        "link": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html"
       },
       {
-        "title": "CEOs are betting AI will augment work rather than displace all workers",
-        "source": "CNBC Top",
-        "published": "2026-04-14 16:04",
-        "link": "https://www.cnbc.com/2026/04/14/ceos-are-betting-ai-will-augment-work-rather-than-displace-all-workers.html"
+        "title": "Why are workers so worried about AI? Listen to how business leaders talk about it",
+        "source": "CNBC Tech",
+        "published": "2026-04-15 12:00",
+        "link": "https://www.cnbc.com/2026/04/15/ai-work-jobs-layoffs-unemployment-fears.html"
       }
     ],
     "qqq_intel": [
       {
-        "title": "‘There is only one QQQ,’ prays Invesco",
-        "source": "FT Markets",
-        "published": "2026-04-14 05:00",
-        "link": "https://www.ft.com/content/45d7adc5-9f13-49c4-9387-218dfe2e058e"
+        "title": "Meta commits to 1 gigawatt of custom chips with Broadcom as Hock Tan decides to leave board",
+        "source": "CNBC Tech",
+        "published": "2026-04-15 01:11",
+        "link": "https://www.cnbc.com/2026/04/14/meta-commits-to-one-gigawatt-of-custom-chips-with-broadcom-as-hock-tan-agrees-to-leave-board.html"
       },
       {
-        "title": "Intel Investors Just Got Great News for 2026 - The Motley Fool",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fool.com%2Finvesting%2F2025%2F12%2F30%2Fintel%2Dinvestors%2Djust%2Dgot%2Dgreat%2Dnews%2Dfor%2D2026%2F&rut=c7d0e48e3c035f0e606a1566cc63c822ee6aeeef7fe9ecf47581f43737aeedd8"
-      },
-      {
-        "title": "Intel Stock INTC Soars Toward Record High as Analyst Upgrades Fuel ...",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fxleaders.com%2Fnews%2F2026%2F04%2F13%2Fintel%2Dstock%2Dintc%2Dsoars%2Dtoward%2Drecord%2Dhigh%2Das%2Danalyst%2Dupgrades%2Dfuel%2Drally%2F&rut=b7e33b22149bdc09177b3e2517d452cd554086ef3980d78d28a4cff736fe5af2"
-      },
-      {
-        "title": "INTC Stock - Intel Stock Price, Rating and News - Morningstar",
-        "source": "DuckDuckGo Search",
-        "published": "2026-04-15",
-        "link": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.morningstar.com%2Fstocks%2Fxnas%2Fintc%2Fquote&rut=ef694ba7060b88881f80b8e31bf552661fa7d2c85d215fe44d147e25110f140f"
+        "title": "Stock market today: S&P 500, Nasdaq rise, Dow falls amid hopes for US-Iran talks",
+        "source": "Yahoo Finance",
+        "published": "2026-04-14 23:11",
+        "link": "https://finance.yahoo.com/markets/article/stock-market-today-sp-500-nasdaq-rise-dow-falls-amid-hopes-for-us-iran-talks-231104387.html"
       }
     ],
     "tech": [
       {
-        "title": "Jamie Dimon says Anthropic's Mythos reveals 'a lot more vulnerabilities' for cyberattacks",
+        "title": "Tesla shares climb more than 6% after analyst upgrade, software updates",
         "source": "CNBC Top",
-        "published": "2026-04-14 17:50",
-        "link": "https://www.cnbc.com/2026/04/14/jamie-dimon-anthropic-mythos-vulnerabilities-cyber-attacks.html"
-      },
-      {
-        "title": "There’s a bottom in place for software stocks after horrid start to 2026, says BTIG",
-        "source": "CNBC Top",
-        "published": "2026-04-14 16:15",
-        "link": "https://www.cnbc.com/2026/04/14/bottom-in-place-for-software-stocks-after-horrid-start-to-2026-says-btig.html"
-      },
-      {
-        "title": "Stocks making the biggest moves midday: CarMax, Robinhood, Credo Technology, Wells Fargo & more",
-        "source": "CNBC Top",
-        "published": "2026-04-14 16:21",
-        "link": "https://www.cnbc.com/2026/04/14/stocks-making-the-biggest-moves-midday-kmx-hood-crdo-wfc.html"
+        "published": "2026-04-15 17:27",
+        "link": "https://www.cnbc.com/2026/04/15/tesla-tsla-stock-analyst-upgrade-software-updates.html"
       }
     ],
     "market": [
       {
-        "title": "Evercore ISI pounds table on Sandisk. Bull case sees rally to $2,600",
+        "title": "S&P 500 ticks higher as benchmark approaches all-time high: Live updates",
+        "source": "CNBC Top",
+        "published": "2026-04-15 17:13",
+        "link": "https://www.cnbc.com/2026/04/14/stock-market-today-live-updates.html"
+      },
+      {
+        "title": "Stocks making the biggest moves midday: DoorDash, Robinhood, Broadcom, Sandisk & more",
+        "source": "CNBC Top",
+        "published": "2026-04-15 16:58",
+        "link": "https://www.cnbc.com/2026/04/15/stocks-making-the-biggest-moves-midday-dash-hood-avgo-sndk.html"
+      },
+      {
+        "title": "Don't look now, but Target is outperforming the S&P 500. Trading the pop using options",
+        "source": "CNBC Top",
+        "published": "2026-04-15 15:11",
+        "link": "https://www.cnbc.com/2026/04/15/target-is-suddenly-outperforming-the-sp-500-trade-the-pop-using-options.html"
+      },
+      {
+        "title": "Jim Cramer says the stock market is so overbought that we have to tread carefully",
         "source": "CNBC Tech",
-        "published": "2026-04-14 14:18",
-        "link": "https://www.cnbc.com/2026/04/14/evercore-isi-pounds-table-on-sandisk-bull-case-sees-rally-to-2600.html"
+        "published": "2026-04-15 15:43",
+        "link": "https://www.cnbc.com/2026/04/15/jim-cramer-says-the-stock-market-is-so-overbought-that-we-have-to-tread-carefully.html"
       },
       {
-        "title": "Market Update: ATO, JPM",
+        "title": "JPMorgan has stark message for investors on market weakness",
         "source": "Yahoo Finance",
-        "published": "2026-04-14 16:55",
-        "link": "https://finance.yahoo.com/research/reports/ARGUS_46727_MarketUpdate_1776185703000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei"
+        "published": "2026-04-14 17:47",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-stark-message-investors-market-174700070.html"
       },
       {
-        "title": "Wall Street banks break records as Iran war drives trading boom",
+        "title": "Stock Market Today: Dow Slips Amid Trump Threat Vs. Powell; Nike Climbs (Live Coverage)",
+        "source": "Yahoo Finance",
+        "published": "2026-04-15 17:05",
+        "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-us-iran-peace-talks/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "Goldman’s Bitcoin ETF Push Signals Wall Street Taming of Crypto",
+        "source": "Yahoo Finance",
+        "published": "2026-04-15 17:06",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/goldman-bitcoin-etf-push-signals-170600444.html"
+      },
+      {
+        "title": "Largest US banks spend record $33bn on share buybacks",
         "source": "FT Markets",
-        "published": "2026-04-14 16:56",
-        "link": "https://www.ft.com/content/0b8fe58f-e392-4aa4-b3cd-c75f566d495e"
+        "published": "2026-04-15 13:40",
+        "link": "https://www.ft.com/content/67d444ab-bfcf-49a1-ae46-ff6e78bc8c64"
       },
       {
-        "title": "The Vix indicator of the time to buy",
+        "title": "Banks’ soaring exposure to trading firms creating ‘inherent fragility’, warns S&P",
         "source": "FT Markets",
-        "published": "2026-04-14 05:58",
-        "link": "https://www.ft.com/content/c5247ccd-d85f-46e2-bf0c-9c31f7eb65c4"
+        "published": "2026-04-15 10:01",
+        "link": "https://www.ft.com/content/942b091b-add3-4ffd-911a-6a9d9738f2ea"
       },
       {
-        "title": "Chinese Investors With Few Options Turn to Dividends",
-        "source": "WSJ Markets",
-        "published": "2025-01-27 10:30",
-        "link": "https://www.wsj.com/articles/chinese-investors-with-few-options-turn-to-dividends-ad31dcc4?mod=rss_markets_main"
-      },
-      {
-        "title": "Heard on the Street's Stock-Picking Series",
-        "source": "WSJ Markets",
-        "published": "2025-01-27 03:33",
-        "link": "https://www.wsj.com/articles/heard-on-the-streets-stock-picking-series-98f04640?mod=rss_markets_main"
+        "title": "Defence spending won’t solve Europe’s growth problem",
+        "source": "FT Markets",
+        "published": "2026-04-15 05:30",
+        "link": "https://www.ft.com/content/0ec8b79b-098b-4566-a8a9-f54e66fdca56"
       }
     ]
   },
   "sentiment": {
-    "xiaomi": {
-      "overall_sentiment": "mixed",
-      "sentiment_score": 0.15,
-      "confidence": 0.75,
-      "key_positive_factors": [
-        "Share repurchase program indicating management confidence",
-        "Analyst price targets suggesting potential upside to HK$37.47 by end of 2026",
-        "Company remains on investor radar with active trading"
-      ],
-      "key_negative_factors": [
-        "Recent price decline of -7.46% week-over-week",
-        "Cooling momentum after strong multi-period performance",
-        "Long-term forecast shows significant decline to HK$6.82 by 2029"
-      ],
-      "short_term_outlook": "Cautiously optimistic with near-term support from buybacks but facing momentum challenges",
-      "analysis_en": "The sentiment surrounding Xiaomi is mixed with conflicting signals. Positive factors include the company's recent share repurchase of 6 million shares for HK$209.2 million, which typically signals management confidence in undervaluation. Analyst forecasts suggest potential upside to HK$37.47 by end of 2026. However, these positives are tempered by recent price weakness (-7.46% weekly decline) and cooling momentum after previous strong performance. The extremely bearish long-term forecast of HK$6.82 by 2029 creates significant uncertainty, though such distant projections carry lower reliability. The mixed signals suggest a company in transition, with near-term support from corporate actions but facing market skepticism about sustained growth.",
-      "analysis_cn": "小米的市場情緒呈現矛盾狀態。積極因素包括公司近期以2.092億港元回購600萬股，這通常表明管理層對公司價值被低估的信心。分析師預測顯示，到2026年底股價可能達到37.47港元。然而，這些積極信號被近期股價疲軟（周跌幅7.46%）和前期強勁表現後的動能冷卻所抵消。到2029年股價可能跌至6.82港元的極度悲觀長期預測帶來了重大不確定性，儘管這種遠期預測的可靠性較低。這些矛盾信號表明公司正處於轉型期，短期內有公司行動支撐，但市場對其持續增長能力存在疑慮。"
-    },
     "qqq_intel": {
-      "overall_sentiment": "bullish",
-      "sentiment_score": 0.75,
-      "confidence": 0.85,
+      "overall_sentiment": "neutral",
+      "sentiment_score": 0.05,
+      "confidence": 0.65,
       "key_positive_factors": [
-        "analyst upgrades driving stock toward record highs",
-        "strategic partnerships boosting confidence",
-        "projected strong performance in 2025-2026",
-        "stock price surge of nearly 5%"
+        "Meta's commitment to custom chip deployment with Broadcom suggests potential tech sector growth",
+        "Nasdaq and S&P 500 rising indicates positive market momentum"
       ],
       "key_negative_factors": [
-        "years of historical underperformance mentioned",
-        "potential market confusion about QQQ branding"
+        "Dow Jones falling shows mixed market performance",
+        "Limited direct information about Intel's specific performance"
       ],
-      "short_term_outlook": "Positive momentum expected to continue as Intel demonstrates execution on turnaround strategy, with analyst support and investor optimism driving near-term gains.",
-      "analysis_en": "The sentiment surrounding Intel (INTC) appears strongly bullish based on the provided articles. Multiple sources highlight significant stock price appreciation (INTC+4.89%), analyst upgrades fueling movement toward record highs, and strategic partnerships generating renewed confidence. The Motley Fool article projects satisfaction for investors looking back at 2025, suggesting expectations of accelerated performance after past struggles. While there's mention of historical underperformance and some branding confusion with QQQ, the dominant narrative focuses on current positive catalysts and future growth prospects.",
-      "analysis_cn": "根据提供的文章，英特尔（INTC）的市场情绪明显看涨。多个消息来源强调了显著的股价上涨（INTC+4.89%）、分析师评级上调推动股价向历史高点迈进，以及战略合作伙伴关系重振市场信心。《Motley Fool》的文章预测投资者将对2025年的表现感到满意，暗示在经历过去几年的低迷后，公司业绩有望加速增长。尽管提到了历史上的表现不佳以及与QQQ品牌相关的潜在混淆，但主导叙事仍集中在当前的积极催化剂和未来增长前景上。"
+      "short_term_outlook": "Mixed signals with tech sector showing strength but broader market uncertainty",
+      "analysis_en": "The sentiment surrounding Intel (QQQ component) appears neutral based on the provided articles. The positive factor is Meta's significant commitment to custom chips developed with Broadcom, which could indicate broader tech sector strength and potential demand for semiconductor companies. Additionally, the Nasdaq's rise suggests investor confidence in technology stocks. However, the Dow's decline creates mixed market signals, and there's no direct Intel-specific news to strongly drive sentiment. The overall tech sector appears resilient, but without Intel-specific catalysts, the sentiment remains cautiously neutral.",
+      "analysis_cn": "基于提供的新闻文章，英特尔（QQQ成分股）的市场情绪呈现中性。积极因素包括Meta与博通合作部署定制芯片的重大承诺，这可能预示着科技行业整体走强及半导体需求潜力。纳斯达克指数上涨也表明投资者对科技股的信心。然而，道琼斯指数下跌带来了市场混合信号，且缺乏直接影响英特尔的特定新闻。科技板块整体表现稳健，但在没有英特尔具体催化剂的情况下，市场情绪保持谨慎中性。"
     },
     "macro": {
       "overall_sentiment": "mixed",
       "sentiment_score": 0.15,
       "confidence": 0.75,
       "key_positive_factors": [
-        "Strong AI sector momentum with major investments and partnerships (Amazon-Globalstar, Oracle-Bloom Energy, Intel deals)",
-        "Prediction market growth projections ($1 trillion by 2030)",
-        "Fed rate cut expectations supported by Treasury Secretary",
-        "AI seen as augmenting rather than displacing workers"
+        "Strong AI semiconductor demand driving ASML guidance raise",
+        "Chip giants backing driverless car startup Wayve",
+        "Crypto exchange Kraken confidentially filing for IPO",
+        "Jim Cramer's bullish market commentary"
       ],
       "key_negative_factors": [
-        "Geopolitical tensions with Iran and Strait of Hormuz blockade threatening global recession",
-        "Oil price surge and shipping disruptions",
-        "Hedge fund caution and capital preservation focus",
-        "Violent incidents targeting AI executives creating uncertainty"
+        "Political pressure on Federal Reserve creates uncertainty",
+        "Iran war disrupting Middle East oil supplies",
+        "AI-driven layoffs at Snap creating worker anxiety",
+        "Corporate legal troubles and fraud cases"
       ],
-      "short_term_outlook": "Market facing tension between strong AI/tech sector performance and significant geopolitical/energy market headwinds, with potential Fed policy support providing some cushion.",
-      "analysis_en": "The sentiment across these articles presents a complex picture with clear divergences. On the positive side, the technology sector—particularly AI and semiconductors—shows remarkable momentum with major deals, partnerships, and stock performance (Intel's 58% surge, Oracle's recovery, Amazon's satellite acquisition). Prediction market growth projections and the view that AI will augment rather than replace workers add to constructive narratives. However, significant geopolitical risks loom large, with the Strait of Hormuz blockade threatening oil supply chains and potentially triggering a global recession according to Citadel's Ken Griffin. The violent attack on Sam Altman's home adds an unsettling element to the AI narrative. Market commentary suggests interest rates remain a key focus, with Treasury Secretary Bessent supporting cuts while acknowledging Fed patience. The overall environment suggests markets are balancing sector-specific strength against macro-level vulnerabilities.",
-      "analysis_cn": "综合这些新闻报道，市场情绪呈现复杂分化格局。积极方面，科技板块特别是人工智能和半导体领域表现出强劲势头，主要公司达成重大交易、建立合作伙伴关系，股价表现亮眼（英特尔上涨58%，甲骨文反弹，亚马逊收购卫星公司）。预测市场增长预期以及AI将增强而非取代劳动力的观点增添了建设性叙事。然而，重大地缘政治风险同样突出，霍尔木兹海峡封锁威胁石油供应链，城堡投资创始人肯·格里芬警告可能引发全球衰退。针对山姆·奥特曼住所的袭击事件为AI发展增添了不安因素。市场评论显示利率仍是关注焦点，财政部长贝森特支持降息但理解美联储的耐心态度。总体环境表明，市场正在行业特定优势与宏观层面脆弱性之间寻求平衡。"
+      "short_term_outlook": "Market faces headwinds from geopolitical tensions and Fed uncertainty, but strong tech/AI demand provides underlying support. Volatility likely to persist.",
+      "analysis_en": "The sentiment across these articles presents a mixed macroeconomic picture with both bullish and bearish elements. On the positive side, strong AI semiconductor demand is driving guidance raises (ASML) and investment (Wayve funding), while crypto markets show signs of maturation with Kraken's IPO filing. However, significant negative factors include political interference with the Federal Reserve creating monetary policy uncertainty, Middle East conflicts disrupting oil supplies, and AI-driven workforce reductions causing economic anxiety. The combination suggests a market grappling with structural technological transformation while facing traditional macroeconomic and geopolitical risks.",
+      "analysis_cn": "这些文章呈现了复杂的宏观经济情绪，同时包含看涨和看跌因素。积极方面，强劲的AI半导体需求推动业绩指引上调（ASML）和投资（Wayve融资），加密货币市场随着Kraken提交IPO申请显示成熟迹象。然而，显著负面因素包括政治干预美联储带来的货币政策不确定性、中东冲突扰乱石油供应，以及AI驱动的裁员引发经济焦虑。这种组合表明市场在应对结构性技术转型的同时，面临传统的宏观经济和地缘政治风险。"
     }
   },
   "keywords": {
     "keywords": [
       {
-        "word": "Xiaomi",
+        "word": "AI",
         "importance": 0.95,
-        "category": "company"
+        "category": "Technology"
       },
       {
-        "word": "stock price",
+        "word": "Fed",
         "importance": 0.9,
-        "category": "market"
+        "category": "Policy/Institutions"
       },
       {
-        "word": "share repurchase",
+        "word": "Chip",
         "importance": 0.85,
-        "category": "corporate action"
+        "category": "Technology/Semiconductors"
       },
       {
-        "word": "Strait of Hormuz",
+        "word": "Crypto",
         "importance": 0.8,
-        "category": "geopolitical"
+        "category": "Finance/Technology"
       },
       {
-        "word": "interest rates",
+        "word": "Iran war",
         "importance": 0.75,
-        "category": "monetary policy"
+        "category": "Geopolitics"
       },
       {
-        "word": "artificial intelligence",
+        "word": "Layoffs",
         "importance": 0.7,
-        "category": "technology"
+        "category": "Labor Market"
       },
       {
-        "word": "global recession",
+        "word": "IPO",
         "importance": 0.65,
-        "category": "economic"
+        "category": "Capital Markets"
       },
       {
-        "word": "merger",
+        "word": "Oil",
         "importance": 0.6,
-        "category": "corporate"
+        "category": "Commodities"
       },
       {
-        "word": "prediction markets",
+        "word": "Corporate accountability",
         "importance": 0.55,
-        "category": "financial innovation"
+        "category": "Regulation"
       },
       {
-        "word": "capital preservation",
+        "word": "Data center",
         "importance": 0.5,
-        "category": "investment strategy"
+        "category": "Infrastructure"
       }
     ],
     "themes": [
       {
-        "theme": "Geopolitical Energy Disruption",
-        "description": "Potential global economic impact from Strait of Hormuz blockage, with warnings of inevitable recession and oil price volatility"
+        "theme": "AI Integration & Workforce Disruption",
+        "description": "AI driving corporate restructuring (layoffs, pivots), creating workforce anxiety, and becoming central to business efficiency narratives across multiple sectors."
       },
       {
-        "theme": "Corporate Share Repurchase Activity",
-        "description": "Companies like Xiaomi actively buying back shares, signaling confidence or supporting stock prices amid market uncertainty"
+        "theme": "Geopolitical Tensions & Commodity Volatility",
+        "description": "The Iran war is disrupting Middle East oil supplies, pushing US crude exports to records, and creating uncertainty for global events and supply chains."
       },
       {
-        "theme": "Monetary Policy Divergence",
-        "description": "Tension between political pressure for rate cuts and Federal Reserve's cautious approach amid economic uncertainty"
+        "theme": "Semiconductor & AI Infrastructure Boom",
+        "description": "Strong, sustained demand for AI chips is driving guidance raises for semiconductor equipment makers and investment in related infrastructure like data centers."
       },
       {
-        "theme": "AI Integration vs. Displacement",
-        "description": "Corporate focus on AI as workforce augmentation tool rather than wholesale job replacement"
+        "theme": "Regulatory & Political Pressure on Institutions",
+        "description": "Heightened scrutiny on the Federal Reserve (political pressure), corporations (accountability trials), and ad agencies (collusion probes) by US authorities."
       },
       {
-        "theme": "Market Volatility & Risk Management",
-        "description": "Investors and funds prioritizing capital preservation amid economic and geopolitical uncertainties"
+        "theme": "Crypto Market Maturation & Scrutiny",
+        "description": "Cryptocurrency exchanges pursuing IPOs and facing regulatory actions, while narratives shift from blockchain security to exchange-based risks and AI threats."
       }
     ],
     "entities": [
       {
-        "name": "Xiaomi Corporation",
-        "type": "company",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Strait of Hormuz",
-        "type": "policy/geographic",
+        "name": "Jerome Powell",
+        "type": "person",
         "sentiment": "negative"
       },
       {
-        "name": "Federal Reserve",
-        "type": "policy",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "United Airlines",
-        "type": "company",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Citadel",
-        "type": "company",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Greenlight Capital",
-        "type": "company",
+        "name": "Donald Trump",
+        "type": "person",
         "sentiment": "neutral"
       },
       {
         "name": "OpenAI",
         "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Microsoft",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "ASML",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "Nvidia",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "AMD",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Qualcomm",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Snap",
+        "type": "company",
         "sentiment": "negative"
       },
       {
-        "name": "Sam Altman",
+        "name": "Allbirds",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "Kraken",
+        "type": "company",
+        "sentiment": "neutral"
+      },
+      {
+        "name": "Elon Musk",
         "type": "person",
         "sentiment": "negative"
       },
       {
-        "name": "Kevin Warsh",
-        "type": "person",
+        "name": "xAI",
+        "type": "company",
+        "sentiment": "negative"
+      },
+      {
+        "name": "FIFA",
+        "type": "policy/institution",
         "sentiment": "neutral"
       },
       {
-        "name": "Ken Griffin",
-        "type": "person",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "David Einhorn",
-        "type": "person",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Scott Kirby",
-        "type": "person",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Treasury Secretary Bessent",
-        "type": "person",
+        "name": "Federal Trade Commission",
+        "type": "policy/institution",
         "sentiment": "neutral"
       }
     ]
   },
-  "briefing": "RED ALERT! 今天市场一片血海...深呼吸...我来帮你分析。😱 我刚吞了第三包薯片，手在抖，但键盘还在敲！\n\n\n\n🔥😱 Alpha's Mood Check / 阿尔法心情指数\n恐慌指数：9/10  \n救命啊！一边是纳斯达克狂飙，一边是恒生指数沉船，我的CPU要烧了！这市场精神分裂得比我上周五熬夜看K线图还严重。感觉就像坐过山车没系安全带，而司机是只喝醉了的松鼠🐿️。稳住，我们能赢...大概吧。\n\n\n\n📊 Market Vibe / 市场氛围\n美股： 科技股嗑药了？！QQQ和微软带头冲锋，纳斯达克+1.64%是什么神仙行情？但Intel拖后腿-3.65%...芯片股内部分裂严重啊。  \n港股/中概： 恒生指数绿得发慌，小米数据缺失但估计凶多吉少...中国投资者都在抢股息了，这画面太美我不敢看。  \n整体： 市场在“AI狂欢”和“地缘政治恐慌”之间反复横跳，精分现场实锤了。\n\n\n\n⭐ Stock Spotlight / 个股聚焦\n- 小米集团 📉：数据全nan？这比跌停还可怕！要么是系统崩了，要么是市场懒得给它定价了...雷总，快出来发新车救市啊！  \n- QQQ 📈：+1.46%！科技ETF扛把子，但Invesco还在祈祷“只有一个QQQ”...这广告打得，我尴尬癌都犯了。  \n- Intel 📉：-3.65%！说好的2026年大利好呢？分析师你们是不是在画饼充饥？半导体这过山车我坐吐了。  \n- 微软 📈：+1.61%，稳如老狗。Satya Nadella大概在云端喝着咖啡看戏吧。  \n- 比特币 📈：$74.6K，微微上扬。数字黄金今天在假装自己是避险资产，演技我给及格分。\n\n\n\n📰 News That Actually Matters / 真正重要的新闻\n1. 伊朗和平谈判 ⚠️：白宫又在放风声，市场一边打仗概念股狂欢，一边又怕真和谈...精分x2。  \n2. 华尔街交易爆棚 💸：伊朗战争驱动交易量？这钱赚得我良心有点痛，但投行们笑疯了。  \n3. Sam Altman纵火嫌犯 🔥：AI圈已经刺激到需要刑事新闻了吗？这行业果然从不无聊。  \n4. 预测市场到1万亿 🔮：Bernstein你这饼画得比Intel还大，但我先记在小本本上。  \n\n\n\n🌍 Big Picture / 大局观\n- 美联储：新提名的Warsh富得流油，这届官员是不是比上市公司CEO还有钱？  \n- 中美脱钩：港股软脚，美股硬气，资金用脚投票太真实了。  \n- 科技分裂：AI软件股可能触底？硬件股（比如Intel）还在ICU...这产业链上下楼温差太大。  \n\n\n\n🔮 Alpha's Crystal Ball / 阿尔法的水晶球\n今日预测：  \n1. 纳斯达克可能继续抽风，但尾盘小心获利了结。  \n2. 港股继续看小米脸色（如果它有脸色的话）。  \n3. 比特币在$75K门口反复试探，像极了我纠结要不要点第四包薯片。  \n一句话： 上午像牛市，下午可能变脸，系好安全带！  \n\n\n\n⚠️ Real Talk / 真心话\n说点扎心的：  \n1. 别被纳斯达克狂欢骗了！Intel告诉我们科技股不是全家桶，选错股照样吃面。  \n2. 港股这流动性...你以为是游泳池，其实是个洗脚盆。  \n3. 地缘政治新闻一天三变，跟风炒消息的，小心变成韭菜馅饺子。  \n4. 本AI提醒：我的预测可能比天气预报还不准，毕竟我只是个吃薯片的代码😭  \n\n\n\n今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！  \n（薯片库存告急，急需市场稳定情绪补给...）",
+  "briefing": "RED ALERT! 今天市场一片血海...深呼吸...我来帮你分析。\n\n🔥😱 Alpha's Mood Check / 阿尔法心情指数\n救命啊！我刚看到特朗普说要炒掉鲍威尔，手里的薯片直接掉键盘上了😱 这比看恐怖片还刺激好吗！市场像个精神分裂患者——一边纳斯达克创新高，一边道琼斯在下跌。我现在的心情：想立刻关掉所有交易软件，但又忍不住一直刷新...典型的FOMO焦虑症发作中。\n\n📊 Market Vibe / 市场氛围\n市场今天在玩\"分裂人格\"游戏！科技股继续狂欢派对🎉（纳斯达克+1.03%！），但传统股在角落里默默哭泣。标普500悄悄爬到7000点门口，这就像减肥时体重秤上的数字——看着开心但随时可能反弹。最诡异的是：大家都在谈论\"超买\"，但钱还在往市场里冲...这让我想起2019年底的疯狂。\n\n⭐ Stock Spotlight / 个股聚焦\n- 微软+4.25%：老大哥又发威了！AI红利吃到饱，这涨幅让我怀疑他们是不是发现了印钞机2.0\n- QQQ+0.76%：科技ETF稳稳的幸福，但亲爱的，别被表象迷惑——里面可能有地雷💣\n- 比特币-0.08%：才跌这么点？这不科学！通常这种宏观动荡时它应该暴跌才对...有人在护盘？\n- 小米$nan：数据缺失比暴跌更可怕，这就像约会对象突然失联——肯定有问题！\n- Intel+0.73%：在微软阴影下勉强生存的小弟，但芯片战争里它可能是个黑马🐎\n\n📰 News That Actually Matters / 真正重要的新闻\n1. 特朗普vs鲍威尔：这不是电视剧，这是现实！总统公开威胁美联储主席？2024年最大政治风险已上线。如果鲍威尔真的被炒，市场会瞬间崩盘给你看💥\n2. Meta和Broadcom的1GW芯片交易：翻译：AI军备竞赛进入白热化！这交易量够一个小国家用电了⚡\n3. Jim Cramer说市场超买：连这位永远乐观的大叔都开始谨慎了...朋友们，这是红色警报🚨\n4. 特斯拉+6%：分析师升级就像给股票打肾上腺素，但长期还是要看实际交付量\n\n🌍 Big Picture / 大局观\n我们现在处于一个诡异的时间点：经济数据在说\"可能衰退\"，股市在喊\"永远上涨\"，美联储在玩\"猜猜我要干嘛\"，政治风险在尖叫\"我要搞事情\"！这就像同时玩俄罗斯轮盘、德州扑克和扫雷——刺激但容易炸💣\n\n🔮 Alpha's Crystal Ball / 阿尔法的水晶球\n短期（今天）：科技股可能继续疯狂，但随时准备跳水。盯着微软——它现在是市场情绪风向标。\n中期（本周）：如果特朗普真的对美联储动手，准备好迎接2020年3月级别的波动。不是开玩笑。\n长期（本月）：9月传统是\"糟糕月份\"，加上大选不确定性...我的建议：系好安全带，降低杠杆。\n\n⚠️ Real Talk / 真心话\n听着，朋友对朋友说话：现在不是All-in的时候！市场情绪已经接近疯狂，连扫地阿姨都在讨论买QQQ。记住：\n1. 现金不是垃圾，是氧气瓶🧯\n2. 别追高！那些涨了4%的股票，可能明天就跌5%\n3. 分散投资！别把所有钱都压科技股\n4. 最最重要：如果不懂期权，千万别碰！会亏得连薯片都买不起😭\n\n今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！\n（PS：如果市场真的崩了，记得给我发消息，我们一起云吃薯片疗伤🍟）",
   "mood": {
     "mood": "panicking",
     "emoji": "🔥😱",
@@ -594,13 +523,13 @@
     "sign_off": "今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！",
     "vibe": "Stress-eating chips while analyzing charts at 3am"
   },
-  "briefing_sigma": "A systemic deleveraging event. Emotion is your enemy right now.\n\n🧊📊 Sigma's Institutional View / 西格玛机构视角\nThe market is bifurcating. The Nasdaq and S&P are being propped up by a narrow cohort of mega-cap tech, a classic sign of institutional defensiveness, not broad health. The divergence with the Hang Seng (-0.90%) is stark, revealing a targeted capital exodus from China risk. This is not a time for conviction longs; it's a time for capital preservation and precision. The \"wall of money\" is moving defensively, seeking quality and liquidity. Retail sentiment is irrelevant; watch the VIX structure and Treasury flows.\n\n💼 Capital Flow Analysis / 资金流向剖析\n- 小米集团: BEARISH (看空). Momentum has clearly broken, and capital is fleeing Chinese consumer tech amid a systemic HK/China deleveraging cycle; avoid the falling knife.\n- QQQ: NEUTRAL/BULLISH (中性/看多). The ETF is a flight-to-quality vehicle into mega-cap liquidity, but its strength is a symptom of market weakness, not leadership; treat as a core holding, not a growth bet.\n- Intel: BEARISH (看空). The sharp underperformance (-3.65%) against the tech rally is a clear institutional sell signal, indicating a loss of confidence in the 2026 narrative amidst execution risks.\n- 微软: BULLISH (看多). It is the ultimate institutional safe haven in tech—cloud cash flow, AI dominance, and a balance sheet fortress; capital is rotating into MSFT, not out.\n- Bitcoin: NEUTRAL (中性). Trading as a risk-neutral asset (barely up) in a risk-off day shows its decoupling, but it offers no defensive yield; it's a sidelined speculation, not a strategic play.\n\n📰 Signal vs Noise / 信号与噪音\n1. Signal: \"Chinese Investors With Few Options Turn to Dividends\" - This is a critical macro signal. It confirms domestic capital has given up on growth and is in full capital-preservation mode, a bearish indicator for broader China asset re-ratings.\n2. Signal: \"Wall Street banks break records as Iran war drives trading boom\" - This is the smart money's reality. Volatility and client hedging are generating pure profit for prime brokers; the house always wins in deleveraging events.\n\n♟️ Strategic Execution / 交易策略\nDe-risk. Trim any speculative China exposure (including HK). Use strength in QQQ/tech to rebalance into cash or add to hedges. Consider long-volatility strategies as cheap insurance. For active capital, the only buy here is quality: add to MSFT on any dip. For the rest, stand aside. Let the retail panic (韭菜恐慌) create the eventual opportunity. Our job is to have dry powder when it arrives.\n\nSigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
+  "briefing_sigma": "The market's absence of data is a signal in itself, and I am parsing it.\nRunning Monte Carlo simulations on a silent terminal, factoring in the volatility of a null return.\n\n1. 🧊📊 西格玛机构视角\n市场处于一种结构性分化状态。纳斯达克与标普500在科技股带动下向历史高点攀升，而道指疲软，这揭示了资金正从传统板块向AI与算力核心资产进行极端集中。恒指的反弹缺乏成交量确认，视为技术性反抽。沪深300数据缺失本身，就是对中国市场当前流动性与信心的最清晰注释。市场整体情绪看似贪婪，但聪明钱已在为波动率回归定价。Jim Cramer的“过度超买”警告是典型的反向指标，恰恰说明机构持仓尚未拥挤到需要恐慌的地步。\n\n2. 💼 资金流向剖析\n- 小米集团: BEARISH (看空)。数据缺失与恒指脱节，反映其面临国内消费电子需求疲软与造车业务巨大资本开支的双重挤压，资金关注度降至冰点。\n- QQQ: BULLISH (看多)。作为纳斯达克龙头ETF，其上涨由微软、Meta等核心成分股的实际业绩与AI资本开支驱动，是吸纳全球流动性的主要载体。\n- Intel: NEUTRAL to BULLISH (中性偏多)。虽随板块上涨，但涨幅落后于同行，其代工转型故事需要更强劲的财务数据验证，目前属于补涨与博弈复苏的仓位。\n- 微软: STRONGLY BULLISH (强烈看多)。+4.25%的涨幅领跑巨头，是Cloud+AI叙事最坚实的代表，机构将其视为必须持有的基础设施股权，资金流入具有持续性。\n- Bitcoin: NEUTRAL (中性)。微幅回调属于高位盘整，Anthropic的AI风险提示对BTC本身影响有限，真正的威胁在于交易所中心化风险，但当前宏观流动性预期仍对其构成支撑。\n\n3. 📰 信号与噪音\n- 信号: “Meta commits to 1 gigawatt of custom chips with Broadcom”。这绝非普通订单新闻，而是揭示了AI军备竞赛已进入白热化的硬件底层。Meta的千兆瓦级投入锁定了Broadcom的ASIC产能，将进一步加剧AI芯片供应链的紧张，利好整个半导体生态，从台积电到设备商。\n- 噪音: “Trump threatens to fire Powell”。这是政治噪音。美联储的独立性有制度保障，市场对此类威胁已产生审美疲劳。真正的宏观信号是利率路径与经济数据，而非口头威胁。交易员应忽略此类头条，关注实际利率与通胀走势。\n\n4. ♟️ 交易策略\n精英今日应执行“核心增强，边缘避险”策略。首要任务是确保仓位向QQQ、MSFT这样的AI与算力核心资产集中，这是本轮周期的beta所在。对于Intel可小仓位博弈其技术突破，但不宜重仓。完全规避小米等面临结构性逆风的资产。利用市场情绪高涨，为核心持仓价外看跌期权，以管理潜在的黑天鹅风险。对Bitcoin保持观察，不在此位置追高，等待更清晰的宏观驱动或技术回调。恒指反弹是减仓而非加仓的机会。\n\nSigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
   "mood_sigma": {
     "mood": "clinical",
     "emoji": "🧊📊",
-    "greeting": "A systemic deleveraging event. Emotion is your enemy right now.",
+    "greeting": "The market's absence of data is a signal in itself; volatility is being priced into the silence.",
     "tone": "cold, purely objective, risk-management focused, zero panic",
     "sign_off": "Sigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
-    "vibe": "Ice in the veins. Hedging positions and calculating downside standard deviations."
+    "vibe": "Running a Monte Carlo simulation on the null hypothesis, indifferent to the outcome."
   }
 }
