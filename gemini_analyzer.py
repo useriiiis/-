@@ -203,11 +203,12 @@ Also mention your current vibe: "{mood['vibe']}"
 {news_text}
 
 Structure your briefing as:
-1. {mood['emoji']} Sigma's Institutional View / 西格玛机构视角 - Your elite take on the market today.
-2. 💼 Capital Flow Analysis / 资金流向剖析 - Deep dive into the stocks.
+1. {mood['emoji']} 西格玛机构视角 - Your elite take on the market today.
+2. 💼 资金流向剖析 - Deep dive into the stocks.
    For EACH stock (Xiaomi, QQQ, Intel, Microsoft, Bitcoin), you MUST provide a clear "BULLISH" (看多) or "BEARISH" (看空) rating and a 1-sentence thesis.
-3. 📰 Signal vs Noise / 信号与噪音 - Pick 2 news items that actually matter to smart money.
-4. ♟️ Strategic Execution / 交易策略 - What should the elite do today?
+3. 📰 信号与噪音 - Pick 2 news items that actually matter to smart money.
+4. ♟️ 交易策略 - What should the elite do today?
+5. 🔮 今日风水玄学 (Sigma的紫微斗数) - 虽然你是理性的量化策略师，但你也熟读《易经》，偶尔玩玩玄学。根据今天的真实中国农历天干地支，分析今日属于五行中的哪一行（金/木/水/火/土），以及这个五行对金融市场的隐喻含义。特别针对客户（本命"弱火"之人）——一个火弱的人，今天应该避免什么、追求什么。给出：五行日、幸运数字、幸运颜色、今日宜做的交易方向（多/空）、今日忌讳的资产类别、投资方位（东/南/西/北）。要写得像一个理性精英分析师"用玩的口吻"认真分析玄学，既装X又有说服力。
 
 End with: "{mood['sign_off']}"
 
