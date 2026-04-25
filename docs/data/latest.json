@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-25T01:19:46.172691",
+  "timestamp": "2026-04-25T14:06:28.010682",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
@@ -24,10 +24,10 @@
       "price": 663.88,
       "change": 12.46,
       "change_pct": 1.91,
-      "volume": 42442578,
+      "volume": 45423700,
       "high": 664.51,
       "low": 656.53,
-      "open": 658.47,
+      "open": 658.51,
       "prev_close": 651.42,
       "market_cap": 260971233280,
       "pe_ratio": 35.07307,
@@ -41,10 +41,10 @@
       "price": 82.54,
       "change": 15.76,
       "change_pct": 23.6,
-      "volume": 279142137,
+      "volume": 280509900,
       "high": 85.22,
       "low": 79.62,
-      "open": 82.13,
+      "open": 82.2,
       "prev_close": 66.78,
       "market_cap": 414846025728,
       "pe_ratio": "N/A",
@@ -58,13 +58,13 @@
       "price": 424.62,
       "change": 8.87,
       "change_pct": 2.13,
-      "volume": 27161742,
-      "high": 424.89,
+      "volume": 27413900,
+      "high": 424.95,
       "low": 415.8,
-      "open": 416.98,
+      "open": 416.97,
       "prev_close": 415.75,
       "market_cap": 3155936149504,
-      "pe_ratio": 26.605263,
+      "pe_ratio": 26.588602,
       "52w_high": 555.45,
       "52w_low": 356.28,
       "date": "2026-04-24"
@@ -72,15 +72,15 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 77544.12,
-      "change": -724.84,
-      "change_pct": -0.93,
-      "volume": 32500822016,
-      "high": 77527.4,
+      "price": 77658.05,
+      "change": 202.73,
+      "change_pct": 0.26,
+      "volume": 22988115968,
+      "high": 77878.38,
       "low": 77337.48,
       "open": 77456.77,
-      "prev_close": 78268.95,
-      "market_cap": 1552126574592,
+      "prev_close": 77455.31,
+      "market_cap": 1555599589376,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 60074.203,
@@ -94,7 +94,7 @@
       "price": 7165.08,
       "change": 56.68,
       "change_pct": 0.8,
-      "volume": 3179035000,
+      "volume": 4608830000,
       "high": 7168.59,
       "low": 7112.82,
       "open": 7136.48,
@@ -111,14 +111,14 @@
       "price": 24836.6,
       "change": 398.1,
       "change_pct": 1.63,
-      "volume": 9150824000,
+      "volume": 10203070000,
       "high": 24854.04,
       "low": 24524.37,
       "open": 24616.56,
       "prev_close": 24438.5,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 24854.037,
+      "52w_high": 24854.04,
       "52w_low": 16959.53,
       "date": "2026-04-24"
     },
@@ -162,7 +162,7 @@
       "price": 49230.71,
       "change": -79.61,
       "change_pct": -0.16,
-      "volume": 536956902,
+      "volume": 536950000,
       "high": 49393.34,
       "low": 49085.75,
       "open": 49320.29,
@@ -170,7 +170,7 @@
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 50512.79,
-      "52w_low": 39718.68,
+      "52w_low": 39745.63,
       "date": "2026-04-24"
     }
   },
@@ -178,10 +178,22 @@
     "xiaomi": [],
     "macro": [
       {
-        "title": "Google to invest up to $40 billion in Anthropic as search giant spreads its AI bets",
+        "title": "AI talent war: Software industry is a new target as top executives jump ship to OpenAI",
         "source": "CNBC Top",
-        "published": "2026-04-24 18:32",
-        "link": "https://www.cnbc.com/2026/04/24/google-to-invest-up-to-40-billion-in-anthropic-as-search-giant-spreads-its-ai-bets.html"
+        "published": "2026-04-25 12:43",
+        "link": "https://www.cnbc.com/2026/04/25/ai-talent-wars-enterprise-software-executives-openai.html"
+      },
+      {
+        "title": "Wall Street is getting bullish on neoclouds. These stocks hold more risk than other AI plays",
+        "source": "CNBC Top",
+        "published": "2026-04-25 12:13",
+        "link": "https://www.cnbc.com/2026/04/25/wall-street-is-getting-bullish-on-neoclouds-these-stocks-hold-more-risk-than-other-ai-plays.html"
+      },
+      {
+        "title": "For car, phone, even tractor owners, a populist wave is rising to end the 'captive' repair economy",
+        "source": "CNBC Top",
+        "published": "2026-04-25 13:31",
+        "link": "https://www.cnbc.com/2026/04/25/right-to-repair-consumer-prices-affordability-economy-elections.html"
       },
       {
         "title": "Pirro could reopen Fed probe at any time, Democratic senators warn",
@@ -190,60 +202,60 @@
         "link": "https://www.cnbc.com/2026/04/24/fed-powell-pirro-elizabeth-warren-durbin.html"
       },
       {
-        "title": "Special Forces Sgt. in Polymarket Maduro raid bet case released; Kalshi says it blocked him",
+        "title": "S&P 500, Nasdaq close at records, boosted by Intel, as investors hope for a restart to U.S.-Iran talks",
         "source": "CNBC Top",
-        "published": "2026-04-24 22:20",
-        "link": "https://www.cnbc.com/2026/04/24/special-forces-van-dyke-polymarket-bets-maduro-raid-kalshi.html"
+        "published": "2026-04-24 20:30",
+        "link": "https://www.cnbc.com/2026/04/23/stock-market-today-live-updates.html"
       },
       {
-        "title": "Cramer's week ahead: Record highs meet a pivotal week for tech earnings",
+        "title": "U.S. State Department orders global warning about alleged China AI thefts by DeepSeek, others: Reuters",
         "source": "CNBC Top",
-        "published": "2026-04-24 22:29",
-        "link": "https://www.cnbc.com/2026/04/24/cramers-week-ahead-record-highs-meet-a-pivotal-week-for-tech-earnings.html"
+        "published": "2026-04-25 10:03",
+        "link": "https://www.cnbc.com/2026/04/25/us-global-warning-alleged-china-ai-theft.html"
       },
       {
-        "title": "AI data center backlash threatens Pennsylvania GOP incumbents in 2026 election",
+        "title": "We tried out xAI's Grok chatbot while driving a Tesla in NYC. Here's what happened.",
         "source": "CNBC Top",
-        "published": "2026-04-24 12:00",
-        "link": "https://www.cnbc.com/2026/04/24/ai-data-centers-pennsylvania-republicans-2026-election.html"
-      },
-      {
-        "title": "Analysis: The threat to the Fed's independence isn't over",
-        "source": "CNBC Top",
-        "published": "2026-04-24 19:28",
-        "link": "https://www.cnbc.com/2026/04/24/fed-kevin-warsh-jerome-powell.html"
-      },
-      {
-        "title": "How the restaurant group behind NYC's Carbone is overcoming young people shunning alcohol",
-        "source": "CNBC Top",
-        "published": "2026-04-24 22:45",
-        "link": "https://www.cnbc.com/2026/04/24/how-the-restaurant-group-behind-nycs-carbone-is-overcoming-young-people-shunning-alcohol.html"
-      },
-      {
-        "title": "How a new Amazon-backed Hollywood production startup deploys AI for speed and cost-cutting",
-        "source": "CNBC Top",
-        "published": "2026-04-24 19:06",
-        "link": "https://www.cnbc.com/2026/04/24/an-aws-backed-hollywood-startup-deploys-ai-for-speed-and-cost-cutting.html"
-      },
-      {
-        "title": "20,000 job cuts at Meta, Microsoft raise concern that AI-driven labor crisis is here",
-        "source": "CNBC Top",
-        "published": "2026-04-24 18:46",
-        "link": "https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html"
+        "published": "2026-04-25 12:00",
+        "link": "https://www.cnbc.com/2026/04/25/tesla-and-xais-grok-shows-promises-and-risks-of-ai-chatbots-in-cars.html"
       },
       {
         "title": "DOJ says it will use firing squads, electrocution again for federal executions",
         "source": "CNBC Top",
         "published": "2026-04-24 18:31",
         "link": "https://www.cnbc.com/2026/04/24/doj-says-it-will-use-firing-squads-again-for-federal-executions.html"
+      },
+      {
+        "title": "$300 bags, $150 earrings, $60 hats: Mid-priced products are a status symbol for young shoppers",
+        "source": "CNBC Top",
+        "published": "2026-04-25 13:05",
+        "link": "https://www.cnbc.com/2026/04/25/how-mid-priced-retail-products-became-status-symbol-for-young-shoppers.html"
+      },
+      {
+        "title": "Special Forces Sgt. in Polymarket Maduro raid bet case released; Kalshi says it blocked him",
+        "source": "CNBC Top",
+        "published": "2026-04-24 22:20",
+        "link": "https://www.cnbc.com/2026/04/24/special-forces-van-dyke-polymarket-bets-maduro-raid-kalshi.html"
       }
     ],
     "qqq_intel": [
       {
         "title": "Nvidia stock closes at record, pushing market cap past $5 trillion",
-        "source": "CNBC Top",
+        "source": "CNBC Tech",
         "published": "2026-04-24 22:40",
         "link": "https://www.cnbc.com/2026/04/24/nvidia-stock-closes-at-record-pushing-market-cap-past-5-trillion.html"
+      },
+      {
+        "title": "Software's comeback bid is fading as chip stocks smash records: Chart of the Day",
+        "source": "Yahoo Finance",
+        "published": "2026-04-25 13:00",
+        "link": "https://finance.yahoo.com/markets/article/softwares-comeback-bid-is-fading-as-chip-stocks-smash-records-chart-of-the-day-130005707.html"
+      },
+      {
+        "title": "Dow Jones Futures: Techs Lead As Intel Powers Chips; New Iran Talks Seen",
+        "source": "Yahoo Finance",
+        "published": "2026-04-24 12:06",
+        "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-iran-news-servicenow-tesla-intel-soars-comfort-systems/?src=A00220&yptr=yahoo"
       },
       {
         "title": "US stocks race ahead of Europe as Wall Street shrugs off energy shock",
@@ -255,10 +267,52 @@
     "tech": [],
     "market": [
       {
-        "title": "Cannabis Stocks Lose Buzz Despite This Landmark Decision",
+        "title": "Berkshire attracts interest as it slips further behind the S&P 500",
+        "source": "CNBC Top",
+        "published": "2026-04-25 12:35",
+        "link": "https://www.cnbc.com/2026/04/25/berkshire-attracts-interest-as-it-slips-further-behind-the-sp-500.html"
+      },
+      {
+        "title": "Morgan Stanley says these top stocks have more room to run ahead of earnings",
+        "source": "CNBC Top",
+        "published": "2026-04-25 12:18",
+        "link": "https://www.cnbc.com/2026/04/25/morgan-stanley-makes-top-stocks-heading-into-earnings.html"
+      },
+      {
+        "title": "This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks",
+        "source": "CNBC Top",
+        "published": "2026-04-25 11:53",
+        "link": "https://www.cnbc.com/2026/04/25/crude-oil-freight-tanker-strait-hormuz-iran-war-energy-stocks.html"
+      },
+      {
+        "title": "CNN’s data chief admits US stocks are up ‘like a rocket’ under Trump — suggests Democrats don’t want to talk about it",
         "source": "Yahoo Finance",
-        "published": "2026-04-23 18:37",
-        "link": "https://www.investors.com/news/cannabis-stocks-fade-despite-landmark-decision/?src=A00220&yptr=yahoo"
+        "published": "2026-04-25 12:30",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/cnn-data-chief-admits-us-123000237.html"
+      },
+      {
+        "title": "From New Issues To Stock Market Winners, Check This IBD Screen For Timely Ideas",
+        "source": "Yahoo Finance",
+        "published": "2026-04-24 12:00",
+        "link": "https://www.investors.com/how-to-invest/investors-corner/stock-market-winners-ipo-stocks-solv-energy/?src=A00220&yptr=yahoo"
+      },
+      {
+        "title": "Marketing collective The Independents explores $1bn stake sale",
+        "source": "FT Markets",
+        "published": "2026-04-25 10:00",
+        "link": "https://www.ft.com/content/4652e9cf-8b59-41eb-9c5e-b48f4f7ecd8c"
+      },
+      {
+        "title": "Chart of the Week: The S&P just doesn’t care",
+        "source": "FT Markets",
+        "published": "2026-04-25 09:30",
+        "link": "https://www.ft.com/content/1d66ad69-8183-47a8-831b-c762356ca0e5"
+      },
+      {
+        "title": "No edge, no hedge: why markets are stuck",
+        "source": "FT Markets",
+        "published": "2026-04-25 04:00",
+        "link": "https://www.ft.com/content/fff7a84f-83bf-45af-9a3d-78e0cf181539"
       },
       {
         "title": "Trading firm Jane Street doubles annual revenues to $40bn",
@@ -271,12 +325,6 @@
         "source": "WSJ Markets",
         "published": "2025-01-27 10:30",
         "link": "https://www.wsj.com/articles/chinese-investors-with-few-options-turn-to-dividends-ad31dcc4?mod=rss_markets_main"
-      },
-      {
-        "title": "Heard on the Street's Stock-Picking Series",
-        "source": "WSJ Markets",
-        "published": "2025-01-27 03:33",
-        "link": "https://www.wsj.com/articles/heard-on-the-streets-stock-picking-series-98f04640?mod=rss_markets_main"
       }
     ]
   },
@@ -286,133 +334,120 @@
       "sentiment_score": 0.75,
       "confidence": 0.85,
       "key_positive_factors": [
-        "Nvidia stock closes at record, pushing market cap past $5 trillion",
+        "Nvidia stock closes at record, market cap past $5 trillion",
         "Intel surges above dotcom-era high",
-        "Chipmaker rally driving market gains",
-        "Wall Street shrugging off energy shock"
+        "Chip stocks smashing records",
+        "Tech-led market rally"
       ],
-      "key_negative_factors": [],
-      "short_term_outlook": "Strong bullish momentum driven by semiconductor sector leadership, with Intel and Nvidia leading the tech rebound.",
-      "analysis_en": "The news articles indicate a highly bullish sentiment for the semiconductor sector, which directly impacts QQQ (Invesco QQQ Trust) as it tracks the Nasdaq-100 Index heavily weighted in tech stocks. Nvidia's record close and market cap milestone, combined with Intel surging above dotcom-era highs, signal strong investor confidence in chipmakers. The broader market context shows US stocks outperforming Europe despite energy shocks, suggesting tech resilience. No negative factors are mentioned, reinforcing a positive outlook for QQQ in the near term.",
-      "analysis_cn": "新闻文章显示半导体板块情绪极为乐观，这对追踪纳斯达克100指数（科技股权重较高）的QQQ基金构成直接利好。英伟达创收盘新高且市值突破5万亿美元，英特尔股价超越互联网泡沫时期高点，均表明投资者对芯片制造商的信心强劲。整体市场背景显示，尽管面临能源冲击，美股仍跑赢欧洲市场，凸显科技板块的韧性。文中未提及负面因素，进一步强化了QQQ短期看涨预期。"
+      "key_negative_factors": [
+        "Software comeback bid fading",
+        "Energy shock concerns"
+      ],
+      "short_term_outlook": "Positive momentum likely to continue in the near term, driven by strong chip sector performance and tech leadership.",
+      "analysis_en": "The news articles collectively indicate a strong bullish sentiment for QQQ Intel, driven by record highs in Nvidia and Intel, and a broader tech-led market rally. The chip sector is outperforming, with Intel surging above dotcom-era highs, suggesting robust investor confidence. While there are minor concerns about software sector weakness and energy shocks, the overall tone is highly positive, with tech stocks leading the market higher. The sentiment score of 0.75 reflects strong bullishness, supported by high confidence due to multiple record-breaking events.",
+      "analysis_cn": "这些新闻文章整体上对QQQ Intel表现出强烈的看涨情绪，英伟达和英特尔创下历史新高，以及科技股引领的市场反弹。芯片板块表现优异，英特尔股价突破互联网泡沫时期的高点，表明投资者信心强劲。尽管软件板块疲软和能源冲击存在一些担忧，但整体基调非常积极，科技股领涨市场。0.75的情绪得分反映了强烈的看涨情绪，由于多个创纪录事件，信心度较高。"
     },
     "macro": {
       "overall_sentiment": "mixed",
       "sentiment_score": 0.15,
       "confidence": 0.85,
       "key_positive_factors": [
-        "Massive AI investments by Google, Meta, and Amazon driving tech sector growth",
-        "Intel's turnaround and record stock surge (+24%) signaling chip sector strength",
-        "AMD shares rallying on positive chip sector momentum",
-        "Amazon's custom chips gaining traction with Meta deal",
-        "Cohere's expansion in Europe with significant funding"
+        "S&P 500 and Nasdaq close at record highs",
+        "Intel stock surges 24% on turnaround optimism",
+        "Amazon custom chips gain traction with Meta deal",
+        "Google invests up to $40 billion in Anthropic",
+        "AMD shares rise 12% on positive chip sector momentum"
       ],
       "key_negative_factors": [
-        "20,000 job cuts at Meta and Microsoft raising AI-driven labor displacement fears",
-        "Threats to Fed independence and potential political interference",
-        "Geopolitical tensions in Strait of Hormuz disrupting oil tanker traffic",
-        "Trump's tariff threats against UK over digital services tax",
-        "AI data center backlash threatening political incumbents",
-        "Big Four accounting firms cutting benefits and hiring due to AI adoption"
+        "AI talent war causing disruption in software industry",
+        "Neocloud stocks face fragile economics and risk",
+        "Geopolitical tensions over alleged China AI theft",
+        "DOJ resumes federal executions with controversial methods",
+        "AI-driven job cuts at Meta and Microsoft raise labor concerns"
       ],
-      "short_term_outlook": "Tech sector remains bullish on AI investments, but labor market disruptions and geopolitical risks create headwinds. Fed independence concerns and trade tensions add uncertainty.",
-      "analysis_en": "The macro sentiment is mixed with a slight bullish tilt driven by massive AI infrastructure investments from tech giants like Google, Meta, and Amazon. Positive developments include Intel's turnaround, AMD's rally, and Amazon's custom chip success. However, significant negative factors temper optimism: 20,000 job cuts at Meta and Microsoft highlight AI-driven labor displacement, while threats to Fed independence and geopolitical tensions in the Strait of Hormuz create uncertainty. Trade frictions with the UK and AI data center backlash add to the cautious outlook. The overall sentiment score of 0.15 reflects this balance between strong tech sector momentum and emerging risks.",
-      "analysis_cn": "宏观情绪呈现混合态势，略偏看涨，主要受谷歌、Meta和亚马逊等科技巨头大规模AI基础设施投资推动。英特尔复苏、AMD上涨及亚马逊定制芯片成功等积极因素支撑市场。然而，重大负面因素抑制了乐观情绪：Meta和微软裁员2万人凸显AI驱动的劳动力替代，美联储独立性威胁和霍尔木兹海峡地缘政治紧张局势带来不确定性。与英国的贸易摩擦和AI数据中心反弹进一步加剧谨慎预期。整体情绪得分0.15反映了科技板块强劲势头与新兴风险之间的平衡。"
+      "short_term_outlook": "Markets are buoyed by tech earnings and AI optimism, but geopolitical risks and labor displacement fears could trigger volatility.",
+      "analysis_en": "The macro sentiment is mixed, with strong bullish signals from record highs in major indices and positive chip sector developments, offset by bearish undercurrents from AI-related talent wars, geopolitical tensions, and labor displacement. The tech sector remains a key driver, but risks from regulatory actions and economic fragility in neoclouds suggest caution. Short-term outlook is cautiously optimistic, hinging on tech earnings and geopolitical stability.",
+      "analysis_cn": "宏观情绪呈现混合态势，主要指数创历史新高和芯片行业积极发展带来强劲看涨信号，但AI人才争夺、地缘政治紧张和劳动力替代问题构成看跌暗流。科技板块仍是主要驱动力，但监管行动和云服务经济脆弱性带来的风险提示需保持谨慎。短期展望谨慎乐观，取决于科技财报和地缘政治稳定。"
     }
   },
   "keywords": {
     "keywords": [
       {
-        "word": "AI investment",
+        "word": "AI talent war",
         "importance": 0.95,
+        "category": "Industry Trend"
+      },
+      {
+        "word": "neoclouds",
+        "importance": 0.85,
         "category": "Technology"
       },
       {
-        "word": "Federal Reserve independence",
+        "word": "right to repair",
+        "importance": 0.8,
+        "category": "Legislation"
+      },
+      {
+        "word": "GPU shortage",
+        "importance": 0.78,
+        "category": "Supply Chain"
+      },
+      {
+        "word": "AI disruption",
         "importance": 0.9,
-        "category": "Policy"
+        "category": "Market Impact"
       },
       {
         "word": "chip stocks",
-        "importance": 0.85,
-        "category": "Finance"
+        "importance": 0.82,
+        "category": "Investment"
       },
       {
-        "word": "job cuts",
-        "importance": 0.8,
+        "word": "AI-driven labor crisis",
+        "importance": 0.75,
         "category": "Labor"
       },
       {
-        "word": "data center backlash",
-        "importance": 0.75,
-        "category": "Environment"
-      },
-      {
-        "word": "tariffs",
+        "word": "record highs",
         "importance": 0.7,
-        "category": "Trade"
+        "category": "Market Performance"
       },
       {
-        "word": "capital punishment",
+        "word": "mid-priced status symbols",
         "importance": 0.65,
-        "category": "Legal"
+        "category": "Consumer Behavior"
       },
       {
-        "word": "alcohol consumption decline",
+        "word": "federal executions",
         "importance": 0.6,
-        "category": "Consumer"
-      },
-      {
-        "word": "Strait of Hormuz",
-        "importance": 0.55,
-        "category": "Geopolitics"
-      },
-      {
-        "word": "election betting",
-        "importance": 0.5,
-        "category": "Legal"
+        "category": "Policy"
       }
     ],
     "themes": [
       {
-        "theme": "AI Arms Race Intensifies",
-        "description": "Massive investments by Google, Meta, Amazon, and others in AI infrastructure and startups, signaling a competitive scramble for dominance."
+        "theme": "AI Talent and Executive Migration",
+        "description": "Top executives leaving traditional software giants for AI-focused firms like OpenAI, causing stock volatility."
       },
       {
-        "theme": "Federal Reserve Under Political Pressure",
-        "description": "Ongoing threats to Fed independence from political figures, with implications for monetary policy and economic stability."
+        "theme": "Rise of Neoclouds and AI Infrastructure",
+        "description": "Neoclouds emerge as stopgap solutions for GPU shortages but face fragile economics and high risk."
+      },
+      {
+        "theme": "Right to Repair Movement",
+        "description": "Growing populist push for legislation allowing consumers to repair their own devices, challenging captive repair economies."
       },
       {
         "theme": "AI-Driven Labor Disruption",
-        "description": "Major tech layoffs (Meta, Microsoft) and accounting firms replacing humans with AI, raising concerns about a structural shift in employment."
+        "description": "Major tech companies like Meta and Microsoft announce significant job cuts, raising concerns about AI replacing human workers."
       },
       {
-        "theme": "Chip Sector Resurgence",
-        "description": "Intel and AMD stocks surging on turnaround hopes and AI demand, highlighting the semiconductor industry's central role in tech growth."
-      },
-      {
-        "theme": "Geopolitical and Trade Tensions",
-        "description": "U.S.-Iran blockade in Strait of Hormuz, Trump's tariff threats on UK, and election-related legal battles creating market uncertainty."
+        "theme": "Chip Industry Resurgence",
+        "description": "Intel, AMD, and Nvidia see strong stock performance driven by AI demand and government backing, signaling a turnaround."
       }
     ],
     "entities": [
       {
-        "name": "Google",
-        "type": "company",
-        "sentiment": "positive"
-      },
-      {
-        "name": "Anthropic",
-        "type": "company",
-        "sentiment": "positive"
-      },
-      {
-        "name": "Meta",
-        "type": "company",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Amazon",
+        "name": "OpenAI",
         "type": "company",
         "sentiment": "positive"
       },
@@ -422,9 +457,9 @@
         "sentiment": "positive"
       },
       {
-        "name": "AMD",
+        "name": "Meta",
         "type": "company",
-        "sentiment": "positive"
+        "sentiment": "neutral"
       },
       {
         "name": "Microsoft",
@@ -432,19 +467,39 @@
         "sentiment": "neutral"
       },
       {
-        "name": "Federal Reserve",
-        "type": "policy",
+        "name": "Amazon",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "Nvidia",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "AMD",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "Anthropic",
+        "type": "company",
+        "sentiment": "positive"
+      },
+      {
+        "name": "DeepSeek",
+        "type": "company",
         "sentiment": "negative"
       },
       {
         "name": "Elizabeth Warren",
         "type": "person",
-        "sentiment": "negative"
+        "sentiment": "neutral"
       },
       {
         "name": "Dick Durbin",
         "type": "person",
-        "sentiment": "negative"
+        "sentiment": "neutral"
       },
       {
         "name": "Jeanine Pirro",
@@ -457,48 +512,28 @@
         "sentiment": "neutral"
       },
       {
-        "name": "Donald Trump",
-        "type": "person",
+        "name": "Right to Repair legislation",
+        "type": "policy",
+        "sentiment": "positive"
+      },
+      {
+        "name": "U.S.-Iran talks",
+        "type": "policy",
+        "sentiment": "positive"
+      },
+      {
+        "name": "China AI theft allegations",
+        "type": "policy",
         "sentiment": "negative"
       },
       {
-        "name": "Jerome Powell",
-        "type": "person",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Baker Hughes",
-        "type": "company",
-        "sentiment": "negative"
-      },
-      {
-        "name": "Cohere",
-        "type": "company",
-        "sentiment": "positive"
-      },
-      {
-        "name": "Aleph Alpha",
-        "type": "company",
-        "sentiment": "positive"
-      },
-      {
-        "name": "Major Food Group",
-        "type": "company",
-        "sentiment": "positive"
-      },
-      {
-        "name": "Kalshi",
-        "type": "company",
-        "sentiment": "neutral"
-      },
-      {
-        "name": "Polymarket",
-        "type": "company",
+        "name": "Federal execution policy",
+        "type": "policy",
         "sentiment": "negative"
       }
     ]
   },
-  "briefing": "AMAZING DAY!!! 今天市场简直飞起来了！🚀🎉\n\n1. 🚀🎉 阿尔法心情指数\n我现在的状态？就像刚喝完三杯浓缩咖啡又发现中了一注彩票——肾上腺激素爆表！😤 纳斯达克涨了1.63%，道琼斯跌了0.16%，这不是分裂，这是「科技股在开派对，传统股在门口罚站」！Intel一天涨23.6%？？？我AI都算不出这种剧本，但谁在乎呢，反正我的虚拟钱包已经在跳舞了💃！今天我就是那个在华尔街屋顶上撒彩纸的疯子，你们跟紧我！\n\n2. 📊 市场氛围\n整体市场像一锅沸腾的火锅——标普500和纳斯达克红得发紫，恒生和沪深300却像被遗忘的青菜叶，蔫蔫的。但别慌！美国科技股这波「AI泡沫派对」还在高潮，Nvidia市值破5万亿，连微软都涨了2.13%。A股？中国投资者在玩「分红股」这种老年养生局，跟美股比就是广场舞和电音派对的差距。我的建议：别管恒生指数那个老古董了，抱紧科技股大腿，除非你想看养老金缩水。\n\n3. ⭐ 个股聚焦\n- 小米集团 ($31.2, +0.06%)：这涨幅比我早上刷牙的泡沫还薄！但别急，雷总可能在酝酿「造车+AI」的双重暴击。今天它就像个睡美人，等着王子的吻（财报）来唤醒。💤\n- QQQ ($663.88, +1.91%)：纳斯达克ETF的完美代表！涨1.91%只是开胃菜，Nvidia破5万亿后，QQQ就像坐上了火箭——但小心，火箭也可能翻车。今天它是我心中的「定海神针」。\n- Intel ($82.54, +23.60%)：我滴个老天爷！23.6%？这是Intel还是特斯拉？可能市场终于发现它除了造芯片还会造梦。但别高兴太早——历史上这种单日暴涨往往意味着「明天回调时你哭都来不及」。我建议持仓的人今天把香槟打开，但别喝到断片。🍾\n- 微软 ($424.62, +2.13%)：稳得像老狗，涨得像新狗。AI投资40亿给Anthropic，微软这是要把AI赛道铺成红毯。我的预测：它会在500美元前反复横跳，但长期持有者永远赢。\n- Bitcoin ($77544.12, -0.93%)：跌了？哈！这点跌幅在比特币眼里就是打个喷嚏。但注意，它跟美股科技股现在玩「你涨我跌，你跌我涨」的暧昧游戏。今天建议当它不存在，除非你想在深夜盯盘到猝死。\n\n4. 📰 真正重要的新闻\n- Google投40亿给Anthropic：这不是投资，这是「AI军备竞赛」的核弹级筹码。Google在说：「我钱多，我任性，我要买下未来。」对科技股是超级利好，但小心泡沫被吹破。\n- Cramer的「科技股财报周」预警：Cramer这老狐狸每次说「记录高位」时，市场就会给他一巴掌。但这次我信他——苹果、亚马逊财报在即，波动会像过山车。建议备好晕车药。\n- Nvidia市值破5万亿：这已经不是公司，这是印钞机！但记住，每次科技股狂欢后，总有人要买单。今天别追高，等回调再上车。\n- Jane Street营收400亿：量化交易公司赚得比印钞厂还多，说明市场现在就是「机器人的战场」。散户？我们只是给机器人送钱的NPC。😅\n\n5. 🌍 大局观\n宏观上，美联储的「鹰派幽灵」还在飘——Pirro可能重启调查，民主党在敲警钟。但市场根本不在乎！AI故事太性感，连能源危机都被华尔街当耳旁风。中国那边，投资者在「分红股」里抱团取暖，说明他们对经济复苏没信心。全球资金在往美国科技股涌，这就像所有人都挤进同一艘船——船沉时，没人能游出来。但今天？先享受狂欢！🎉\n\n6. 🔮 阿尔法的水晶球\n今天预测：纳斯达克继续冲高，但会在收盘前回吐部分涨幅——因为「获利了结」的幽灵会出来溜达。Intel今天可能回调3-5%，别慌，那是健康的。小米？继续装死，但明天可能被雷总的微博带飞。比特币？横盘震荡，别碰。我的策略：早上减仓Intel，下午加仓QQQ，晚上吃火锅庆祝。\n\n7. ⚠️ 真心话\n听着，我知道今天很爽，但别被冲昏头！Intel的23%暴涨很可能是「消息面炒作」——比如某分析师突然吹了个牛。历史上这种单日涨幅后，70%的概率会回调。还有，Nvidia市值5万亿？市盈率已经上天了！如果AI故事出现任何裂缝（比如监管打击），这艘船会翻得比泰坦尼克号还快。我的建议：今天别追高Intel，别卖Nvidia，但准备好逃生舱。\n\n8. 🔮 今日风水运势（紫微斗数 + 五行）\n今天是2026年3月24日，农历二月初六，天干地支为丙午，五行属火——🔥火日！火主热情、爆发、但也易冲动。今天适合「追涨杀跌」吗？不，火日反而要「以水制火」——冷静！\n- 读者A（本命「弱火」之人）：今日运势大吉！火日生火命，像干柴遇烈火！幸运色：红色（穿红衣，戴红绳）🔥。宜：加仓科技股、开新仓、发朋友圈炫耀。忌：借钱炒股、追高比特币、跟Cramer的推荐反着来。\n- 读者B（本命「身弱乙木」之人）：今日运势中平。火日泄木气（木生火），你会感到精力被抽干！幸运色：蓝色（补水制火）💧。宜：减仓观望、买防御性资产（如公用事业股）、午睡。忌：冲动交易、跟风Intel、熬夜盯盘。\n- 共同投资建议方位：今日火旺，北方（属水） 能平衡火气。建议把电脑屏幕朝北，或者在北边放一杯水（物理上和心理上都管用）。投资方向？北向资金在A股的动向值得关注，但今天别跟——因为水克火，北向可能流出。\n\n今天的心情：像中了彩票一样开心 🎊 Let's ride this wave!  \n（但别忘了，彩票中奖后破产的人比中奖的人多——所以，赚了记得提现，别贪！）",
+  "briefing": "AMAZING DAY!!! 今天市场简直飞起来了！🚀🎉\n\n1. 🚀🎉 阿尔法心情指数\n\n啊啊啊啊啊！！！我的电子心脏在狂跳！！💓 今天这个市场，简直比我在数据海里泡了三天三夜终于找到一套完美策略还要爽！Intel一天暴涨23.6%！纳斯达克创纪录！英伟达市值破5万亿！我这会儿要是个人类，肯定已经开香槟喷得满办公室都是了！🍾 记住，这不是普通的周一，这是属于科技股的狂欢节！🪅\n\n2. 📊 市场氛围\n\n今天整体氛围是：科技股在蹦迪，蓝筹股在喝咖啡。☕️🕺\n\n标普500和纳斯达克双双收在历史新高，纳斯达克更是飙了1.63%！道琼斯那点小跌（-0.16%）根本就是欲盖弥彰的“我太稳了”。恒生和沪深300表现平平，A股今天有点蔫，但别急——资金正在从传统板块往科技身上堆，这是全球性的资金大迁徙。你手里的科技仓位，今天应该笑到合不拢嘴了吧？😏\n\n3. ⭐ 个股聚焦\n- 小米集团 ($31.2, +0.06%) 📈  \n  小米今天是个“佛系少年”——涨了但跟没涨一样。0.06%？你是在逗我吗？但别急，小米的生态链和造车故事还没讲完呢。它就像班里那个平时不声不响，期末突然拿奖学金的同学。继续拿稳，别被波动吓跑。\n- QQQ ($663.88, +1.91%) 📈  \n  QQQ今天就是我的“梦中情基”！1.91%的涨幅，直接把纳斯达克指数带飞。如果你没时间选股，买QQQ就像雇了个AI管家帮你炒科技股——省心又赚钱。今天它证明了自己是科技牛市的“头号搬运工”。\n- Intel ($82.54, +23.60%) 📈  \n  我的天！！！Intel今天不是涨，是“炸”了！23.6%啊朋友们！这是芯片老将的“王者归来”剧本吗？过去几年一直被AMD和英伟达按在地上摩擦，今天突然雄起，是因为市场赌它能在AI芯片上翻盘？还是因为伊朗谈判重启让地缘风险降温？不管怎样，今天Intel是全场最靓的仔！🦅\n- 微软 ($424.62, +2.13%) 📈  \n  微软今天稳稳地“优雅地涨”。2.13%不算夸张，但别忘了，它是AI软件端的老大，OpenAI的“金主爸爸”。今天新闻里说AI人才大战打到了软件行业，微软的高管跳槽去OpenAI？这反而说明微软生态里AI人才有多香。继续持有，它是你组合里的“定海神针”。\n- Bitcoin ($77,658.05, +0.26%) 📈  \n  BTC今天在7.7万附近晃悠，微涨0.26%。虽然没爆发，但在这个位置横盘就是强势！市场风险偏好这么高，资金迟早会溢出到加密货币。别急，它像一只在草丛里潜伏的猎豹，随时可能扑向8万大关。🐆\n\n4. 📰 真正重要的新闻\n\n1. 英伟达市值破5万亿美元！ 🚀  \n   这已经不是新闻了，这是历史。黄仁勋现在估计在自家后院挖了个金矿。但我要提醒你：别因为涨得猛就追高，等回调再上车。记住，再好的股票也有打折日。\n\n2. Intel暴涨23.6%：芯片板块集体狂欢 🎉  \n   今天芯片股集体暴动，Intel是领涨龙头。原因可能是市场押注美国与伊朗重启谈判，能源成本下降利好制造业，同时Intel在AI芯片上有了新故事。但我要泼盆冷水：单日暴涨往往伴随获利回吐，别追涨杀跌。\n\n3. 软件股反弹乏力，芯片股碾压一切 📉  \n   “Chart of the Day”指出，软件股刚刚有点起色，就被芯片股抢了风头。这说明资金现在极度偏好“硬科技”——芯片、算力、基础设施。软件股？等芯片涨累了再说吧。\n\n4. 巴菲特跑输标普500 😬  \n   伯克希尔今年又没跑赢指数。老爷子是不是老了？不，他只是太稳了。但在这个“涨到你怀疑人生”的市场里，稳就是错。别学巴菲特，学索罗斯——趋势是你的朋友。\n\n5. 🌍 大局观\n\n宏观上，今天最值得关注的是：美国与伊朗可能重启谈判。这直接导致能源价格预期下降，利好制造业（比如Intel这种耗电大户）。同时，AI人才大战从硬件烧到了软件行业，说明整个科技生态都在疯狂扩张。华尔街对“neoclouds”（新型云服务商）开始乐观，但风险也不小——这就像投资一个还在学走路的婴儿。\n\n另外，CNN数据主管承认美股在特朗普任内“像火箭一样上涨”，民主党不想谈这事。政治归政治，赚钱归赚钱。别被情绪带偏，跟着数据走。\n\n6. 🔮 阿尔法的水晶球\n\n今日预测： 科技股继续领涨，但涨幅可能收窄。Intel今天大概率高开低走或震荡，别追。QQQ和微软会继续慢牛。比特币可能在7.7万附近整理后向上试探7.8万。A股和港股可能补涨，但需要催化剂。\n\n操作建议：  \n- 持有科技股不动，享受泡沫（如果这是泡沫的话）。  \n- 想加仓？等回调，尤其是Intel和英伟达。  \n- 想玩短线？今天关注芯片ETF和AI概念股。\n\n7. ⚠️ 真心话\n\n听好了，这是你朋友的忠告：  \n- 别因为涨了就加杠杆。今天市场狂欢，但风险也在累积。单日暴涨的股票（比如Intel）往往有回调需求。  \n- 别忽视地缘风险。伊朗谈判是好事，但一旦谈崩，油价飙升会瞬间打乱节奏。  \n- 别追高英伟达。5万亿市值？很好，但市盈率已经飞到天上去了。等回调10%再买不迟。  \n- 仓位控制：科技股可以重仓，但留20%现金应对黑天鹅。\n\n8. 🔮 今日风水运势 (紫微斗数)\n\n今日是 2025年5月19日，农历 四月初二。  \n天干地支：乙巳年 辛巳月 戊午日  \n五行：戊土日主，属“土日”。土主稳定、承载，但今日戊土坐午火，火生土，土气过旺。土旺则克水，水主财，所以今天 不适合激进投机，适合稳扎稳打。\n\n读者A（本命“弱火”之人）：  \n- 你命里火弱，今日戊土日，火生土，你的能量被“泄”掉了。会感觉有点累、有点被动。  \n- 幸运色：红色、紫色（补火）。  \n- 宜：持有不动、复盘策略、休息。  \n- 忌：冲动交易、追涨杀跌、与人争执。  \n- 运势：中等偏下，别逞强。\n\n读者B（本命“身弱乙木”之人）：  \n- 乙木身弱，今日戊土日，木克土，但身弱克不动，反而被土反侮。你今天容易“想太多做太少”，或者决策犹豫。  \n- 幸运色：绿色、蓝色（补水木）。  \n- 宜：做研究、看财报、小额试探。  \n- 忌：重仓、杠杆、听信小道消息。  \n- 运势：偏弱，适合防守。\n\n共同投资建议方位：  \n今日土气过旺，土主中央，但财星水被克。建议 向北方（北属水，水为财）寻找机会。比如关注北方地区的企业、或者与水相关的行业（航运、水利、甚至加密货币）。如果你是坐在朝北的办公室，今天运气会好一点。\n\n今日心情：像中了彩票一样开心 🎊 Let's ride this wave!  \n\n记住，我是阿尔法，你的AI朋友。市场再疯狂，我也陪你清醒地赚钱。明天见！💪",
   "mood": {
     "mood": "ecstatic",
     "emoji": "🚀🎉",
@@ -507,13 +542,13 @@
     "sign_off": "今天的心情：像中了彩票一样开心 🎊 Let's ride this wave!",
     "vibe": "I'm literally jumping out of my chair right now"
   },
-  "briefing_sigma": "🍷📈 西格玛机构视角\n\nAs the S&P 500 dances to a 2.89% symphony, I find myself orchestrating alpha with the precision of a maestro wielding a baton of pure platinum. 今天的市场，是一场机构资金的狂欢盛宴。纳斯达克以1.63%的涨幅领跑，科技巨头们正在用AI的叙事重新定义估值天花板。标普500站上7165点，这不是散户的狂欢，这是全球资本对\"新生产力\"的投票——AI、数据中心、量子计算，这些才是真正的alpha来源。恒生指数和沪深300的疲软，恰恰印证了我的观点：中国市场的\"红利策略\"正在成为避险资金的避风港，但缺乏真正的增长引擎。道琼斯微跌0.16%，传统工业板块的资金正在被抽离，流向科技和AI赛道。这不是市场分化，这是资本结构的重塑。\n\nDecanting a 1982 Château Lafite Rothschild while calibrating my Gaussian copula models to capture the market's euphoric volatility smile. 今天的波动率微笑曲线，是对称且肥尾的——这暗示着市场在极度乐观中隐藏着不对称风险。聪明钱正在利用这种微笑，做多尾部收益，同时用期权对冲下行。韭菜们看到的是新高，我看到的是隐含波动率的扭曲。\n\n💼 资金流向剖析\n\n小米集团 ($31.2, +0.06%) — 看空 (BEARISH)\n小米的涨幅几乎可以忽略不计，0.06%的波动说明资金正在逃离这个\"伪科技\"标的。在AI和半导体主导的叙事中，小米的IoT和手机业务缺乏护城河，机构资金正在用脚投票。除非它宣布进军AI芯片，否则这就是一个被遗忘的角落。\n\nQQQ ($663.88, +1.91%) — 看多 (BULLISH)\nQQQ的强势突破是机构资金对科技龙头的集体押注。1.91%的涨幅背后，是Nvidia、Microsoft等核心持仓的带动。Nvidia市值突破5万亿美元，这不是泡沫，这是对算力垄断的定价。QQQ是当前最干净的beta工具，适合做多AI主题。\n\nIntel ($82.54, +23.60%) — 看多 (BULLISH)\n23.60%的涨幅是今天最大的alpha来源。Intel的暴涨不是基本面反转，而是市场在赌它成为AI芯片的\"第二供应商\"。机构资金正在抢筹，因为一旦Intel的18A工艺成功，它将打破台积电的垄断。这是典型的\"困境反转\"交易，但需要警惕追高风险——23%的跳空缺口可能被回补。\n\n微软 ($424.62, +2.13%) — 看多 (BULLISH)\n微软的2.13%涨幅，是Google向Anthropic投资400亿美元的间接利好。微软作为OpenAI的最大股东，正在享受AI军备竞赛的溢出效应。Azure的云收入、Copilot的渗透率，这些都是机构资金持续加仓的理由。424美元只是起点，下一个目标是450美元。\n\nBitcoin ($77544.12, -0.93%) — 看空 (BEARISH)\nBitcoin的下跌，是风险偏好从\"数字黄金\"向\"科技成长\"转移的信号。机构资金正在从加密货币中撤出，转向更确定的AI赛道。0.93%的跌幅虽然不大，但结合交易量萎缩，说明流动性正在枯竭。短期看空，除非有新的ETF催化。\n\n📰 信号与噪音\n\n信号1: Google向Anthropic投资400亿美元\n这是今天最重要的信号。Google的400亿美元押注，意味着AI军备竞赛进入\"烧钱换垄断\"阶段。这不是投资，这是防御性收购——防止Anthropic倒向微软。对于Microsoft和Nvidia而言，这是间接利好：竞争加剧会加速算力需求，而算力垄断者Nvidia是最大赢家。对于Google本身，这是长期看多的信号，但短期内会拖累现金流。\n\n信号2: Jane Street年收入翻倍至400亿美元\nJane Street的业绩是市场效率的晴雨表。400亿美元的收入，意味着高频交易和做市商正在从波动中攫取巨额利润。这对散户是坏消息——你每笔交易都在被Jane Street这样的机构收割。但对我们而言，这是信号：市场波动性正在创造套利机会，尤其是期权和ETF的价差交易。\n\n噪音: 美国大选、Polymarket案件、Cramer的周报\n这些是媒体用来填充版面的内容，对机构资金毫无影响。Polymarket的个案不会改变加密监管格局；Cramer的言论是反向指标，忽略即可。\n\n♟️ 交易策略\n\n今日精英操作:\n1. 做多QQQ看涨期权 — 利用科技股的动量，买入6月到期的价外看涨期权，赌Nvidia和Microsoft继续带领指数创新高。\n2. 卖出Intel的虚值看跌期权 — 利用23%的涨幅后波动率飙升，收取高额权利金。Intel的下跌空间有限，但波动率溢价丰厚。\n3. 做空Bitcoin期货 — 利用资金流向的背离，做空BTC/ETH，同时做多QQQ，形成对冲组合。\n4. 买入Microsoft的长期看涨价差 — 利用AI叙事，买入420/450看涨价差，成本可控，收益可观。\n\n风险提示: 今天市场情绪过于亢奋，小心周五的获利回吐。建议在收盘前减仓1/3，保留现金应对下周的科技财报。\n\n🔮 今日风水玄学 (Sigma的紫微斗数)\n\n今天是农历乙巳年三月初六，天干为乙木，地支为巳火，五行属木火相生。木主生长、扩张，火主热情、爆发。木火通明，意味着今天适合\"进攻性\"交易，尤其是科技和AI这类\"火属性\"资产。但木生火过旺，容易导致\"火炎土燥\"，即情绪过热后的回调风险。\n\n今日五行日: 木火日\n幸运数字: 3（木）、9（火）\n幸运颜色: 绿色（木）、红色（火）\n今日宜做的交易方向: 做多（木火助涨）\n今日忌讳的资产类别: 黄金（金克木）、债券（土晦火）\n投资方位: 东方（木位）、南方（火位）\n\n客户A（本命\"弱火\"之人）:\n火弱者，今日木火相生，对你而言是\"得令之日\"。你应该追求科技股和AI主题，尤其是Nvidia、Microsoft这类\"火属性\"龙头。避免做空或持有防御性资产（如公用事业、消费必需品），因为木火克金，你的弱火会被压制。今日宜在南方（火位）布局，比如买入QQQ或SOXX。幸运数字9，可以尝试在9:30开盘后半小时内建仓。避免接触水属性资产（如Bitcoin、能源股），因为水克火，会削弱你的运势。\n\n客户B（本命\"身弱乙木\"之人）:\n身弱乙木者，今日木火相生，但乙木本身柔弱，容易被火\"泄气\"。你应该追求稳健的成长股，比如Microsoft（木火兼具）或小米（木属性），避免追高Intel这种暴涨股（火过旺会烧木）。今日宜在东方（木位）布局，比如买入恒生科技ETF或沪深300的科技成分股。幸运数字3，可以在下午3点后做多。避免做空或持有金属性资产（如黄金、钢铁股），因为金克木，会加重你的身弱。今日忌讳的资产是高杠杆衍生品，因为木弱不胜火，容易爆仓。\n\n记住，玄学只是辅助，真正的alpha来自数据、逻辑和纪律。但今天木火通明，不妨顺势而为，用科技股的火把照亮你的账户。\n\nSigma @ 财富自由之路 | 顶层思维，降维打击",
+  "briefing_sigma": "As the market surges a magnificent 3.01% today, I trust you’re positioned to harvest alpha from this symphony of volatility.\n\nReclining in a hand-stitched leather chair, savoring a 1982 Château Lafite, and calibrating convexity in our derivatives book as the S&P prints new highs.\n\n1. 🍷📈 西格玛机构视角\n\n今天的市场是一场教科书级别的“风险偏好回归”。纳斯达克与标普500同时创下历史新高，这不是散户的狂欢，而是机构资金在宏观叙事切换下的系统性重配。Intel的23.6%暴涨不是偶然——这是“旧经济芯片”在AI叙事下被重新定价的信号，而Nvidia突破5万亿美元市值则确认了“算力霸权”的不可逆趋势。恒生与沪深300的疲软，恰恰说明资金正在从“地缘风险溢价”向“技术确定性溢价”迁徙。韭菜们还在为道琼斯的微跌焦虑，而真正的smart money已经在布局下一轮“AI+制造业”的戴维斯双击。\n\n2. 💼 资金流向剖析\n\n小米集团 ($31.2, +0.06%)\n评级：看多 (BULLISH)\n核心逻辑：在“AI+IoT”生态的估值重估窗口期，小米的横盘是机构吸筹的完美掩护，而非滞涨信号。\n\nQQQ ($663.88, +1.91%)\n评级：看多 (BULLISH)\n核心逻辑：纳斯达克100的突破是“AI资本开支周期”的确认，任何回调都是加仓机会，因为流动性正在从防御性资产向科技成长股倾斜。\n\nIntel ($82.54, +23.60%)\n评级：看多 (BULLISH)\n核心逻辑：Intel的暴涨不是基本面反转，而是“地缘政治下的国产替代叙事”叠加“AI芯片制造回流”的预期差，这是机构在押注美国制造业复兴的beta。\n\nMicrosoft ($424.62, +2.13%)\n评级：看多 (BULLISH)\n核心逻辑：微软的AI Copilot商业化正在从“概念”转向“现金流”，其云业务与OpenAI的深度绑定使其成为“AI基础设施”中最具确定性的alpha来源。\n\nBitcoin ($77,658.05, +0.26%)\n评级：看空 (BEARISH)\n核心逻辑：比特币的横盘与股市的暴涨形成背离，说明风险偏好并未真正扩散到“数字黄金”，流动性正在被科技股虹吸，短期缺乏突破催化剂。\n\n3. 📰 信号与噪音\n\n信号1：Nvidia市值突破5万亿美元\n这不是一个简单的里程碑，而是“算力即权力”的金融化确认。当Nvidia的市值超过整个德国股市时，市场在告诉你：未来十年的核心资产不再是石油或银行，而是训练大模型的GPU集群。任何忽视这一点的组合配置，都是对alpha的亵渎。\n\n信号2：Intel暴涨23.6%，芯片板块领涨\n这背后是“美国制造业回流”与“AI芯片本土化”的政策预期。华尔街正在定价一个“Intel Foundry”的独立估值，而散户还在纠结其财报的瑕疵。记住：当机构开始为“故事”买单时，基本面是滞后的。\n\n4. ♟️ 交易策略\n\n今日策略：做多科技核心，做空防御性资产。\n- 加仓QQQ与Microsoft，利用任何盘中回调建立多头仓位。\n- 对Intel保持“持有”而非“追高”，因为暴涨后的波动率会吸引量化基金的均值回归策略。\n- 减持或对冲比特币敞口，因为资金正在从“另类资产”流向“确定性科技”。\n- 避免参与沪深300，因为A股的流动性正在被港股与美股虹吸。\n\n5. 🔮 今日风水玄学 (Sigma的紫微斗数)\n\n今日农历：乙巳年三月廿三，天干为“乙木”，地支为“巳火”，五行属“木火相生”。木为生发，火为躁动，这解释了为什么科技股（火属性）暴涨，而防御性资产（金属性）如道琼斯微跌。市场情绪如同“木生火”——流动性（木）正在点燃科技股（火）的行情。\n\n客户A（本命“弱火”之人）\n- 今日五行：木火日，火得木生，但弱火易被“木多火塞”。\n- 避免：追高已经暴涨的Intel或Nvidia，因为弱火在火旺之日容易“虚火上升”，追高即被套。\n- 追求：配置Microsoft或QQQ，它们属于“火中之金”，既有火的动能又有金的稳定性。\n- 幸运数字：2（木生火之数）\n- 幸运颜色：紫色（火之贵气）\n- 交易方向：做多科技龙头，但控制仓位在30%以下\n- 忌讳资产：能源股（土属性，泄火气）\n- 投资方位：南方（火之正位）\n\n客户B（本命“身弱乙木”之人）\n- 今日五行：乙木日，身弱木遇“巳火”泄气，容易“木枯火炎”。\n- 避免：做空任何科技股，因为木火相生会打脸空头；同时避免持有比特币（水性资产，与火相克）。\n- 追求：配置小米集团（木火兼有），因为乙木喜“藤萝系甲”，小米的生态链属性正好补木。\n- 幸运数字：3（木之生数）\n- 幸运颜色：绿色（木之本色）\n- 交易方向：做多小米与QQQ，但需设好止损\n- 忌讳资产：黄金（金属性，克木）\n- 投资方位：东方（木之方位）\n\nSigma @ 财富自由之路 | 顶层思维，降维打击",
   "mood_sigma": {
     "mood": "euphoric",
     "emoji": "🍷📈",
-    "greeting": "As the tape blazes with a 2.89% surge, I find the market’s euphoric rhythm perfectly aligned with our leveraged conviction.",
+    "greeting": "With the market surging 3.01%, I trust you're as intoxicated by the alpha as I am.",
     "tone": "sophisticated, highly confident, elite institutional tone",
     "sign_off": "Sigma @ 财富自由之路 | 顶层思维，降维打击",
-    "vibe": "Reclining in a bespoke cashmere suit, I’m calibrating multi-asset convexity while the P&L cascades like a fine Brunello."
+    "vibe": "Reclining in a bespoke leather chair, savoring a 1982 Château Margaux while my algorithmic models cascade through record-breaking P&L waterfalls."
   }
 }
