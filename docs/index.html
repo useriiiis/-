@@ -97,6 +97,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <li><a onclick="show('analysis'); toggleSidebar()">📈 Stock Analysis</a></li>
     <li><a onclick="show('wave'); toggleSidebar()">🌊 Elliott Wave</a></li>
     <li><a onclick="show('dca'); toggleSidebar()">💰 DCA Simulator</a></li>
+    <li><a onclick="show('indicators'); toggleSidebar()">🔬 Technical Indicators</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
 </aside>
@@ -332,6 +333,151 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     </div>
   </div>
 
+  <!-- Technical Indicators Page -->
+  <div id="page-indicators" style="display:none">
+    <div class="ph"><h1>🔬 Technical Indicators Lab</h1><p>Comprehensive technical analysis: MACD, RSI, KDJ, Bollinger Bands, Volume, MA Cross, 缠论 (Chan Theory), Pattern Detection</p></div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div class="ct">⚙️ Configure Analysis</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <input id="ind-ticker" type="text" placeholder="Ticker (e.g. AAPL)" value="AAPL"
+          style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem;width:200px">
+        <select id="ind-period" style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem">
+          <option value="3mo">3 Months</option>
+          <option value="6mo" selected>6 Months</option>
+          <option value="1y">1 Year</option>
+          <option value="2y">2 Years</option>
+        </select>
+        <button class="refresh-btn" onclick="analyzeIndicators()" style="background:var(--red);color:#fff;font-weight:600">🔬 Analyze All Indicators</button>
+        <span style="font-size:.8rem;color:var(--muted);margin-left:.5rem">Quick:</span>
+        <button class="refresh-btn" onclick="quickInd('AAPL')">AAPL</button>
+        <button class="refresh-btn" onclick="quickInd('TSLA')">TSLA</button>
+        <button class="refresh-btn" onclick="quickInd('NVDA')">NVDA</button>
+        <button class="refresh-btn" onclick="quickInd('SPY')">SPY</button>
+        <button class="refresh-btn" onclick="quickInd('1810.HK')">小米</button>
+      </div>
+    </div>
+
+    <!-- Overall Summary -->
+    <div id="ind-summary" style="display:none;margin-bottom:1rem">
+      <div class="card" style="background:linear-gradient(135deg,var(--card),var(--bg2));border:2px solid var(--border)">
+        <div class="ct">🎯 Overall Signal Summary</div>
+        <div id="ind-overall" style="font-size:.95rem;line-height:1.8"></div>
+      </div>
+    </div>
+
+    <div id="ind-results" style="display:none">
+      <!-- 1. MACD -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--blue)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📊 MACD (Moving Average Convergence Divergence)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">EMA(12) − EMA(26), Signal=EMA(9). Detects trend changes via crossovers.</div>
+          </div>
+          <span id="signal-macd" class="mood-badge"></span>
+        </div>
+        <div id="chart-macd" style="height:380px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-macd" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 2. RSI -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--purple)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">⚡ RSI (Relative Strength Index)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">14-period momentum. >70=overbought, <30=oversold. Divergence is strongest signal.</div>
+          </div>
+          <span id="signal-rsi" class="mood-badge"></span>
+        </div>
+        <div id="chart-rsi" style="height:280px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-rsi" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 3. KDJ -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--yellow)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📈 KDJ (Stochastic Oscillator)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">中国常用动量指标。K&D 在底部金叉=买; 顶部死叉=卖. J<0 极度超卖, J>100 极度超买.</div>
+          </div>
+          <span id="signal-kdj" class="mood-badge"></span>
+        </div>
+        <div id="chart-kdj" style="height:280px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-kdj" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 4. Bollinger Bands -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--green)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📉 Bollinger Bands (布林带)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">20-day MA ± 2σ. Squeeze = breakout coming. Touching upper = strong, touching lower = weakness.</div>
+          </div>
+          <span id="signal-boll" class="mood-badge"></span>
+        </div>
+        <div id="chart-boll" style="height:380px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-boll" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 5. Volume -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid #ff6b6b">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📊 Volume Analysis (放量/缩量)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">放量 = volume > 2× MA20 (institutional activity). 缩量 = consolidation. OBV confirms trend.</div>
+          </div>
+          <span id="signal-volume" class="mood-badge"></span>
+        </div>
+        <div id="chart-volume" style="height:380px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-volume" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 6. Moving Averages -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid #4361ee">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📐 Moving Averages (均线系统)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">MA5/10/20/50/200. Golden Cross (50↑200) = 大牛市. Death Cross (50↓200) = 大熊市.</div>
+          </div>
+          <span id="signal-ma" class="mood-badge"></span>
+        </div>
+        <div id="chart-ma" style="height:420px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-ma" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 7. Chan Theory (缠论) -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid #7209b7">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">🧩 缠论 (Chan Theory) Simplified</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">缠中说禅理论。识别"笔"(strokes) 和"中枢"(consolidation zones)。中枢突破=trend continues, 反向=reversal.</div>
+          </div>
+          <span id="signal-chan" class="mood-badge"></span>
+        </div>
+        <div id="chart-chan" style="height:420px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-chan" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+
+      <!-- 8. Pattern Detection -->
+      <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--red)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">🎨 Chart Patterns (经典形态)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Auto-detect: 头肩顶/底, 双顶/双底, 三角形, support/resistance levels.</div>
+          </div>
+          <span id="signal-pattern" class="mood-badge"></span>
+        </div>
+        <div id="chart-pattern" style="height:420px;background:var(--bg2);border-radius:10px"></div>
+        <div id="reason-pattern" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
+      </div>
+    </div>
+
+    <div id="ind-loading" style="display:none;padding:5rem;text-align:center;color:var(--muted)">
+      <div style="font-size:2rem;margin-bottom:1rem">🔬</div>
+      <div>Analyzing all indicators...<br>This may take 5-10 seconds.</div>
+    </div>
+  </div>
+
   <!-- Analysis Page -->
   <div id="page-analysis" style="display:none">
     <div class="ph"><h1>5-Dimension Stock Analysis & Pair Selection</h1><p>AI-powered long/short recommendation for UBS competition <span class="ai-b">DeepSeek AI</span></p></div>
@@ -402,7 +548,7 @@ function toggleSidebar(){
 }
 
 function show(p){
-  ['dash','news','briefing','sigma','analysis','wave','dca'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
+  ['dash','news','briefing','sigma','analysis','wave','dca','indicators'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   event.target.classList.add('active');
 }
@@ -1142,6 +1288,823 @@ async function runDCA(){
     legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a', orientation: 'h', y: -0.15},
     hovermode: 'x unified'
   }, {responsive: true, displayModeBar: false});
+}
+
+// ===========================================
+// Technical Indicators Lab
+// ===========================================
+
+function quickInd(ticker){
+  document.getElementById('ind-ticker').value = ticker;
+  analyzeIndicators();
+}
+
+// === Math helpers ===
+function ema(arr, period){
+  const k = 2 / (period + 1);
+  const out = [arr[0]];
+  for(let i=1; i<arr.length; i++){
+    out.push(arr[i] * k + out[i-1] * (1-k));
+  }
+  return out;
+}
+
+function sma(arr, period){
+  const out = [];
+  for(let i=0; i<arr.length; i++){
+    if(i < period - 1){ out.push(null); continue; }
+    let s = 0;
+    for(let j=i-period+1; j<=i; j++) s += arr[j];
+    out.push(s / period);
+  }
+  return out;
+}
+
+function stdev(arr, period){
+  const out = [];
+  for(let i=0; i<arr.length; i++){
+    if(i < period - 1){ out.push(null); continue; }
+    let mean = 0;
+    for(let j=i-period+1; j<=i; j++) mean += arr[j];
+    mean /= period;
+    let sumSq = 0;
+    for(let j=i-period+1; j<=i; j++) sumSq += Math.pow(arr[j] - mean, 2);
+    out.push(Math.sqrt(sumSq / period));
+  }
+  return out;
+}
+
+// === MACD ===
+function calculateMACD(closes){
+  const ema12 = ema(closes, 12);
+  const ema26 = ema(closes, 26);
+  const macd = ema12.map((v,i) => v - ema26[i]);
+  const signal = ema(macd, 9);
+  const hist = macd.map((v,i) => v - signal[i]);
+  return {macd, signal, hist};
+}
+
+function macdSignal(macd){
+  const m = macd.macd[macd.macd.length-1];
+  const s = macd.signal[macd.signal.length-1];
+  const h = macd.hist[macd.hist.length-1];
+  const hPrev = macd.hist[macd.hist.length-2];
+  
+  // Detect crossovers in last 5 days
+  let crossInfo = '';
+  for(let i = macd.macd.length-1; i >= macd.macd.length-5; i--){
+    if(i < 1) break;
+    const prevDiff = macd.macd[i-1] - macd.signal[i-1];
+    const currDiff = macd.macd[i] - macd.signal[i];
+    if(prevDiff < 0 && currDiff > 0){
+      crossInfo = `🔥 GOLDEN CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed above Signal). 强烈买入信号！`;
+      return {signal:'BULLISH', strength:90, reason:crossInfo + ` Current MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}, Hist=${h.toFixed(3)} (rising: ${h>hPrev?'yes':'no'}).`};
+    }
+    if(prevDiff > 0 && currDiff < 0){
+      crossInfo = `💀 DEATH CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed below Signal). 强烈卖出信号！`;
+      return {signal:'BEARISH', strength:90, reason:crossInfo + ` Current MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}, Hist=${h.toFixed(3)} (falling: ${h<hPrev?'yes':'no'}).`};
+    }
+  }
+  
+  // No recent cross
+  if(m > s && h > 0 && h > hPrev){
+    return {signal:'BULLISH', strength:65, reason:`MACD (${m.toFixed(3)}) is above Signal (${s.toFixed(3)}) and Histogram is expanding (${h.toFixed(3)} > ${hPrev.toFixed(3)}). 多头动能增强，趋势向上。`};
+  }
+  if(m < s && h < 0 && h < hPrev){
+    return {signal:'BEARISH', strength:65, reason:`MACD (${m.toFixed(3)}) is below Signal (${s.toFixed(3)}) and Histogram is expanding negative. 空头动能增强，趋势向下。`};
+  }
+  if(m > s && h > 0 && h < hPrev){
+    return {signal:'NEUTRAL', strength:40, reason:`MACD above Signal but Histogram shrinking (${h.toFixed(3)} < ${hPrev.toFixed(3)}). 多头动能减弱，警惕回调。`};
+  }
+  if(m < s && h < 0 && h > hPrev){
+    return {signal:'NEUTRAL', strength:40, reason:`MACD below Signal but Histogram recovering. 空头动能减弱，可能筑底。`};
+  }
+  return {signal:'NEUTRAL', strength:30, reason:`MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}. 信号不明朗，等待方向。`};
+}
+
+// === RSI ===
+function calculateRSI(closes, period=14){
+  const out = [null];
+  let gains = 0, losses = 0;
+  
+  for(let i=1; i<=period; i++){
+    const diff = closes[i] - closes[i-1];
+    if(diff > 0) gains += diff; else losses -= diff;
+    out.push(null);
+  }
+  
+  let avgGain = gains / period;
+  let avgLoss = losses / period;
+  out[period] = 100 - (100 / (1 + avgGain/avgLoss));
+  
+  for(let i=period+1; i<closes.length; i++){
+    const diff = closes[i] - closes[i-1];
+    const g = diff > 0 ? diff : 0;
+    const l = diff < 0 ? -diff : 0;
+    avgGain = (avgGain * (period-1) + g) / period;
+    avgLoss = (avgLoss * (period-1) + l) / period;
+    out.push(avgLoss === 0 ? 100 : 100 - (100 / (1 + avgGain/avgLoss)));
+  }
+  return out;
+}
+
+function rsiSignal(rsi, closes){
+  const r = rsi[rsi.length-1];
+  const r5 = rsi[rsi.length-5] || r;
+  
+  // Check divergence (last 30 days)
+  let divergence = '';
+  const lookback = Math.min(30, closes.length-1);
+  const priceMax = Math.max(...closes.slice(-lookback));
+  const priceMaxIdx = closes.length-lookback + closes.slice(-lookback).indexOf(priceMax);
+  const priceMin = Math.min(...closes.slice(-lookback));
+  const priceMinIdx = closes.length-lookback + closes.slice(-lookback).indexOf(priceMin);
+  
+  if(closes[closes.length-1] >= priceMax * 0.98 && rsi[priceMaxIdx] && r < rsi[priceMaxIdx] - 5){
+    divergence = `⚠️ 看跌背离 (Bearish Divergence): 价格创新高但RSI未跟随，强烈反转信号。`;
+    return {signal:'BEARISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, 之前高点RSI=${rsi[priceMaxIdx].toFixed(1)}.`};
+  }
+  if(closes[closes.length-1] <= priceMin * 1.02 && rsi[priceMinIdx] && r > rsi[priceMinIdx] + 5){
+    divergence = `🔥 看涨背离 (Bullish Divergence): 价格创新低但RSI未跟随，强烈反转信号。`;
+    return {signal:'BULLISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, 之前低点RSI=${rsi[priceMinIdx].toFixed(1)}.`};
+  }
+  
+  if(r > 70){
+    return {signal:'BEARISH', strength:r>80?75:55, reason:`RSI=${r.toFixed(1)} 超买区域 (>70)。${r>80?'极度超买，回调风险高。':'警惕短期回调。'}`};
+  }
+  if(r < 30){
+    return {signal:'BULLISH', strength:r<20?75:55, reason:`RSI=${r.toFixed(1)} 超卖区域 (<30)。${r<20?'极度超卖，反弹机会大。':'潜在反弹机会。'}`};
+  }
+  if(r > 50 && r > r5){
+    return {signal:'BULLISH', strength:50, reason:`RSI=${r.toFixed(1)} 在多头区间且上升 (${r5.toFixed(1)}→${r.toFixed(1)})。动能向上。`};
+  }
+  if(r < 50 && r < r5){
+    return {signal:'BEARISH', strength:50, reason:`RSI=${r.toFixed(1)} 在空头区间且下降 (${r5.toFixed(1)}→${r.toFixed(1)})。动能向下。`};
+  }
+  return {signal:'NEUTRAL', strength:30, reason:`RSI=${r.toFixed(1)} 中性区间，无明显方向。`};
+}
+
+// === KDJ ===
+function calculateKDJ(highs, lows, closes, n=9){
+  const K = [], D = [], J = [];
+  let prevK = 50, prevD = 50;
+  for(let i=0; i<closes.length; i++){
+    if(i < n-1){ K.push(null); D.push(null); J.push(null); continue; }
+    const period = closes.slice(i-n+1, i+1);
+    const highSlice = highs.slice(i-n+1, i+1);
+    const lowSlice = lows.slice(i-n+1, i+1);
+    const high = Math.max(...highSlice);
+    const low = Math.min(...lowSlice);
+    const rsv = high === low ? 50 : ((closes[i] - low) / (high - low)) * 100;
+    const k = (2/3) * prevK + (1/3) * rsv;
+    const d = (2/3) * prevD + (1/3) * k;
+    const j = 3 * k - 2 * d;
+    K.push(k); D.push(d); J.push(j);
+    prevK = k; prevD = d;
+  }
+  return {K, D, J};
+}
+
+function kdjSignal(kdj){
+  const k = kdj.K[kdj.K.length-1];
+  const d = kdj.D[kdj.D.length-1];
+  const j = kdj.J[kdj.J.length-1];
+  
+  // Detect cross in last 3 days
+  for(let i=kdj.K.length-1; i>=kdj.K.length-3; i--){
+    if(i<1) break;
+    const prevDiff = kdj.K[i-1] - kdj.D[i-1];
+    const currDiff = kdj.K[i] - kdj.D[i];
+    if(prevDiff < 0 && currDiff > 0 && kdj.K[i] < 30){
+      return {signal:'BULLISH', strength:90, reason:`🔥 低位金叉! K线在底部 (${kdj.K[i].toFixed(1)}) 上穿D线，强烈买入信号. 当前 K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
+    }
+    if(prevDiff > 0 && currDiff < 0 && kdj.K[i] > 70){
+      return {signal:'BEARISH', strength:90, reason:`💀 高位死叉! K线在顶部 (${kdj.K[i].toFixed(1)}) 下穿D线，强烈卖出信号. 当前 K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
+    }
+  }
+  
+  if(j < 0) return {signal:'BULLISH', strength:75, reason:`J=${j.toFixed(1)} 极度超卖，反弹概率极高. K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
+  if(j > 100) return {signal:'BEARISH', strength:75, reason:`J=${j.toFixed(1)} 极度超买，回调概率极高. K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
+  if(k > 80 && d > 80) return {signal:'BEARISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} 双双在高位 (>80)，超买区域。`};
+  if(k < 20 && d < 20) return {signal:'BULLISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} 双双在低位 (<20)，超卖区域。`};
+  if(k > d) return {signal:'BULLISH', strength:40, reason:`K (${k.toFixed(1)}) 在 D (${d.toFixed(1)}) 上方，多头格局。`};
+  return {signal:'BEARISH', strength:40, reason:`K (${k.toFixed(1)}) 在 D (${d.toFixed(1)}) 下方，空头格局。`};
+}
+
+// === Bollinger Bands ===
+function calculateBoll(closes, period=20, mult=2){
+  const mid = sma(closes, period);
+  const sd = stdev(closes, period);
+  const upper = mid.map((v,i) => v === null ? null : v + mult * sd[i]);
+  const lower = mid.map((v,i) => v === null ? null : v - mult * sd[i]);
+  const bandwidth = mid.map((v,i) => v === null ? null : ((upper[i]-lower[i])/v)*100);
+  return {mid, upper, lower, bandwidth};
+}
+
+function bollSignal(boll, closes){
+  const c = closes[closes.length-1];
+  const u = boll.upper[boll.upper.length-1];
+  const l = boll.lower[boll.lower.length-1];
+  const m = boll.mid[boll.mid.length-1];
+  const bw = boll.bandwidth[boll.bandwidth.length-1];
+  const bwAvg = boll.bandwidth.slice(-60).filter(v=>v!==null).reduce((s,v)=>s+v,0) / 60;
+  
+  if(bw < bwAvg * 0.6){
+    return {signal:'NEUTRAL', strength:80, reason:`📍 布林带收缩 (Squeeze): 当前带宽 ${bw.toFixed(2)}% 远低于60日均值 ${bwAvg.toFixed(2)}%。波动率压缩，即将变盘！突破方向决定后续。`};
+  }
+  if(c >= u){
+    return {signal:'BEARISH', strength:60, reason:`价格 (${c.toFixed(2)}) 触及/突破上轨 (${u.toFixed(2)}). 短期超买。要么回归中轨，要么"沿轨上行"(walking the band)继续强势。带宽=${bw.toFixed(1)}%.`};
+  }
+  if(c <= l){
+    return {signal:'BULLISH', strength:60, reason:`价格 (${c.toFixed(2)}) 触及/跌破下轨 (${l.toFixed(2)}). 短期超卖。可能反弹至中轨或"沿轨下行"。带宽=${bw.toFixed(1)}%.`};
+  }
+  if(c > m){
+    return {signal:'BULLISH', strength:45, reason:`价格 (${c.toFixed(2)}) 在中轨 (${m.toFixed(2)}) 上方运行，多头格局。距上轨 ${((u-c)/c*100).toFixed(1)}%, 距下轨 ${((c-l)/c*100).toFixed(1)}%.`};
+  }
+  return {signal:'BEARISH', strength:45, reason:`价格 (${c.toFixed(2)}) 在中轨 (${m.toFixed(2)}) 下方运行，空头格局。距下轨 ${((c-l)/c*100).toFixed(1)}%.`};
+}
+
+// === Volume Analysis ===
+function calculateOBV(closes, volumes){
+  const obv = [0];
+  for(let i=1; i<closes.length; i++){
+    if(closes[i] > closes[i-1]) obv.push(obv[i-1] + volumes[i]);
+    else if(closes[i] < closes[i-1]) obv.push(obv[i-1] - volumes[i]);
+    else obv.push(obv[i-1]);
+  }
+  return obv;
+}
+
+function volumeSignal(volumes, closes, dates){
+  const vMA20 = sma(volumes, 20);
+  const obv = calculateOBV(closes, volumes);
+  const obvMA = sma(obv, 20);
+  
+  // Recent 5 days analysis
+  const recentDays = 5;
+  let bigVolDays = [], shrinkDays = [];
+  for(let i=closes.length-recentDays; i<closes.length; i++){
+    if(volumes[i] > vMA20[i] * 2){
+      bigVolDays.push({i, ratio: volumes[i]/vMA20[i], up: closes[i]>closes[i-1]});
+    }
+    if(volumes[i] < vMA20[i] * 0.5){
+      shrinkDays.push({i, ratio: volumes[i]/vMA20[i]});
+    }
+  }
+  
+  // OBV trend
+  const obvTrend = obv[obv.length-1] > obvMA[obvMA.length-1];
+  const priceTrend = closes[closes.length-1] > closes[closes.length-20];
+  
+  let reason = '';
+  let signal = 'NEUTRAL';
+  let strength = 30;
+  
+  if(bigVolDays.length > 0){
+    const lastBig = bigVolDays[bigVolDays.length-1];
+    if(lastBig.up){
+      reason = `🔥 放量上涨! 最近${bigVolDays.length}天有放量上攻 (${lastBig.ratio.toFixed(1)}x avg). 资金积极入场，多方主导. `;
+      signal = 'BULLISH'; strength = 75;
+    } else {
+      reason = `⚠️ 放量下跌! 最近${bigVolDays.length}天有放量抛售 (${lastBig.ratio.toFixed(1)}x avg). 主力出货，警惕. `;
+      signal = 'BEARISH'; strength = 75;
+    }
+  } else if(shrinkDays.length >= 3){
+    reason = `📉 缩量整理: 最近多日成交量低于均线一半，缩量盘整阶段，等待方向选择. `;
+    signal = 'NEUTRAL'; strength = 40;
+  } else {
+    reason = `成交量正常运行，无异动. `;
+  }
+  
+  // OBV divergence check
+  if(obvTrend && !priceTrend){
+    reason += `📈 OBV背离 (隐性看涨): OBV上升但价格未涨，资金悄悄流入. `;
+    if(signal === 'NEUTRAL') signal = 'BULLISH';
+    strength = Math.max(strength, 60);
+  } else if(!obvTrend && priceTrend){
+    reason += `📉 OBV背离 (隐性看跌): 价格上涨但OBV未跟上，趋势缺乏资金支持. `;
+    if(signal === 'NEUTRAL') signal = 'BEARISH';
+    strength = Math.max(strength, 60);
+  } else if(obvTrend && priceTrend){
+    reason += `OBV与价格同向上升，多方资金确认. `;
+    if(signal === 'NEUTRAL'){ signal = 'BULLISH'; strength = 50; }
+  }
+  
+  return {signal, strength, reason, vMA20, obv, obvMA};
+}
+
+// === Moving Averages ===
+function maSignal(closes, dates){
+  const ma5 = sma(closes, 5);
+  const ma10 = sma(closes, 10);
+  const ma20 = sma(closes, 20);
+  const ma50 = sma(closes, 50);
+  const ma200 = sma(closes, 200);
+  
+  const c = closes[closes.length-1];
+  const mas = {
+    'MA5': ma5[ma5.length-1],
+    'MA10': ma10[ma10.length-1],
+    'MA20': ma20[ma20.length-1],
+    'MA50': ma50[ma50.length-1],
+    'MA200': ma200[ma200.length-1]
+  };
+  
+  // Check for golden/death cross (50 vs 200) in last 30 days
+  let crossInfo = '';
+  for(let i=closes.length-1; i>=Math.max(closes.length-30, 200); i--){
+    if(ma50[i-1] && ma200[i-1] && ma50[i] && ma200[i]){
+      if(ma50[i-1] < ma200[i-1] && ma50[i] >= ma200[i]){
+        crossInfo = `🔥 GOLDEN CROSS detected ${closes.length-1-i} days ago! MA50 上穿 MA200，长期大牛市信号！`;
+        break;
+      }
+      if(ma50[i-1] > ma200[i-1] && ma50[i] <= ma200[i]){
+        crossInfo = `💀 DEATH CROSS detected ${closes.length-1-i} days ago. MA50 下穿 MA200，长期大熊市信号！`;
+        break;
+      }
+    }
+  }
+  
+  // Count how many MAs price is above
+  const maList = [mas.MA5, mas.MA10, mas.MA20, mas.MA50, mas.MA200].filter(v=>v!==null && v!==undefined);
+  const aboveCount = maList.filter(v => c > v).length;
+  
+  // Bull arrangement: MA5 > MA10 > MA20 > MA50 > MA200
+  const bullArrange = mas.MA5 > mas.MA10 && mas.MA10 > mas.MA20 && (!mas.MA50 || mas.MA20 > mas.MA50) && (!mas.MA200 || mas.MA50 > mas.MA200);
+  const bearArrange = mas.MA5 < mas.MA10 && mas.MA10 < mas.MA20 && (!mas.MA50 || mas.MA20 < mas.MA50) && (!mas.MA200 || mas.MA50 < mas.MA200);
+  
+  let reason = `当前价 ${c.toFixed(2)} | MA5=${mas.MA5?.toFixed(2)}, MA10=${mas.MA10?.toFixed(2)}, MA20=${mas.MA20?.toFixed(2)}, MA50=${mas.MA50?.toFixed(2) || 'N/A'}, MA200=${mas.MA200?.toFixed(2) || 'N/A'}. `;
+  reason += `价格在 ${aboveCount}/${maList.length} 条均线之上. `;
+  
+  let signal = 'NEUTRAL', strength = 30;
+  
+  if(crossInfo){
+    reason = crossInfo + ' ' + reason;
+    signal = crossInfo.includes('GOLDEN') ? 'BULLISH' : 'BEARISH';
+    strength = 95;
+  } else if(bullArrange){
+    reason += `📈 多头排列: MA5>MA10>MA20>MA50>MA200，强势上涨格局。`;
+    signal = 'BULLISH'; strength = 80;
+  } else if(bearArrange){
+    reason += `📉 空头排列: MA5<MA10<MA20<MA50<MA200，强势下跌格局。`;
+    signal = 'BEARISH'; strength = 80;
+  } else if(aboveCount >= 4){
+    reason += `多数均线下方支撑，多头偏强。`;
+    signal = 'BULLISH'; strength = 55;
+  } else if(aboveCount <= 1){
+    reason += `多数均线上方压制，空头偏强。`;
+    signal = 'BEARISH'; strength = 55;
+  } else {
+    reason += `均线纠缠，方向不明。`;
+  }
+  
+  return {signal, strength, reason, ma5, ma10, ma20, ma50, ma200};
+}
+
+// === Chan Theory (缠论) Simplified ===
+function chanAnalysis(highs, lows, dates, closes){
+  // Step 1: detect strokes (笔) using ZigZag-like algorithm
+  const strokes = detectPivots(highs, lows, dates, 3);
+  
+  // Step 2: detect 中枢 (overlapping consolidation zones)
+  // 中枢 = at least 3 consecutive strokes with overlapping price range
+  const zhongshus = [];
+  for(let i=0; i<=strokes.length-3; i++){
+    const s1 = strokes[i], s2 = strokes[i+1], s3 = strokes[i+2];
+    const range1 = [Math.min(s1.price, s2.price), Math.max(s1.price, s2.price)];
+    const range2 = [Math.min(s2.price, s3.price), Math.max(s2.price, s3.price)];
+    const overlap_low = Math.max(range1[0], range2[0]);
+    const overlap_high = Math.min(range1[1], range2[1]);
+    if(overlap_low < overlap_high){
+      zhongshus.push({
+        startDate: s1.date,
+        endDate: s3.date,
+        high: overlap_high,
+        low: overlap_low,
+        startIdx: s1.idx,
+        endIdx: s3.idx
+      });
+    }
+  }
+  
+  // Step 3: analyze current state
+  const currentPrice = closes[closes.length-1];
+  let signal = 'NEUTRAL', strength = 30;
+  let reason = `检测到 ${strokes.length} 笔, ${zhongshus.length} 个中枢. `;
+  
+  if(zhongshus.length > 0){
+    const lastZS = zhongshus[zhongshus.length-1];
+    if(currentPrice > lastZS.high){
+      reason += `🔥 价格 (${currentPrice.toFixed(2)}) 已突破最近中枢上沿 (${lastZS.high.toFixed(2)}). 三类买点结构，趋势向上延续。`;
+      signal = 'BULLISH'; strength = 75;
+    } else if(currentPrice < lastZS.low){
+      reason += `⚠️ 价格 (${currentPrice.toFixed(2)}) 已跌破最近中枢下沿 (${lastZS.low.toFixed(2)}). 三类卖点结构，趋势向下延续。`;
+      signal = 'BEARISH'; strength = 75;
+    } else {
+      reason += `📍 价格 (${currentPrice.toFixed(2)}) 在中枢内 (${lastZS.low.toFixed(2)} - ${lastZS.high.toFixed(2)}) 震荡，等待方向选择。可在中枢下沿做多，上沿做空。`;
+      signal = 'NEUTRAL'; strength = 50;
+    }
+  } else {
+    reason += `当前为单边趋势(无中枢形成)，方向延续概率高。`;
+    if(strokes.length >= 2){
+      const isUp = strokes[strokes.length-1].price > strokes[strokes.length-2].price;
+      signal = isUp ? 'BULLISH' : 'BEARISH';
+      strength = 60;
+      reason += isUp ? ' 单边上行中.' : ' 单边下行中.';
+    }
+  }
+  
+  return {signal, strength, reason, strokes, zhongshus};
+}
+
+// === Pattern Detection ===
+function detectChartPatterns(highs, lows, closes, dates){
+  const pivots = detectPivots(highs, lows, dates, 3);
+  const patterns = [];
+  
+  if(pivots.length < 5) return {patterns, signal:'NEUTRAL', strength:20, reason:'数据不足，无法检测形态.'};
+  
+  const recent = pivots.slice(-7);
+  
+  // Head and Shoulders Top (头肩顶): 5 pivots, pattern: low-HIGH-low-HIGHER-low-HIGH-low
+  // Simplified: 5 consecutive pivots forming HSH pattern
+  if(recent.length >= 5){
+    const last5 = recent.slice(-5);
+    if(last5[0].type === 'high' && last5[2].type === 'high' && last5[4].type === 'high' &&
+       last5[1].type === 'low' && last5[3].type === 'low' &&
+       last5[2].price > last5[0].price && last5[2].price > last5[4].price &&
+       Math.abs(last5[0].price - last5[4].price) / last5[0].price < 0.05){
+      patterns.push({type: '头肩顶 (Head & Shoulders Top)', bearish:true, neckline: (last5[1].price+last5[3].price)/2});
+    }
+    
+    // Head and Shoulders Bottom (头肩底)
+    if(last5[0].type === 'low' && last5[2].type === 'low' && last5[4].type === 'low' &&
+       last5[1].type === 'high' && last5[3].type === 'high' &&
+       last5[2].price < last5[0].price && last5[2].price < last5[4].price &&
+       Math.abs(last5[0].price - last5[4].price) / last5[0].price < 0.05){
+      patterns.push({type: '头肩底 (Head & Shoulders Bottom)', bearish:false, neckline: (last5[1].price+last5[3].price)/2});
+    }
+  }
+  
+  // Double Top (双顶): 2 highs at similar levels
+  const recentHighs = recent.filter(p=>p.type==='high').slice(-2);
+  if(recentHighs.length === 2){
+    const diff = Math.abs(recentHighs[0].price - recentHighs[1].price) / recentHighs[0].price;
+    if(diff < 0.03){
+      patterns.push({type: '双顶 (Double Top)', bearish:true, level: recentHighs[1].price});
+    }
+  }
+  
+  // Double Bottom (双底)
+  const recentLows = recent.filter(p=>p.type==='low').slice(-2);
+  if(recentLows.length === 2){
+    const diff = Math.abs(recentLows[0].price - recentLows[1].price) / recentLows[0].price;
+    if(diff < 0.03){
+      patterns.push({type: '双底 (Double Bottom)', bearish:false, level: recentLows[1].price});
+    }
+  }
+  
+  // Support/Resistance (multiple touches at similar levels)
+  const allHighs = pivots.filter(p=>p.type==='high').map(p=>p.price);
+  const allLows = pivots.filter(p=>p.type==='low').map(p=>p.price);
+  
+  // Find clusters of nearby highs (resistance)
+  const resistanceLevels = findClusters(allHighs);
+  const supportLevels = findClusters(allLows);
+  
+  let signal = 'NEUTRAL', strength = 30;
+  let reason = '';
+  
+  if(patterns.length === 0){
+    reason = '未检测到明显反转形态。';
+  } else {
+    const bearPatterns = patterns.filter(p=>p.bearish);
+    const bullPatterns = patterns.filter(p=>!p.bearish);
+    if(bearPatterns.length > bullPatterns.length){
+      signal = 'BEARISH'; strength = 75;
+      reason = `⚠️ 检测到看跌反转形态: ${bearPatterns.map(p=>p.type).join(', ')}. ` + (bearPatterns[0].neckline ? `颈线位 ${bearPatterns[0].neckline.toFixed(2)}, 跌破强烈卖出.` : '');
+    } else if(bullPatterns.length > 0){
+      signal = 'BULLISH'; strength = 75;
+      reason = `🔥 检测到看涨反转形态: ${bullPatterns.map(p=>p.type).join(', ')}. ` + (bullPatterns[0].neckline ? `颈线位 ${bullPatterns[0].neckline.toFixed(2)}, 突破强烈买入.` : '');
+    }
+  }
+  
+  if(resistanceLevels.length > 0){
+    reason += ` 关键阻力位: ${resistanceLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
+  }
+  if(supportLevels.length > 0){
+    reason += ` 关键支撑位: ${supportLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
+  }
+  
+  return {patterns, signal, strength, reason, resistanceLevels, supportLevels, pivots};
+}
+
+function findClusters(arr, tolerance=0.02){
+  if(arr.length === 0) return [];
+  const sorted = [...arr].sort((a,b)=>b-a);
+  const clusters = [];
+  let current = [sorted[0]];
+  for(let i=1; i<sorted.length; i++){
+    if(Math.abs(current[current.length-1] - sorted[i]) / current[current.length-1] < tolerance){
+      current.push(sorted[i]);
+    } else {
+      if(current.length >= 2) clusters.push(current.reduce((s,v)=>s+v,0)/current.length);
+      current = [sorted[i]];
+    }
+  }
+  if(current.length >= 2) clusters.push(current.reduce((s,v)=>s+v,0)/current.length);
+  return clusters;
+}
+
+// === Main analyzer ===
+async function analyzeIndicators(){
+  const ticker = document.getElementById('ind-ticker').value.trim().toUpperCase();
+  const period = document.getElementById('ind-period').value;
+  
+  if(!ticker){ alert('Please enter a ticker'); return; }
+  
+  document.getElementById('ind-loading').style.display = 'block';
+  document.getElementById('ind-results').style.display = 'none';
+  document.getElementById('ind-summary').style.display = 'none';
+  
+  // Fetch data
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=${period}&interval=1d`;
+  let data = null;
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const p = PROXIES[(proxyIdx+i)%PROXIES.length](url);
+      const r = await fetch(p,{signal:AbortSignal.timeout(15000)});
+      const d = await r.json();
+      const res = d.chart.result[0];
+      const ts = res.timestamp;
+      const q = res.indicators.quote[0];
+      proxyIdx = (proxyIdx+i)%PROXIES.length;
+      data = {
+        dates: ts.map(t=>new Date(t*1000)),
+        open: q.open, high: q.high, low: q.low, close: q.close, volume: q.volume
+      };
+      break;
+    }catch(e){continue;}
+  }
+  
+  if(!data || !data.close || data.close.length < 30){
+    document.getElementById('ind-loading').innerHTML = `<div style="color:var(--red)">❌ Failed to fetch ${ticker}. Check ticker.</div>`;
+    return;
+  }
+  
+  // Filter out null values
+  const validIdx = data.close.map((v,i) => v !== null ? i : -1).filter(i => i >= 0);
+  data.dates = validIdx.map(i=>data.dates[i]);
+  data.open = validIdx.map(i=>data.open[i]);
+  data.high = validIdx.map(i=>data.high[i]);
+  data.low = validIdx.map(i=>data.low[i]);
+  data.close = validIdx.map(i=>data.close[i]);
+  data.volume = validIdx.map(i=>data.volume[i] || 0);
+  
+  // Calculate all indicators
+  const macd = calculateMACD(data.close);
+  const rsi = calculateRSI(data.close);
+  const kdj = calculateKDJ(data.high, data.low, data.close);
+  const boll = calculateBoll(data.close);
+  
+  const sigMACD = macdSignal(macd);
+  const sigRSI = rsiSignal(rsi, data.close);
+  const sigKDJ = kdjSignal(kdj);
+  const sigBoll = bollSignal(boll, data.close);
+  const sigVol = volumeSignal(data.volume, data.close, data.dates);
+  const sigMA = maSignal(data.close, data.dates);
+  const sigChan = chanAnalysis(data.high, data.low, data.dates, data.close);
+  const sigPattern = detectChartPatterns(data.high, data.low, data.close, data.dates);
+  
+  // Render summary
+  document.getElementById('ind-loading').style.display = 'none';
+  document.getElementById('ind-results').style.display = 'block';
+  document.getElementById('ind-summary').style.display = 'block';
+  renderOverallSummary(ticker, [
+    {name:'MACD', sig:sigMACD},
+    {name:'RSI', sig:sigRSI},
+    {name:'KDJ', sig:sigKDJ},
+    {name:'布林带', sig:sigBoll},
+    {name:'成交量', sig:sigVol},
+    {name:'均线', sig:sigMA},
+    {name:'缠论', sig:sigChan},
+    {name:'形态', sig:sigPattern}
+  ], data.close[data.close.length-1]);
+  
+  // Set signal badges
+  setBadge('signal-macd', sigMACD);
+  setBadge('signal-rsi', sigRSI);
+  setBadge('signal-kdj', sigKDJ);
+  setBadge('signal-boll', sigBoll);
+  setBadge('signal-volume', sigVol);
+  setBadge('signal-ma', sigMA);
+  setBadge('signal-chan', sigChan);
+  setBadge('signal-pattern', sigPattern);
+  
+  document.getElementById('reason-macd').innerHTML = sigMACD.reason;
+  document.getElementById('reason-rsi').innerHTML = sigRSI.reason;
+  document.getElementById('reason-kdj').innerHTML = sigKDJ.reason;
+  document.getElementById('reason-boll').innerHTML = sigBoll.reason;
+  document.getElementById('reason-volume').innerHTML = sigVol.reason;
+  document.getElementById('reason-ma').innerHTML = sigMA.reason;
+  document.getElementById('reason-chan').innerHTML = sigChan.reason;
+  document.getElementById('reason-pattern').innerHTML = sigPattern.reason;
+  
+  // Plot all charts
+  plotMACD('chart-macd', data.dates, data.close, macd);
+  plotRSI('chart-rsi', data.dates, rsi);
+  plotKDJ('chart-kdj', data.dates, kdj);
+  plotBoll('chart-boll', data.dates, data.close, boll);
+  plotVolume('chart-volume', data.dates, data.volume, data.close, sigVol.vMA20, sigVol.obv);
+  plotMA('chart-ma', data.dates, data.close, sigMA);
+  plotChan('chart-chan', data.dates, data.close, sigChan);
+  plotPattern('chart-pattern', data.dates, data.close, sigPattern);
+}
+
+function setBadge(id, sig){
+  const el = document.getElementById(id);
+  const colors = {
+    'BULLISH': 'background:#0a3e1a;color:#00ff88',
+    'BEARISH': 'background:#2e0a0f;color:#e63946',
+    'NEUTRAL': 'background:#1a1a2e;color:#ffd60a'
+  };
+  el.style.cssText = 'display:inline-block;padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:700;letter-spacing:1px;' + colors[sig.signal];
+  el.textContent = `${sig.signal} (${sig.strength}%)`;
+}
+
+function renderOverallSummary(ticker, signals, currentPrice){
+  let bullScore = 0, bearScore = 0;
+  signals.forEach(s => {
+    if(s.sig.signal === 'BULLISH') bullScore += s.sig.strength;
+    else if(s.sig.signal === 'BEARISH') bearScore += s.sig.strength;
+  });
+  
+  const totalScore = bullScore + bearScore;
+  const bullPct = totalScore > 0 ? (bullScore / totalScore * 100) : 50;
+  const overall = bullScore > bearScore + 30 ? 'STRONG BULLISH' :
+                  bullScore > bearScore ? 'BULLISH' :
+                  bearScore > bullScore + 30 ? 'STRONG BEARISH' :
+                  bearScore > bullScore ? 'BEARISH' : 'NEUTRAL';
+  const overallColor = overall.includes('BULLISH') ? '#00d26a' : overall.includes('BEARISH') ? '#e63946' : '#ffd60a';
+  
+  let html = `
+    <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;margin-bottom:1rem">
+      <div>
+        <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">${ticker} @ $${currentPrice.toFixed(2)}</div>
+        <div style="font-size:2rem;font-weight:800;color:${overallColor};margin-top:4px">${overall}</div>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div style="display:flex;height:30px;border-radius:15px;overflow:hidden;background:var(--bg)">
+          <div style="background:linear-gradient(90deg,#00d26a,#00ff88);width:${bullPct}%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;font-size:.8rem">${bullPct.toFixed(0)}% Bull</div>
+          <div style="background:linear-gradient(90deg,#e63946,#ff6b6b);width:${100-bullPct}%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem">${(100-bullPct).toFixed(0)}% Bear</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin-top:1rem">`;
+  
+  signals.forEach(s => {
+    const sigColor = s.sig.signal === 'BULLISH' ? '#00d26a' : s.sig.signal === 'BEARISH' ? '#e63946' : '#ffd60a';
+    html += `<div style="background:var(--card);padding:.6rem .8rem;border-radius:8px;border-left:3px solid ${sigColor}">
+      <div style="font-size:.7rem;color:var(--muted)">${s.name}</div>
+      <div style="font-weight:700;color:${sigColor};font-size:.85rem">${s.sig.signal}</div>
+      <div style="font-size:.7rem;color:var(--muted)">Strength: ${s.sig.strength}%</div>
+    </div>`;
+  });
+  html += '</div>';
+  
+  document.getElementById('ind-overall').innerHTML = html;
+}
+
+const layoutBase = {
+  paper_bgcolor: '#12121a', plot_bgcolor: '#12121a',
+  font: {color: '#c0c0d0', family: 'Inter', size: 11},
+  xaxis: {gridcolor: '#2a2a3a'},
+  yaxis: {gridcolor: '#2a2a3a'},
+  margin: {l: 50, r: 30, t: 20, b: 30},
+  legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a', orientation: 'h', y: -0.15},
+  hovermode: 'x unified'
+};
+
+function plotMACD(id, dates, closes, macd){
+  Plotly.newPlot(id, [
+    {x: dates, y: closes, name: 'Price', yaxis: 'y2', line: {color: '#c0c0d0', width: 1}},
+    {x: dates, y: macd.macd, name: 'MACD', line: {color: '#4361ee', width: 1.5}},
+    {x: dates, y: macd.signal, name: 'Signal', line: {color: '#ffd60a', width: 1.5}},
+    {x: dates, y: macd.hist, name: 'Histogram', type: 'bar',
+     marker: {color: macd.hist.map(v => v >= 0 ? '#00d26a' : '#e63946')}}
+  ], {...layoutBase,
+    yaxis: {gridcolor:'#2a2a3a', title:'MACD', domain:[0, 0.45]},
+    yaxis2: {gridcolor:'#2a2a3a', title:'Price', domain:[0.55, 1]},
+    grid: {rows: 2, columns: 1}
+  }, {responsive:true, displayModeBar:false});
+}
+
+function plotRSI(id, dates, rsi){
+  Plotly.newPlot(id, [
+    {x: dates, y: rsi, name: 'RSI(14)', line: {color: '#7209b7', width: 2}},
+    {x: [dates[0], dates[dates.length-1]], y: [70,70], mode:'lines', name:'Overbought', line:{color:'#e63946', width:1, dash:'dash'}},
+    {x: [dates[0], dates[dates.length-1]], y: [30,30], mode:'lines', name:'Oversold', line:{color:'#00d26a', width:1, dash:'dash'}},
+    {x: [dates[0], dates[dates.length-1]], y: [50,50], mode:'lines', name:'Mid', line:{color:'#707090', width:1, dash:'dot'}, showlegend:false}
+  ], {...layoutBase, yaxis: {...layoutBase.yaxis, title: 'RSI', range:[0,100]}}, {responsive:true, displayModeBar:false});
+}
+
+function plotKDJ(id, dates, kdj){
+  Plotly.newPlot(id, [
+    {x: dates, y: kdj.K, name: 'K', line: {color: '#4361ee', width: 1.5}},
+    {x: dates, y: kdj.D, name: 'D', line: {color: '#ffd60a', width: 1.5}},
+    {x: dates, y: kdj.J, name: 'J', line: {color: '#e63946', width: 1.5}},
+    {x: [dates[0], dates[dates.length-1]], y: [80,80], mode:'lines', line:{color:'#e63946', width:1, dash:'dash'}, showlegend:false},
+    {x: [dates[0], dates[dates.length-1]], y: [20,20], mode:'lines', line:{color:'#00d26a', width:1, dash:'dash'}, showlegend:false}
+  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'KDJ'}}, {responsive:true, displayModeBar:false});
+}
+
+function plotBoll(id, dates, closes, boll){
+  Plotly.newPlot(id, [
+    {x: dates, y: boll.upper, name: 'Upper', line: {color: '#e63946', width: 1.5, dash: 'dot'}},
+    {x: dates, y: boll.mid, name: 'Mid (MA20)', line: {color: '#ffd60a', width: 1.5}},
+    {x: dates, y: boll.lower, name: 'Lower', line: {color: '#00d26a', width: 1.5, dash: 'dot'}, fill:'tonexty', fillcolor:'rgba(112,32,183,0.08)'},
+    {x: dates, y: closes, name: 'Price', line: {color: '#fff', width: 2}}
+  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, {responsive:true, displayModeBar:false});
+}
+
+function plotVolume(id, dates, volumes, closes, vMA20, obv){
+  const colors = closes.map((c,i) => i>0 && c >= closes[i-1] ? '#00d26a' : '#e63946');
+  Plotly.newPlot(id, [
+    {x: dates, y: volumes, name: 'Volume', type: 'bar', marker:{color:colors}, yaxis:'y'},
+    {x: dates, y: vMA20, name: 'Vol MA20', line:{color:'#ffd60a', width:2}, yaxis:'y'},
+    {x: dates, y: obv, name: 'OBV', line:{color:'#7209b7', width:2}, yaxis:'y2'}
+  ], {...layoutBase,
+    yaxis: {gridcolor:'#2a2a3a', title:'Volume', domain:[0, 0.5]},
+    yaxis2: {gridcolor:'#2a2a3a', title:'OBV', domain:[0.55, 1]},
+    grid: {rows: 2, columns: 1}
+  }, {responsive:true, displayModeBar:false});
+}
+
+function plotMA(id, dates, closes, sigMA){
+  const traces = [
+    {x: dates, y: closes, name: 'Price', line: {color: '#fff', width: 2}},
+    {x: dates, y: sigMA.ma5, name: 'MA5', line:{color:'#ffd60a', width:1}},
+    {x: dates, y: sigMA.ma10, name: 'MA10', line:{color:'#ff6b6b', width:1}},
+    {x: dates, y: sigMA.ma20, name: 'MA20', line:{color:'#4361ee', width:1.5}},
+    {x: dates, y: sigMA.ma50, name: 'MA50', line:{color:'#7209b7', width:1.5}},
+    {x: dates, y: sigMA.ma200, name: 'MA200', line:{color:'#e63946', width:2}}
+  ];
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, {responsive:true, displayModeBar:false});
+}
+
+function plotChan(id, dates, closes, chan){
+  const traces = [
+    {x: dates, y: closes, name: 'Price', line: {color: '#c0c0d0', width: 1.5}},
+    {x: chan.strokes.map(s=>s.date), y: chan.strokes.map(s=>s.price), name: '笔 (Strokes)',
+     mode:'lines+markers', line:{color:'#ffd60a', width:2}, marker:{size:8, color:'#ffd60a'}}
+  ];
+  
+  // Draw 中枢 as rectangles
+  const shapes = chan.zhongshus.map(zs => ({
+    type: 'rect',
+    xref: 'x', yref: 'y',
+    x0: zs.startDate, x1: zs.endDate,
+    y0: zs.low, y1: zs.high,
+    fillcolor: 'rgba(114,9,183,0.2)',
+    line: {color: '#7209b7', width: 1.5, dash: 'dash'}
+  }));
+  
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, {responsive:true, displayModeBar:false});
+}
+
+function plotPattern(id, dates, closes, sigPattern){
+  const traces = [
+    {x: dates, y: closes, name: 'Price', line: {color: '#fff', width: 1.5}}
+  ];
+  
+  // Pivots
+  if(sigPattern.pivots){
+    traces.push({
+      x: sigPattern.pivots.map(p=>p.date),
+      y: sigPattern.pivots.map(p=>p.price),
+      mode:'markers', name:'Pivots',
+      marker:{size:8, color: sigPattern.pivots.map(p=>p.type==='high'?'#e63946':'#00d26a')}
+    });
+  }
+  
+  // Resistance lines (red horizontal)
+  const shapes = [];
+  (sigPattern.resistanceLevels||[]).slice(0,3).forEach(level => {
+    shapes.push({
+      type: 'line', xref:'x', yref:'y',
+      x0: dates[0], x1: dates[dates.length-1], y0: level, y1: level,
+      line: {color: '#e63946', width: 1, dash: 'dash'}
+    });
+  });
+  (sigPattern.supportLevels||[]).slice(0,3).forEach(level => {
+    shapes.push({
+      type: 'line', xref:'x', yref:'y',
+      x0: dates[0], x1: dates[dates.length-1], y0: level, y1: level,
+      line: {color: '#00d26a', width: 1, dash: 'dash'}
+    });
+  });
+  
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, {responsive:true, displayModeBar:false});
 }
 </script>
 </body>
