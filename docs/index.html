@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alpha Signal | AI Financial Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <style>
 :root{--bg:#0a0a0f;--bg2:#12121a;--card:#1a1a2e;--border:#1e1e2e;--border2:#2a2a3a;--txt:#fff;--txt2:#c0c0d0;--muted:#707090;--red:#e63946;--green:#00d26a;--blue:#4361ee;--yellow:#ffd60a;--purple:#7209b7}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -94,6 +95,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <li><a onclick="show('briefing'); toggleSidebar()">🤖 Alpha (DeepSeek)</a></li>
     <li><a onclick="show('sigma'); toggleSidebar()">♟️ Sigma (Gemini)</a></li>
     <li><a onclick="show('analysis'); toggleSidebar()">📈 Stock Analysis</a></li>
+    <li><a onclick="show('wave'); toggleSidebar()">🌊 Elliott Wave</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
 </aside>
@@ -166,6 +168,64 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <div class="brief" id="sigma-brief-text">Loading Sigma briefing...</div>
   </div>
 
+  <!-- Elliott Wave Page -->
+  <div id="page-wave" style="display:none">
+    <div class="ph"><h1>🌊 Elliott Wave Predictor</h1><p>Auto-detect Elliott Wave pattern + Fibonacci projection for any stock</p></div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div class="ct">⚙️ Stock Selection</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <input id="wave-ticker" type="text" placeholder="Enter ticker (e.g. AAPL, MSFT, TSLA)" value="AAPL"
+          style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem;width:240px">
+        <select id="wave-period" style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem">
+          <option value="6mo">6 Months</option>
+          <option value="1y" selected>1 Year</option>
+          <option value="2y">2 Years</option>
+          <option value="5y">5 Years</option>
+        </select>
+        <select id="wave-sensitivity" style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem">
+          <option value="3">Sensitivity: High (3%)</option>
+          <option value="5" selected>Sensitivity: Medium (5%)</option>
+          <option value="8">Sensitivity: Low (8%)</option>
+        </select>
+        <button class="refresh-btn" onclick="analyzeWave()" style="background:var(--red);color:#fff">🌊 Analyze Wave</button>
+        <span style="font-size:.8rem;color:var(--muted)">Quick:</span>
+        <button class="refresh-btn" onclick="quickWave('TSLA')">TSLA</button>
+        <button class="refresh-btn" onclick="quickWave('NVDA')">NVDA</button>
+        <button class="refresh-btn" onclick="quickWave('META')">META</button>
+        <button class="refresh-btn" onclick="quickWave('GOOGL')">GOOGL</button>
+        <button class="refresh-btn" onclick="quickWave('AMZN')">AMZN</button>
+        <button class="refresh-btn" onclick="quickWave('SPY')">SPY</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div id="wave-chart" style="height:600px;background:var(--bg2);border-radius:10px">
+        <div style="text-align:center;padding:5rem;color:var(--muted)">Click "Analyze Wave" to detect Elliott Wave pattern</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card" style="border-left:3px solid var(--blue)">
+        <div class="ct">📊 Current Wave Position</div>
+        <div id="wave-position" style="font-size:.9rem;line-height:1.7;color:var(--txt2)">No analysis yet</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--green)">
+        <div class="ct">🎯 Fibonacci Projection</div>
+        <div id="wave-projection" style="font-size:.9rem;line-height:1.7;color:var(--txt2)">No analysis yet</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;border-left:3px solid var(--purple)">
+      <div class="ct">📚 Elliott Wave Theory Quick Guide</div>
+      <div style="font-size:.85rem;line-height:1.7;color:var(--txt2)">
+        <strong style="color:var(--green)">Impulse Waves (1→2→3→4→5):</strong> The main trend movement. Wave 3 is usually the longest. Wave 4 cannot enter Wave 1 territory.<br>
+        <strong style="color:var(--red)">Corrective Waves (A→B→C):</strong> Counter-trend movement after impulse completes. Usually 50-78.6% retracement of waves 1-5.<br>
+        <strong style="color:var(--yellow)">Fibonacci Targets:</strong> Wave 3 = 1.618× Wave 1; Wave 5 = 0.618× to 1× of Wave 1+3; Wave C = 1× Wave A.
+      </div>
+    </div>
+  </div>
+
   <!-- Analysis Page -->
   <div id="page-analysis" style="display:none">
     <div class="ph"><h1>5-Dimension Stock Analysis & Pair Selection</h1><p>AI-powered long/short recommendation for UBS competition <span class="ai-b">DeepSeek AI</span></p></div>
@@ -236,7 +296,7 @@ function toggleSidebar(){
 }
 
 function show(p){
-  ['dash','news','briefing','sigma','analysis'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
+  ['dash','news','briefing','sigma','analysis','wave'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   event.target.classList.add('active');
 }
@@ -504,6 +564,240 @@ async function init(){
   document.getElementById('ts-mobile').textContent=t;
 }
 init();
+
+// ===========================================
+// Elliott Wave Analyzer
+// ===========================================
+
+function quickWave(ticker){
+  document.getElementById('wave-ticker').value = ticker;
+  analyzeWave();
+}
+
+async function fetchYahooHistory(ticker, period){
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const url=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=${period}&interval=1d`;
+      const p=PROXIES[(proxyIdx+i)%PROXIES.length](url);
+      const r=await fetch(p,{signal:AbortSignal.timeout(10000)});
+      const d=await r.json();
+      const res=d.chart.result[0];
+      const ts=res.timestamp;
+      const q=res.indicators.quote[0];
+      proxyIdx=(proxyIdx+i)%PROXIES.length;
+      return {
+        dates: ts.map(t=>new Date(t*1000)),
+        open: q.open,
+        high: q.high,
+        low: q.low,
+        close: q.close,
+        meta: res.meta
+      };
+    }catch(e){continue;}
+  }
+  return null;
+}
+
+// ZigZag pivot detection - finds swing highs and lows
+function detectPivots(highs, lows, dates, minPctChange){
+  const pivots = [];
+  if(!highs || highs.length < 2) return pivots;
+  
+  let lastPivotIdx = 0;
+  let lastPivotPrice = highs[0];
+  let lastDirection = 'unknown';
+  
+  for(let i = 1; i < highs.length; i++){
+    if(highs[i] == null || lows[i] == null) continue;
+    
+    const upChange = ((highs[i] - lastPivotPrice) / lastPivotPrice) * 100;
+    const downChange = ((lows[i] - lastPivotPrice) / lastPivotPrice) * 100;
+    
+    if(lastDirection === 'unknown'){
+      if(upChange >= minPctChange){
+        pivots.push({idx: lastPivotIdx, price: lows[lastPivotIdx], date: dates[lastPivotIdx], type: 'low'});
+        lastPivotIdx = i; lastPivotPrice = highs[i]; lastDirection = 'up';
+      } else if(downChange <= -minPctChange){
+        pivots.push({idx: lastPivotIdx, price: highs[lastPivotIdx], date: dates[lastPivotIdx], type: 'high'});
+        lastPivotIdx = i; lastPivotPrice = lows[i]; lastDirection = 'down';
+      }
+    } else if(lastDirection === 'up'){
+      if(highs[i] > lastPivotPrice){ lastPivotIdx = i; lastPivotPrice = highs[i]; }
+      else if(((lows[i] - lastPivotPrice) / lastPivotPrice) * 100 <= -minPctChange){
+        pivots.push({idx: lastPivotIdx, price: lastPivotPrice, date: dates[lastPivotIdx], type: 'high'});
+        lastPivotIdx = i; lastPivotPrice = lows[i]; lastDirection = 'down';
+      }
+    } else if(lastDirection === 'down'){
+      if(lows[i] < lastPivotPrice){ lastPivotIdx = i; lastPivotPrice = lows[i]; }
+      else if(((highs[i] - lastPivotPrice) / lastPivotPrice) * 100 >= minPctChange){
+        pivots.push({idx: lastPivotIdx, price: lastPivotPrice, date: dates[lastPivotIdx], type: 'low'});
+        lastPivotIdx = i; lastPivotPrice = highs[i]; lastDirection = 'up';
+      }
+    }
+  }
+  pivots.push({idx: lastPivotIdx, price: lastPivotPrice, date: dates[lastPivotIdx], 
+              type: lastDirection === 'up' ? 'high' : 'low'});
+  return pivots;
+}
+
+// Label pivots with Elliott Wave labels (1-5 + ABC) - takes last 8 pivots
+function labelWaves(pivots){
+  const recent = pivots.slice(-9);
+  const labels = ['Start', '1', '2', '3', '4', '5', 'A', 'B', 'C'];
+  return recent.map((p, i) => ({...p, label: labels[i] || ''}));
+}
+
+// Calculate Fibonacci projection for next wave
+function fibProjection(waves){
+  if(waves.length < 6) return null;
+  const wave5 = waves[5];
+  const wave1Start = waves[0];
+  const wave1End = waves[1];
+  const wave1Length = Math.abs(wave1End.price - wave1Start.price);
+  
+  // Predict A wave: typically 38.2% to 61.8% retracement of waves 1-5
+  const totalImpulse = Math.abs(wave5.price - wave1Start.price);
+  const direction = wave5.price > wave1Start.price ? -1 : 1; // A wave goes opposite of impulse
+  
+  return {
+    targetA_382: wave5.price + direction * totalImpulse * 0.382,
+    targetA_500: wave5.price + direction * totalImpulse * 0.500,
+    targetA_618: wave5.price + direction * totalImpulse * 0.618,
+    wave1Length,
+    totalImpulse
+  };
+}
+
+async function analyzeWave(){
+  const ticker = document.getElementById('wave-ticker').value.trim().toUpperCase();
+  const period = document.getElementById('wave-period').value;
+  const sensitivity = parseFloat(document.getElementById('wave-sensitivity').value);
+  
+  if(!ticker){ alert('Please enter a ticker'); return; }
+  
+  document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">⏳ Fetching ${ticker} data and analyzing waves...</div>`;
+  
+  const data = await fetchYahooHistory(ticker, period);
+  if(!data || !data.close){
+    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ Failed to fetch ${ticker}. Check ticker symbol.</div>`;
+    return;
+  }
+  
+  const pivots = detectPivots(data.high, data.low, data.dates, sensitivity);
+  if(pivots.length < 6){
+    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--yellow)">⚠️ Not enough swings detected. Try lower sensitivity or longer period.</div>`;
+    return;
+  }
+  
+  const waves = labelWaves(pivots);
+  const projection = fibProjection(waves);
+  
+  // Plotly traces
+  const candlestick = {
+    x: data.dates, open: data.open, high: data.high, low: data.low, close: data.close,
+    type: 'candlestick', name: ticker,
+    increasing: {line: {color: '#00d26a'}}, decreasing: {line: {color: '#e63946'}}
+  };
+  
+  const waveLine = {
+    x: waves.map(w=>w.date), y: waves.map(w=>w.price),
+    type: 'scatter', mode: 'lines+markers+text',
+    line: {color: '#ffd60a', width: 2.5, dash: 'solid'},
+    marker: {size: 12, color: '#ffd60a', line: {color: '#000', width: 2}},
+    text: waves.map(w=>w.label),
+    textposition: 'top center',
+    textfont: {size: 16, color: '#fff', family: 'Inter'},
+    name: 'Elliott Wave'
+  };
+  
+  const traces = [candlestick, waveLine];
+  
+  // Add Fibonacci projection lines
+  const lastDate = waves[waves.length-1].date;
+  const futureDate = new Date(lastDate.getTime() + 60*24*60*60*1000); // +60 days
+  
+  if(projection){
+    [['targetA_382', '#7209b7', '38.2% Fib'],
+     ['targetA_500', '#4361ee', '50% Fib'],
+     ['targetA_618', '#e63946', '61.8% Fib (key target)']].forEach(([key, color, label]) => {
+      traces.push({
+        x: [waves[5].date, futureDate],
+        y: [waves[5].price, projection[key]],
+        type: 'scatter', mode: 'lines+text',
+        line: {color, width: 2, dash: 'dot'},
+        text: ['', label + ': $' + projection[key].toFixed(2)],
+        textposition: 'middle right',
+        textfont: {size: 11, color},
+        name: label,
+        showlegend: false
+      });
+    });
+  }
+  
+  Plotly.newPlot('wave-chart', traces, {
+    paper_bgcolor: '#12121a',
+    plot_bgcolor: '#12121a',
+    font: {color: '#c0c0d0', family: 'Inter'},
+    title: {text: `${ticker} - Elliott Wave Analysis`, font: {color: '#fff', size: 18}},
+    xaxis: {gridcolor: '#2a2a3a', rangeslider: {visible: false}},
+    yaxis: {gridcolor: '#2a2a3a', title: 'Price ($)'},
+    margin: {l: 60, r: 60, t: 60, b: 40},
+    legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a'},
+    hovermode: 'x unified'
+  }, {responsive: true, displayModeBar: false});
+  
+  // Generate position commentary
+  const lastWave = waves[waves.length-1];
+  const currentPrice = data.close[data.close.length-1];
+  const wavePositions = {
+    '1': 'Wave 1 (Initial Impulse) - Trend starting, often weak. Most market participants disbelieve the move.',
+    '2': 'Wave 2 (First Correction) - Sharp pullback. Often retraces 50-78.6% of Wave 1. Sentiment turns bearish.',
+    '3': 'Wave 3 (Strongest Impulse) - Usually the longest and most powerful wave. Volume surges. Trend confirmed.',
+    '4': 'Wave 4 (Sideways Correction) - Choppy, complex correction. Often shallow (38.2%). Cannot enter Wave 1 territory.',
+    '5': 'Wave 5 (Final Push) - Last leg up/down. Often shows divergence with momentum indicators. Trend exhaustion.',
+    'A': 'Wave A (Correction Begins) - First leg of corrective phase after 5-wave impulse completed.',
+    'B': 'Wave B (Counter-trend Bounce) - Often a fakeout, returns toward end of Wave 5. "Bull/Bear trap".',
+    'C': 'Wave C (Final Correction) - Usually equal to Wave A in length. Strong, decisive move that completes correction.'
+  };
+  
+  const positionText = wavePositions[lastWave.label] || 'Unknown wave position';
+  const ret_5 = ((currentPrice - waves[5]?.price) / waves[5]?.price * 100).toFixed(2);
+  
+  document.getElementById('wave-position').innerHTML = `
+    <div style="margin-bottom:1rem"><strong style="color:var(--yellow);font-size:1.1rem">Currently in: Wave ${lastWave.label}</strong></div>
+    <div style="margin-bottom:.8rem;color:var(--txt2)">${positionText}</div>
+    <div style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border);font-size:.85rem">
+      Current Price: <strong style="color:var(--txt)">$${currentPrice.toFixed(2)}</strong><br>
+      Wave 5 Peak/Trough: <strong>$${waves[5]?.price.toFixed(2) || 'N/A'}</strong><br>
+      Distance from Wave 5: <strong style="color:${ret_5>=0?'var(--green)':'var(--red)'}">${ret_5}%</strong>
+    </div>
+  `;
+  
+  if(projection){
+    document.getElementById('wave-projection').innerHTML = `
+      <div style="margin-bottom:.8rem;color:var(--muted);font-size:.85rem">
+        Based on Wave 5 ($${waves[5].price.toFixed(2)}), the next correction (Wave A) likely targets:
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid #7209b7">
+          <span style="color:#7209b7;font-weight:600">38.2% Retracement</span><br>
+          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_382.toFixed(2)}</strong>
+          <span style="color:var(--muted);font-size:.8rem"> (Shallow correction)</span>
+        </div>
+        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid #4361ee">
+          <span style="color:#4361ee;font-weight:600">50% Retracement</span><br>
+          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_500.toFixed(2)}</strong>
+          <span style="color:var(--muted);font-size:.8rem"> (Standard target)</span>
+        </div>
+        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid var(--red)">
+          <span style="color:var(--red);font-weight:600">61.8% Retracement (Golden)</span><br>
+          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_618.toFixed(2)}</strong>
+          <span style="color:var(--muted);font-size:.8rem"> (Most likely Wave A target)</span>
+        </div>
+      </div>
+    `;
+  }
+}
 </script>
 </body>
 </html>
