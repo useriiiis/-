@@ -96,6 +96,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <li><a onclick="show('sigma'); toggleSidebar()">♟️ Sigma (Gemini)</a></li>
     <li><a onclick="show('analysis'); toggleSidebar()">📈 Stock Analysis</a></li>
     <li><a onclick="show('wave'); toggleSidebar()">🌊 Elliott Wave</a></li>
+    <li><a onclick="show('dca'); toggleSidebar()">💰 DCA Simulator</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
 </aside>
@@ -226,6 +227,111 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     </div>
   </div>
 
+  <!-- DCA Simulator Page -->
+  <div id="page-dca" style="display:none">
+    <div class="ph"><h1>💰 DCA Simulator</h1><p>Dollar-Cost Averaging simulator. Test how regular investing into any stock would have performed.</p></div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div class="ct">⚙️ DCA Configuration</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin-bottom:.8rem">
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Stock Ticker</label>
+          <input id="dca-ticker" type="text" value="AAPL" placeholder="AAPL"
+            style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px">
+        </div>
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Frequency</label>
+          <select id="dca-freq" style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px">
+            <option value="daily">Every Day</option>
+            <option value="monthly" selected>Monthly (1st)</option>
+            <option value="yearly">Yearly (Jan 1st)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Amount per Buy ($)</label>
+          <input id="dca-amount" type="number" value="500" min="1"
+            style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px">
+        </div>
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Fee per Buy ($)</label>
+          <input id="dca-fee" type="number" value="1" min="0" step="0.01"
+            style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px">
+        </div>
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Start Date</label>
+          <input id="dca-start" type="date" value="2020-01-01"
+            style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px;color-scheme:dark">
+        </div>
+        <div>
+          <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">End Date</label>
+          <input id="dca-end" type="date"
+            style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:8px;font-size:.95rem;margin-top:4px;color-scheme:dark">
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <button class="refresh-btn" onclick="runDCA()" style="background:var(--red);color:#fff;font-weight:600">📈 Run Simulation</button>
+        <span style="font-size:.8rem;color:var(--muted);margin-left:.5rem">Quick:</span>
+        <button class="refresh-btn" onclick="quickDCA('AAPL')">AAPL</button>
+        <button class="refresh-btn" onclick="quickDCA('SPY')">SPY (S&P 500)</button>
+        <button class="refresh-btn" onclick="quickDCA('QQQ')">QQQ</button>
+        <button class="refresh-btn" onclick="quickDCA('TSLA')">TSLA</button>
+        <button class="refresh-btn" onclick="quickDCA('NVDA')">NVDA</button>
+        <button class="refresh-btn" onclick="quickDCA('BRK-B')">BRK-B</button>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div id="dca-summary" style="display:none;margin-bottom:1rem">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
+        <div class="card" style="border-left:3px solid var(--blue)">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Total Invested</div>
+          <div id="dca-invested" style="font-size:1.5rem;font-weight:800;color:var(--txt);margin-top:4px">-</div>
+          <div id="dca-buys" style="font-size:.75rem;color:var(--muted);margin-top:2px">- buys</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--yellow)">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Total Fees</div>
+          <div id="dca-fees" style="font-size:1.5rem;font-weight:800;color:var(--txt);margin-top:4px">-</div>
+          <div id="dca-fees-pct" style="font-size:.75rem;color:var(--muted);margin-top:2px">- of invested</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--green)" id="dca-final-card">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Final Value</div>
+          <div id="dca-final" style="font-size:1.5rem;font-weight:800;color:var(--txt);margin-top:4px">-</div>
+          <div id="dca-shares" style="font-size:.75rem;color:var(--muted);margin-top:2px">- shares</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--green)" id="dca-return-card">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Total Return</div>
+          <div id="dca-return" style="font-size:1.5rem;font-weight:800;margin-top:4px">-</div>
+          <div id="dca-return-abs" style="font-size:.75rem;color:var(--muted);margin-top:2px">-</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--purple)">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Annualized (CAGR)</div>
+          <div id="dca-cagr" style="font-size:1.5rem;font-weight:800;color:var(--txt);margin-top:4px">-</div>
+          <div id="dca-years" style="font-size:.75rem;color:var(--muted);margin-top:2px">- years</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--blue)">
+          <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase">Avg Buy Price</div>
+          <div id="dca-avgcost" style="font-size:1.5rem;font-weight:800;color:var(--txt);margin-top:4px">-</div>
+          <div id="dca-currprice" style="font-size:.75rem;color:var(--muted);margin-top:2px">vs current: -</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div class="ct">📊 Performance Chart <span style="font-size:.7rem;color:var(--muted);font-weight:400;margin-left:1rem;text-transform:none;letter-spacing:0">💡 Click on legend items to hide/show lines</span></div>
+      <div id="dca-chart" style="height:550px;background:var(--bg2);border-radius:10px">
+        <div style="text-align:center;padding:5rem;color:var(--muted)">Configure parameters above and click "Run Simulation"</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--purple)">
+      <div class="ct">📚 What is DCA (Dollar-Cost Averaging)?</div>
+      <div style="font-size:.85rem;line-height:1.7;color:var(--txt2)">
+        <strong style="color:var(--green)">DCA</strong> means investing a fixed amount at regular intervals, regardless of price. This smooths out volatility - you buy more shares when prices are low and fewer when prices are high. Used by retail investors, 401k plans, and even Warren Buffett's recommendation for most people.<br><br>
+        <strong style="color:var(--yellow)">⚠️ Note:</strong> Past performance does not guarantee future results. This simulator uses historical price data only and does not include dividends, taxes, or stock splits' adjusted prices automatically (Yahoo's adjusted close handles splits but not always perfectly).
+      </div>
+    </div>
+  </div>
+
   <!-- Analysis Page -->
   <div id="page-analysis" style="display:none">
     <div class="ph"><h1>5-Dimension Stock Analysis & Pair Selection</h1><p>AI-powered long/short recommendation for UBS competition <span class="ai-b">DeepSeek AI</span></p></div>
@@ -296,7 +402,7 @@ function toggleSidebar(){
 }
 
 function show(p){
-  ['dash','news','briefing','sigma','analysis','wave'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
+  ['dash','news','briefing','sigma','analysis','wave','dca'].forEach(x=>document.getElementById('page-'+x).style.display=x===p?'block':'none');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   event.target.classList.add('active');
 }
@@ -797,6 +903,245 @@ async function analyzeWave(){
       </div>
     `;
   }
+}
+
+// ===========================================
+// DCA Simulator
+// ===========================================
+
+// Set default end date to today
+(function(){
+  const today = new Date().toISOString().slice(0,10);
+  setTimeout(()=>{
+    const endInput = document.getElementById('dca-end');
+    if(endInput && !endInput.value) endInput.value = today;
+  }, 100);
+})();
+
+function quickDCA(ticker){
+  document.getElementById('dca-ticker').value = ticker;
+  runDCA();
+}
+
+async function fetchYahooByTimestamp(ticker, startTs, endTs){
+  for(let i=0;i<PROXIES.length;i++){
+    try{
+      const url=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?period1=${startTs}&period2=${endTs}&interval=1d&events=history`;
+      const p=PROXIES[(proxyIdx+i)%PROXIES.length](url);
+      const r=await fetch(p,{signal:AbortSignal.timeout(15000)});
+      const d=await r.json();
+      if(!d.chart?.result?.[0]) continue;
+      const res=d.chart.result[0];
+      const ts=res.timestamp;
+      const q=res.indicators.quote[0];
+      const adj=res.indicators.adjclose?.[0]?.adjclose;
+      proxyIdx=(proxyIdx+i)%PROXIES.length;
+      return {
+        dates: ts.map(t=>new Date(t*1000)),
+        close: adj || q.close,  // prefer adjusted close (handles splits/dividends)
+        rawClose: q.close
+      };
+    }catch(e){continue;}
+  }
+  return null;
+}
+
+// Get the next buy date from a given date based on frequency
+function getNextBuyDate(currDate, frequency){
+  const d = new Date(currDate);
+  if(frequency === 'daily'){
+    d.setDate(d.getDate() + 1);
+  } else if(frequency === 'monthly'){
+    d.setMonth(d.getMonth() + 1);
+    d.setDate(1);
+  } else if(frequency === 'yearly'){
+    d.setFullYear(d.getFullYear() + 1);
+    d.setMonth(0);
+    d.setDate(1);
+  }
+  return d;
+}
+
+// Find the first trading day on or after a target date
+function findTradingDay(targetDate, dates, fromIdx=0){
+  for(let i=fromIdx; i<dates.length; i++){
+    if(dates[i] >= targetDate) return i;
+  }
+  return -1;
+}
+
+async function runDCA(){
+  const ticker = document.getElementById('dca-ticker').value.trim().toUpperCase();
+  const frequency = document.getElementById('dca-freq').value;
+  const amount = parseFloat(document.getElementById('dca-amount').value);
+  const fee = parseFloat(document.getElementById('dca-fee').value) || 0;
+  const startDateStr = document.getElementById('dca-start').value;
+  const endDateStr = document.getElementById('dca-end').value;
+  
+  if(!ticker){ alert('Please enter a ticker'); return; }
+  if(!amount || amount <= 0){ alert('Please enter a valid amount'); return; }
+  if(!startDateStr || !endDateStr){ alert('Please select start and end dates'); return; }
+  
+  const startDate = new Date(startDateStr);
+  const endDate = new Date(endDateStr);
+  if(endDate <= startDate){ alert('End date must be after start date'); return; }
+  
+  document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">⏳ Fetching ${ticker} data and running simulation...</div>`;
+  document.getElementById('dca-summary').style.display = 'none';
+  
+  const startTs = Math.floor(startDate.getTime() / 1000);
+  const endTs = Math.floor(endDate.getTime() / 1000);
+  const data = await fetchYahooByTimestamp(ticker, startTs, endTs);
+  
+  if(!data || !data.close || data.close.length < 2){
+    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ Failed to fetch ${ticker} data for that date range. Check ticker / dates.</div>`;
+    return;
+  }
+  
+  // Run DCA simulation
+  const buyDates = []; // {date, price, sharesBought, idx}
+  let currBuyDate = new Date(startDate);
+  
+  // For monthly frequency, start at 1st of start month
+  if(frequency === 'monthly'){
+    currBuyDate.setDate(1);
+  } else if(frequency === 'yearly'){
+    currBuyDate.setMonth(0);
+    currBuyDate.setDate(1);
+  }
+  
+  let lastIdx = 0;
+  while(currBuyDate <= endDate){
+    const idx = findTradingDay(currBuyDate, data.dates, lastIdx);
+    if(idx === -1) break;
+    if(data.dates[idx] > endDate) break;
+    
+    const price = data.close[idx];
+    if(price && price > 0){
+      const investAmount = amount - fee;
+      const sharesBought = investAmount / price;
+      buyDates.push({
+        date: data.dates[idx],
+        price: price,
+        shares: sharesBought,
+        idx: idx
+      });
+      lastIdx = idx;
+    }
+    currBuyDate = getNextBuyDate(currBuyDate, frequency);
+  }
+  
+  if(buyDates.length === 0){
+    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ No buys executed. Check date range.</div>`;
+    return;
+  }
+  
+  // Build curves: for each date in data, calculate cumulative invested & portfolio value
+  const principalCurve = [];
+  const portfolioCurve = [];
+  let cumShares = 0;
+  let cumInvested = 0;
+  let buyPointer = 0;
+  
+  for(let i = 0; i < data.dates.length; i++){
+    while(buyPointer < buyDates.length && buyDates[buyPointer].idx <= i){
+      cumShares += buyDates[buyPointer].shares;
+      cumInvested += amount;
+      buyPointer++;
+    }
+    principalCurve.push(cumInvested);
+    portfolioCurve.push(cumShares * data.close[i]);
+  }
+  
+  // Calculate stats
+  const totalInvested = buyDates.length * amount;
+  const totalFees = buyDates.length * fee;
+  const finalShares = cumShares;
+  const finalValue = portfolioCurve[portfolioCurve.length - 1];
+  const totalReturn = finalValue - totalInvested;
+  const totalReturnPct = (totalReturn / totalInvested) * 100;
+  const yearsElapsed = (endDate - startDate) / (365.25 * 24 * 60 * 60 * 1000);
+  const cagr = (Math.pow(finalValue / totalInvested, 1 / yearsElapsed) - 1) * 100;
+  const avgBuyPrice = buyDates.reduce((s,b)=>s + b.price, 0) / buyDates.length;
+  const currentPrice = data.close[data.close.length - 1];
+  
+  // Update summary cards
+  document.getElementById('dca-summary').style.display = 'block';
+  document.getElementById('dca-invested').textContent = '$' + totalInvested.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('dca-buys').textContent = buyDates.length + ' buys';
+  document.getElementById('dca-fees').textContent = '$' + totalFees.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('dca-fees-pct').textContent = ((totalFees / totalInvested) * 100).toFixed(2) + '% of invested';
+  document.getElementById('dca-final').textContent = '$' + finalValue.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('dca-shares').textContent = finalShares.toFixed(2) + ' shares';
+  
+  const returnEl = document.getElementById('dca-return');
+  returnEl.textContent = (totalReturnPct >= 0 ? '+' : '') + totalReturnPct.toFixed(2) + '%';
+  returnEl.style.color = totalReturnPct >= 0 ? 'var(--green)' : 'var(--red)';
+  document.getElementById('dca-return-abs').textContent = (totalReturn >= 0 ? '+$' : '-$') + Math.abs(totalReturn).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('dca-return-card').style.borderLeftColor = totalReturnPct >= 0 ? 'var(--green)' : 'var(--red)';
+  document.getElementById('dca-final-card').style.borderLeftColor = totalReturnPct >= 0 ? 'var(--green)' : 'var(--red)';
+  
+  const cagrEl = document.getElementById('dca-cagr');
+  cagrEl.textContent = (cagr >= 0 ? '+' : '') + cagr.toFixed(2) + '%';
+  cagrEl.style.color = cagr >= 0 ? 'var(--green)' : 'var(--red)';
+  document.getElementById('dca-years').textContent = yearsElapsed.toFixed(1) + ' years';
+  
+  document.getElementById('dca-avgcost').textContent = '$' + avgBuyPrice.toFixed(2);
+  const priceDiff = ((currentPrice - avgBuyPrice) / avgBuyPrice) * 100;
+  document.getElementById('dca-currprice').innerHTML = `Current: $${currentPrice.toFixed(2)} <span style="color:${priceDiff>=0?'var(--green)':'var(--red)'}">(${priceDiff>=0?'+':''}${priceDiff.toFixed(1)}%)</span>`;
+  
+  // Plot 3 lines
+  const traces = [
+    {
+      x: data.dates,
+      y: portfolioCurve,
+      type: 'scatter', mode: 'lines',
+      name: '💰 Portfolio Value',
+      line: {color: '#00d26a', width: 2.5},
+      fill: 'tozeroy',
+      fillcolor: 'rgba(0,210,106,0.1)',
+      yaxis: 'y'
+    },
+    {
+      x: data.dates,
+      y: principalCurve,
+      type: 'scatter', mode: 'lines',
+      name: '📥 Total Invested (Principal)',
+      line: {color: '#4361ee', width: 2, dash: 'solid'},
+      yaxis: 'y'
+    },
+    {
+      x: data.dates,
+      y: data.close,
+      type: 'scatter', mode: 'lines',
+      name: `📈 ${ticker} Price`,
+      line: {color: '#ffd60a', width: 1.5, dash: 'dot'},
+      yaxis: 'y2',
+      visible: 'legendonly'  // Hidden by default to avoid scale clutter; user can click to show
+    },
+    {
+      x: buyDates.map(b=>b.date),
+      y: buyDates.map(b=>b.price),
+      type: 'scatter', mode: 'markers',
+      name: '🟢 Buy Points',
+      marker: {color: '#e63946', size: 6, symbol: 'triangle-up', line: {color: '#fff', width: 1}},
+      yaxis: 'y2',
+      visible: 'legendonly'
+    }
+  ];
+  
+  Plotly.newPlot('dca-chart', traces, {
+    paper_bgcolor: '#12121a',
+    plot_bgcolor: '#12121a',
+    font: {color: '#c0c0d0', family: 'Inter'},
+    title: {text: `${ticker} DCA Simulation: $${amount}/${frequency==='daily'?'day':frequency==='monthly'?'month':'year'} from ${startDateStr} to ${endDateStr}`, font: {color: '#fff', size: 16}},
+    xaxis: {gridcolor: '#2a2a3a', title: 'Date'},
+    yaxis: {gridcolor: '#2a2a3a', title: '$ Value (Portfolio / Principal)', side: 'left'},
+    yaxis2: {gridcolor: '#2a2a3a', title: `${ticker} Price`, side: 'right', overlaying: 'y'},
+    margin: {l: 70, r: 70, t: 60, b: 50},
+    legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a', orientation: 'h', y: -0.15},
+    hovermode: 'x unified'
+  }, {responsive: true, displayModeBar: false});
 }
 </script>
 </body>
