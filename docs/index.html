@@ -904,11 +904,107 @@ function detectPivots(highs, lows, dates, minPctChange){
   return pivots;
 }
 
-// Label pivots with Elliott Wave labels (1-5 + ABC) - takes last 8 pivots
+// Validate Elliott Wave rules and return list of violations
+function validateElliottWave(waves){
+  if(waves.length < 4) return {valid: true, issues: [], score: 0};
+  const issues = [];
+  let score = 100;
+  
+  // Get prices for each wave end
+  const p = i => waves[i]?.price;
+  const w1Move = p(1) - p(0);
+  const direction = w1Move > 0 ? 1 : -1;
+  
+  // RULE 0: Alternating directions
+  if(waves.length >= 3){
+    const w2Move = p(2) - p(1);
+    if(Math.sign(w2Move) === Math.sign(w1Move)){ issues.push('Wave 2 should be opposite Wave 1'); score -= 50; }
+  }
+  if(waves.length >= 4){
+    const w3Move = p(3) - p(2);
+    if(Math.sign(w3Move) !== Math.sign(w1Move)){ issues.push('Wave 3 should be same direction as Wave 1'); score -= 50; }
+  }
+  if(waves.length >= 5){
+    const w4Move = p(4) - p(3);
+    if(Math.sign(w4Move) === Math.sign(w1Move)){ issues.push('Wave 4 should be opposite Wave 1'); score -= 50; }
+  }
+  if(waves.length >= 6){
+    const w5Move = p(5) - p(4);
+    if(Math.sign(w5Move) !== Math.sign(w1Move)){ issues.push('Wave 5 should be same direction as Wave 1'); score -= 50; }
+  }
+  
+  // RULE 1: Wave 2 cannot retrace 100% of Wave 1
+  if(waves.length >= 3){
+    if(direction > 0 && p(2) < p(0)) { issues.push(`❌ Wave 2 (${p(2).toFixed(2)}) below Wave 1 start (${p(0).toFixed(2)}) - retracement >100%`); score -= 100; }
+    if(direction < 0 && p(2) > p(0)) { issues.push(`❌ Wave 2 above Wave 1 start - retracement >100%`); score -= 100; }
+  }
+  
+  // RULE 2: Wave 3 cannot be the shortest
+  if(waves.length >= 6){
+    const len1 = Math.abs(p(1) - p(0));
+    const len3 = Math.abs(p(3) - p(2));
+    const len5 = Math.abs(p(5) - p(4));
+    if(len3 < len1 && len3 < len5){
+      issues.push(`❌ Wave 3 (${len3.toFixed(2)}) is shortest! Must NOT be shortest among W1=${len1.toFixed(2)}, W3=${len3.toFixed(2)}, W5=${len5.toFixed(2)}`);
+      score -= 100;
+    }
+    // Bonus: Wave 3 is ideally longest (1.618x W1)
+    const ratio3to1 = len3 / len1;
+    if(ratio3to1 >= 1.0 && ratio3to1 <= 3.0){
+      score += 20 - Math.abs(ratio3to1 - 1.618) * 10;
+    }
+  }
+  
+  // RULE 3: Wave 4 cannot enter Wave 1's price territory
+  if(waves.length >= 5){
+    if(direction > 0 && p(4) < p(1)){
+      issues.push(`❌ Wave 4 low (${p(4).toFixed(2)}) entered Wave 1 territory (${p(1).toFixed(2)}) - INVALID impulse`);
+      score -= 100;
+    }
+    if(direction < 0 && p(4) > p(1)){
+      issues.push(`❌ Wave 4 entered Wave 1 territory - INVALID impulse`);
+      score -= 100;
+    }
+  }
+  
+  return {valid: issues.length === 0, issues, score};
+}
+
+// Try multiple starting positions to find the most valid Elliott Wave labeling
 function labelWaves(pivots){
-  const recent = pivots.slice(-9);
   const labels = ['Start', '1', '2', '3', '4', '5', 'A', 'B', 'C'];
-  return recent.map((p, i) => ({...p, label: labels[i] || ''}));
+  if(pivots.length < 4) return pivots.map((p,i)=>({...p, label: labels[i] || ''}));
+  
+  let bestScore = -Infinity;
+  let bestWaves = null;
+  let bestValidation = null;
+  
+  // Try different starting positions: from the most recent 9 pivots back to ~15 pivots ago
+  const maxStart = Math.max(0, pivots.length - 15);
+  const minStart = Math.max(0, pivots.length - 9);
+  
+  for(let startIdx = minStart; startIdx >= maxStart; startIdx--){
+    const slice = pivots.slice(startIdx, startIdx + 9);
+    if(slice.length < 4) continue;
+    
+    const labeled = slice.map((p, i) => ({...p, label: labels[i] || ''}));
+    const validation = validateElliottWave(labeled);
+    
+    if(validation.score > bestScore){
+      bestScore = validation.score;
+      bestWaves = labeled;
+      bestValidation = validation;
+    }
+    
+    // If we find a fully valid labeling, prefer it
+    if(validation.valid && validation.score > 50) break;
+  }
+  
+  // Attach validation info to first wave for later use
+  if(bestWaves && bestValidation){
+    bestWaves[0]._validation = bestValidation;
+  }
+  return bestWaves || pivots.slice(-9).map((p,i)=>({...p, label: labels[i] || ''}));
 }
 
 // Predict ALL remaining Elliott Waves based on Fibonacci ratios
@@ -1179,6 +1275,22 @@ async function analyzeWave(){
   
   const positionText = wavePositions[lastWave.label] || 'Unknown wave position';
   const ret_5 = ((currentPrice - waves[5]?.price) / waves[5]?.price * 100).toFixed(2);
+  const validation = waves[0]._validation;
+  
+  let validationHtml = '';
+  if(validation){
+    if(validation.valid){
+      validationHtml = `<div style="margin-top:.6rem;padding:.5rem .7rem;background:rgba(0,210,106,0.1);border-left:3px solid var(--green);border-radius:6px;font-size:.78rem">✅ <strong style="color:var(--green)">Valid Elliott Wave</strong> — All 4 rules satisfied (Score: ${validation.score})</div>`;
+    } else {
+      validationHtml = `<div style="margin-top:.6rem;padding:.5rem .7rem;background:rgba(230,57,70,0.1);border-left:3px solid var(--red);border-radius:6px;font-size:.78rem">
+        <strong style="color:var(--red)">⚠️ Elliott Rules Violated</strong> (Score: ${validation.score})
+        <ul style="margin:.3rem 0 0 1rem;padding:0;color:var(--txt2)">
+          ${validation.issues.map(i=>`<li style="margin:2px 0">${i}</li>`).join('')}
+        </ul>
+        <div style="margin-top:.4rem;color:var(--muted);font-size:.72rem">⚡ This may not be a clean impulse - try lower sensitivity or longer period for cleaner pattern.</div>
+      </div>`;
+    }
+  }
   
   document.getElementById('wave-position').innerHTML = `
     <div style="margin-bottom:1rem"><strong style="color:var(--yellow);font-size:1.1rem">Currently in: Wave ${lastWave.label}</strong></div>
@@ -1188,6 +1300,7 @@ async function analyzeWave(){
       Wave 5 Peak/Trough: <strong>$${waves[5]?.price.toFixed(2) || 'N/A'}</strong><br>
       Distance from Wave 5: <strong style="color:${ret_5>=0?'var(--green)':'var(--red)'}">${ret_5}%</strong>
     </div>
+    ${validationHtml}
   `;
   
   if(predictions.length > 0){
