@@ -915,8 +915,9 @@ function labelWaves(pivots){
 function predictRemainingWaves(waves){
   if(waves.length < 2) return [];
   const labels = ['Start', '1', '2', '3', '4', '5', 'A', 'B', 'C'];
-  const lastIdx = labels.indexOf(waves[waves.length-1].label);
-  if(lastIdx === -1 || lastIdx >= labels.length - 1) return [];
+  const lastWave = waves[waves.length-1];
+  const lastIdx = labels.indexOf(lastWave.label);
+  if(lastIdx === -1) return [];
   
   const dayMs = 24 * 60 * 60 * 1000;
   let avgDays = 30;
@@ -929,6 +930,62 @@ function predictRemainingWaves(waves){
   const w1End = waves[1]?.price;
   const w1Length = w1End !== undefined ? Math.abs(w1End - w1Start) : 0;
   const direction = w1End > w1Start ? 1 : -1;
+  
+  // ===== CASE: Cycle completed (at Wave C) → predict NEW cycle's Wave 1'-5' =====
+  if(lastIdx === 8){
+    const startPrice = lastWave.price;
+    const startDate = lastWave.date;
+    const predictions = [];
+    
+    // After Wave C (correction complete), new impulse begins in original direction
+    const np1 = startPrice + direction * w1Length;
+    predictions.push({
+      label: "1'", 
+      date: new Date(startDate.getTime() + avgDays * dayMs), 
+      price: np1,
+      lo: startPrice + direction * w1Length * 0.618,
+      hi: startPrice + direction * w1Length * 1.382
+    });
+    
+    const np2 = np1 - direction * w1Length * 0.618;
+    predictions.push({
+      label: "2'",
+      date: new Date(predictions[0].date.getTime() + avgDays * 0.7 * dayMs),
+      price: np2,
+      lo: np1 - direction * w1Length * 0.786,
+      hi: np1 - direction * w1Length * 0.500
+    });
+    
+    const np3 = np2 + direction * w1Length * 1.618;
+    predictions.push({
+      label: "3'",
+      date: new Date(predictions[1].date.getTime() + avgDays * 1.5 * dayMs),
+      price: np3,
+      lo: np2 + direction * w1Length * 1.000,
+      hi: np2 + direction * w1Length * 2.618
+    });
+    
+    const w3pLength = Math.abs(np3 - np2);
+    const np4 = np3 - direction * w3pLength * 0.382;
+    predictions.push({
+      label: "4'",
+      date: new Date(predictions[2].date.getTime() + avgDays * 0.7 * dayMs),
+      price: np4,
+      lo: np3 - direction * w3pLength * 0.500,
+      hi: np3 - direction * w3pLength * 0.236
+    });
+    
+    const np5 = np4 + direction * w1Length;
+    predictions.push({
+      label: "5'",
+      date: new Date(predictions[3].date.getTime() + avgDays * dayMs),
+      price: np5,
+      lo: np4 + direction * w1Length * 0.618,
+      hi: np4 + direction * w1Length * 1.618
+    });
+    
+    return predictions;
+  }
   
   const predictions = [];
   let prevDate = waves[waves.length-1].date;
