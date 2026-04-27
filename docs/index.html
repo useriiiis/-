@@ -61,6 +61,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 .footer{text-align:center;padding:2rem;color:#404060;font-size:.7rem;margin-top:2rem}
 .refresh-btn{background:var(--card);border:1px solid var(--border);color:var(--txt2);padding:6px 14px;border-radius:8px;font-size:.8rem;cursor:pointer;transition:.2s}
 .refresh-btn:hover{background:var(--border2);color:var(--txt)}
+/* Plotly mobile-friendly: enable touch gestures */
+.js-plotly-plot, .plot-container, .svg-container { touch-action: none !important; }
+
 @media(max-width:1100px){.g4{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){
   .g2,.g3,.g4{grid-template-columns:1fr}
@@ -78,26 +81,26 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 
 <!-- Mobile Header -->
 <div class="mobile-header">
-  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-  <div class="logo"><span>◆</span> ALPHA</div>
+  <button class="menu-btn" onclick="toggleSidebar()">??/button>
+  <div class="logo"><span>??/span> ALPHA</div>
   <div class="status"><div class="dot"></div><span id="ts-mobile">Live</span></div>
 </div>
 
 <!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <div class="logo"><span>◆</span> ALPHA SIGNAL</div>
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <div class="logo"><span>??/span> ALPHA SIGNAL</div>
+    <button class="close-btn" onclick="toggleSidebar()">�</button>
   </div>
   <ul class="nav-links">
-    <li><a class="active" onclick="show('dash'); toggleSidebar()">📊 Dashboard</a></li>
-    <li><a onclick="show('news'); toggleSidebar()">📰 News</a></li>
-    <li><a onclick="show('briefing'); toggleSidebar()">🤖 Alpha (DeepSeek)</a></li>
-    <li><a onclick="show('sigma'); toggleSidebar()">♟️ Sigma (Gemini)</a></li>
-    <li><a onclick="show('analysis'); toggleSidebar()">📈 Stock Analysis</a></li>
-    <li><a onclick="show('wave'); toggleSidebar()">🌊 Elliott Wave</a></li>
-    <li><a onclick="show('dca'); toggleSidebar()">💰 DCA Simulator</a></li>
-    <li><a onclick="show('indicators'); toggleSidebar()">🔬 Technical Indicators</a></li>
+    <li><a class="active" onclick="show('dash'); toggleSidebar()">?? Dashboard</a></li>
+    <li><a onclick="show('news'); toggleSidebar()">?? News</a></li>
+    <li><a onclick="show('briefing'); toggleSidebar()">?? Alpha (DeepSeek)</a></li>
+    <li><a onclick="show('sigma'); toggleSidebar()">?? Sigma (Gemini)</a></li>
+    <li><a onclick="show('analysis'); toggleSidebar()">?? Stock Analysis</a></li>
+    <li><a onclick="show('wave'); toggleSidebar()">?? Elliott Wave</a></li>
+    <li><a onclick="show('dca'); toggleSidebar()">?? DCA Simulator</a></li>
+    <li><a onclick="show('indicators'); toggleSidebar()">?? Technical Indicators</a></li>
   </ul>
   <div class="status"><div class="dot"></div><span id="ts">Loading...</span></div>
 </aside>
@@ -110,21 +113,21 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
   <div id="page-dash">
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div class="ph"><h1><span class="live-dot"></span>Live Dashboard</h1><p>Real-time data | UBS Financial Elite Challenge 2026</p></div>
-      <button class="refresh-btn" onclick="refreshAll()">↻ Refresh</button>
+      <button class="refresh-btn" onclick="refreshAll()">??Refresh</button>
     </div>
 
     <div class="ib" id="idx-strip" style="margin-top:1rem"><div style="color:var(--muted)">Loading indices...</div></div>
 
-    <div class="sec"><div class="sec-t">📊 Stock Watchlist (Live)</div></div>
+    <div class="sec"><div class="sec-t">?? Stock Watchlist (Live)</div></div>
     <div class="g4" id="stock-cards"><div style="color:var(--muted)">Fetching live prices...</div></div>
 
     <div class="g2" style="margin-top:1.2rem">
       <div class="card">
-        <div class="ct">🧠 AI Sentiment <span class="ai-b">DeepSeek AI</span></div>
+        <div class="ct">?? AI Sentiment <span class="ai-b">DeepSeek AI</span></div>
         <div id="sent-box"><div style="color:var(--muted)">Loading AI analysis...</div></div>
       </div>
       <div class="card">
-        <div class="ct">📰 Latest News (Live)</div>
+        <div class="ct">?? Latest News (Live)</div>
         <div id="news-brief"><div style="color:var(--muted)">Fetching news...</div></div>
       </div>
     </div>
@@ -153,7 +156,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     <div id="ai-section">
       <div class="brief" id="brief-text">Loading Alpha briefing...</div>
       <div class="card" style="margin-top:1rem">
-        <div class="ct">🔑 Key Themes</div>
+        <div class="ct">?? Key Themes</div>
         <div id="kw-box"></div>
       </div>
     </div>
@@ -172,10 +175,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 
   <!-- Elliott Wave Page -->
   <div id="page-wave" style="display:none">
-    <div class="ph"><h1>🌊 Elliott Wave Predictor</h1><p>Auto-detect Elliott Wave pattern + Fibonacci projection for any stock</p></div>
+    <div class="ph"><h1>?? Elliott Wave Predictor</h1><p>Auto-detect Elliott Wave pattern + Fibonacci projection for any stock</p></div>
 
     <div class="card" style="margin-bottom:1rem">
-      <div class="ct">⚙️ Stock Selection</div>
+      <div class="ct">?? Stock Selection</div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
         <input id="wave-ticker" type="text" placeholder="Enter ticker (e.g. AAPL, MSFT, TSLA)" value="AAPL"
           style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem;width:240px">
@@ -190,7 +193,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
           <option value="5" selected>Sensitivity: Medium (5%)</option>
           <option value="8">Sensitivity: Low (8%)</option>
         </select>
-        <button class="refresh-btn" onclick="analyzeWave()" style="background:var(--red);color:#fff">🌊 Analyze Wave</button>
+        <button class="refresh-btn" onclick="analyzeWave()" style="background:var(--red);color:#fff">?? Analyze Wave</button>
         <span style="font-size:.8rem;color:var(--muted)">Quick:</span>
         <button class="refresh-btn" onclick="quickWave('TSLA')">TSLA</button>
         <button class="refresh-btn" onclick="quickWave('NVDA')">NVDA</button>
@@ -209,31 +212,31 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 
     <div class="g2">
       <div class="card" style="border-left:3px solid var(--blue)">
-        <div class="ct">📊 Current Wave Position</div>
+        <div class="ct">?? Current Wave Position</div>
         <div id="wave-position" style="font-size:.9rem;line-height:1.7;color:var(--txt2)">No analysis yet</div>
       </div>
       <div class="card" style="border-left:3px solid var(--green)">
-        <div class="ct">🎯 Fibonacci Projection</div>
+        <div class="ct">?? Fibonacci Projection</div>
         <div id="wave-projection" style="font-size:.9rem;line-height:1.7;color:var(--txt2)">No analysis yet</div>
       </div>
     </div>
 
     <div class="card" style="margin-top:1rem;border-left:3px solid var(--purple)">
-      <div class="ct">📚 Elliott Wave Theory Quick Guide</div>
+      <div class="ct">?? Elliott Wave Theory Quick Guide</div>
       <div style="font-size:.85rem;line-height:1.7;color:var(--txt2)">
-        <strong style="color:var(--green)">Impulse Waves (1→2→3→4→5):</strong> The main trend movement. Wave 3 is usually the longest. Wave 4 cannot enter Wave 1 territory.<br>
-        <strong style="color:var(--red)">Corrective Waves (A→B→C):</strong> Counter-trend movement after impulse completes. Usually 50-78.6% retracement of waves 1-5.<br>
-        <strong style="color:var(--yellow)">Fibonacci Targets:</strong> Wave 3 = 1.618× Wave 1; Wave 5 = 0.618× to 1× of Wave 1+3; Wave C = 1× Wave A.
+        <strong style="color:var(--green)">Impulse Waves (1????????):</strong> The main trend movement. Wave 3 is usually the longest. Wave 4 cannot enter Wave 1 territory.<br>
+        <strong style="color:var(--red)">Corrective Waves (A?B?C):</strong> Counter-trend movement after impulse completes. Usually 50-78.6% retracement of waves 1-5.<br>
+        <strong style="color:var(--yellow)">Fibonacci Targets:</strong> Wave 3 = 1.618� Wave 1; Wave 5 = 0.618� to 1� of Wave 1+3; Wave C = 1� Wave A.
       </div>
     </div>
   </div>
 
   <!-- DCA Simulator Page -->
   <div id="page-dca" style="display:none">
-    <div class="ph"><h1>💰 DCA Simulator</h1><p>Dollar-Cost Averaging simulator. Test how regular investing into any stock would have performed.</p></div>
+    <div class="ph"><h1>?? DCA Simulator</h1><p>Dollar-Cost Averaging simulator. Test how regular investing into any stock would have performed.</p></div>
 
     <div class="card" style="margin-bottom:1rem">
-      <div class="ct">⚙️ DCA Configuration</div>
+      <div class="ct">?? DCA Configuration</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin-bottom:.8rem">
         <div>
           <label style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Stock Ticker</label>
@@ -270,7 +273,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
-        <button class="refresh-btn" onclick="runDCA()" style="background:var(--red);color:#fff;font-weight:600">📈 Run Simulation</button>
+        <button class="refresh-btn" onclick="runDCA()" style="background:var(--red);color:#fff;font-weight:600">?? Run Simulation</button>
         <span style="font-size:.8rem;color:var(--muted);margin-left:.5rem">Quick:</span>
         <button class="refresh-btn" onclick="quickDCA('AAPL')">AAPL</button>
         <button class="refresh-btn" onclick="quickDCA('SPY')">SPY (S&P 500)</button>
@@ -318,27 +321,27 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     </div>
 
     <div class="card" style="margin-bottom:1rem">
-      <div class="ct">📊 Performance Chart <span style="font-size:.7rem;color:var(--muted);font-weight:400;margin-left:1rem;text-transform:none;letter-spacing:0">💡 Click on legend items to hide/show lines</span></div>
+      <div class="ct">?? Performance Chart <span style="font-size:.7rem;color:var(--muted);font-weight:400;margin-left:1rem;text-transform:none;letter-spacing:0">?? Click on legend items to hide/show lines</span></div>
       <div id="dca-chart" style="height:550px;background:var(--bg2);border-radius:10px">
         <div style="text-align:center;padding:5rem;color:var(--muted)">Configure parameters above and click "Run Simulation"</div>
       </div>
     </div>
 
     <div class="card" style="border-left:3px solid var(--purple)">
-      <div class="ct">📚 What is DCA (Dollar-Cost Averaging)?</div>
+      <div class="ct">?? What is DCA (Dollar-Cost Averaging)?</div>
       <div style="font-size:.85rem;line-height:1.7;color:var(--txt2)">
         <strong style="color:var(--green)">DCA</strong> means investing a fixed amount at regular intervals, regardless of price. This smooths out volatility - you buy more shares when prices are low and fewer when prices are high. Used by retail investors, 401k plans, and even Warren Buffett's recommendation for most people.<br><br>
-        <strong style="color:var(--yellow)">⚠️ Note:</strong> Past performance does not guarantee future results. This simulator uses historical price data only and does not include dividends, taxes, or stock splits' adjusted prices automatically (Yahoo's adjusted close handles splits but not always perfectly).
+        <strong style="color:var(--yellow)">?? Note:</strong> Past performance does not guarantee future results. This simulator uses historical price data only and does not include dividends, taxes, or stock splits' adjusted prices automatically (Yahoo's adjusted close handles splits but not always perfectly).
       </div>
     </div>
   </div>
 
   <!-- Technical Indicators Page -->
   <div id="page-indicators" style="display:none">
-    <div class="ph"><h1>🔬 Technical Indicators Lab</h1><p>Comprehensive technical analysis: MACD, RSI, KDJ, Bollinger Bands, Volume, MA Cross, 缠论 (Chan Theory), Pattern Detection</p></div>
+    <div class="ph"><h1>?? Technical Indicators Lab</h1><p>Comprehensive technical analysis: MACD, RSI, KDJ, Bollinger Bands, Volume, MA Cross, ?? (Chan Theory), Pattern Detection</p></div>
 
     <div class="card" style="margin-bottom:1rem">
-      <div class="ct">⚙️ Configure Analysis</div>
+      <div class="ct">?? Configure Analysis</div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
         <input id="ind-ticker" type="text" placeholder="Ticker (e.g. AAPL)" value="AAPL"
           style="background:var(--card);border:1px solid var(--border);color:var(--txt);padding:8px 14px;border-radius:8px;font-size:.9rem;width:200px">
@@ -348,20 +351,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
           <option value="1y">1 Year</option>
           <option value="2y">2 Years</option>
         </select>
-        <button class="refresh-btn" onclick="analyzeIndicators()" style="background:var(--red);color:#fff;font-weight:600">🔬 Analyze All Indicators</button>
+        <button class="refresh-btn" onclick="analyzeIndicators()" style="background:var(--red);color:#fff;font-weight:600">?? Analyze All Indicators</button>
         <span style="font-size:.8rem;color:var(--muted);margin-left:.5rem">Quick:</span>
         <button class="refresh-btn" onclick="quickInd('AAPL')">AAPL</button>
         <button class="refresh-btn" onclick="quickInd('TSLA')">TSLA</button>
         <button class="refresh-btn" onclick="quickInd('NVDA')">NVDA</button>
         <button class="refresh-btn" onclick="quickInd('SPY')">SPY</button>
-        <button class="refresh-btn" onclick="quickInd('1810.HK')">小米</button>
+        <button class="refresh-btn" onclick="quickInd('1810.HK')">??</button>
       </div>
     </div>
 
     <!-- Overall Summary -->
     <div id="ind-summary" style="display:none;margin-bottom:1rem">
       <div class="card" style="background:linear-gradient(135deg,var(--card),var(--bg2));border:2px solid var(--border)">
-        <div class="ct">🎯 Overall Signal Summary</div>
+        <div class="ct">?? Overall Signal Summary</div>
         <div id="ind-overall" style="font-size:.95rem;line-height:1.8"></div>
       </div>
     </div>
@@ -371,8 +374,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--blue)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📊 MACD (Moving Average Convergence Divergence)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">EMA(12) − EMA(26), Signal=EMA(9). Detects trend changes via crossovers.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? MACD (Moving Average Convergence Divergence)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">EMA(12) ??EMA(26), Signal=EMA(9). Detects trend changes via crossovers.</div>
           </div>
           <span id="signal-macd" class="mood-badge"></span>
         </div>
@@ -384,7 +387,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--purple)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">⚡ RSI (Relative Strength Index)</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">??RSI (Relative Strength Index)</div>
             <div style="font-size:.78rem;color:var(--muted);margin-top:2px">14-period momentum. >70=overbought, <30=oversold. Divergence is strongest signal.</div>
           </div>
           <span id="signal-rsi" class="mood-badge"></span>
@@ -397,8 +400,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--yellow)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📈 KDJ (Stochastic Oscillator)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">中国常用动量指标。K&D 在底部金叉=买; 顶部死叉=卖. J<0 极度超卖, J>100 极度超买.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? KDJ (Stochastic Oscillator)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">?????????K&D ???????? ????=?? J<0 ????, J>100 ????.</div>
           </div>
           <span id="signal-kdj" class="mood-badge"></span>
         </div>
@@ -410,8 +413,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--green)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📉 Bollinger Bands (布林带)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">20-day MA ± 2σ. Squeeze = breakout coming. Touching upper = strong, touching lower = weakness.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? Bollinger Bands (????</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">20-day MA � 2?. Squeeze = breakout coming. Touching upper = strong, touching lower = weakness.</div>
           </div>
           <span id="signal-boll" class="mood-badge"></span>
         </div>
@@ -423,8 +426,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid #ff6b6b">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📊 Volume Analysis (放量/缩量)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">放量 = volume > 2× MA20 (institutional activity). 缩量 = consolidation. OBV confirms trend.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? Volume Analysis (??/??)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">?? = volume > 2� MA20 (institutional activity). ?? = consolidation. OBV confirms trend.</div>
           </div>
           <span id="signal-volume" class="mood-badge"></span>
         </div>
@@ -436,8 +439,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid #4361ee">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">📐 Moving Averages (均线系统)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">MA5/10/20/50/200. Golden Cross (50↑200) = 大牛市. Death Cross (50↓200) = 大熊市.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? Moving Averages (????)</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">MA5/10/20/50/200. Golden Cross (50??00) = ???? Death Cross (50??00) = ????</div>
           </div>
           <span id="signal-ma" class="mood-badge"></span>
         </div>
@@ -445,12 +448,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
         <div id="reason-ma" style="margin-top:.8rem;font-size:.85rem;color:var(--txt2);line-height:1.6;padding:.8rem;background:var(--card);border-radius:8px"></div>
       </div>
 
-      <!-- 7. Chan Theory (缠论) -->
+      <!-- 7. Chan Theory (??) -->
       <div class="card" style="margin-bottom:1rem;border-left:4px solid #7209b7">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">🧩 缠论 (Chan Theory) Simplified</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">缠中说禅理论。识别"笔"(strokes) 和"中枢"(consolidation zones)。中枢突破=trend continues, 反向=reversal.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? ?? (Chan Theory) Simplified</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">????????????(strokes) ????"(consolidation zones)??????trend continues, ??=reversal.</div>
           </div>
           <span id="signal-chan" class="mood-badge"></span>
         </div>
@@ -462,8 +465,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
       <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--red)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
           <div>
-            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">🎨 Chart Patterns (经典形态)</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Auto-detect: 头肩顶/底, 双顶/双底, 三角形, support/resistance levels.</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--txt)">?? Chart Patterns (?????</div>
+            <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Auto-detect: ?????? ??/??, ???? support/resistance levels.</div>
           </div>
           <span id="signal-pattern" class="mood-badge"></span>
         </div>
@@ -473,7 +476,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
     </div>
 
     <div id="ind-loading" style="display:none;padding:5rem;text-align:center;color:var(--muted)">
-      <div style="font-size:2rem;margin-bottom:1rem">🔬</div>
+      <div style="font-size:2rem;margin-bottom:1rem">??</div>
       <div>Analyzing all indicators...<br>This may take 5-10 seconds.</div>
     </div>
   </div>
@@ -489,26 +492,26 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt2);min-h
 
     <div class="g2" style="margin-bottom:1rem">
       <div class="card" style="border-left:3px solid var(--green)">
-        <div class="ct">📈 LONG Position</div>
+        <div class="ct">?? LONG Position</div>
         <div id="long-box"></div>
       </div>
       <div class="card" style="border-left:3px solid var(--red)">
-        <div class="ct">📉 SHORT Candidates</div>
+        <div class="ct">?? SHORT Candidates</div>
         <div id="short-box"></div>
       </div>
     </div>
 
     <div class="g2" style="margin-bottom:1rem">
-      <div class="card"><div class="ct">📊 Dimension 1: Fundamentals</div><div id="d1-box" class="brief" style="max-height:300px"></div></div>
-      <div class="card"><div class="ct">📈 Dimension 2: Technicals</div><div id="d2-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">?? Dimension 1: Fundamentals</div><div id="d1-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">?? Dimension 2: Technicals</div><div id="d2-box" class="brief" style="max-height:300px"></div></div>
     </div>
     <div class="g2" style="margin-bottom:1rem">
-      <div class="card"><div class="ct">🧠 Dimension 3: Sentiment</div><div id="d3-box" class="brief" style="max-height:300px"></div></div>
-      <div class="card"><div class="ct">🏢 Dimension 4: Competitive</div><div id="d4-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">?? Dimension 3: Sentiment</div><div id="d3-box" class="brief" style="max-height:300px"></div></div>
+      <div class="card"><div class="ct">?? Dimension 4: Competitive</div><div id="d4-box" class="brief" style="max-height:300px"></div></div>
     </div>
-    <div class="card" style="margin-bottom:1rem"><div class="ct">🌍 Dimension 5: Macro & Geopolitical</div><div id="d5-box" class="brief" style="max-height:300px"></div></div>
+    <div class="card" style="margin-bottom:1rem"><div class="ct">?? Dimension 5: Macro & Geopolitical</div><div id="d5-box" class="brief" style="max-height:300px"></div></div>
 
-    <div class="card"><div class="ct">🤖 AI Pair Trade Recommendation</div><div id="pair-box" class="brief" style="min-height:200px"></div></div>
+    <div class="card"><div class="ct">?? AI Pair Trade Recommendation</div><div id="pair-box" class="brief" style="min-height:200px"></div></div>
   </div>
 
   <div class="footer">ALPHA SIGNAL | Real-time Financial Intelligence<br>UBS Financial Elite Challenge 2026</div>
@@ -524,10 +527,10 @@ let proxyIdx=0;
 function proxy(u){return PROXIES[proxyIdx%PROXIES.length](u);}
 
 const STOCKS={
-  '小米集团':{t:'1810.HK',m:'HKEX'},
+  '????':{t:'1810.HK',m:'HKEX'},
   'QQQ':{t:'QQQ',m:'NASDAQ'},
   'Intel':{t:'INTC',m:'NASDAQ'},
-  '微软':{t:'MSFT',m:'NASDAQ'},
+  '??':{t:'MSFT',m:'NASDAQ'},
   'Bitcoin':{t:'BTC-USD',m:'Crypto'},
 };
 const INDICES={'S&P 500':'^GSPC','NASDAQ':'^IXIC','Hang Seng':'^HSI','Dow Jones':'^DJI'};
@@ -539,6 +542,17 @@ const RSS_FEEDS=[
 ];
 
 let cachedData={};
+
+// Mobile-friendly Plotly config: enables pinch-zoom, two-finger pan, drag-pan
+const MOBILE_PLOTLY_CONFIG = {
+  responsive: true,
+  displayModeBar: false,
+  scrollZoom: true,           // Scroll wheel + pinch-to-zoom
+  doubleClick: 'reset+autosize',  // Double-tap to reset
+  showAxisDragHandles: true,
+  showAxisRangeEntryBoxes: false,
+  modeBarButtonsToRemove: ['select2d', 'lasso2d']
+};
 
 function toggleSidebar(){
   if(window.innerWidth<=900){
@@ -590,11 +604,11 @@ async function fetchYahoo(ticker){
 
 function renderStockCard(name,ticker,market,d){
   const dir=parseFloat(d.change_pct)>=0?'up':'dn';
-  const arrow=dir==='up'?'▲':'▼';
+  const arrow=dir==='up'?'??:'??;
   const cur=market==='Crypto'?'$':d.currency==='HKD'?'HK$':'$';
   return`<div class="sc ${dir}">
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div><div class="sn">${name}</div><div class="st">${ticker} · ${market}</div></div>
+      <div><div class="sn">${name}</div><div class="st">${ticker} � ${market}</div></div>
       <div class="${dir}-c" style="font-weight:700;font-size:.85rem">${arrow} ${parseFloat(d.change_pct).toFixed(2)}%</div>
     </div>
     <div class="sp ${dir}-c">${cur}${parseFloat(d.price).toLocaleString()}</div>
@@ -635,7 +649,7 @@ async function loadIndices(){
     for(const[name,d]of Object.entries(cachedData.indices)){
       if(d.error||!d.price)continue;
       const cls=d.change_pct>=0?'up-c':'dn-c';
-      const arrow=d.change_pct>=0?'▲':'▼';
+      const arrow=d.change_pct>=0?'??:'??;
       html+=`<div class="idx"><div class="n">${name}</div><div class="v">${parseFloat(d.price).toLocaleString()}</div><div class="c ${cls}">${arrow} ${parseFloat(d.change_pct).toFixed(2)}%</div></div>`;
     }
     if(html)el.innerHTML=html;
@@ -649,7 +663,7 @@ async function loadIndices(){
       const d=results[i];
       if(d){
         const cls=parseFloat(d.change_pct)>=0?'up-c':'dn-c';
-        const arrow=parseFloat(d.change_pct)>=0?'▲':'▼';
+        const arrow=parseFloat(d.change_pct)>=0?'??:'??;
         html+=`<div class="idx"><div class="n">${name}</div><div class="v">${parseFloat(d.price).toLocaleString()}</div><div class="c ${cls}">${arrow} ${d.change_pct}%</div></div>`;
         gotAny=true;
       }
@@ -726,7 +740,7 @@ async function loadAnalysis(){
     // Long position card
     const ld=A.dim1_fundamentals?.data||{};
     document.getElementById('long-box').innerHTML=`
-      <div style="font-size:1.5rem;font-weight:800;color:var(--green);margin-bottom:.5rem">LONG 小米 (1810.HK)</div>
+      <div style="font-size:1.5rem;font-weight:800;color:var(--green);margin-bottom:.5rem">LONG ?? (1810.HK)</div>
       <div style="font-size:.85rem;color:var(--txt2);line-height:1.6">
         <div>Price: HK$${ld.price||'--'} | PE: ${ld.pe_ratio||'--'} | PB: ${ld.pb_ratio||'--'}</div>
         <div>Revenue Growth: ${ld.revenue_growth?((ld.revenue_growth*100).toFixed(1)+'%'):'--'}</div>
@@ -772,7 +786,7 @@ async function loadAI(){
     
     // Sigma
     const sm=D.mood_sigma||{};
-    document.getElementById('sigma-mood-emoji').textContent=sm.emoji||'♟️';
+    document.getElementById('sigma-mood-emoji').textContent=sm.emoji||'??';
     document.getElementById('sigma-mood-vibe').textContent='"'+(sm.vibe||'Analyzing...')+'"';
     const smb=document.getElementById('sigma-mood-badge');
     smb.textContent='MOOD: '+(sm.mood||'unknown').toUpperCase();
@@ -784,7 +798,7 @@ async function loadAI(){
     const kb=document.getElementById('kw-box');let kh='';
     const kw=D.keywords||{};
     if(kw.keywords){kh+='<div>';kw.keywords.forEach(k=>{kh+=`<span class="tag" style="font-size:${.7+(k.importance||.5)*.4}rem;padding:4px 12px;margin:3px">${k.word}</span>`;});kh+='</div>';}
-    if(kw.themes){kw.themes.forEach(t=>{kh+=`<div style="margin:6px 0"><strong style="color:var(--txt)">${t.theme}</strong> <span style="color:var(--muted);font-size:.8rem">— ${t.description}</span></div>`;});}
+    if(kw.themes){kw.themes.forEach(t=>{kh+=`<div style="margin:6px 0"><strong style="color:var(--txt)">${t.theme}</strong> <span style="color:var(--muted);font-size:.8rem">??${t.description}</span></div>`;});}
     kb.innerHTML=kh||'';
   }catch(e){
     document.getElementById('brief-text').textContent='AI data not yet generated. Will update at 8am & 9pm.';
@@ -793,7 +807,7 @@ async function loadAI(){
 
 function nlist(arts){
   if(!arts||!arts.length)return'<div style="color:var(--muted);padding:.5rem">No news</div>';
-  return arts.map(a=>`<div class="ni"><a href="${a.link}" target="_blank">${a.title}</a><div class="nm">${a.source} · ${a.published}</div></div>`).join('');
+  return arts.map(a=>`<div class="ni"><a href="${a.link}" target="_blank">${a.title}</a><div class="nm">${a.source} � ${a.published}</div></div>`).join('');
 }
 function fmt(n){if(!n)return'0';if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(0)+'M';if(n>=1e3)return(n/1e3).toFixed(0)+'K';return n.toLocaleString();}
 
@@ -801,7 +815,7 @@ async function refreshAll(){
   document.getElementById('ts').textContent='Refreshing...';
   document.getElementById('ts-mobile').textContent='Refreshing...';
   await Promise.all([loadStocks(),loadIndices(),loadNews()]);
-  const t = 'Live · '+new Date().toLocaleTimeString();
+  const t = 'Live � '+new Date().toLocaleTimeString();
   document.getElementById('ts').textContent=t;
   document.getElementById('ts-mobile').textContent=t;
 }
@@ -811,7 +825,7 @@ async function init(){
   document.getElementById('ts-mobile').textContent='Loading...';
   await loadAI();
   await Promise.all([loadStocks(),loadIndices(),loadNews(),loadAnalysis()]);
-  const t = 'Live · '+new Date().toLocaleTimeString();
+  const t = 'Live � '+new Date().toLocaleTimeString();
   document.getElementById('ts').textContent=t;
   document.getElementById('ts-mobile').textContent=t;
 }
@@ -920,6 +934,113 @@ function fibProjection(waves){
   };
 }
 
+// Predict ALL remaining waves based on Elliott Wave rules
+// Returns an array of predicted pivots: [{label, date, price, lo, hi}]
+function predictRemainingWaves(waves){
+  if(waves.length < 2) return [];
+  
+  const labels = ['Start', '1', '2', '3', '4', '5', 'A', 'B', 'C'];
+  const lastIdx = labels.indexOf(waves[waves.length-1].label);
+  if(lastIdx === -1 || lastIdx >= labels.length - 1) return [];
+  
+  // Estimate average days per wave based on existing waves
+  const dayMs = 24 * 60 * 60 * 1000;
+  let avgDays = 30;
+  if(waves.length >= 2){
+    const totalDays = (waves[waves.length-1].date - waves[0].date) / dayMs;
+    avgDays = Math.max(7, totalDays / (waves.length - 1));
+  }
+  
+  // Wave 1 metrics (anchor for Fibonacci ratios)
+  const w1Start = waves[0]?.price;
+  const w1End = waves[1]?.price;
+  const w1Length = w1End !== undefined ? Math.abs(w1End - w1Start) : 0;
+  const direction = w1End > w1Start ? 1 : -1; // Direction of impulse
+  
+  const predictions = [];
+  let prevPrice = waves[waves.length-1].price;
+  let prevDate = waves[waves.length-1].date;
+  
+  // Days for each wave (Wave 3 typically takes 1.5x avg, Wave 4 typically 0.7x)
+  const waveDays = {
+    '2': avgDays * 0.7,
+    '3': avgDays * 1.5,
+    '4': avgDays * 0.7,
+    '5': avgDays * 1.0,
+    'A': avgDays * 0.8,
+    'B': avgDays * 0.6,
+    'C': avgDays * 1.0
+  };
+  
+  for(let i = lastIdx + 1; i < labels.length; i++){
+    const label = labels[i];
+    let nextPrice, lo, hi;
+    
+    if(label === '2'){
+      // Wave 2: retraces 50-78.6% of Wave 1
+      nextPrice = w1End - direction * w1Length * 0.618;
+      lo = w1End - direction * w1Length * 0.786;
+      hi = w1End - direction * w1Length * 0.500;
+    } else if(label === '3'){
+      // Wave 3: 1.618 � Wave 1, often longest
+      const w2End = waves[2]?.price !== undefined ? waves[2].price : prevPrice;
+      nextPrice = w2End + direction * w1Length * 1.618;
+      lo = w2End + direction * w1Length * 1.000;
+      hi = w2End + direction * w1Length * 2.618;
+    } else if(label === '4'){
+      // Wave 4: retraces 23.6-38.2% of Wave 3 (cannot enter Wave 1)
+      const w3End = waves[3]?.price !== undefined ? waves[3].price : prevPrice;
+      const w2End = waves[2]?.price !== undefined ? waves[2].price : (w1End - direction * w1Length * 0.618);
+      const w3Length = Math.abs(w3End - w2End);
+      nextPrice = w3End - direction * w3Length * 0.382;
+      lo = w3End - direction * w3Length * 0.500;
+      hi = w3End - direction * w3Length * 0.236;
+    } else if(label === '5'){
+      // Wave 5: typically equals Wave 1 (or 0.618� of waves 1+3)
+      const w4End = waves[4]?.price !== undefined ? waves[4].price : prevPrice;
+      nextPrice = w4End + direction * w1Length * 1.0;
+      lo = w4End + direction * w1Length * 0.618;
+      hi = w4End + direction * w1Length * 1.618;
+    } else if(label === 'A'){
+      // Wave A: typically 38.2-61.8% retracement of waves 1-5
+      const w5End = waves[5]?.price !== undefined ? waves[5].price : prevPrice;
+      const totalImpulse = Math.abs(w5End - w1Start);
+      const corrDir = -direction;
+      nextPrice = w5End + corrDir * totalImpulse * 0.382;
+      lo = w5End + corrDir * totalImpulse * 0.236;
+      hi = w5End + corrDir * totalImpulse * 0.618;
+    } else if(label === 'B'){
+      // Wave B: 38.2-78.6% retracement of Wave A
+      const wAStart = waves[5]?.price !== undefined ? waves[5].price : prevPrice;
+      const wAEnd = waves[6]?.price !== undefined ? waves[6].price : prevPrice;
+      const wALen = Math.abs(wAEnd - wAStart);
+      const dirB = wAStart > wAEnd ? 1 : -1;
+      nextPrice = wAEnd + dirB * wALen * 0.500;
+      lo = wAEnd + dirB * wALen * 0.382;
+      hi = wAEnd + dirB * wALen * 0.786;
+    } else if(label === 'C'){
+      // Wave C: typically equals Wave A (1.0� or 1.618�)
+      const wAStart = waves[5]?.price !== undefined ? waves[5].price : prevPrice;
+      const wAEnd = waves[6]?.price !== undefined ? waves[6].price : prevPrice;
+      const wALen = Math.abs(wAEnd - wAStart);
+      const dirC = wAEnd > wAStart ? -1 : 1;  // C goes same direction as A
+      const wBEnd = waves[7]?.price !== undefined ? waves[7].price : prevPrice;
+      nextPrice = wBEnd + dirC * wALen * 1.0;
+      lo = wBEnd + dirC * wALen * 0.618;
+      hi = wBEnd + dirC * wALen * 1.618;
+    }
+    
+    const days = waveDays[label] || avgDays;
+    const nextDate = new Date(prevDate.getTime() + days * dayMs);
+    
+    predictions.push({label, date: nextDate, price: nextPrice, lo, hi, prevPrice, prevDate});
+    prevPrice = nextPrice;
+    prevDate = nextDate;
+  }
+  
+  return predictions;
+}
+
 async function analyzeWave(){
   const ticker = document.getElementById('wave-ticker').value.trim().toUpperCase();
   const period = document.getElementById('wave-period').value;
@@ -927,22 +1048,23 @@ async function analyzeWave(){
   
   if(!ticker){ alert('Please enter a ticker'); return; }
   
-  document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">⏳ Fetching ${ticker} data and analyzing waves...</div>`;
+  document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">??Fetching ${ticker} data and analyzing waves...</div>`;
   
   const data = await fetchYahooHistory(ticker, period);
   if(!data || !data.close){
-    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ Failed to fetch ${ticker}. Check ticker symbol.</div>`;
+    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">??Failed to fetch ${ticker}. Check ticker symbol.</div>`;
     return;
   }
   
   const pivots = detectPivots(data.high, data.low, data.dates, sensitivity);
   if(pivots.length < 6){
-    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--yellow)">⚠️ Not enough swings detected. Try lower sensitivity or longer period.</div>`;
+    document.getElementById('wave-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--yellow)">?? Not enough swings detected. Try lower sensitivity or longer period.</div>`;
     return;
   }
   
   const waves = labelWaves(pivots);
   const projection = fibProjection(waves);
+  const predictions = predictRemainingWaves(waves);
   
   // Plotly traces
   const candlestick = {
@@ -959,30 +1081,52 @@ async function analyzeWave(){
     text: waves.map(w=>w.label),
     textposition: 'top center',
     textfont: {size: 16, color: '#fff', family: 'Inter'},
-    name: 'Elliott Wave'
+    name: '??Detected Waves'
   };
   
   const traces = [candlestick, waveLine];
   
-  // Add Fibonacci projection lines
-  const lastDate = waves[waves.length-1].date;
-  const futureDate = new Date(lastDate.getTime() + 60*24*60*60*1000); // +60 days
-  
-  if(projection){
-    [['targetA_382', '#7209b7', '38.2% Fib'],
-     ['targetA_500', '#4361ee', '50% Fib'],
-     ['targetA_618', '#e63946', '61.8% Fib (key target)']].forEach(([key, color, label]) => {
-      traces.push({
-        x: [waves[5].date, futureDate],
-        y: [waves[5].price, projection[key]],
-        type: 'scatter', mode: 'lines+text',
-        line: {color, width: 2, dash: 'dot'},
-        text: ['', label + ': $' + projection[key].toFixed(2)],
-        textposition: 'middle right',
-        textfont: {size: 11, color},
-        name: label,
-        showlegend: false
-      });
+  // Build full predicted wave path connecting from last detected wave
+  if(predictions.length > 0){
+    const lastWave = waves[waves.length-1];
+    const predX = [lastWave.date, ...predictions.map(p=>p.date)];
+    const predY = [lastWave.price, ...predictions.map(p=>p.price)];
+    const predLabels = ['', ...predictions.map(p=>p.label + '?')];
+    
+    // Predicted central path (most likely)
+    traces.push({
+      x: predX, y: predY,
+      type: 'scatter', mode: 'lines+markers+text',
+      line: {color: '#7209b7', width: 2.5, dash: 'dash'},
+      marker: {size: 11, color: '#7209b7', symbol: 'diamond', line: {color: '#fff', width: 1.5}},
+      text: predLabels,
+      textposition: 'top center',
+      textfont: {size: 14, color: '#bb88ff', family: 'Inter'},
+      name: '?? Predicted Waves',
+      hovertemplate: '%{text}<br>Target: $%{y:.2f}<br>Date: %{x|%Y-%m-%d}<extra></extra>'
+    });
+    
+    // High estimate band (upper)
+    const highX = [lastWave.date, ...predictions.map(p=>p.date)];
+    const highY = [lastWave.price, ...predictions.map(p=>p.hi)];
+    traces.push({
+      x: highX, y: highY,
+      type: 'scatter', mode: 'lines',
+      line: {color: 'rgba(114,9,183,0.4)', width: 1, dash: 'dot'},
+      name: '?? Optimistic Range',
+      hovertemplate: 'Optimistic: $%{y:.2f}<extra></extra>'
+    });
+    
+    // Low estimate band (lower) - filled with high band
+    const lowX = [lastWave.date, ...predictions.map(p=>p.date)];
+    const lowY = [lastWave.price, ...predictions.map(p=>p.lo)];
+    traces.push({
+      x: lowX, y: lowY,
+      type: 'scatter', mode: 'lines',
+      line: {color: 'rgba(114,9,183,0.4)', width: 1, dash: 'dot'},
+      fill: 'tonexty', fillcolor: 'rgba(114,9,183,0.08)',
+      name: '?? Pessimistic Range',
+      hovertemplate: 'Pessimistic: $%{y:.2f}<extra></extra>'
     });
   }
   
@@ -990,13 +1134,14 @@ async function analyzeWave(){
     paper_bgcolor: '#12121a',
     plot_bgcolor: '#12121a',
     font: {color: '#c0c0d0', family: 'Inter'},
-    title: {text: `${ticker} - Elliott Wave Analysis`, font: {color: '#fff', size: 18}},
-    xaxis: {gridcolor: '#2a2a3a', rangeslider: {visible: false}},
-    yaxis: {gridcolor: '#2a2a3a', title: 'Price ($)'},
-    margin: {l: 60, r: 60, t: 60, b: 40},
-    legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a'},
-    hovermode: 'x unified'
-  }, {responsive: true, displayModeBar: false});
+    title: {text: `${ticker} - Elliott Wave Analysis & Prediction`, font: {color: '#fff', size: 16}},
+    xaxis: {gridcolor: '#2a2a3a', rangeslider: {visible: false}, fixedrange: false},
+    yaxis: {gridcolor: '#2a2a3a', title: 'Price ($)', fixedrange: false},
+    margin: {l: 50, r: 30, t: 50, b: 40},
+    legend: {bgcolor: 'rgba(0,0,0,0.6)', bordercolor: '#2a2a3a', orientation: 'h', y: -0.12, font: {size: 10}},
+    hovermode: 'x unified',
+    dragmode: 'pan'  // Default drag = pan (better for mobile)
+  }, MOBILE_PLOTLY_CONFIG);
   
   // Generate position commentary
   const lastWave = waves[waves.length-1];
@@ -1025,28 +1170,33 @@ async function analyzeWave(){
     </div>
   `;
   
-  if(projection){
+  // Show all predicted future waves
+  if(predictions.length > 0){
+    let html = `<div style="margin-bottom:.8rem;color:var(--muted);font-size:.85rem">?? ${predictions.length} ????????????????????????</div>`;
+    html += '<div style="display:flex;flex-direction:column;gap:.5rem">';
+    predictions.forEach(p => {
+      const colors = {'2':'#7209b7','3':'#00d26a','4':'#ffd60a','5':'#4361ee','A':'#e63946','B':'#ff6b6b','C':'#a855f7'};
+      const c = colors[p.label] || '#7209b7';
+      const dateStr = p.date.toISOString().slice(0,10);
+      html += `
+        <div style="background:var(--card);padding:.7rem .9rem;border-radius:8px;border-left:3px solid ${c}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px">
+            <div>
+              <span style="color:${c};font-weight:700;font-size:1.05rem">Wave ${p.label}</span>
+              <span style="color:var(--muted);font-size:.7rem;margin-left:6px">??${dateStr}</span>
+            </div>
+            <strong style="font-size:1.05rem;color:var(--txt)">$${p.price.toFixed(2)}</strong>
+          </div>
+          <div style="color:var(--muted);font-size:.75rem;margin-top:3px">
+            ??: $${Math.min(p.lo,p.hi).toFixed(2)} ~ $${Math.max(p.lo,p.hi).toFixed(2)}
+          </div>
+        </div>`;
+    });
+    html += '</div>';
+    document.getElementById('wave-projection').innerHTML = html;
+  } else {
     document.getElementById('wave-projection').innerHTML = `
-      <div style="margin-bottom:.8rem;color:var(--muted);font-size:.85rem">
-        Based on Wave 5 ($${waves[5].price.toFixed(2)}), the next correction (Wave A) likely targets:
-      </div>
-      <div style="display:flex;flex-direction:column;gap:.5rem">
-        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid #7209b7">
-          <span style="color:#7209b7;font-weight:600">38.2% Retracement</span><br>
-          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_382.toFixed(2)}</strong>
-          <span style="color:var(--muted);font-size:.8rem"> (Shallow correction)</span>
-        </div>
-        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid #4361ee">
-          <span style="color:#4361ee;font-weight:600">50% Retracement</span><br>
-          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_500.toFixed(2)}</strong>
-          <span style="color:var(--muted);font-size:.8rem"> (Standard target)</span>
-        </div>
-        <div style="background:var(--card);padding:.6rem;border-radius:8px;border-left:3px solid var(--red)">
-          <span style="color:var(--red);font-weight:600">61.8% Retracement (Golden)</span><br>
-          <strong style="font-size:1.1rem;color:var(--txt)">$${projection.targetA_618.toFixed(2)}</strong>
-          <span style="color:var(--muted);font-size:.8rem"> (Most likely Wave A target)</span>
-        </div>
-      </div>
+      <div style="color:var(--muted);font-size:.85rem">All waves complete. Wait for next impulse cycle.</div>
     `;
   }
 }
@@ -1132,7 +1282,7 @@ async function runDCA(){
   const endDate = new Date(endDateStr);
   if(endDate <= startDate){ alert('End date must be after start date'); return; }
   
-  document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">⏳ Fetching ${ticker} data and running simulation...</div>`;
+  document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--muted)">??Fetching ${ticker} data and running simulation...</div>`;
   document.getElementById('dca-summary').style.display = 'none';
   
   const startTs = Math.floor(startDate.getTime() / 1000);
@@ -1140,7 +1290,7 @@ async function runDCA(){
   const data = await fetchYahooByTimestamp(ticker, startTs, endTs);
   
   if(!data || !data.close || data.close.length < 2){
-    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ Failed to fetch ${ticker} data for that date range. Check ticker / dates.</div>`;
+    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">??Failed to fetch ${ticker} data for that date range. Check ticker / dates.</div>`;
     return;
   }
   
@@ -1178,7 +1328,7 @@ async function runDCA(){
   }
   
   if(buyDates.length === 0){
-    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">❌ No buys executed. Check date range.</div>`;
+    document.getElementById('dca-chart').innerHTML = `<div style="text-align:center;padding:5rem;color:var(--red)">??No buys executed. Check date range.</div>`;
     return;
   }
   
@@ -1242,7 +1392,7 @@ async function runDCA(){
       x: data.dates,
       y: portfolioCurve,
       type: 'scatter', mode: 'lines',
-      name: '💰 Portfolio Value',
+      name: '?? Portfolio Value',
       line: {color: '#00d26a', width: 2.5},
       fill: 'tozeroy',
       fillcolor: 'rgba(0,210,106,0.1)',
@@ -1252,7 +1402,7 @@ async function runDCA(){
       x: data.dates,
       y: principalCurve,
       type: 'scatter', mode: 'lines',
-      name: '📥 Total Invested (Principal)',
+      name: '?? Total Invested (Principal)',
       line: {color: '#4361ee', width: 2, dash: 'solid'},
       yaxis: 'y'
     },
@@ -1260,7 +1410,7 @@ async function runDCA(){
       x: data.dates,
       y: data.close,
       type: 'scatter', mode: 'lines',
-      name: `📈 ${ticker} Price`,
+      name: `?? ${ticker} Price`,
       line: {color: '#ffd60a', width: 1.5, dash: 'dot'},
       yaxis: 'y2',
       visible: 'legendonly'  // Hidden by default to avoid scale clutter; user can click to show
@@ -1269,7 +1419,7 @@ async function runDCA(){
       x: buyDates.map(b=>b.date),
       y: buyDates.map(b=>b.price),
       type: 'scatter', mode: 'markers',
-      name: '🟢 Buy Points',
+      name: '?? Buy Points',
       marker: {color: '#e63946', size: 6, symbol: 'triangle-up', line: {color: '#fff', width: 1}},
       yaxis: 'y2',
       visible: 'legendonly'
@@ -1287,7 +1437,7 @@ async function runDCA(){
     margin: {l: 70, r: 70, t: 60, b: 50},
     legend: {bgcolor: 'rgba(0,0,0,0.5)', bordercolor: '#2a2a3a', orientation: 'h', y: -0.15},
     hovermode: 'x unified'
-  }, {responsive: true, displayModeBar: false});
+  }, MOBILE_PLOTLY_CONFIG);
 }
 
 // ===========================================
@@ -1357,29 +1507,29 @@ function macdSignal(macd){
     const prevDiff = macd.macd[i-1] - macd.signal[i-1];
     const currDiff = macd.macd[i] - macd.signal[i];
     if(prevDiff < 0 && currDiff > 0){
-      crossInfo = `🔥 GOLDEN CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed above Signal). 强烈买入信号！`;
+      crossInfo = `?? GOLDEN CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed above Signal). ???????`;
       return {signal:'BULLISH', strength:90, reason:crossInfo + ` Current MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}, Hist=${h.toFixed(3)} (rising: ${h>hPrev?'yes':'no'}).`};
     }
     if(prevDiff > 0 && currDiff < 0){
-      crossInfo = `💀 DEATH CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed below Signal). 强烈卖出信号！`;
+      crossInfo = `?? DEATH CROSS detected ${macd.macd.length-1-i} days ago (MACD crossed below Signal). ???????`;
       return {signal:'BEARISH', strength:90, reason:crossInfo + ` Current MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}, Hist=${h.toFixed(3)} (falling: ${h<hPrev?'yes':'no'}).`};
     }
   }
   
   // No recent cross
   if(m > s && h > 0 && h > hPrev){
-    return {signal:'BULLISH', strength:65, reason:`MACD (${m.toFixed(3)}) is above Signal (${s.toFixed(3)}) and Histogram is expanding (${h.toFixed(3)} > ${hPrev.toFixed(3)}). 多头动能增强，趋势向上。`};
+    return {signal:'BULLISH', strength:65, reason:`MACD (${m.toFixed(3)}) is above Signal (${s.toFixed(3)}) and Histogram is expanding (${h.toFixed(3)} > ${hPrev.toFixed(3)}). ????????????`};
   }
   if(m < s && h < 0 && h < hPrev){
-    return {signal:'BEARISH', strength:65, reason:`MACD (${m.toFixed(3)}) is below Signal (${s.toFixed(3)}) and Histogram is expanding negative. 空头动能增强，趋势向下。`};
+    return {signal:'BEARISH', strength:65, reason:`MACD (${m.toFixed(3)}) is below Signal (${s.toFixed(3)}) and Histogram is expanding negative. ????????????`};
   }
   if(m > s && h > 0 && h < hPrev){
-    return {signal:'NEUTRAL', strength:40, reason:`MACD above Signal but Histogram shrinking (${h.toFixed(3)} < ${hPrev.toFixed(3)}). 多头动能减弱，警惕回调。`};
+    return {signal:'NEUTRAL', strength:40, reason:`MACD above Signal but Histogram shrinking (${h.toFixed(3)} < ${hPrev.toFixed(3)}). ????????????`};
   }
   if(m < s && h < 0 && h > hPrev){
-    return {signal:'NEUTRAL', strength:40, reason:`MACD below Signal but Histogram recovering. 空头动能减弱，可能筑底。`};
+    return {signal:'NEUTRAL', strength:40, reason:`MACD below Signal but Histogram recovering. ????????????`};
   }
-  return {signal:'NEUTRAL', strength:30, reason:`MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}. 信号不明朗，等待方向。`};
+  return {signal:'NEUTRAL', strength:30, reason:`MACD=${m.toFixed(3)}, Signal=${s.toFixed(3)}. ???????????`};
 }
 
 // === RSI ===
@@ -1421,27 +1571,27 @@ function rsiSignal(rsi, closes){
   const priceMinIdx = closes.length-lookback + closes.slice(-lookback).indexOf(priceMin);
   
   if(closes[closes.length-1] >= priceMax * 0.98 && rsi[priceMaxIdx] && r < rsi[priceMaxIdx] - 5){
-    divergence = `⚠️ 看跌背离 (Bearish Divergence): 价格创新高但RSI未跟随，强烈反转信号。`;
-    return {signal:'BEARISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, 之前高点RSI=${rsi[priceMaxIdx].toFixed(1)}.`};
+    divergence = `?? ???? (Bearish Divergence): ??????RSI???????????`;
+    return {signal:'BEARISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, ????RSI=${rsi[priceMaxIdx].toFixed(1)}.`};
   }
   if(closes[closes.length-1] <= priceMin * 1.02 && rsi[priceMinIdx] && r > rsi[priceMinIdx] + 5){
-    divergence = `🔥 看涨背离 (Bullish Divergence): 价格创新低但RSI未跟随，强烈反转信号。`;
-    return {signal:'BULLISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, 之前低点RSI=${rsi[priceMinIdx].toFixed(1)}.`};
+    divergence = `?? ???? (Bullish Divergence): ??????RSI???????????`;
+    return {signal:'BULLISH', strength:85, reason:`${divergence} RSI=${r.toFixed(1)}, ????RSI=${rsi[priceMinIdx].toFixed(1)}.`};
   }
   
   if(r > 70){
-    return {signal:'BEARISH', strength:r>80?75:55, reason:`RSI=${r.toFixed(1)} 超买区域 (>70)。${r>80?'极度超买，回调风险高。':'警惕短期回调。'}`};
+    return {signal:'BEARISH', strength:r>80?75:55, reason:`RSI=${r.toFixed(1)} ???? (>70)??{r>80?'????????????:'????????}`};
   }
   if(r < 30){
-    return {signal:'BULLISH', strength:r<20?75:55, reason:`RSI=${r.toFixed(1)} 超卖区域 (<30)。${r<20?'极度超卖，反弹机会大。':'潜在反弹机会。'}`};
+    return {signal:'BULLISH', strength:r<20?75:55, reason:`RSI=${r.toFixed(1)} ???? (<30)??{r<20?'????????????:'????????}`};
   }
   if(r > 50 && r > r5){
-    return {signal:'BULLISH', strength:50, reason:`RSI=${r.toFixed(1)} 在多头区间且上升 (${r5.toFixed(1)}→${r.toFixed(1)})。动能向上。`};
+    return {signal:'BULLISH', strength:50, reason:`RSI=${r.toFixed(1)} ???????? (${r5.toFixed(1)}??{r.toFixed(1)})??????`};
   }
   if(r < 50 && r < r5){
-    return {signal:'BEARISH', strength:50, reason:`RSI=${r.toFixed(1)} 在空头区间且下降 (${r5.toFixed(1)}→${r.toFixed(1)})。动能向下。`};
+    return {signal:'BEARISH', strength:50, reason:`RSI=${r.toFixed(1)} ???????? (${r5.toFixed(1)}??{r.toFixed(1)})??????`};
   }
-  return {signal:'NEUTRAL', strength:30, reason:`RSI=${r.toFixed(1)} 中性区间，无明显方向。`};
+  return {signal:'NEUTRAL', strength:30, reason:`RSI=${r.toFixed(1)} ???????????`};
 }
 
 // === KDJ ===
@@ -1476,19 +1626,19 @@ function kdjSignal(kdj){
     const prevDiff = kdj.K[i-1] - kdj.D[i-1];
     const currDiff = kdj.K[i] - kdj.D[i];
     if(prevDiff < 0 && currDiff > 0 && kdj.K[i] < 30){
-      return {signal:'BULLISH', strength:90, reason:`🔥 低位金叉! K线在底部 (${kdj.K[i].toFixed(1)}) 上穿D线，强烈买入信号. 当前 K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
+      return {signal:'BULLISH', strength:90, reason:`?? ????! K???? (${kdj.K[i].toFixed(1)}) ??D????????. ?? K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
     }
     if(prevDiff > 0 && currDiff < 0 && kdj.K[i] > 70){
-      return {signal:'BEARISH', strength:90, reason:`💀 高位死叉! K线在顶部 (${kdj.K[i].toFixed(1)}) 下穿D线，强烈卖出信号. 当前 K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
+      return {signal:'BEARISH', strength:90, reason:`?? ????! K???? (${kdj.K[i].toFixed(1)}) ??D????????. ?? K=${k.toFixed(1)}, D=${d.toFixed(1)}, J=${j.toFixed(1)}.`};
     }
   }
   
-  if(j < 0) return {signal:'BULLISH', strength:75, reason:`J=${j.toFixed(1)} 极度超卖，反弹概率极高. K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
-  if(j > 100) return {signal:'BEARISH', strength:75, reason:`J=${j.toFixed(1)} 极度超买，回调概率极高. K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
-  if(k > 80 && d > 80) return {signal:'BEARISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} 双双在高位 (>80)，超买区域。`};
-  if(k < 20 && d < 20) return {signal:'BULLISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} 双双在低位 (<20)，超卖区域。`};
-  if(k > d) return {signal:'BULLISH', strength:40, reason:`K (${k.toFixed(1)}) 在 D (${d.toFixed(1)}) 上方，多头格局。`};
-  return {signal:'BEARISH', strength:40, reason:`K (${k.toFixed(1)}) 在 D (${d.toFixed(1)}) 下方，空头格局。`};
+  if(j < 0) return {signal:'BULLISH', strength:75, reason:`J=${j.toFixed(1)} ???????????? K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
+  if(j > 100) return {signal:'BEARISH', strength:75, reason:`J=${j.toFixed(1)} ???????????? K=${k.toFixed(1)}, D=${d.toFixed(1)}.`};
+  if(k > 80 && d > 80) return {signal:'BEARISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} ??????(>80)??????`};
+  if(k < 20 && d < 20) return {signal:'BULLISH', strength:55, reason:`K=${k.toFixed(1)}, D=${d.toFixed(1)} ??????(<20)??????`};
+  if(k > d) return {signal:'BULLISH', strength:40, reason:`K (${k.toFixed(1)}) ??D (${d.toFixed(1)}) ????????`};
+  return {signal:'BEARISH', strength:40, reason:`K (${k.toFixed(1)}) ??D (${d.toFixed(1)}) ????????`};
 }
 
 // === Bollinger Bands ===
@@ -1510,18 +1660,18 @@ function bollSignal(boll, closes){
   const bwAvg = boll.bandwidth.slice(-60).filter(v=>v!==null).reduce((s,v)=>s+v,0) / 60;
   
   if(bw < bwAvg * 0.6){
-    return {signal:'NEUTRAL', strength:80, reason:`📍 布林带收缩 (Squeeze): 当前带宽 ${bw.toFixed(2)}% 远低于60日均值 ${bwAvg.toFixed(2)}%。波动率压缩，即将变盘！突破方向决定后续。`};
+    return {signal:'NEUTRAL', strength:80, reason:`?? ??????(Squeeze): ???? ${bw.toFixed(2)}% ????0????${bwAvg.toFixed(2)}%?????????????????????`};
   }
   if(c >= u){
-    return {signal:'BEARISH', strength:60, reason:`价格 (${c.toFixed(2)}) 触及/突破上轨 (${u.toFixed(2)}). 短期超买。要么回归中轨，要么"沿轨上行"(walking the band)继续强势。带宽=${bw.toFixed(1)}%.`};
+    return {signal:'BEARISH', strength:60, reason:`?? (${c.toFixed(2)}) ??/???? (${u.toFixed(2)}). ??????????????"????"(walking the band)????????${bw.toFixed(1)}%.`};
   }
   if(c <= l){
-    return {signal:'BULLISH', strength:60, reason:`价格 (${c.toFixed(2)}) 触及/跌破下轨 (${l.toFixed(2)}). 短期超卖。可能反弹至中轨或"沿轨下行"。带宽=${bw.toFixed(1)}%.`};
+    return {signal:'BULLISH', strength:60, reason:`?? (${c.toFixed(2)}) ??/???? (${l.toFixed(2)}). ??????????????????"????${bw.toFixed(1)}%.`};
   }
   if(c > m){
-    return {signal:'BULLISH', strength:45, reason:`价格 (${c.toFixed(2)}) 在中轨 (${m.toFixed(2)}) 上方运行，多头格局。距上轨 ${((u-c)/c*100).toFixed(1)}%, 距下轨 ${((c-l)/c*100).toFixed(1)}%.`};
+    return {signal:'BULLISH', strength:45, reason:`?? (${c.toFixed(2)}) ????(${m.toFixed(2)}) ????????????? ${((u-c)/c*100).toFixed(1)}%, ????${((c-l)/c*100).toFixed(1)}%.`};
   }
-  return {signal:'BEARISH', strength:45, reason:`价格 (${c.toFixed(2)}) 在中轨 (${m.toFixed(2)}) 下方运行，空头格局。距下轨 ${((c-l)/c*100).toFixed(1)}%.`};
+  return {signal:'BEARISH', strength:45, reason:`?? (${c.toFixed(2)}) ????(${m.toFixed(2)}) ????????????? ${((c-l)/c*100).toFixed(1)}%.`};
 }
 
 // === Volume Analysis ===
@@ -1563,30 +1713,30 @@ function volumeSignal(volumes, closes, dates){
   if(bigVolDays.length > 0){
     const lastBig = bigVolDays[bigVolDays.length-1];
     if(lastBig.up){
-      reason = `🔥 放量上涨! 最近${bigVolDays.length}天有放量上攻 (${lastBig.ratio.toFixed(1)}x avg). 资金积极入场，多方主导. `;
+      reason = `?? ????! ???{bigVolDays.length}?????? (${lastBig.ratio.toFixed(1)}x avg). ???????????? `;
       signal = 'BULLISH'; strength = 75;
     } else {
-      reason = `⚠️ 放量下跌! 最近${bigVolDays.length}天有放量抛售 (${lastBig.ratio.toFixed(1)}x avg). 主力出货，警惕. `;
+      reason = `?? ????! ???{bigVolDays.length}?????? (${lastBig.ratio.toFixed(1)}x avg). ???????? `;
       signal = 'BEARISH'; strength = 75;
     }
   } else if(shrinkDays.length >= 3){
-    reason = `📉 缩量整理: 最近多日成交量低于均线一半，缩量盘整阶段，等待方向选择. `;
+    reason = `?? ????: ???????????????????????????. `;
     signal = 'NEUTRAL'; strength = 40;
   } else {
-    reason = `成交量正常运行，无异动. `;
+    reason = `???????????? `;
   }
   
   // OBV divergence check
   if(obvTrend && !priceTrend){
-    reason += `📈 OBV背离 (隐性看涨): OBV上升但价格未涨，资金悄悄流入. `;
+    reason += `?? OBV?? (?????: OBV??????????????. `;
     if(signal === 'NEUTRAL') signal = 'BULLISH';
     strength = Math.max(strength, 60);
   } else if(!obvTrend && priceTrend){
-    reason += `📉 OBV背离 (隐性看跌): 价格上涨但OBV未跟上，趋势缺乏资金支持. `;
+    reason += `?? OBV?? (?????: ?????OBV????????????. `;
     if(signal === 'NEUTRAL') signal = 'BEARISH';
     strength = Math.max(strength, 60);
   } else if(obvTrend && priceTrend){
-    reason += `OBV与价格同向上升，多方资金确认. `;
+    reason += `OBV??????????????. `;
     if(signal === 'NEUTRAL'){ signal = 'BULLISH'; strength = 50; }
   }
   
@@ -1615,11 +1765,11 @@ function maSignal(closes, dates){
   for(let i=closes.length-1; i>=Math.max(closes.length-30, 200); i--){
     if(ma50[i-1] && ma200[i-1] && ma50[i] && ma200[i]){
       if(ma50[i-1] < ma200[i-1] && ma50[i] >= ma200[i]){
-        crossInfo = `🔥 GOLDEN CROSS detected ${closes.length-1-i} days ago! MA50 上穿 MA200，长期大牛市信号！`;
+        crossInfo = `?? GOLDEN CROSS detected ${closes.length-1-i} days ago! MA50 ?? MA200?????????`;
         break;
       }
       if(ma50[i-1] > ma200[i-1] && ma50[i] <= ma200[i]){
-        crossInfo = `💀 DEATH CROSS detected ${closes.length-1-i} days ago. MA50 下穿 MA200，长期大熊市信号！`;
+        crossInfo = `?? DEATH CROSS detected ${closes.length-1-i} days ago. MA50 ?? MA200?????????`;
         break;
       }
     }
@@ -1633,8 +1783,8 @@ function maSignal(closes, dates){
   const bullArrange = mas.MA5 > mas.MA10 && mas.MA10 > mas.MA20 && (!mas.MA50 || mas.MA20 > mas.MA50) && (!mas.MA200 || mas.MA50 > mas.MA200);
   const bearArrange = mas.MA5 < mas.MA10 && mas.MA10 < mas.MA20 && (!mas.MA50 || mas.MA20 < mas.MA50) && (!mas.MA200 || mas.MA50 < mas.MA200);
   
-  let reason = `当前价 ${c.toFixed(2)} | MA5=${mas.MA5?.toFixed(2)}, MA10=${mas.MA10?.toFixed(2)}, MA20=${mas.MA20?.toFixed(2)}, MA50=${mas.MA50?.toFixed(2) || 'N/A'}, MA200=${mas.MA200?.toFixed(2) || 'N/A'}. `;
-  reason += `价格在 ${aboveCount}/${maList.length} 条均线之上. `;
+  let reason = `????${c.toFixed(2)} | MA5=${mas.MA5?.toFixed(2)}, MA10=${mas.MA10?.toFixed(2)}, MA20=${mas.MA20?.toFixed(2)}, MA50=${mas.MA50?.toFixed(2) || 'N/A'}, MA200=${mas.MA200?.toFixed(2) || 'N/A'}. `;
+  reason += `????${aboveCount}/${maList.length} ?????? `;
   
   let signal = 'NEUTRAL', strength = 30;
   
@@ -1643,31 +1793,31 @@ function maSignal(closes, dates){
     signal = crossInfo.includes('GOLDEN') ? 'BULLISH' : 'BEARISH';
     strength = 95;
   } else if(bullArrange){
-    reason += `📈 多头排列: MA5>MA10>MA20>MA50>MA200，强势上涨格局。`;
+    reason += `?? ????: MA5>MA10>MA20>MA50>MA200????????`;
     signal = 'BULLISH'; strength = 80;
   } else if(bearArrange){
-    reason += `📉 空头排列: MA5<MA10<MA20<MA50<MA200，强势下跌格局。`;
+    reason += `?? ????: MA5<MA10<MA20<MA50<MA200????????`;
     signal = 'BEARISH'; strength = 80;
   } else if(aboveCount >= 4){
-    reason += `多数均线下方支撑，多头偏强。`;
+    reason += `??????????????`;
     signal = 'BULLISH'; strength = 55;
   } else if(aboveCount <= 1){
-    reason += `多数均线上方压制，空头偏强。`;
+    reason += `??????????????`;
     signal = 'BEARISH'; strength = 55;
   } else {
-    reason += `均线纠缠，方向不明。`;
+    reason += `??????????`;
   }
   
   return {signal, strength, reason, ma5, ma10, ma20, ma50, ma200};
 }
 
-// === Chan Theory (缠论) Simplified ===
+// === Chan Theory (??) Simplified ===
 function chanAnalysis(highs, lows, dates, closes){
-  // Step 1: detect strokes (笔) using ZigZag-like algorithm
+  // Step 1: detect strokes (?? using ZigZag-like algorithm
   const strokes = detectPivots(highs, lows, dates, 3);
   
-  // Step 2: detect 中枢 (overlapping consolidation zones)
-  // 中枢 = at least 3 consecutive strokes with overlapping price range
+  // Step 2: detect ?? (overlapping consolidation zones)
+  // ?? = at least 3 consecutive strokes with overlapping price range
   const zhongshus = [];
   for(let i=0; i<=strokes.length-3; i++){
     const s1 = strokes[i], s2 = strokes[i+1], s3 = strokes[i+2];
@@ -1690,27 +1840,27 @@ function chanAnalysis(highs, lows, dates, closes){
   // Step 3: analyze current state
   const currentPrice = closes[closes.length-1];
   let signal = 'NEUTRAL', strength = 30;
-  let reason = `检测到 ${strokes.length} 笔, ${zhongshus.length} 个中枢. `;
+  let reason = `??? ${strokes.length} ?? ${zhongshus.length} ???? `;
   
   if(zhongshus.length > 0){
     const lastZS = zhongshus[zhongshus.length-1];
     if(currentPrice > lastZS.high){
-      reason += `🔥 价格 (${currentPrice.toFixed(2)}) 已突破最近中枢上沿 (${lastZS.high.toFixed(2)}). 三类买点结构，趋势向上延续。`;
+      reason += `?? ?? (${currentPrice.toFixed(2)}) ??????????(${lastZS.high.toFixed(2)}). ??????????????`;
       signal = 'BULLISH'; strength = 75;
     } else if(currentPrice < lastZS.low){
-      reason += `⚠️ 价格 (${currentPrice.toFixed(2)}) 已跌破最近中枢下沿 (${lastZS.low.toFixed(2)}). 三类卖点结构，趋势向下延续。`;
+      reason += `?? ?? (${currentPrice.toFixed(2)}) ??????????(${lastZS.low.toFixed(2)}). ??????????????`;
       signal = 'BEARISH'; strength = 75;
     } else {
-      reason += `📍 价格 (${currentPrice.toFixed(2)}) 在中枢内 (${lastZS.low.toFixed(2)} - ${lastZS.high.toFixed(2)}) 震荡，等待方向选择。可在中枢下沿做多，上沿做空。`;
+      reason += `?? ?? (${currentPrice.toFixed(2)}) ???? (${lastZS.low.toFixed(2)} - ${lastZS.high.toFixed(2)}) ????????????????????????`;
       signal = 'NEUTRAL'; strength = 50;
     }
   } else {
-    reason += `当前为单边趋势(无中枢形成)，方向延续概率高。`;
+    reason += `???????????????????????`;
     if(strokes.length >= 2){
       const isUp = strokes[strokes.length-1].price > strokes[strokes.length-2].price;
       signal = isUp ? 'BULLISH' : 'BEARISH';
       strength = 60;
-      reason += isUp ? ' 单边上行中.' : ' 单边下行中.';
+      reason += isUp ? ' ??????' : ' ??????';
     }
   }
   
@@ -1722,11 +1872,11 @@ function detectChartPatterns(highs, lows, closes, dates){
   const pivots = detectPivots(highs, lows, dates, 3);
   const patterns = [];
   
-  if(pivots.length < 5) return {patterns, signal:'NEUTRAL', strength:20, reason:'数据不足，无法检测形态.'};
+  if(pivots.length < 5) return {patterns, signal:'NEUTRAL', strength:20, reason:'????????????'};
   
   const recent = pivots.slice(-7);
   
-  // Head and Shoulders Top (头肩顶): 5 pivots, pattern: low-HIGH-low-HIGHER-low-HIGH-low
+  // Head and Shoulders Top (????: 5 pivots, pattern: low-HIGH-low-HIGHER-low-HIGH-low
   // Simplified: 5 consecutive pivots forming HSH pattern
   if(recent.length >= 5){
     const last5 = recent.slice(-5);
@@ -1734,33 +1884,33 @@ function detectChartPatterns(highs, lows, closes, dates){
        last5[1].type === 'low' && last5[3].type === 'low' &&
        last5[2].price > last5[0].price && last5[2].price > last5[4].price &&
        Math.abs(last5[0].price - last5[4].price) / last5[0].price < 0.05){
-      patterns.push({type: '头肩顶 (Head & Shoulders Top)', bearish:true, neckline: (last5[1].price+last5[3].price)/2});
+      patterns.push({type: '????(Head & Shoulders Top)', bearish:true, neckline: (last5[1].price+last5[3].price)/2});
     }
     
-    // Head and Shoulders Bottom (头肩底)
+    // Head and Shoulders Bottom (????
     if(last5[0].type === 'low' && last5[2].type === 'low' && last5[4].type === 'low' &&
        last5[1].type === 'high' && last5[3].type === 'high' &&
        last5[2].price < last5[0].price && last5[2].price < last5[4].price &&
        Math.abs(last5[0].price - last5[4].price) / last5[0].price < 0.05){
-      patterns.push({type: '头肩底 (Head & Shoulders Bottom)', bearish:false, neckline: (last5[1].price+last5[3].price)/2});
+      patterns.push({type: '????(Head & Shoulders Bottom)', bearish:false, neckline: (last5[1].price+last5[3].price)/2});
     }
   }
   
-  // Double Top (双顶): 2 highs at similar levels
+  // Double Top (??): 2 highs at similar levels
   const recentHighs = recent.filter(p=>p.type==='high').slice(-2);
   if(recentHighs.length === 2){
     const diff = Math.abs(recentHighs[0].price - recentHighs[1].price) / recentHighs[0].price;
     if(diff < 0.03){
-      patterns.push({type: '双顶 (Double Top)', bearish:true, level: recentHighs[1].price});
+      patterns.push({type: '?? (Double Top)', bearish:true, level: recentHighs[1].price});
     }
   }
   
-  // Double Bottom (双底)
+  // Double Bottom (??)
   const recentLows = recent.filter(p=>p.type==='low').slice(-2);
   if(recentLows.length === 2){
     const diff = Math.abs(recentLows[0].price - recentLows[1].price) / recentLows[0].price;
     if(diff < 0.03){
-      patterns.push({type: '双底 (Double Bottom)', bearish:false, level: recentLows[1].price});
+      patterns.push({type: '?? (Double Bottom)', bearish:false, level: recentLows[1].price});
     }
   }
   
@@ -1776,24 +1926,24 @@ function detectChartPatterns(highs, lows, closes, dates){
   let reason = '';
   
   if(patterns.length === 0){
-    reason = '未检测到明显反转形态。';
+    reason = '????????????;
   } else {
     const bearPatterns = patterns.filter(p=>p.bearish);
     const bullPatterns = patterns.filter(p=>!p.bearish);
     if(bearPatterns.length > bullPatterns.length){
       signal = 'BEARISH'; strength = 75;
-      reason = `⚠️ 检测到看跌反转形态: ${bearPatterns.map(p=>p.type).join(', ')}. ` + (bearPatterns[0].neckline ? `颈线位 ${bearPatterns[0].neckline.toFixed(2)}, 跌破强烈卖出.` : '');
+      reason = `?? ?????????? ${bearPatterns.map(p=>p.type).join(', ')}. ` + (bearPatterns[0].neckline ? `????${bearPatterns[0].neckline.toFixed(2)}, ??????.` : '');
     } else if(bullPatterns.length > 0){
       signal = 'BULLISH'; strength = 75;
-      reason = `🔥 检测到看涨反转形态: ${bullPatterns.map(p=>p.type).join(', ')}. ` + (bullPatterns[0].neckline ? `颈线位 ${bullPatterns[0].neckline.toFixed(2)}, 突破强烈买入.` : '');
+      reason = `?? ?????????? ${bullPatterns.map(p=>p.type).join(', ')}. ` + (bullPatterns[0].neckline ? `????${bullPatterns[0].neckline.toFixed(2)}, ??????.` : '');
     }
   }
   
   if(resistanceLevels.length > 0){
-    reason += ` 关键阻力位: ${resistanceLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
+    reason += ` ?????? ${resistanceLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
   }
   if(supportLevels.length > 0){
-    reason += ` 关键支撑位: ${supportLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
+    reason += ` ?????? ${supportLevels.slice(0,3).map(v=>v.toFixed(2)).join(', ')}.`;
   }
   
   return {patterns, signal, strength, reason, resistanceLevels, supportLevels, pivots};
@@ -1848,7 +1998,7 @@ async function analyzeIndicators(){
   }
   
   if(!data || !data.close || data.close.length < 30){
-    document.getElementById('ind-loading').innerHTML = `<div style="color:var(--red)">❌ Failed to fetch ${ticker}. Check ticker.</div>`;
+    document.getElementById('ind-loading').innerHTML = `<div style="color:var(--red)">??Failed to fetch ${ticker}. Check ticker.</div>`;
     return;
   }
   
@@ -1884,11 +2034,11 @@ async function analyzeIndicators(){
     {name:'MACD', sig:sigMACD},
     {name:'RSI', sig:sigRSI},
     {name:'KDJ', sig:sigKDJ},
-    {name:'布林带', sig:sigBoll},
-    {name:'成交量', sig:sigVol},
-    {name:'均线', sig:sigMA},
-    {name:'缠论', sig:sigChan},
-    {name:'形态', sig:sigPattern}
+    {name:'????, sig:sigBoll},
+    {name:'????, sig:sigVol},
+    {name:'??', sig:sigMA},
+    {name:'??', sig:sigChan},
+    {name:'???, sig:sigPattern}
   ], data.close[data.close.length-1]);
   
   // Set signal badges
@@ -1996,7 +2146,7 @@ function plotMACD(id, dates, closes, macd){
     yaxis: {gridcolor:'#2a2a3a', title:'MACD', domain:[0, 0.45]},
     yaxis2: {gridcolor:'#2a2a3a', title:'Price', domain:[0.55, 1]},
     grid: {rows: 2, columns: 1}
-  }, {responsive:true, displayModeBar:false});
+  }, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotRSI(id, dates, rsi){
@@ -2005,7 +2155,7 @@ function plotRSI(id, dates, rsi){
     {x: [dates[0], dates[dates.length-1]], y: [70,70], mode:'lines', name:'Overbought', line:{color:'#e63946', width:1, dash:'dash'}},
     {x: [dates[0], dates[dates.length-1]], y: [30,30], mode:'lines', name:'Oversold', line:{color:'#00d26a', width:1, dash:'dash'}},
     {x: [dates[0], dates[dates.length-1]], y: [50,50], mode:'lines', name:'Mid', line:{color:'#707090', width:1, dash:'dot'}, showlegend:false}
-  ], {...layoutBase, yaxis: {...layoutBase.yaxis, title: 'RSI', range:[0,100]}}, {responsive:true, displayModeBar:false});
+  ], {...layoutBase, yaxis: {...layoutBase.yaxis, title: 'RSI', range:[0,100]}}, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotKDJ(id, dates, kdj){
@@ -2015,7 +2165,7 @@ function plotKDJ(id, dates, kdj){
     {x: dates, y: kdj.J, name: 'J', line: {color: '#e63946', width: 1.5}},
     {x: [dates[0], dates[dates.length-1]], y: [80,80], mode:'lines', line:{color:'#e63946', width:1, dash:'dash'}, showlegend:false},
     {x: [dates[0], dates[dates.length-1]], y: [20,20], mode:'lines', line:{color:'#00d26a', width:1, dash:'dash'}, showlegend:false}
-  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'KDJ'}}, {responsive:true, displayModeBar:false});
+  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'KDJ'}}, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotBoll(id, dates, closes, boll){
@@ -2024,7 +2174,7 @@ function plotBoll(id, dates, closes, boll){
     {x: dates, y: boll.mid, name: 'Mid (MA20)', line: {color: '#ffd60a', width: 1.5}},
     {x: dates, y: boll.lower, name: 'Lower', line: {color: '#00d26a', width: 1.5, dash: 'dot'}, fill:'tonexty', fillcolor:'rgba(112,32,183,0.08)'},
     {x: dates, y: closes, name: 'Price', line: {color: '#fff', width: 2}}
-  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, {responsive:true, displayModeBar:false});
+  ], {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotVolume(id, dates, volumes, closes, vMA20, obv){
@@ -2037,7 +2187,7 @@ function plotVolume(id, dates, volumes, closes, vMA20, obv){
     yaxis: {gridcolor:'#2a2a3a', title:'Volume', domain:[0, 0.5]},
     yaxis2: {gridcolor:'#2a2a3a', title:'OBV', domain:[0.55, 1]},
     grid: {rows: 2, columns: 1}
-  }, {responsive:true, displayModeBar:false});
+  }, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotMA(id, dates, closes, sigMA){
@@ -2049,17 +2199,17 @@ function plotMA(id, dates, closes, sigMA){
     {x: dates, y: sigMA.ma50, name: 'MA50', line:{color:'#7209b7', width:1.5}},
     {x: dates, y: sigMA.ma200, name: 'MA200', line:{color:'#e63946', width:2}}
   ];
-  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, {responsive:true, displayModeBar:false});
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}}, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotChan(id, dates, closes, chan){
   const traces = [
     {x: dates, y: closes, name: 'Price', line: {color: '#c0c0d0', width: 1.5}},
-    {x: chan.strokes.map(s=>s.date), y: chan.strokes.map(s=>s.price), name: '笔 (Strokes)',
+    {x: chan.strokes.map(s=>s.date), y: chan.strokes.map(s=>s.price), name: '??(Strokes)',
      mode:'lines+markers', line:{color:'#ffd60a', width:2}, marker:{size:8, color:'#ffd60a'}}
   ];
   
-  // Draw 中枢 as rectangles
+  // Draw ?? as rectangles
   const shapes = chan.zhongshus.map(zs => ({
     type: 'rect',
     xref: 'x', yref: 'y',
@@ -2069,7 +2219,7 @@ function plotChan(id, dates, closes, chan){
     line: {color: '#7209b7', width: 1.5, dash: 'dash'}
   }));
   
-  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, {responsive:true, displayModeBar:false});
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, MOBILE_PLOTLY_CONFIG);
 }
 
 function plotPattern(id, dates, closes, sigPattern){
@@ -2104,7 +2254,7 @@ function plotPattern(id, dates, closes, sigPattern){
     });
   });
   
-  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, {responsive:true, displayModeBar:false});
+  Plotly.newPlot(id, traces, {...layoutBase, yaxis:{...layoutBase.yaxis, title:'Price'}, shapes}, MOBILE_PLOTLY_CONFIG);
 }
 </script>
 </body>
