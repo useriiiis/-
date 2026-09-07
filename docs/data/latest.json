@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-06T14:31:30.446483",
+  "timestamp": "2026-09-07T03:29:42.385238",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
       "name": "XIAOMI-W",
-      "price": 28.44,
-      "change": 1.0,
-      "change_pct": 3.64,
-      "volume": 178857691,
-      "high": 28.76,
-      "low": 27.66,
-      "open": 27.68,
-      "prev_close": 27.44,
-      "market_cap": 731858927616,
-      "pe_ratio": 20.02817,
+      "price": 27.34,
+      "change": -1.1,
+      "change_pct": -3.87,
+      "volume": 103516507,
+      "high": 28.4,
+      "low": 27.12,
+      "open": 28.22,
+      "prev_close": 28.44,
+      "market_cap": 703552159744,
+      "pe_ratio": 19.253521,
       "52w_high": 59.9,
       "52w_low": 21.3,
-      "date": "2026-09-04"
+      "date": "2026-09-07"
     },
     "QQQ": {
       "ticker": "QQQ",
@@ -72,19 +72,19 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 79610.46,
-      "change": -213.41,
-      "change_pct": -0.27,
-      "volume": 20177051648,
-      "high": 80106.03,
-      "low": 79642.09,
-      "open": 79830.38,
+      "price": 79729.66,
+      "change": -94.21,
+      "change_pct": -0.12,
+      "volume": 21019392000,
+      "high": 80387.91,
+      "low": 79775.16,
+      "open": 80351.4,
       "prev_close": 79823.87,
-      "market_cap": 1599877283840,
+      "market_cap": 1601952153600,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 57747.766,
-      "date": "2026-09-06"
+      "date": "2026-09-07"
     }
   },
   "indices": {
@@ -125,36 +125,36 @@
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 25650.87,
-      "change": 437.56,
-      "change_pct": 1.74,
-      "volume": 3576700000,
-      "high": 25791.38,
-      "low": 25515.74,
-      "open": 25515.74,
-      "prev_close": 25213.31,
+      "price": 25392.59,
+      "change": -258.28,
+      "change_pct": -1.01,
+      "volume": 0,
+      "high": 25664.98,
+      "low": 25362.98,
+      "open": 25652.97,
+      "prev_close": 25650.87,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 28056.1,
       "52w_low": 22518.0,
-      "date": "2026-09-04"
+      "date": "2026-09-07"
     },
     "沪深300": {
       "ticker": "000300.SS",
       "name": "CSI 300 Index",
-      "price": 4548.05,
+      "price": 4556.38,
       "change": 0.0,
       "change_pct": 0.0,
-      "volume": 2519873616,
-      "high": 4602.2,
-      "low": 4530.76,
-      "open": 4575.32,
-      "prev_close": 4548.05,
+      "volume": 2246605108,
+      "high": 4572.7,
+      "low": 4545.41,
+      "open": 4567.89,
+      "prev_close": 4556.38,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 4602.1963,
-      "52w_low": 4530.762,
-      "date": "2026-09-04"
+      "52w_high": 4572.7007,
+      "52w_low": 3458.44,
+      "date": "2026-09-07"
     },
     "道琼斯": {
       "ticker": "^DJI",
@@ -178,22 +178,16 @@
     "xiaomi": [],
     "macro": [
       {
-        "title": "‘Model fatigue’ sets in as AI labs race to roll out new versions at frenetic pace",
+        "title": "U.S. Energy Secretary Wright says Iran nuclear deal may never happen",
         "source": "CNBC Top",
-        "published": "2026-09-06 12:13",
-        "link": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html"
-      },
-      {
-        "title": "Iran warns of ‘more painful’ response to U.S. attacks as economic pressure mounts",
-        "source": "CNBC Top",
-        "published": "2026-09-06 12:02",
+        "published": "2026-09-06 19:41",
         "link": "https://www.cnbc.com/2026/09/06/iran-us-response-oil-tanker-strikes.html"
       },
       {
-        "title": "Trump turns up the heat on Warsh as Fed rate hike looms",
+        "title": "Treasury yields face 4.8% test as fiscal risks threaten to spill into other assets",
         "source": "CNBC Top",
-        "published": "2026-09-05 19:12",
-        "link": "https://www.cnbc.com/2026/09/05/trump-warsh-fed-september-rate-hike.html"
+        "published": "2026-09-07 02:01",
+        "link": "https://www.cnbc.com/2026/09/07/us-treasury-yields-markets-scott-bessent.html"
       },
       {
         "title": "AI data centers are transforming rural land markets — and fueling a backlash",
@@ -202,40 +196,46 @@
         "link": "https://www.cnbc.com/2026/09/06/ai-data-centers-are-transforming-rural-land-markets-fueling-backlash.html"
       },
       {
+        "title": "Volcano eruption disrupts hundreds of flights at Southeast Asia's second-busiest airport",
+        "source": "CNBC Top",
+        "published": "2026-09-07 01:31",
+        "link": "https://www.cnbc.com/2026/09/07/flights-canceled-jakarta-airport-anak-krakatau-eruption-disrupts-regional-travel-volcano.html"
+      },
+      {
+        "title": "Goldman boosts Asia ex-Japan index target for one big reason",
+        "source": "CNBC Top",
+        "published": "2026-09-07 02:08",
+        "link": "https://www.cnbc.com/2026/09/07/goldman-boosts-asia-ex-japan-index-target-ai-korea.html"
+      },
+      {
+        "title": "At least 5 dead after Amazon cargo plane barreled off runway at Miami airport",
+        "source": "CNBC Top",
+        "published": "2026-09-07 01:10",
+        "link": "https://www.cnbc.com/2026/09/06/amazon-cargo-plane-overrunns-runway-at-miami-international-airport.html"
+      },
+      {
         "title": "Goldman Sachs says buy the dip in these five stocks before it's too late",
         "source": "CNBC Top",
         "published": "2026-09-05 12:10",
         "link": "https://www.cnbc.com/2026/09/05/buy-the-dip-in-these-five-stocks-before-its-too-late-goldman-says.html"
       },
       {
-        "title": "OPEC+ keeps oil output policy unchanged for October",
+        "title": "Assailant lunged at Democratic candidate for Ohio governor Amy Acton at fair, campaign says",
         "source": "CNBC Top",
-        "published": "2026-09-06 13:04",
-        "link": "https://www.cnbc.com/2026/09/06/opec-oil-output-october.html"
+        "published": "2026-09-06 22:51",
+        "link": "https://www.cnbc.com/2026/09/06/ohio-governor-candidate-amy-acton-attacked.html"
       },
       {
-        "title": "This enhanced geothermal project aims to unlock gigawatts of power to fuel the data center boom",
+        "title": "Trump turns up the heat on Warsh as Fed rate hike looms",
         "source": "CNBC Top",
-        "published": "2026-09-05 12:20",
-        "link": "https://www.cnbc.com/2026/09/05/fervo-energys-enhanced-geothermal-project-aims-to-power-data-center-boom.html"
+        "published": "2026-09-05 19:12",
+        "link": "https://www.cnbc.com/2026/09/05/trump-warsh-fed-september-rate-hike.html"
       },
       {
-        "title": "Trump’s state capitalism comes to the oil industry with his unprecedented Venezuela deal",
-        "source": "CNBC Top",
-        "published": "2026-09-05 15:11",
-        "link": "https://www.cnbc.com/2026/09/05/trump-venezuela-oil-north-america-blue-energy-partners-nabep.html"
-      },
-      {
-        "title": "U.S. envoys make first Kyiv visit amid Ukraine war peace push",
-        "source": "CNBC Top",
-        "published": "2026-09-06 14:11",
-        "link": "https://www.cnbc.com/2026/09/06/us-envoys-make-first-kyiv-visit-amid-ukraine-war-peace-push.html"
-      },
-      {
-        "title": "Women accounted for almost all of job gains in August. Here's why",
-        "source": "CNBC Top",
-        "published": "2026-09-04 18:27",
-        "link": "https://www.cnbc.com/2026/09/04/jobs-report-women-payrolls.html"
+        "title": "‘Model fatigue’ sets in as AI labs race to roll out new versions at frenetic pace",
+        "source": "CNBC Tech",
+        "published": "2026-09-06 12:13",
+        "link": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html"
       }
     ],
     "qqq_intel": [],
@@ -247,12 +247,6 @@
         "link": "https://www.cnbc.com/2026/09/03/microsoft-xbox-game-pass-cloud-limits.html"
       },
       {
-        "title": "Expansion of Commercial Operations in Focus for BWX Technologies (BWXT)",
-        "source": "Yahoo Finance",
-        "published": "2026-09-05 12:44",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/expansion-commercial-operations-focus-bwx-124456110.html"
-      },
-      {
         "title": "How the UK can stop accidentally exporting its best tech start-ups",
         "source": "FT Markets",
         "published": "2026-09-06 04:00",
@@ -261,28 +255,10 @@
     ],
     "market": [
       {
-        "title": "Sugar is outperforming the stock market this year. Here's what's driving it, and where it can go from here",
+        "title": "Asia-Pacific markets open higher as investors assess renewed Middle East  hostilities",
         "source": "CNBC Top",
-        "published": "2026-09-06 13:19",
-        "link": "https://www.cnbc.com/2026/09/06/sugar-is-outperforming-the-stock-market-this-year-whats-driving-it.html"
-      },
-      {
-        "title": "LeBron James teases partnership with Polymarket",
-        "source": "CNBC Top",
-        "published": "2026-09-05 19:40",
-        "link": "https://www.cnbc.com/2026/09/05/lebron-james-polymarket-partnership.html"
-      },
-      {
-        "title": "This Indicator Could Be the S&P 500’s Canary in a Coal Mine",
-        "source": "Yahoo Finance",
-        "published": "2026-09-05 13:00",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/indicator-could-p-500-canary-130003859.html"
-      },
-      {
-        "title": "ServiceNow Leads Five Stocks To Watch Near Buy Points",
-        "source": "Yahoo Finance",
-        "published": "2026-09-05 12:00",
-        "link": "https://www.investors.com/news/servicenow-stocks-to-watch-buy-points/?src=A00220&yptr=yahoo"
+        "published": "2026-09-07 02:19",
+        "link": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html"
       },
       {
         "title": "Russian gold floods through Hong Kong in wake of western sanctions",
@@ -333,20 +309,20 @@
   },
   "briefing": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}",
   "mood": {
-    "mood": "happy",
-    "emoji": "😊☀️",
-    "greeting": "Good vibes today! 今天心情不错~",
-    "tone": "warm, optimistic, friendly with occasional humor",
-    "sign_off": "今天的心情：阳光灿烂的好日子 ☀️ Keep smiling!",
-    "vibe": "Feeling good, sipping my coffee with a smile"
+    "mood": "calm",
+    "emoji": "😌☕",
+    "greeting": "平静的一天，让我们理性看看市场~ A balanced day ahead.",
+    "tone": "composed, thoughtful, zen-like wisdom with gentle humor",
+    "sign_off": "今天的心情：喝杯咖啡看云卷云舒 ☕ Stay chill.",
+    "vibe": "Peaceful mind, clear analysis"
   },
   "briefing_sigma": "Gemini Analysis Error: Error code: 400 - [{'error': {'code': 400, 'message': 'Please pass a valid API key', 'status': 'INVALID_ARGUMENT'}}]\n(请检查 .env 中的 GEMINI_BASE_URL 是否正确填写了同学提供的接口地址)",
   "mood_sigma": {
-    "mood": "calculated",
-    "emoji": "♟️💼",
+    "mood": "bored",
+    "emoji": "🥱🕰️",
     "greeting": "Gentlemen, let's dissect the capital flow.",
-    "tone": "analytical, sharp, professional, slightly arrogant",
-    "sign_off": "Sigma @ 财富自由之路 | 逻辑重于情绪，数据说明一切",
+    "tone": "dismissive of retail traders, highly selective, looking for real setups",
+    "sign_off": "Sigma @ 财富自由之路 | 真正的猎手懂得等待",
     "vibe": "Adjusting the Rolex, executing algorithmic trades with precision."
   }
 }
