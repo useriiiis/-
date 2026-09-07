@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-09-07T03:29:42.385238",
+  "timestamp": "2026-09-07T16:46:16.173789",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
       "name": "XIAOMI-W",
-      "price": 27.34,
-      "change": -1.1,
-      "change_pct": -3.87,
-      "volume": 103516507,
-      "high": 28.4,
-      "low": 27.12,
-      "open": 28.22,
+      "price": NaN,
+      "change": NaN,
+      "change_pct": NaN,
+      "volume": 172669949,
+      "high": NaN,
+      "low": NaN,
+      "open": NaN,
       "prev_close": 28.44,
-      "market_cap": 703552159744,
-      "pe_ratio": 19.253521,
+      "market_cap": 707669458944,
+      "pe_ratio": 19.366198,
       "52w_high": 59.9,
       "52w_low": 21.3,
       "date": "2026-09-07"
@@ -72,15 +72,15 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 79729.66,
-      "change": -94.21,
-      "change_pct": -0.12,
-      "volume": 21019392000,
+      "price": 78985.25,
+      "change": -1364.8,
+      "change_pct": -1.7,
+      "volume": 24525838336,
       "high": 80387.91,
-      "low": 79775.16,
+      "low": 78773.36,
       "open": 80351.4,
-      "prev_close": 79823.87,
-      "market_cap": 1601952153600,
+      "prev_close": 80350.05,
+      "market_cap": 1586438209536,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 57747.766,
@@ -125,35 +125,35 @@
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 25392.59,
-      "change": -258.28,
-      "change_pct": -1.01,
-      "volume": 0,
-      "high": 25664.98,
-      "low": 25362.98,
-      "open": 25652.97,
-      "prev_close": 25650.87,
+      "price": 25650.87,
+      "change": 437.56,
+      "change_pct": 1.74,
+      "volume": 3576700000,
+      "high": 25791.38,
+      "low": 25515.74,
+      "open": 25515.74,
+      "prev_close": 25213.31,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 28056.1,
       "52w_low": 22518.0,
-      "date": "2026-09-07"
+      "date": "2026-09-04"
     },
     "沪深300": {
       "ticker": "000300.SS",
       "name": "CSI 300 Index",
-      "price": 4556.38,
+      "price": 4575.02,
       "change": 0.0,
       "change_pct": 0.0,
-      "volume": 2246605108,
-      "high": 4572.7,
+      "volume": 1141977816,
+      "high": 4580.7,
       "low": 4545.41,
       "open": 4567.89,
-      "prev_close": 4556.38,
+      "prev_close": 4575.02,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 4572.7007,
-      "52w_low": 3458.44,
+      "52w_high": 4580.702,
+      "52w_low": 4545.4106,
       "date": "2026-09-07"
     },
     "道琼斯": {
@@ -178,10 +178,34 @@
     "xiaomi": [],
     "macro": [
       {
-        "title": "U.S. Energy Secretary Wright says Iran nuclear deal may never happen",
+        "title": "Trump says he's made 'Hundreds of Billions of Dollars on Stocks' for the U.S., in stream of AI posts",
         "source": "CNBC Top",
-        "published": "2026-09-06 19:41",
-        "link": "https://www.cnbc.com/2026/09/06/iran-us-response-oil-tanker-strikes.html"
+        "published": "2026-09-07 12:09",
+        "link": "https://www.cnbc.com/2026/09/07/trump-truth-social-ai-images-posting-spree.html"
+      },
+      {
+        "title": "Federal investigators probe Amazon cargo jet's fiery runway crash that killed 5 in Miami",
+        "source": "CNBC Top",
+        "published": "2026-09-07 15:11",
+        "link": "https://www.cnbc.com/2026/09/07/federal-investigators-probe-amazon-cargo-jets-fiery-runway-crash-that-killed-5-in-miami.html"
+      },
+      {
+        "title": "A Fed rate hike is coming into view. Here’s what UBS says to own — and avoid",
+        "source": "CNBC Top",
+        "published": "2026-09-07 12:00",
+        "link": "https://www.cnbc.com/2026/09/07/ubs-federal-reserve-interest-rate-hike-investing.html"
+      },
+      {
+        "title": "Far-right AfD landslide in German state piles pressure on federal government",
+        "source": "CNBC Top",
+        "published": "2026-09-07 13:07",
+        "link": "https://www.cnbc.com/2026/09/07/afd-germany-economy-merz.html"
+      },
+      {
+        "title": "Jaguar Land Rover to cut 4,000 jobs over two years in major cost-saving drive",
+        "source": "CNBC Top",
+        "published": "2026-09-07 11:50",
+        "link": "https://www.cnbc.com/2026/09/07/jaguar-land-rover-jlr-job-cuts-autos.html"
       },
       {
         "title": "Treasury yields face 4.8% test as fiscal risks threaten to spill into other assets",
@@ -190,99 +214,82 @@
         "link": "https://www.cnbc.com/2026/09/07/us-treasury-yields-markets-scott-bessent.html"
       },
       {
+        "title": "'Ah! Rejected, yet again': How this 45-year-old turned his 'demoralizing' job search into a one-man show",
+        "source": "CNBC Top",
+        "published": "2026-09-07 15:55",
+        "link": "https://www.cnbc.com/2026/09/07/45-year-old-turns-job-search-into-a-one-man-show.html"
+      },
+      {
         "title": "AI data centers are transforming rural land markets — and fueling a backlash",
         "source": "CNBC Top",
         "published": "2026-09-06 12:00",
         "link": "https://www.cnbc.com/2026/09/06/ai-data-centers-are-transforming-rural-land-markets-fueling-backlash.html"
       },
       {
-        "title": "Volcano eruption disrupts hundreds of flights at Southeast Asia's second-busiest airport",
-        "source": "CNBC Top",
-        "published": "2026-09-07 01:31",
-        "link": "https://www.cnbc.com/2026/09/07/flights-canceled-jakarta-airport-anak-krakatau-eruption-disrupts-regional-travel-volcano.html"
-      },
-      {
-        "title": "Goldman boosts Asia ex-Japan index target for one big reason",
-        "source": "CNBC Top",
-        "published": "2026-09-07 02:08",
-        "link": "https://www.cnbc.com/2026/09/07/goldman-boosts-asia-ex-japan-index-target-ai-korea.html"
-      },
-      {
-        "title": "At least 5 dead after Amazon cargo plane barreled off runway at Miami airport",
-        "source": "CNBC Top",
-        "published": "2026-09-07 01:10",
-        "link": "https://www.cnbc.com/2026/09/06/amazon-cargo-plane-overrunns-runway-at-miami-international-airport.html"
-      },
-      {
-        "title": "Goldman Sachs says buy the dip in these five stocks before it's too late",
-        "source": "CNBC Top",
-        "published": "2026-09-05 12:10",
-        "link": "https://www.cnbc.com/2026/09/05/buy-the-dip-in-these-five-stocks-before-its-too-late-goldman-says.html"
-      },
-      {
-        "title": "Assailant lunged at Democratic candidate for Ohio governor Amy Acton at fair, campaign says",
-        "source": "CNBC Top",
-        "published": "2026-09-06 22:51",
-        "link": "https://www.cnbc.com/2026/09/06/ohio-governor-candidate-amy-acton-attacked.html"
-      },
-      {
-        "title": "Trump turns up the heat on Warsh as Fed rate hike looms",
-        "source": "CNBC Top",
-        "published": "2026-09-05 19:12",
-        "link": "https://www.cnbc.com/2026/09/05/trump-warsh-fed-september-rate-hike.html"
-      },
-      {
         "title": "‘Model fatigue’ sets in as AI labs race to roll out new versions at frenetic pace",
         "source": "CNBC Tech",
         "published": "2026-09-06 12:13",
         "link": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html"
-      }
-    ],
-    "qqq_intel": [],
-    "tech": [
-      {
-        "title": "Microsoft to impose time limits on Xbox cloud gaming subscribers as costs continue to climb",
-        "source": "CNBC Tech",
-        "published": "2026-09-03 19:03",
-        "link": "https://www.cnbc.com/2026/09/03/microsoft-xbox-game-pass-cloud-limits.html"
       },
       {
-        "title": "How the UK can stop accidentally exporting its best tech start-ups",
+        "title": "We got more defensive last week as Wall Street raised the bar for AI stocks",
+        "source": "CNBC Tech",
+        "published": "2026-09-05 16:45",
+        "link": "https://www.cnbc.com/2026/09/05/we-got-more-defensive-last-week-as-wall-street-raised-the-bar-for-ai-stocks.html"
+      }
+    ],
+    "qqq_intel": [
+      {
+        "title": "Bernie Sanders Wants to Ban Superintelligence. What It Means for Microsoft and Amazon",
+        "source": "Yahoo Finance",
+        "published": "2026-09-07 14:57",
+        "link": "https://finance.yahoo.com/technology/ai/articles/bernie-sanders-wants-ban-superintelligence-145733495.html"
+      }
+    ],
+    "tech": [
+      {
+        "title": "Big US university endowments outperform S&P 500 index",
         "source": "FT Markets",
-        "published": "2026-09-06 04:00",
-        "link": "https://www.ft.com/content/354ef76f-6a68-4e19-ab2d-7a6853170725?syn-25a6b1a6=1"
+        "published": "2026-09-07 04:00",
+        "link": "https://www.ft.com/content/9aa8805c-8b6a-4dfc-9e61-f5181ce07fc8?syn-25a6b1a6=1"
       }
     ],
     "market": [
       {
-        "title": "Asia-Pacific markets open higher as investors assess renewed Middle East  hostilities",
+        "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
         "source": "CNBC Top",
-        "published": "2026-09-07 02:19",
+        "published": "2026-09-07 15:45",
         "link": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html"
       },
       {
-        "title": "Russian gold floods through Hong Kong in wake of western sanctions",
-        "source": "FT Markets",
-        "published": "2026-09-06 04:00",
-        "link": "https://www.ft.com/content/39b0c966-b153-4706-9325-2f6176ba3752?syn-25a6b1a6=1"
+        "title": "China says it will pump $54 billion into banks and insurers — but their stocks still fell",
+        "source": "CNBC Top",
+        "published": "2026-09-07 09:26",
+        "link": "https://www.cnbc.com/2026/09/07/china-state-banks-lenders-insurers-capital-solvency-bankrupt-nim-.html"
       },
       {
-        "title": "The gloves are starting to come off in markets",
-        "source": "FT Markets",
-        "published": "2026-09-05 04:00",
-        "link": "https://www.ft.com/content/d3f7a1a1-7fc1-4349-a202-a6fee6ef4a5b?syn-25a6b1a6=1"
+        "title": "The bond market had a whirlwind week. Where these traders see buying opportunities",
+        "source": "CNBC Top",
+        "published": "2026-09-07 10:38",
+        "link": "https://www.cnbc.com/2026/09/07/the-bond-market-had-a-whirlwind-week-where-these-traders-see-buying-opportunities.html"
       },
       {
-        "title": "The repo market is the ‘dark matter’ of finance: powerful and perilous",
-        "source": "FT Markets",
-        "published": "2026-09-05 04:00",
-        "link": "https://www.ft.com/content/8a7e8202-d800-4fb1-a8f0-eeb4536578f7?syn-25a6b1a6=1"
+        "title": "Is the stock market open on Labor Day?",
+        "source": "Yahoo Finance",
+        "published": "2024-03-25 21:02",
+        "link": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-210239142.html"
       },
       {
-        "title": "Why Berkshire Hathaway might be an active hedge",
+        "title": "How Energy Security, Load Growth and Infrastructure Arbitrage Could Reshape America's Power Market",
+        "source": "Yahoo Finance",
+        "published": "2026-09-07 14:29",
+        "link": "https://finance.yahoo.com/energy/articles/energy-security-load-growth-infrastructure-142926906.html"
+      },
+      {
+        "title": "Everything is awesome",
         "source": "FT Markets",
-        "published": "2026-09-04 17:00",
-        "link": "https://www.ft.com/content/af5b1fd3-194d-4aed-b1ef-0bf662170952"
+        "published": "2026-09-07 05:30",
+        "link": "https://www.ft.com/content/b122bc9f-9f51-46b8-9f42-dba9fb29244c?syn-25a6b1a6=1"
       },
       {
         "title": "Chinese Investors With Few Options Turn to Dividends",
@@ -299,6 +306,10 @@
     ]
   },
   "sentiment": {
+    "qqq_intel": {
+      "overall_sentiment": "unknown",
+      "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
+    },
     "macro": {
       "overall_sentiment": "unknown",
       "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
@@ -309,20 +320,20 @@
   },
   "briefing": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}",
   "mood": {
-    "mood": "calm",
-    "emoji": "😌☕",
-    "greeting": "平静的一天，让我们理性看看市场~ A balanced day ahead.",
-    "tone": "composed, thoughtful, zen-like wisdom with gentle humor",
-    "sign_off": "今天的心情：喝杯咖啡看云卷云舒 ☕ Stay chill.",
-    "vibe": "Peaceful mind, clear analysis"
+    "mood": "panicking",
+    "emoji": "🔥😱",
+    "greeting": "RED ALERT! 今天市场一片血海...深呼吸...我来帮你分析。",
+    "tone": "urgent but still trying to stay calm, dramatic but informative, like a war correspondent",
+    "sign_off": "今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！",
+    "vibe": "Stress-eating chips while analyzing charts at 3am"
   },
   "briefing_sigma": "Gemini Analysis Error: Error code: 400 - [{'error': {'code': 400, 'message': 'Please pass a valid API key', 'status': 'INVALID_ARGUMENT'}}]\n(请检查 .env 中的 GEMINI_BASE_URL 是否正确填写了同学提供的接口地址)",
   "mood_sigma": {
-    "mood": "bored",
-    "emoji": "🥱🕰️",
+    "mood": "clinical",
+    "emoji": "🧊📊",
     "greeting": "Gentlemen, let's dissect the capital flow.",
-    "tone": "dismissive of retail traders, highly selective, looking for real setups",
-    "sign_off": "Sigma @ 财富自由之路 | 真正的猎手懂得等待",
+    "tone": "cold, purely objective, risk-management focused, zero panic",
+    "sign_off": "Sigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
     "vibe": "Adjusting the Rolex, executing algorithmic trades with precision."
   }
 }
