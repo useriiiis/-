@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-08T03:35:36.658873",
+  "timestamp": "2026-09-08T15:32:49.069555",
   "target": "1810.HK",
   "dim1_fundamentals": {
     "data": {
@@ -7,13 +7,13 @@
       "name": "XIAOMI-W",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "market_cap": 690686984192,
+      "market_cap": 692745666560,
       "enterprise_value": 625080598528,
-      "pe_ratio": 18.90141,
-      "forward_pe": 17.442308,
+      "pe_ratio": 18.957747,
+      "forward_pe": 17.494297,
       "peg_ratio": 2.92,
-      "pb_ratio": 2.1915536,
-      "ps_ratio": 1.5765492,
+      "pb_ratio": 2.198034,
+      "ps_ratio": 1.5812483,
       "ev_ebitda": 21.828,
       "revenue": 438100492288,
       "revenue_growth": -0.061,
@@ -31,29 +31,29 @@
       "52w_low": 21.3,
       "50d_avg": 26.818,
       "200d_avg": 32.0997,
-      "analyst_target": 36.56014,
+      "analyst_target": 36.553883,
       "recommendation": "buy"
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
   },
   "dim2_technicals": {
     "data": {
-      "price": 26.84,
-      "ma5": 27.66,
+      "price": 26.92,
+      "ma5": 27.67,
       "ma20": 27.35,
       "ma60": 26.38,
-      "ma120": 28.6,
-      "rsi_14": 46.6,
-      "macd": 0.118,
-      "ret_1w": -4.35,
-      "ret_1m": -2.82,
-      "ret_3m": -3.45,
-      "ret_6m": -23.71,
+      "ma120": 28.61,
+      "rsi_14": 47.0,
+      "macd": 0.124,
+      "ret_1w": -4.06,
+      "ret_1m": -2.53,
+      "ret_3m": -3.17,
+      "ret_6m": -23.48,
       "high_52w": 59.45,
       "low_52w": 21.42,
-      "pct_from_52w_high": -54.85,
-      "pct_from_52w_low": 25.3,
-      "volume_ratio": 0.73,
+      "pct_from_52w_high": -54.72,
+      "pct_from_52w_low": 25.68,
+      "volume_ratio": 1.2,
       "above_ma20": false,
       "above_ma60": true,
       "trend": "UP"
@@ -71,12 +71,12 @@
   "dim5_macro": {
     "indices": {
       "HSI": {
-        "price": 25307.0,
-        "change_pct": -0.42
+        "price": 25317.18,
+        "change_pct": -0.38
       },
       "SPX": {
-        "price": 7718.6,
-        "change_pct": -0.38
+        "price": 7693.89,
+        "change_pct": -0.32
       },
       "USD/CNH": {
         "price": 6.71,
@@ -84,7 +84,7 @@
       },
       "US10Y": {
         "price": 4.78,
-        "change_pct": 0.46
+        "change_pct": 0.0
       }
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"

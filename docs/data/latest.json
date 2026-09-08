@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-09-08T03:35:11.915078",
+  "timestamp": "2026-09-08T15:32:08.020670",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
       "name": "XIAOMI-W",
-      "price": 26.84,
-      "change": -0.66,
-      "change_pct": -2.4,
-      "volume": 100607179,
+      "price": 26.92,
+      "change": -0.58,
+      "change_pct": -2.11,
+      "volume": 169793507,
       "high": 27.36,
       "low": 26.56,
       "open": 27.26,
       "prev_close": 27.5,
-      "market_cap": 690686984192,
-      "pe_ratio": 18.90141,
+      "market_cap": 692745666560,
+      "pe_ratio": 18.957747,
       "52w_high": 59.9,
       "52w_low": 21.3,
       "date": "2026-09-08"
@@ -21,66 +21,66 @@
     "QQQ": {
       "ticker": "QQQ",
       "name": "Invesco QQQ Trust, Series 1",
-      "price": 718.96,
-      "change": 1.29,
-      "change_pct": 0.18,
-      "volume": 32784600,
-      "high": 721.86,
-      "low": 716.56,
-      "open": 719.35,
-      "prev_close": 717.67,
+      "price": 720.11,
+      "change": 1.15,
+      "change_pct": 0.16,
+      "volume": 10619047,
+      "high": 721.89,
+      "low": 715.57,
+      "open": 720.97,
+      "prev_close": 718.96,
       "market_cap": "N/A",
-      "pe_ratio": 29.303808,
+      "pe_ratio": 29.350882,
       "52w_high": 748.65,
       "52w_low": 555.6,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "Intel": {
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "price": 95.8,
-      "change": 4.13,
-      "change_pct": 4.51,
-      "volume": 97428100,
-      "high": 95.94,
-      "low": 91.87,
-      "open": 92.45,
-      "prev_close": 91.67,
-      "market_cap": 506408894464,
+      "price": 104.17,
+      "change": 8.37,
+      "change_pct": 8.74,
+      "volume": 65692773,
+      "high": 104.53,
+      "low": 100.35,
+      "open": 100.83,
+      "prev_close": 95.8,
+      "market_cap": 550653526016,
       "pe_ratio": "N/A",
       "52w_high": 142.35,
       "52w_low": 24.05,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "微软": {
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
-      "price": 499.7,
-      "change": -10.42,
-      "change_pct": -2.04,
-      "volume": 18074400,
-      "high": 511.0,
-      "low": 499.36,
-      "open": 510.0,
-      "prev_close": 510.12,
-      "market_cap": 3710545297408,
-      "pe_ratio": 27.853958,
+      "price": 493.18,
+      "change": -6.52,
+      "change_pct": -1.3,
+      "volume": 5580546,
+      "high": 495.19,
+      "low": 490.19,
+      "open": 493.01,
+      "prev_close": 499.7,
+      "market_cap": 3661982072832,
+      "pe_ratio": 27.489408,
       "52w_high": 553.72,
       "52w_low": 349.2,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 78890.78,
-      "change": -1459.27,
-      "change_pct": -1.82,
-      "volume": 23144060928,
+      "price": 78452.78,
+      "change": -663.07,
+      "change_pct": -0.84,
+      "volume": 34200637440,
       "high": 79455.59,
-      "low": 78788.76,
+      "low": 77782.7,
       "open": 79093.85,
-      "prev_close": 80350.05,
-      "market_cap": 1584118759424,
+      "prev_close": 79115.85,
+      "market_cap": 1575717044224,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 57747.766,
@@ -91,45 +91,45 @@
     "标普500": {
       "ticker": "^GSPC",
       "name": "S&P 500",
-      "price": 7718.6,
-      "change": -29.11,
-      "change_pct": -0.38,
-      "volume": 4103570000,
-      "high": 7750.19,
-      "low": 7706.12,
-      "open": 7750.19,
-      "prev_close": 7747.71,
+      "price": 7694.25,
+      "change": -24.35,
+      "change_pct": -0.32,
+      "volume": 916516750,
+      "high": 7717.81,
+      "low": 7675.69,
+      "open": 7717.81,
+      "prev_close": 7718.6,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 7816.7,
       "52w_low": 6316.91,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "纳斯达克": {
       "ticker": "^IXIC",
       "name": "NASDAQ Composite",
-      "price": 26506.99,
-      "change": -77.07,
-      "change_pct": -0.29,
-      "volume": 6529110000,
-      "high": 26628.58,
-      "low": 26444.84,
-      "open": 26587.9,
-      "prev_close": 26584.06,
+      "price": 26486.25,
+      "change": -20.74,
+      "change_pct": -0.08,
+      "volume": 2940424000,
+      "high": 26542.14,
+      "low": 26341.17,
+      "open": 26528.57,
+      "prev_close": 26506.99,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 27190.21,
       "52w_low": 20690.25,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 25306.1,
-      "change": -107.02,
-      "change_pct": -0.42,
+      "price": 25317.18,
+      "change": -95.94,
+      "change_pct": -0.38,
       "volume": 0,
-      "high": 25349.1,
+      "high": 25394.6,
       "low": 25225.69,
       "open": 25252.07,
       "prev_close": 25413.12,
@@ -142,52 +142,46 @@
     "沪深300": {
       "ticker": "000300.SS",
       "name": "CSI 300 Index",
-      "price": 4580.2,
+      "price": 4558.74,
       "change": 0.0,
       "change_pct": 0.0,
-      "volume": 1574332808,
+      "volume": 176800216,
       "high": 4587.73,
-      "low": 4567.06,
+      "low": 4546.31,
       "open": 4575.99,
-      "prev_close": 4580.2,
+      "prev_close": 4558.74,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 4587.7256,
-      "52w_low": 4567.0645,
+      "52w_low": 4546.3057,
       "date": "2026-09-08"
     },
     "道琼斯": {
       "ticker": "^DJI",
       "name": "Dow Jones Industrial Average",
-      "price": 53414.25,
-      "change": -271.86,
-      "change_pct": -0.51,
-      "volume": 381130000,
-      "high": 53635.35,
-      "low": 53289.88,
-      "open": 53584.89,
-      "prev_close": 53686.11,
+      "price": 52900.75,
+      "change": -513.5,
+      "change_pct": -0.96,
+      "volume": 144829283,
+      "high": 53110.45,
+      "low": 52721.62,
+      "open": 53110.45,
+      "prev_close": 53414.25,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 54744.33,
       "52w_low": 45057.28,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     }
   },
   "news": {
     "xiaomi": [],
     "macro": [
       {
-        "title": "Iran foreign ministry takes aim at Canada for support of U.S. actions in Strait of Hormuz",
+        "title": "Qualcomm issues Amazon warrants to acquire $4 billion worth of chipmaker's stock as part of AI infrastructure deal",
         "source": "CNBC Top",
-        "published": "2026-09-08 01:50",
-        "link": "https://www.cnbc.com/2026/09/08/us-iran-war-trump-hormuz-canada-trade-talks-greenland.html"
-      },
-      {
-        "title": "Oil extends gains as renewed Mideast hostilities raise worries of prolonged conflict",
-        "source": "CNBC Top",
-        "published": "2026-09-08 01:42",
-        "link": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html"
+        "published": "2026-09-08 14:43",
+        "link": "https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html"
       },
       {
         "title": "Bombardier points out U.S. footprint after Trump says aerospace giant must build in America",
@@ -196,81 +190,87 @@
         "link": "https://www.cnbc.com/2026/09/07/trump-bombardier-cant-sell-in-us-unless-canada-aerospace-giant-builds-there.html"
       },
       {
-        "title": "Crashed Amazon cargo jet struck two vehicles, ended up 1,300 feet past runway, NTSB says",
+        "title": "U.S. sanctions Iranian airlines in aim to tighten economic squeeze as war spreads, oil rises",
         "source": "CNBC Top",
-        "published": "2026-09-07 21:36",
-        "link": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html"
+        "published": "2026-09-08 14:30",
+        "link": "https://www.cnbc.com/2026/09/08/us-sanctions-iran-airlines-oil-economy-war.html"
       },
       {
-        "title": "Trump says he's made 'Hundreds of Billions of Dollars on Stocks' for the U.S., in stream of AI posts",
+        "title": "Visa tells CNBC it is expanding data offering for blockchain lenders as demand for stablecoin-linked cards surges",
         "source": "CNBC Top",
-        "published": "2026-09-07 12:09",
-        "link": "https://www.cnbc.com/2026/09/07/trump-truth-social-ai-images-posting-spree.html"
+        "published": "2026-09-08 11:30",
+        "link": "https://www.cnbc.com/2026/09/08/visa-blockchain-lender-stablecoin-cards.html"
       },
       {
-        "title": "CNBC Points Pro: I love United Airlines. Which credit card should I get next?",
+        "title": "The U.S. is trying to reduce its reliance on China for batteries. Here's what it's up against",
         "source": "CNBC Top",
-        "published": "2026-09-07 12:00",
-        "link": "https://www.cnbc.com/select/which-credit-card-should-i-get-next/"
+        "published": "2026-09-08 11:00",
+        "link": "https://www.cnbc.com/2026/09/08/heres-where-the-us-is-behind-china-on-battery-technology.html"
       },
       {
-        "title": "'Ah! Rejected, yet again': How this 45-year-old turned his 'demoralizing' job search into a one-man show",
+        "title": "'Patients pay the tariff': Swiss pharma CEO warns of Trump's generic drug tariff threat",
         "source": "CNBC Top",
-        "published": "2026-09-07 15:55",
-        "link": "https://www.cnbc.com/2026/09/07/45-year-old-turns-job-search-into-a-one-man-show.html"
+        "published": "2026-09-08 14:04",
+        "link": "https://www.cnbc.com/2026/09/08/pharma-tariffs-trump-generic-drugs-sandoz-cmd-stock.html"
       },
       {
-        "title": "A Fed rate hike is coming into view. Here’s what UBS says to own — and avoid",
+        "title": "Cholesterol drug setback casts doubt over multibillion-dollar race",
         "source": "CNBC Top",
-        "published": "2026-09-07 12:00",
-        "link": "https://www.cnbc.com/2026/09/07/ubs-federal-reserve-interest-rate-hike-investing.html"
+        "published": "2026-09-08 05:00",
+        "link": "https://www.cnbc.com/2026/09/08/novartis-cholesterol-setback-drug-race-eli-lilly-amgen.html"
       },
       {
-        "title": "Here are the 3 big things we're watching in this holiday-shortened trading week",
+        "title": "Canada's retaliatory tariffs worth $27.6 billion take effect as trade rift with U.S. deepens",
         "source": "CNBC Top",
-        "published": "2026-09-07 23:31",
-        "link": "https://www.cnbc.com/2026/09/07/here-are-the-3-big-things-were-watching-in-this-holiday-shortened-trading-week.html"
+        "published": "2026-09-08 08:21",
+        "link": "https://www.cnbc.com/2026/09/08/canada-retaliatory-tariffs.html"
       },
       {
-        "title": "‘Model fatigue’ sets in as AI labs race to roll out new versions at frenetic pace",
-        "source": "CNBC Tech",
-        "published": "2026-09-06 12:13",
-        "link": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html"
+        "title": "GE Aerospace to spend nearly $12 billion to bring key castings supplier in-house",
+        "source": "CNBC Top",
+        "published": "2026-09-08 13:55",
+        "link": "https://www.cnbc.com/2026/09/08/ge-aerospace-to-buy-castings-maker-cpp-for-nearly-12-billion.html"
+      },
+      {
+        "title": "Iran Foreign Ministry takes aim at Canada for support of U.S. actions in Strait of Hormuz",
+        "source": "CNBC Top",
+        "published": "2026-09-08 12:20",
+        "link": "https://www.cnbc.com/2026/09/08/us-iran-war-trump-hormuz-canada-trade-talks-greenland.html"
       }
     ],
     "qqq_intel": [],
     "tech": [
       {
-        "title": "Pricey oil is laying the groundwork for its own decline",
-        "source": "FT Markets",
-        "published": "2026-09-07 17:17",
-        "link": "https://www.ft.com/content/f7f164ea-83eb-44d6-93e5-ecec8b2648d9?syn-25a6b1a6=1"
+        "title": "Australia targets algorithmic social feeds as it looks to hit Big Tech harder",
+        "source": "CNBC Tech",
+        "published": "2026-09-08 13:32",
+        "link": "https://www.cnbc.com/2026/09/08/australia-social-media-algorithm-opt-out.html"
       }
     ],
     "market": [
       {
-        "title": "Dow futures fall 300 points to start shortened week as oil prices climb: Live updates",
+        "title": "Dow drops more than 500 points to start shortened week as oil prices climb: Live updates",
         "source": "CNBC Top",
-        "published": "2026-09-08 03:32",
+        "published": "2026-09-08 15:09",
         "link": "https://www.cnbc.com/2026/09/07/stock-market-tuesday-live-updates.html"
       },
       {
-        "title": "Stock Market Week Ahead: Week Of The Big Bond Scheme",
-        "source": "Yahoo Finance",
-        "published": "2026-09-06 15:39",
-        "link": "https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-week-of-the-big-bond-scheme/?src=A00220&yptr=yahoo"
+        "title": "Here’s where rental demand is heading and what it means for future home sales",
+        "source": "CNBC Top",
+        "published": "2026-09-08 15:19",
+        "link": "https://www.cnbc.com/2026/09/08/rental-demand-home-sales-zillow-report.html"
       },
       {
-        "title": "Robinhood’s CEO Says States Are Fighting Prediction Markets to Protect Their Own Gambling Tax Money, ‘There’s a Huge Financial Incentive’",
-        "source": "Yahoo Finance",
-        "published": "2026-09-06 17:00",
-        "link": "https://finance.yahoo.com/economy/policy/articles/robinhood-ceo-says-states-fighting-170003929.html"
+        "title": "A Labor Day gas record, Amazon's deadly jet crash, the rise of the CISO and more in Morning Squawk",
+        "source": "CNBC Tech",
+        "published": "2026-09-08 12:08",
+        "link": "https://www.cnbc.com/2026/09/08/5-things-to-know-before-the-market-opens-tuesday.html"
       },
       {
-        "title": "Everything is awesome",
-        "source": "FT Markets",
-        "published": "2026-09-07 05:30",
-        "link": "https://www.ft.com/content/b122bc9f-9f51-46b8-9f42-dba9fb29244c?syn-25a6b1a6=1"
+        "title": "Stock Market Today: Dow Dives, Oil Spikes After Saudi Attacks; Amgen Swoons On These Results (Live Coverage)",
+        "source": "Yahoo Finance",
+        "published": "2026-09-08 14:50",
+        "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-attacks-oil-prices-jump-brent-crude/?src=A00220&yptr=yahoo"
       },
       {
         "title": "Chinese Investors With Few Options Turn to Dividends",
