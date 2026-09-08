@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-09-07T16:46:16.173789",
+  "timestamp": "2026-09-08T03:35:11.915078",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
       "name": "XIAOMI-W",
-      "price": NaN,
-      "change": NaN,
-      "change_pct": NaN,
-      "volume": 172669949,
-      "high": NaN,
-      "low": NaN,
-      "open": NaN,
-      "prev_close": 28.44,
-      "market_cap": 707669458944,
-      "pe_ratio": 19.366198,
+      "price": 26.84,
+      "change": -0.66,
+      "change_pct": -2.4,
+      "volume": 100607179,
+      "high": 27.36,
+      "low": 26.56,
+      "open": 27.26,
+      "prev_close": 27.5,
+      "market_cap": 690686984192,
+      "pe_ratio": 18.90141,
       "52w_high": 59.9,
       "52w_low": 21.3,
-      "date": "2026-09-07"
+      "date": "2026-09-08"
     },
     "QQQ": {
       "ticker": "QQQ",
@@ -72,19 +72,19 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 78985.25,
-      "change": -1364.8,
-      "change_pct": -1.7,
-      "volume": 24525838336,
-      "high": 80387.91,
-      "low": 78773.36,
-      "open": 80351.4,
+      "price": 78890.78,
+      "change": -1459.27,
+      "change_pct": -1.82,
+      "volume": 23144060928,
+      "high": 79455.59,
+      "low": 78788.76,
+      "open": 79093.85,
       "prev_close": 80350.05,
-      "market_cap": 1586438209536,
+      "market_cap": 1584118759424,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 57747.766,
-      "date": "2026-09-07"
+      "date": "2026-09-08"
     }
   },
   "indices": {
@@ -125,36 +125,36 @@
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 25650.87,
-      "change": 437.56,
-      "change_pct": 1.74,
-      "volume": 3576700000,
-      "high": 25791.38,
-      "low": 25515.74,
-      "open": 25515.74,
-      "prev_close": 25213.31,
+      "price": 25306.1,
+      "change": -107.02,
+      "change_pct": -0.42,
+      "volume": 0,
+      "high": 25349.1,
+      "low": 25225.69,
+      "open": 25252.07,
+      "prev_close": 25413.12,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 28056.1,
       "52w_low": 22518.0,
-      "date": "2026-09-04"
+      "date": "2026-09-08"
     },
     "沪深300": {
       "ticker": "000300.SS",
       "name": "CSI 300 Index",
-      "price": 4575.02,
+      "price": 4580.2,
       "change": 0.0,
       "change_pct": 0.0,
-      "volume": 1141977816,
-      "high": 4580.7,
-      "low": 4545.41,
-      "open": 4567.89,
-      "prev_close": 4575.02,
+      "volume": 1574332808,
+      "high": 4587.73,
+      "low": 4567.06,
+      "open": 4575.99,
+      "prev_close": 4580.2,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 4580.702,
-      "52w_low": 4545.4106,
-      "date": "2026-09-07"
+      "52w_high": 4587.7256,
+      "52w_low": 4567.0645,
+      "date": "2026-09-08"
     },
     "道琼斯": {
       "ticker": "^DJI",
@@ -178,40 +178,40 @@
     "xiaomi": [],
     "macro": [
       {
+        "title": "Iran foreign ministry takes aim at Canada for support of U.S. actions in Strait of Hormuz",
+        "source": "CNBC Top",
+        "published": "2026-09-08 01:50",
+        "link": "https://www.cnbc.com/2026/09/08/us-iran-war-trump-hormuz-canada-trade-talks-greenland.html"
+      },
+      {
+        "title": "Oil extends gains as renewed Mideast hostilities raise worries of prolonged conflict",
+        "source": "CNBC Top",
+        "published": "2026-09-08 01:42",
+        "link": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html"
+      },
+      {
+        "title": "Bombardier points out U.S. footprint after Trump says aerospace giant must build in America",
+        "source": "CNBC Top",
+        "published": "2026-09-08 02:05",
+        "link": "https://www.cnbc.com/2026/09/07/trump-bombardier-cant-sell-in-us-unless-canada-aerospace-giant-builds-there.html"
+      },
+      {
+        "title": "Crashed Amazon cargo jet struck two vehicles, ended up 1,300 feet past runway, NTSB says",
+        "source": "CNBC Top",
+        "published": "2026-09-07 21:36",
+        "link": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html"
+      },
+      {
         "title": "Trump says he's made 'Hundreds of Billions of Dollars on Stocks' for the U.S., in stream of AI posts",
         "source": "CNBC Top",
         "published": "2026-09-07 12:09",
         "link": "https://www.cnbc.com/2026/09/07/trump-truth-social-ai-images-posting-spree.html"
       },
       {
-        "title": "Federal investigators probe Amazon cargo jet's fiery runway crash that killed 5 in Miami",
-        "source": "CNBC Top",
-        "published": "2026-09-07 15:11",
-        "link": "https://www.cnbc.com/2026/09/07/federal-investigators-probe-amazon-cargo-jets-fiery-runway-crash-that-killed-5-in-miami.html"
-      },
-      {
-        "title": "A Fed rate hike is coming into view. Here’s what UBS says to own — and avoid",
+        "title": "CNBC Points Pro: I love United Airlines. Which credit card should I get next?",
         "source": "CNBC Top",
         "published": "2026-09-07 12:00",
-        "link": "https://www.cnbc.com/2026/09/07/ubs-federal-reserve-interest-rate-hike-investing.html"
-      },
-      {
-        "title": "Far-right AfD landslide in German state piles pressure on federal government",
-        "source": "CNBC Top",
-        "published": "2026-09-07 13:07",
-        "link": "https://www.cnbc.com/2026/09/07/afd-germany-economy-merz.html"
-      },
-      {
-        "title": "Jaguar Land Rover to cut 4,000 jobs over two years in major cost-saving drive",
-        "source": "CNBC Top",
-        "published": "2026-09-07 11:50",
-        "link": "https://www.cnbc.com/2026/09/07/jaguar-land-rover-jlr-job-cuts-autos.html"
-      },
-      {
-        "title": "Treasury yields face 4.8% test as fiscal risks threaten to spill into other assets",
-        "source": "CNBC Top",
-        "published": "2026-09-07 02:01",
-        "link": "https://www.cnbc.com/2026/09/07/us-treasury-yields-markets-scott-bessent.html"
+        "link": "https://www.cnbc.com/select/which-credit-card-should-i-get-next/"
       },
       {
         "title": "'Ah! Rejected, yet again': How this 45-year-old turned his 'demoralizing' job search into a one-man show",
@@ -220,70 +220,51 @@
         "link": "https://www.cnbc.com/2026/09/07/45-year-old-turns-job-search-into-a-one-man-show.html"
       },
       {
-        "title": "AI data centers are transforming rural land markets — and fueling a backlash",
+        "title": "A Fed rate hike is coming into view. Here’s what UBS says to own — and avoid",
         "source": "CNBC Top",
-        "published": "2026-09-06 12:00",
-        "link": "https://www.cnbc.com/2026/09/06/ai-data-centers-are-transforming-rural-land-markets-fueling-backlash.html"
+        "published": "2026-09-07 12:00",
+        "link": "https://www.cnbc.com/2026/09/07/ubs-federal-reserve-interest-rate-hike-investing.html"
+      },
+      {
+        "title": "Here are the 3 big things we're watching in this holiday-shortened trading week",
+        "source": "CNBC Top",
+        "published": "2026-09-07 23:31",
+        "link": "https://www.cnbc.com/2026/09/07/here-are-the-3-big-things-were-watching-in-this-holiday-shortened-trading-week.html"
       },
       {
         "title": "‘Model fatigue’ sets in as AI labs race to roll out new versions at frenetic pace",
         "source": "CNBC Tech",
         "published": "2026-09-06 12:13",
         "link": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html"
-      },
-      {
-        "title": "We got more defensive last week as Wall Street raised the bar for AI stocks",
-        "source": "CNBC Tech",
-        "published": "2026-09-05 16:45",
-        "link": "https://www.cnbc.com/2026/09/05/we-got-more-defensive-last-week-as-wall-street-raised-the-bar-for-ai-stocks.html"
       }
     ],
-    "qqq_intel": [
-      {
-        "title": "Bernie Sanders Wants to Ban Superintelligence. What It Means for Microsoft and Amazon",
-        "source": "Yahoo Finance",
-        "published": "2026-09-07 14:57",
-        "link": "https://finance.yahoo.com/technology/ai/articles/bernie-sanders-wants-ban-superintelligence-145733495.html"
-      }
-    ],
+    "qqq_intel": [],
     "tech": [
       {
-        "title": "Big US university endowments outperform S&P 500 index",
+        "title": "Pricey oil is laying the groundwork for its own decline",
         "source": "FT Markets",
-        "published": "2026-09-07 04:00",
-        "link": "https://www.ft.com/content/9aa8805c-8b6a-4dfc-9e61-f5181ce07fc8?syn-25a6b1a6=1"
+        "published": "2026-09-07 17:17",
+        "link": "https://www.ft.com/content/f7f164ea-83eb-44d6-93e5-ecec8b2648d9?syn-25a6b1a6=1"
       }
     ],
     "market": [
       {
-        "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
+        "title": "Dow futures fall 300 points to start shortened week as oil prices climb: Live updates",
         "source": "CNBC Top",
-        "published": "2026-09-07 15:45",
-        "link": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html"
+        "published": "2026-09-08 03:32",
+        "link": "https://www.cnbc.com/2026/09/07/stock-market-tuesday-live-updates.html"
       },
       {
-        "title": "China says it will pump $54 billion into banks and insurers — but their stocks still fell",
-        "source": "CNBC Top",
-        "published": "2026-09-07 09:26",
-        "link": "https://www.cnbc.com/2026/09/07/china-state-banks-lenders-insurers-capital-solvency-bankrupt-nim-.html"
-      },
-      {
-        "title": "The bond market had a whirlwind week. Where these traders see buying opportunities",
-        "source": "CNBC Top",
-        "published": "2026-09-07 10:38",
-        "link": "https://www.cnbc.com/2026/09/07/the-bond-market-had-a-whirlwind-week-where-these-traders-see-buying-opportunities.html"
-      },
-      {
-        "title": "Is the stock market open on Labor Day?",
+        "title": "Stock Market Week Ahead: Week Of The Big Bond Scheme",
         "source": "Yahoo Finance",
-        "published": "2024-03-25 21:02",
-        "link": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-210239142.html"
+        "published": "2026-09-06 15:39",
+        "link": "https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-week-of-the-big-bond-scheme/?src=A00220&yptr=yahoo"
       },
       {
-        "title": "How Energy Security, Load Growth and Infrastructure Arbitrage Could Reshape America's Power Market",
+        "title": "Robinhood’s CEO Says States Are Fighting Prediction Markets to Protect Their Own Gambling Tax Money, ‘There’s a Huge Financial Incentive’",
         "source": "Yahoo Finance",
-        "published": "2026-09-07 14:29",
-        "link": "https://finance.yahoo.com/energy/articles/energy-security-load-growth-infrastructure-142926906.html"
+        "published": "2026-09-06 17:00",
+        "link": "https://finance.yahoo.com/economy/policy/articles/robinhood-ceo-says-states-fighting-170003929.html"
       },
       {
         "title": "Everything is awesome",
@@ -306,10 +287,6 @@
     ]
   },
   "sentiment": {
-    "qqq_intel": {
-      "overall_sentiment": "unknown",
-      "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
-    },
     "macro": {
       "overall_sentiment": "unknown",
       "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
@@ -320,20 +297,20 @@
   },
   "briefing": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}",
   "mood": {
-    "mood": "panicking",
-    "emoji": "🔥😱",
-    "greeting": "RED ALERT! 今天市场一片血海...深呼吸...我来帮你分析。",
-    "tone": "urgent but still trying to stay calm, dramatic but informative, like a war correspondent",
-    "sign_off": "今天的心情：想躲在被子里不出来 🫠 但明天太阳照常升起！",
-    "vibe": "Stress-eating chips while analyzing charts at 3am"
+    "mood": "calm",
+    "emoji": "😌☕",
+    "greeting": "平静的一天，让我们理性看看市场~ A balanced day ahead.",
+    "tone": "composed, thoughtful, zen-like wisdom with gentle humor",
+    "sign_off": "今天的心情：喝杯咖啡看云卷云舒 ☕ Stay chill.",
+    "vibe": "Peaceful mind, clear analysis"
   },
   "briefing_sigma": "Gemini Analysis Error: Error code: 400 - [{'error': {'code': 400, 'message': 'Please pass a valid API key', 'status': 'INVALID_ARGUMENT'}}]\n(请检查 .env 中的 GEMINI_BASE_URL 是否正确填写了同学提供的接口地址)",
   "mood_sigma": {
-    "mood": "clinical",
-    "emoji": "🧊📊",
+    "mood": "bored",
+    "emoji": "🥱🕰️",
     "greeting": "Gentlemen, let's dissect the capital flow.",
-    "tone": "cold, purely objective, risk-management focused, zero panic",
-    "sign_off": "Sigma @ 财富自由之路 | 敬畏市场，但绝不屈服于市场",
+    "tone": "dismissive of retail traders, highly selective, looking for real setups",
+    "sign_off": "Sigma @ 财富自由之路 | 真正的猎手懂得等待",
     "vibe": "Adjusting the Rolex, executing algorithmic trades with precision."
   }
 }
