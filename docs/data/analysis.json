@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-09T03:40:12.551489",
+  "timestamp": "2026-09-09T15:28:06.053643",
   "target": "1810.HK",
   "dim1_fundamentals": {
     "data": {
@@ -7,13 +7,13 @@
       "name": "XIAOMI-W",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "market_cap": 677225889792,
+      "market_cap": 678769721344,
       "enterprise_value": 610160738304,
-      "pe_ratio": 18.535212,
-      "forward_pe": 16.81732,
-      "peg_ratio": 2.92,
-      "pb_ratio": 2.149229,
-      "ps_ratio": 1.5458232,
+      "pe_ratio": 18.577465,
+      "forward_pe": 16.855656,
+      "peg_ratio": 2.76,
+      "pb_ratio": 2.1541283,
+      "ps_ratio": 1.549347,
       "ev_ebitda": 21.307,
       "revenue": 438100492288,
       "revenue_growth": -0.061,
@@ -31,29 +31,29 @@
       "52w_low": 21.3,
       "50d_avg": 26.9192,
       "200d_avg": 32.0326,
-      "analyst_target": 36.585182,
+      "analyst_target": 36.829144,
       "recommendation": "buy"
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
   },
   "dim2_technicals": {
     "data": {
-      "price": 26.32,
-      "ma5": 27.32,
+      "price": 26.38,
+      "ma5": 27.34,
       "ma20": 27.35,
       "ma60": 26.38,
       "ma120": 28.53,
-      "rsi_14": 42.0,
-      "macd": 0.013,
-      "ret_1w": -4.08,
-      "ret_1m": -1.28,
-      "ret_3m": -3.87,
-      "ret_6m": -24.58,
+      "rsi_14": 42.3,
+      "macd": 0.018,
+      "ret_1w": -3.86,
+      "ret_1m": -1.05,
+      "ret_3m": -3.65,
+      "ret_6m": -24.41,
       "high_52w": 59.45,
       "low_52w": 21.42,
-      "pct_from_52w_high": -55.73,
-      "pct_from_52w_low": 22.88,
-      "volume_ratio": 0.39,
+      "pct_from_52w_high": -55.63,
+      "pct_from_52w_low": 23.16,
+      "volume_ratio": 0.84,
       "above_ma20": false,
       "above_ma60": false,
       "trend": "MIXED"
@@ -61,10 +61,8 @@
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
   },
   "dim3_sentiment": {
-    "article_count": 1,
-    "headlines": [
-      "Chinese giants Xiaomi, Huawei race to get ahead of Apple’s rumored foldable iPhone"
-    ],
+    "article_count": 0,
+    "headlines": [],
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
   },
   "dim4_competitive": {
@@ -73,20 +71,20 @@
   "dim5_macro": {
     "indices": {
       "HSI": {
-        "price": 25297.16,
-        "change_pct": -0.08
+        "price": 25274.96,
+        "change_pct": -0.17
       },
       "SPX": {
-        "price": 7673.52,
-        "change_pct": -0.58
+        "price": 7626.85,
+        "change_pct": -0.61
       },
       "USD/CNH": {
         "price": 6.71,
         "change_pct": 0.0
       },
       "US10Y": {
-        "price": 4.81,
-        "change_pct": 0.46
+        "price": 4.85,
+        "change_pct": 0.89
       }
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
