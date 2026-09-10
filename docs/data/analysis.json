@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-09T15:28:06.053643",
+  "timestamp": "2026-09-10T03:37:50.515123",
   "target": "1810.HK",
   "dim1_fundamentals": {
     "data": {
@@ -7,14 +7,14 @@
       "name": "XIAOMI-W",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "market_cap": 678769721344,
-      "enterprise_value": 610160738304,
-      "pe_ratio": 18.577465,
-      "forward_pe": 16.855656,
+      "market_cap": 660709638144,
+      "enterprise_value": 596269793280,
+      "pe_ratio": 18.084507,
+      "forward_pe": 16.408388,
       "peg_ratio": 2.76,
-      "pb_ratio": 2.1541283,
-      "ps_ratio": 1.549347,
-      "ev_ebitda": 21.307,
+      "pb_ratio": 2.0969682,
+      "ps_ratio": 1.5081235,
+      "ev_ebitda": 20.822,
       "revenue": 438100492288,
       "revenue_growth": -0.061,
       "gross_margins": 0.21392,
@@ -29,31 +29,31 @@
       "beta": 0.716,
       "52w_high": 59.9,
       "52w_low": 21.3,
-      "50d_avg": 26.9192,
-      "200d_avg": 32.0326,
-      "analyst_target": 36.829144,
+      "50d_avg": 27.014,
+      "200d_avg": 31.964,
+      "analyst_target": 36.84175,
       "recommendation": "buy"
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
   },
   "dim2_technicals": {
     "data": {
-      "price": 26.38,
-      "ma5": 27.34,
-      "ma20": 27.35,
+      "price": 25.68,
+      "ma5": 26.98,
+      "ma20": 27.34,
       "ma60": 26.38,
-      "ma120": 28.53,
-      "rsi_14": 42.3,
-      "macd": 0.018,
-      "ret_1w": -3.86,
-      "ret_1m": -1.05,
-      "ret_3m": -3.65,
-      "ret_6m": -24.41,
+      "ma120": 28.45,
+      "rsi_14": 30.2,
+      "macd": -0.121,
+      "ret_1w": -9.7,
+      "ret_1m": -2.58,
+      "ret_3m": -5.59,
+      "ret_6m": -22.51,
       "high_52w": 59.45,
       "low_52w": 21.42,
-      "pct_from_52w_high": -55.63,
-      "pct_from_52w_low": 23.16,
-      "volume_ratio": 0.84,
+      "pct_from_52w_high": -56.8,
+      "pct_from_52w_low": 19.89,
+      "volume_ratio": 0.39,
       "above_ma20": false,
       "above_ma60": false,
       "trend": "MIXED"
@@ -71,20 +71,20 @@
   "dim5_macro": {
     "indices": {
       "HSI": {
-        "price": 25274.96,
-        "change_pct": -0.17
+        "price": 24926.53,
+        "change_pct": -1.38
       },
       "SPX": {
-        "price": 7626.85,
-        "change_pct": -0.61
+        "price": 7636.36,
+        "change_pct": -0.48
       },
       "USD/CNH": {
         "price": 6.71,
         "change_pct": 0.0
       },
       "US10Y": {
-        "price": 4.85,
-        "change_pct": 0.89
+        "price": 4.84,
+        "change_pct": 0.65
       }
     },
     "analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
@@ -103,8 +103,8 @@
       "score": 60.0
     },
     {
-      "name": "闻泰科技",
-      "ticker": "600745.SS",
+      "name": "汇顶科技",
+      "ticker": "603160.SS",
       "score": 58.0
     },
     {
@@ -113,19 +113,14 @@
       "score": 55.0
     },
     {
-      "name": "零跑汽车",
-      "ticker": "9863.HK",
-      "score": 55.0
-    },
-    {
-      "name": "科大讯飞",
-      "ticker": "002230.SZ",
-      "score": 55.0
-    },
-    {
       "name": "中兴通讯-A",
       "ticker": "000063.SZ",
       "score": 55.0
+    },
+    {
+      "name": "零跑汽车",
+      "ticker": "9863.HK",
+      "score": 53.0
     },
     {
       "name": "百度-HK",
@@ -140,6 +135,11 @@
     {
       "name": "小鹏汽车-HK",
       "ticker": "9868.HK",
+      "score": 45.0
+    },
+    {
+      "name": "澜起科技",
+      "ticker": "688008.SS",
       "score": 45.0
     }
   ],
