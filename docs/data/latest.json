@@ -1,36 +1,36 @@
 {
-  "timestamp": "2026-09-10T15:23:03.399348",
+  "timestamp": "2026-09-11T03:35:34.130627",
   "stocks": {
     "小米集团": {
       "ticker": "1810.HK",
       "name": "XIAOMI-W",
-      "price": 25.92,
-      "change": -0.46,
-      "change_pct": -1.74,
-      "volume": 148749413,
-      "high": 26.4,
-      "low": 25.68,
-      "open": 26.04,
-      "prev_close": 26.38,
-      "market_cap": 666884440064,
-      "pe_ratio": 18.253521,
+      "price": 26.0,
+      "change": 0.08,
+      "change_pct": 0.31,
+      "volume": 43180935,
+      "high": 26.14,
+      "low": 25.44,
+      "open": 25.66,
+      "prev_close": 25.92,
+      "market_cap": 668895412224,
+      "pe_ratio": 18.181818,
       "52w_high": 59.9,
       "52w_low": 21.3,
-      "date": "2026-09-10"
+      "date": "2026-09-11"
     },
     "QQQ": {
       "ticker": "QQQ",
       "name": "Invesco QQQ Trust, Series 1",
-      "price": 710.42,
-      "change": -5.89,
-      "change_pct": -0.82,
-      "volume": 13603301,
+      "price": 708.69,
+      "change": -7.62,
+      "change_pct": -1.06,
+      "volume": 31250100,
       "high": 712.06,
-      "low": 706.85,
-      "open": 707.57,
+      "low": 706.86,
+      "open": 707.55,
       "prev_close": 716.31,
       "market_cap": "N/A",
-      "pe_ratio": 28.955847,
+      "pe_ratio": 28.885216,
       "52w_high": 748.65,
       "52w_low": 555.6,
       "date": "2026-09-10"
@@ -38,15 +38,15 @@
     "Intel": {
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "price": 101.56,
-      "change": -4.68,
-      "change_pct": -4.41,
-      "volume": 45251581,
+      "price": 100.32,
+      "change": -5.92,
+      "change_pct": -5.57,
+      "volume": 96354400,
       "high": 103.23,
       "low": 99.34,
       "open": 102.45,
       "prev_close": 106.24,
-      "market_cap": 536856821760,
+      "market_cap": 530302074880,
       "pe_ratio": "N/A",
       "52w_high": 142.35,
       "52w_low": 24.05,
@@ -55,16 +55,16 @@
     "微软": {
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
-      "price": 491.88,
-      "change": 0.23,
-      "change_pct": 0.05,
-      "volume": 4284381,
-      "high": 493.4,
+      "price": 492.44,
+      "change": 0.79,
+      "change_pct": 0.16,
+      "volume": 16018200,
+      "high": 494.52,
       "low": 486.0,
       "open": 488.32,
       "prev_close": 491.65,
-      "market_cap": 3652508450816,
-      "pe_ratio": 27.403017,
+      "market_cap": 3656635645952,
+      "pe_ratio": 27.403452,
       "52w_high": 553.72,
       "52w_low": 349.2,
       "date": "2026-09-10"
@@ -72,30 +72,30 @@
     "Bitcoin": {
       "ticker": "BTC-USD",
       "name": "Bitcoin USD",
-      "price": 77174.42,
-      "change": -1085.1,
-      "change_pct": -1.39,
-      "volume": 30881630208,
-      "high": 78497.55,
-      "low": 76731.84,
-      "open": 78291.64,
+      "price": 76742.07,
+      "change": -1517.45,
+      "change_pct": -1.94,
+      "volume": 30287046656,
+      "high": 76972.55,
+      "low": 76535.95,
+      "open": 76535.95,
       "prev_close": 78259.52,
-      "market_cap": 1551261499392,
+      "market_cap": 1540182245376,
       "pe_ratio": "N/A",
       "52w_high": 126198.07,
       "52w_low": 57747.766,
-      "date": "2026-09-10"
+      "date": "2026-09-11"
     }
   },
   "indices": {
     "标普500": {
       "ticker": "^GSPC",
       "name": "S&P 500",
-      "price": 7601.5,
-      "change": -34.86,
-      "change_pct": -0.46,
-      "volume": 821517374,
-      "high": 7612.74,
+      "price": 7591.7,
+      "change": -44.66,
+      "change_pct": -0.58,
+      "volume": 2763396000,
+      "high": 7612.86,
       "low": 7580.06,
       "open": 7594.74,
       "prev_close": 7636.36,
@@ -108,11 +108,11 @@
     "纳斯达克": {
       "ticker": "^IXIC",
       "name": "NASDAQ Composite",
-      "price": 26123.09,
-      "change": -130.25,
-      "change_pct": -0.5,
-      "volume": 2786260000,
-      "high": 26170.08,
+      "price": 26081.72,
+      "change": -171.62,
+      "change_pct": -0.65,
+      "volume": 6333974000,
+      "high": 26178.25,
       "low": 25979.54,
       "open": 26021.05,
       "prev_close": 26253.34,
@@ -125,46 +125,46 @@
     "恒生指数": {
       "ticker": "^HSI",
       "name": "HANG SENG INDEX",
-      "price": 24954.47,
-      "change": -320.49,
-      "change_pct": -1.27,
+      "price": 24675.62,
+      "change": -278.85,
+      "change_pct": -1.12,
       "volume": 0,
-      "high": 25021.81,
-      "low": 24889.64,
-      "open": 24985.18,
-      "prev_close": 25274.96,
+      "high": 24758.84,
+      "low": 24570.24,
+      "open": 24718.15,
+      "prev_close": 24954.47,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
       "52w_high": 28056.1,
       "52w_low": 22518.0,
-      "date": "2026-09-10"
+      "date": "2026-09-11"
     },
     "沪深300": {
       "ticker": "000300.SS",
       "name": "CSI 300 Index",
-      "price": 4548.39,
+      "price": 4475.75,
       "change": 0.0,
       "change_pct": 0.0,
-      "volume": 1807353312,
-      "high": 4569.83,
-      "low": 4533.66,
-      "open": 4550.19,
-      "prev_close": 4548.39,
+      "volume": 109681112,
+      "high": 4515.06,
+      "low": 4461.57,
+      "open": 4514.3,
+      "prev_close": 4475.75,
       "market_cap": "N/A",
       "pe_ratio": "N/A",
-      "52w_high": 4569.833,
-      "52w_low": 4533.6587,
-      "date": "2026-09-10"
+      "52w_high": 4515.0615,
+      "52w_low": 4461.5693,
+      "date": "2026-09-11"
     },
     "道琼斯": {
       "ticker": "^DJI",
       "name": "Dow Jones Industrial Average",
-      "price": 52130.64,
-      "change": -250.02,
-      "change_pct": -0.48,
-      "volume": 133351540,
+      "price": 52064.1,
+      "change": -316.56,
+      "change_pct": -0.6,
+      "volume": 401279317,
       "high": 52291.85,
-      "low": 52006.96,
+      "low": 51962.71,
       "open": 52291.85,
       "prev_close": 52380.66,
       "market_cap": "N/A",
@@ -175,49 +175,56 @@
     }
   },
   "news": {
-    "xiaomi": [],
+    "xiaomi": [
+      {
+        "title": "The iPhone Duo enters China’s crowded foldable market — and faces a price test",
+        "source": "CNBC Top",
+        "published": "2026-09-11 02:05",
+        "link": "https://www.cnbc.com/2026/09/11/the-iphone-duo-enters-chinas-crowded-foldable-market.html"
+      }
+    ],
     "macro": [
       {
-        "title": "The likelihood of a Fed interest rate hike next week just got a lot higher",
+        "title": "Trump says he has no regrets about starting the Iran war as U.S. dials up economic pressure",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:51",
-        "link": "https://www.cnbc.com/2026/09/10/the-likelihood-of-a-fed-interest-rate-hike-next-week-just-got-a-lot-higher.html"
+        "published": "2026-09-11 01:43",
+        "link": "https://www.cnbc.com/2026/09/11/us-iran-war-trump-hormuz-banks-oil-sanctions.html"
       },
       {
-        "title": "Stocks retreat as U.S. oil prices top $100, threatening economy: Live updates",
+        "title": "Bessent says 'a large bank' will be sanctioned on Monday as part of Iran strategy",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:44",
-        "link": "https://www.cnbc.com/2026/09/09/stock-market-today-live-updates.html"
+        "published": "2026-09-11 01:07",
+        "link": "https://www.cnbc.com/2026/09/11/bessent-large-bank-sanctioned.html"
       },
       {
-        "title": "Kimmel says interview with Senate candidate Talarico won't air on ABC amid FCC threats",
+        "title": "Chinese AI labs secretly used millions of Claude exchanges to train their models, Anthropic says",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:55",
-        "link": "https://www.cnbc.com/2026/09/10/abc-kimmel-talarico-fcc.html"
+        "published": "2026-09-11 00:59",
+        "link": "https://www.cnbc.com/2026/09/11/chinese-ai-labs-moonshot-deepseek-alibaba-anthropic.html"
       },
       {
-        "title": "Wall Street firm believes the AI stock market boom is 'nearing an end.' Here's why",
+        "title": "Stock futures are little changed as key consumer inflation report looms ahead: Live updates",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:27",
-        "link": "https://www.cnbc.com/2026/09/10/wall-street-firm-believes-the-ai-stock-market-boom-is-nearing-an-end-heres-why.html"
+        "published": "2026-09-11 02:46",
+        "link": "https://www.cnbc.com/2026/09/10/stock-market-today-live-updates.html"
       },
       {
-        "title": "U.S. crude oil tops $100 again – last seen in May – as market braces for prolonged Iran war",
+        "title": "Chinese Nvidia rival Enflame soars 206% on stock market debut as AI demand stays hot",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:52",
-        "link": "https://www.cnbc.com/2026/09/10/iran-us-oil-hormuz-supply-trump-military-brent-wti.html"
+        "published": "2026-09-11 01:53",
+        "link": "https://www.cnbc.com/2026/09/11/chinese-nvidia-rival-enflame-stock-market-debut-ai.html"
       },
       {
-        "title": "Home sales fall in August despite the highest supply in over a decade",
+        "title": "California enacts new curbs on social media for children",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:07",
-        "link": "https://www.cnbc.com/2026/09/10/home-sales-august-supply.html"
+        "published": "2026-09-11 02:02",
+        "link": "https://www.cnbc.com/2026/09/11/california-enacts-new-curbs-on-social-media-for-children.html"
       },
       {
-        "title": "U.S. Supreme Court again rejects push to use Trump-backed congressional maps in midterms, clearing the way for old maps",
+        "title": "Investors gave up on this AI play, but charts suggest it's worth a look, Jay Woods says",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:55",
-        "link": "https://www.cnbc.com/2026/09/10/us-supreme-court-rejects-trump-backed-congressional-maps-in-midterms.html"
+        "published": "2026-09-10 17:03",
+        "link": "https://www.cnbc.com/2026/09/10/investors-gave-up-on-this-ai-play-but-charts-suggest-its-worth-a-look-jay-woods-says.html"
       },
       {
         "title": "'Extinction' warnings ramp up as more OpenAI, Anthropic researchers join calls for an AI slowdown",
@@ -232,10 +239,10 @@
         "link": "https://www.cnbc.com/2026/09/09/bond-selloff-stock-boom-rebalancing.html"
       },
       {
-        "title": "Trump warns Tehran over Pickaxe Mountain activity; U.S.-Iran exchange attacks on ships near Hormuz",
+        "title": "Y Combinator’s Garry Tan says 'do nothing' about distillation as AI giants accuse China of copying their tech",
         "source": "CNBC Top",
-        "published": "2026-09-10 14:20",
-        "link": "https://www.cnbc.com/2026/09/10/iran-us-war-hormuz-pickaxe-mountain.html"
+        "published": "2026-09-11 01:37",
+        "link": "https://www.cnbc.com/2026/09/11/y-combinator-garry-tan-says-do-nothing-about-distillation.html"
       }
     ],
     "qqq_intel": [
@@ -244,34 +251,23 @@
         "source": "CNBC Tech",
         "published": "2026-09-10 12:48",
         "link": "https://www.cnbc.com/2026/09/10/nasdaq-invests-100-million-in-crypto-firm-eyes-2027-launch-of-tokenized-stocks.html"
-      },
-      {
-        "title": "World’s largest contract chipmaker TSMC sees August revenue surge over 53% to record high",
-        "source": "CNBC Tech",
-        "published": "2026-09-10 06:45",
-        "link": "https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html"
-      },
-      {
-        "title": "Stock market today: Dow, S&P 500, Nasdaq extend losses as bond yields jump, oil holds above $100",
-        "source": "Yahoo Finance",
-        "published": "2026-09-10 08:37",
-        "link": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-083717303.html"
       }
     ],
-    "tech": [],
+    "tech": [
+      {
+        "title": "Oracle's stock edges up on earnings beat as cloud infrastructure revenue more than doubles",
+        "source": "CNBC Top",
+        "published": "2026-09-10 21:42",
+        "link": "https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html"
+      },
+      {
+        "title": "Here’s a rapid-fire update on our 33-stock portfolio, including Cramer’s 6 favorites to buy",
+        "source": "CNBC Tech",
+        "published": "2026-09-10 18:20",
+        "link": "https://www.cnbc.com/2026/09/10/a-rapid-fire-update-on-our-33-stock-portfolio-including-6-to-buy-now.html"
+      }
+    ],
     "market": [
-      {
-        "title": "Wholesale prices rose 0.4% in August, as expected",
-        "source": "CNBC Top",
-        "published": "2026-09-10 13:23",
-        "link": "https://www.cnbc.com/2026/09/10/ppi-inflation-report-august-2026.html"
-      },
-      {
-        "title": "Kalshi launches ‘perps’ for gold and silver following CFTC approval, expanding futures offerings",
-        "source": "CNBC Top",
-        "published": "2026-09-10 14:00",
-        "link": "https://www.cnbc.com/2026/09/10/kalshi-launches-perps-for-gold-and-silver-following-cftc-approval-expanding-futures-offerings.html"
-      },
       {
         "title": "Our top 3 stocks that bucked the market’s recent pullback — plus, a look at the bottom 3",
         "source": "CNBC Tech",
@@ -279,16 +275,22 @@
         "link": "https://www.cnbc.com/2026/09/10/our-top-3-stocks-that-bucked-the-markets-recent-pullback-plus-a-look-at-the-bottom-3.html"
       },
       {
-        "title": "Samsung works to draw iPhone users to its foldables even as Apple enters the market",
-        "source": "CNBC Tech",
-        "published": "2026-09-10 02:05",
-        "link": "https://www.cnbc.com/2026/09/10/samsung-tries-to-draw-iphone-users-to-its-foldables-amid-apple-entry.html"
+        "title": "Stocks and Bonds Fall as Crude Oil Surges",
+        "source": "Yahoo Finance",
+        "published": "2026-09-09 15:16",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-bonds-fall-crude-oil-151630911.html"
       },
       {
-        "title": "Global bond sell-off reignites as oil jumps above $105",
+        "title": "Why Broadcom Providing 2028 Guidance Is a Big Deal for AVGO Stock Bulls",
+        "source": "Yahoo Finance",
+        "published": "2026-09-09 15:29",
+        "link": "https://finance.yahoo.com/technology/ai/articles/why-broadcom-providing-2028-guidance-152952096.html"
+      },
+      {
+        "title": "Oil, yen and egonomics",
         "source": "FT Markets",
-        "published": "2026-09-10 15:22",
-        "link": "https://www.ft.com/content/49e8c693-0064-4ef9-917f-5f2be97458fc?syn-25a6b1a6=1"
+        "published": "2026-09-10 20:00",
+        "link": "https://www.ft.com/content/d4f7e9df-ca83-4e85-be23-5e5342aaf1e9?syn-25a6b1a6=1"
       },
       {
         "title": "Prediction markets ‘rife with insider trading’, warns EU watchdog",
@@ -317,6 +319,10 @@
     ]
   },
   "sentiment": {
+    "xiaomi": {
+      "overall_sentiment": "unknown",
+      "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
+    },
     "qqq_intel": {
       "overall_sentiment": "unknown",
       "raw_analysis": "AI Analysis Error: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****d5d9 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}"
